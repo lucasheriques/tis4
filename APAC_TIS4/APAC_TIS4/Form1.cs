@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace APAC_TIS4
 {
-    public partial class Form1 : Form
+    public partial class frmPrincipal : Form
     {
-        public Form1()
+        public frmPrincipal()
         {
             InitializeComponent();
         }
+
     }
 }
