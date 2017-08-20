@@ -47,7 +47,11 @@ namespace APAC_TIS4
 
         private void bntSair_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult result1 = MessageBox.Show("Deseja realmente sair?", "Sair", MessageBoxButtons.YesNo);
+            if(result1 == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void bntCadastrar_Click(object sender, EventArgs e)

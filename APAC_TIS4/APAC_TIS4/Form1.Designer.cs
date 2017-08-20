@@ -619,6 +619,7 @@
             this.bancoDeDadosToolStripMenuItem.Name = "bancoDeDadosToolStripMenuItem";
             this.bancoDeDadosToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.bancoDeDadosToolStripMenuItem.Text = "Banco de Dados";
+            this.bancoDeDadosToolStripMenuItem.Click += new System.EventHandler(this.bancoDeDadosToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 

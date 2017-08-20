@@ -23,5 +23,13 @@ namespace APAC_TIS4
             this.Hide();
             cadastrarCliente.Show();
         }
+
+        private void bancoDeDadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoDoBancoDeDados configuracaoDoBancoDeDados = new ConfiguracaoDoBancoDeDados();
+            configuracaoDoBancoDeDados.setFrmPrincipal(this);
+            this.Hide();
+            configuracaoDoBancoDeDados.Show();
+        }
     }
 }

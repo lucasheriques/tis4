@@ -1,0 +1,4 @@
+Servidor: localhost
+Base De Dados: padaria
+Usuario: root
+Senha: 123456

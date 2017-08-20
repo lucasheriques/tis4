@@ -52,9 +52,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BancoDeDados.cs" />
+    <Compile Include="Arquivo.cs" />
     <Compile Include="CienteModels.cs" />
     <Compile Include="ClienteDAO.cs" />
+    <Compile Include="ConfiguracaoDoBancoDeDados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfiguracaoDoBancoDeDados.Designer.cs">
+      <DependentUpon>ConfiguracaoDoBancoDeDados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingletonBD.cs" />
+    <EmbeddedResource Include="ConfiguracaoDoBancoDeDados.resx">
+      <DependentUpon>ConfiguracaoDoBancoDeDados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,6 +108,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Configuracao\" />
     <Folder Include="Icones\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

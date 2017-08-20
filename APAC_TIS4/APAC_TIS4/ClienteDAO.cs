@@ -12,7 +12,8 @@ namespace APAC_TIS4
     {
         public DataSet visualizarGrid() {
             DataSet sDs = new DataSet();
-            using (MySqlConnection conexaoMySQL = SingletonBD.getInstancia().getConexao())
+            SingletonBD singleton = SingletonBD.getInstancia();
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
             {
                 try
                 {

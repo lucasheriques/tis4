@@ -11,18 +11,33 @@ namespace APAC_TIS4
     public sealed class SingletonBD
     {
         // Variaveis de configuração de acesso ao banco de dados
-        private string Server = "localhost";
-        private string Database = "padaria";
-        private string Usuario = "root";
-        private string Senha = "123456";
+        private string server;
+        private string database;
+        private string usuario;
+        private string senha;
+
+        private static Arquivo arquivo;
+
+        public string Server { get { return server; } set { server = value; } }
+        public string Database { get { return database; } set { database = value; } }
+        public string Usuario { get { return usuario; } set { usuario = value; } }
+        public string Senha { get { return senha; } set { senha = value;  } }
 
 
-        private static readonly SingletonBD instanciaMySQL = new SingletonBD();
+        private static readonly SingletonBD instanciaMySQL = leituraConfiguracao();
+        public SingletonBD(string construtor) { }
+        private SingletonBD() {
+            
+        }
 
-        private SingletonBD() { }
+        private static SingletonBD leituraConfiguracao() {
+            arquivo = new Arquivo("ConfiguracaoBancoDeDados.txt");
+            return arquivo.leituraConfiguracao();
+        }
 
         public static SingletonBD getInstancia()
         {
+
             return instanciaMySQL;
         }
 
