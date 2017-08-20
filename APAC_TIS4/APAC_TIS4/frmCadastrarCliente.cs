@@ -17,11 +17,26 @@ namespace APAC_TIS4
         {
             this.principal = principal;
             InitializeComponent();
+            popularGrid();
+
         }
 
         public frmCadastrarCliente()
         {
             InitializeComponent();
+        }
+
+        public void popularGrid() {
+            ClienteDAO cliente = new ClienteDAO();
+
+            DataSet dataSet = cliente.visualizarGrid();
+            dgvClientes.DataSource = dataSet.Tables["characters"];
+
+            for (int i = 0; i < dgvClientes.Columns.Count; i++) {
+                dgvClientes.Columns[i].Width = 400;
+            }
+
+            
         }
 
         private void bntCancelar_Click(object sender, EventArgs e)
@@ -55,6 +70,7 @@ namespace APAC_TIS4
             else{
                 MessageBox.Show("Cliente inserido com sucesso!!!");
             }
+            popularGrid();
         }
     }
 }

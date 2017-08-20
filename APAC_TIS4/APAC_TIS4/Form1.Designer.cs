@@ -83,6 +83,7 @@
             this.bntRelatorioGastos = new System.Windows.Forms.Button();
             this.bntVisualizarReceita = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.bancoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -307,6 +308,8 @@
             // 
             // toolStripMenuItem4
             // 
+            this.toolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bancoDeDadosToolStripMenuItem});
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(96, 20);
             this.toolStripMenuItem4.Text = "Configurações";
@@ -611,6 +614,12 @@
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = false;
             // 
+            // bancoDeDadosToolStripMenuItem
+            // 
+            this.bancoDeDadosToolStripMenuItem.Name = "bancoDeDadosToolStripMenuItem";
+            this.bancoDeDadosToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.bancoDeDadosToolStripMenuItem.Text = "Banco de Dados";
+            // 
             // frmPrincipal
             // 
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
@@ -712,6 +721,7 @@
         private System.Windows.Forms.Button bntRelatorioGastos;
         private System.Windows.Forms.Button bntVisualizarReceita;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolStripMenuItem bancoDeDadosToolStripMenuItem;
     }
 }
 
