@@ -323,6 +323,7 @@
             this.bntCadastrarCliente.Text = "Cadastrar Cliente";
             this.bntCadastrarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bntCadastrarCliente.UseVisualStyleBackColor = false;
+            this.bntCadastrarCliente.Click += new System.EventHandler(this.bntCadastrarCliente_Click);
             // 
             // btnCadastrarInsumos
             // 

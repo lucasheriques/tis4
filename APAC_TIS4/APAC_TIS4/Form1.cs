@@ -17,5 +17,11 @@ namespace APAC_TIS4
             InitializeComponent();
         }
 
+        private void bntCadastrarCliente_Click(object sender, EventArgs e)
+        {
+            frmCadastrarCliente cadastrarCliente = new frmCadastrarCliente(this);
+            this.Hide();
+            cadastrarCliente.Show();
+        }
     }
 }
