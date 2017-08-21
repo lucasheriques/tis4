@@ -31,5 +31,13 @@ namespace APAC_TIS4
             this.Hide();
             configuracaoDoBancoDeDados.Show();
         }
+
+        private void bntCadastrarProduto_Click(object sender, EventArgs e)
+        {
+            frmCadastrarProduto _frmCadastrarProduto = new frmCadastrarProduto(this);
+
+            _frmCadastrarProduto.Show();
+            this.Hide();
+        }
     }
 }

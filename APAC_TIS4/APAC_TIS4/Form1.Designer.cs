@@ -60,6 +60,7 @@
             this.gastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lucrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bancoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bntCadastrarCliente = new System.Windows.Forms.Button();
             this.btnCadastrarInsumos = new System.Windows.Forms.Button();
             this.btnCadastrarPedio = new System.Windows.Forms.Button();
@@ -83,7 +84,6 @@
             this.bntRelatorioGastos = new System.Windows.Forms.Button();
             this.bntVisualizarReceita = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.bancoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -314,6 +314,13 @@
             this.toolStripMenuItem4.Size = new System.Drawing.Size(96, 20);
             this.toolStripMenuItem4.Text = "Configurações";
             // 
+            // bancoDeDadosToolStripMenuItem
+            // 
+            this.bancoDeDadosToolStripMenuItem.Name = "bancoDeDadosToolStripMenuItem";
+            this.bancoDeDadosToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.bancoDeDadosToolStripMenuItem.Text = "Banco de Dados";
+            this.bancoDeDadosToolStripMenuItem.Click += new System.EventHandler(this.bancoDeDadosToolStripMenuItem_Click);
+            // 
             // bntCadastrarCliente
             // 
             this.bntCadastrarCliente.BackColor = System.Drawing.SystemColors.HighlightText;
@@ -366,6 +373,7 @@
             this.bntCadastrarProduto.Text = "Cadastrar Produto";
             this.bntCadastrarProduto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bntCadastrarProduto.UseVisualStyleBackColor = false;
+            this.bntCadastrarProduto.Click += new System.EventHandler(this.bntCadastrarProduto_Click);
             // 
             // bntCadastrarReceita
             // 
@@ -613,13 +621,6 @@
             this.button2.Text = "Relatório Lucros";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = false;
-            // 
-            // bancoDeDadosToolStripMenuItem
-            // 
-            this.bancoDeDadosToolStripMenuItem.Name = "bancoDeDadosToolStripMenuItem";
-            this.bancoDeDadosToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.bancoDeDadosToolStripMenuItem.Text = "Banco de Dados";
-            this.bancoDeDadosToolStripMenuItem.Click += new System.EventHandler(this.bancoDeDadosToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
