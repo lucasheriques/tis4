@@ -24,7 +24,7 @@ namespace APAC_TIS4
 
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
-                    MySqlCommand cmd = new MySqlCommand("select nome, Tipo, Tamanho, Peso, UDM, preco, CustoPorUnidade, PrecoDeVendaUnidade from produto;", conexaoMySQL);
+                    MySqlCommand cmd = new MySqlCommand("select nome, Tipo, Tamanho, Peso, UDM, preco, CustoPorUnidade, PrecoDeVendaUnidade, Descricao from produto;", conexaoMySQL);
 
                     MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
 
@@ -70,6 +70,7 @@ namespace APAC_TIS4
                     cmd.Parameters.AddWithValue("_preco", produto.Preco);
                     cmd.Parameters.AddWithValue("_CustoPorUnidade", produto.CustoPorUnidade);
                     cmd.Parameters.AddWithValue("_PrecoDeVendaUnidade", produto.PrecoDeVendaUnidade);
+                    cmd.Parameters.AddWithValue("_Descricao", produto.Descricao);
 
                     cmd.ExecuteNonQuery();
                     retorno = "OK";

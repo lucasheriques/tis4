@@ -31,6 +31,7 @@ namespace APAC_TIS4
             produto.Tamanho = txtTamanho.Text;
             produto.Tipo = txtTipo.Text;
             produto.UDM = txtUDM.Text;
+            produto.Descricao = txtDescricao.Text;
 
             ProdutoDAO produtoDAO = new ProdutoDAO();
 

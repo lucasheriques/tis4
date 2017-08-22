@@ -82,6 +82,8 @@
             this.txtCustoPorUnidade = new System.Windows.Forms.TextBox();
             this.txtPrecoVendaPorUnidade = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtDescricao = new System.Windows.Forms.TextBox();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduto)).BeginInit();
             this.SuspendLayout();
@@ -488,13 +490,30 @@
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.textBox1.Location = new System.Drawing.Point(571, 41);
+            this.textBox1.Location = new System.Drawing.Point(795, 41);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(705, 260);
+            this.textBox1.Size = new System.Drawing.Size(481, 260);
             this.textBox1.TabIndex = 22;
             this.textBox1.Text = "Nesta tela o responsável pela gerência da padaria cadastra os Produtos fabricados" +
     " pela padaria da APAC e que são disponibilizados para venda.";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(451, 49);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(61, 13);
+            this.label9.TabIndex = 23;
+            this.label9.Text = "Descrição: ";
+            // 
+            // txtDescricao
+            // 
+            this.txtDescricao.Location = new System.Drawing.Point(528, 49);
+            this.txtDescricao.Multiline = true;
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(252, 180);
+            this.txtDescricao.TabIndex = 24;
             // 
             // frmCadastrarProduto
             // 
@@ -502,6 +521,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1305, 615);
+            this.Controls.Add(this.txtDescricao);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.txtPrecoVendaPorUnidade);
             this.Controls.Add(this.txtCustoPorUnidade);
@@ -590,5 +611,7 @@
         private System.Windows.Forms.TextBox txtCustoPorUnidade;
         private System.Windows.Forms.TextBox txtPrecoVendaPorUnidade;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtDescricao;
     }
 }

@@ -16,6 +16,7 @@ namespace APAC_TIS4
         private float preco;
         private float custoPorUnidade;
         private float precoDeVendaUnidade;
+        private string descricao;
 
         public string Nome { get { return nome; } set { this.nome = value; } }
         public string Tipo { get { return tipo; } set { this.tipo = value;  } }
@@ -25,5 +26,6 @@ namespace APAC_TIS4
         public float Preco { get { return preco; } set { this.preco = value; } }
         public float CustoPorUnidade { get { return custoPorUnidade; } set { this.custoPorUnidade = value; } }
         public float PrecoDeVendaUnidade { get { return precoDeVendaUnidade; } set { this.precoDeVendaUnidade = value; } }
+        public string Descricao { get { return descricao;  } set { this.descricao = value; } }
     }
 }
