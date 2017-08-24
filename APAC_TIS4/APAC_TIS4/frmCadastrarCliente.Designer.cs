@@ -69,9 +69,9 @@
             this.gastosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lucrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bancoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.txtDescricao = new System.Windows.Forms.TextBox();
-            this.bancoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
@@ -122,10 +122,9 @@
             // 
             this.cmbTipo.FormattingEnabled = true;
             this.cmbTipo.Items.AddRange(new object[] {
-            "Escola Municipal",
-            "Escola Estadual",
-            "Escola",
-            "Outros"});
+            "Pátio de Obras",
+            "Escolas",
+            "Casas de Acolhimento"});
             this.cmbTipo.Location = new System.Drawing.Point(120, 240);
             this.cmbTipo.Name = "cmbTipo";
             this.cmbTipo.Size = new System.Drawing.Size(287, 21);
@@ -388,6 +387,12 @@
             this.toolStripMenuItem4.Size = new System.Drawing.Size(96, 20);
             this.toolStripMenuItem4.Text = "Configurações";
             // 
+            // bancoDeDadosToolStripMenuItem
+            // 
+            this.bancoDeDadosToolStripMenuItem.Name = "bancoDeDadosToolStripMenuItem";
+            this.bancoDeDadosToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.bancoDeDadosToolStripMenuItem.Text = "Banco de Dados";
+            // 
             // dgvClientes
             // 
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -407,12 +412,6 @@
             this.txtDescricao.TabIndex = 11;
             this.txtDescricao.Text = "Nesta tela o responsável pela gerência da padaria cadastra os clientes que solici" +
     "tam a entrega dos produtos produzidos pela padaria da APAC.";
-            // 
-            // bancoDeDadosToolStripMenuItem
-            // 
-            this.bancoDeDadosToolStripMenuItem.Name = "bancoDeDadosToolStripMenuItem";
-            this.bancoDeDadosToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.bancoDeDadosToolStripMenuItem.Text = "Banco de Dados";
             // 
             // frmCadastrarCliente
             // 
