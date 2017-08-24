@@ -1,6 +1,6 @@
 ﻿namespace APAC_TIS4
 {
-    partial class frmCadastrarProduto
+    partial class frmVisualizarPedido
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastrarProduto));
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,30 +61,30 @@
             this.lucrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.bancoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txtNomeCliente = new System.Windows.Forms.TextBox();
+            this.txtNomeProduto = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.dtpDataEntrega = new System.Windows.Forms.DateTimePicker();
+            this.dtpDataPedido = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.bntCadastrar = new System.Windows.Forms.Button();
+            this.bntPesquisar = new System.Windows.Forms.Button();
             this.bntCancelar = new System.Windows.Forms.Button();
             this.bntSair = new System.Windows.Forms.Button();
-            this.dgvProduto = new System.Windows.Forms.DataGridView();
-            this.txtNome = new System.Windows.Forms.TextBox();
-            this.txtTipo = new System.Windows.Forms.TextBox();
-            this.txtTamanho = new System.Windows.Forms.TextBox();
-            this.txtPeso = new System.Windows.Forms.TextBox();
-            this.txtUDM = new System.Windows.Forms.TextBox();
-            this.txtCustoPorUnidade = new System.Windows.Forms.TextBox();
-            this.txtPrecoVendaPorUnidade = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtDescricao = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txtDescricaoTela = new System.Windows.Forms.TextBox();
             this.menuStrip2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProduto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nome do Cliente: ";
             // 
             // menuStrip2
             // 
@@ -319,218 +319,136 @@
             this.bancoDeDadosToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.bancoDeDadosToolStripMenuItem.Text = "Banco de Dados";
             // 
-            // label1
+            // txtNomeCliente
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Nome: ";
+            this.txtNomeCliente.Location = new System.Drawing.Point(145, 38);
+            this.txtNomeCliente.Name = "txtNomeCliente";
+            this.txtNomeCliente.Size = new System.Drawing.Size(200, 20);
+            this.txtNomeCliente.TabIndex = 2;
+            // 
+            // txtNomeProduto
+            // 
+            this.txtNomeProduto.Location = new System.Drawing.Point(145, 77);
+            this.txtNomeProduto.Name = "txtNomeProduto";
+            this.txtNomeProduto.Size = new System.Drawing.Size(200, 20);
+            this.txtNomeProduto.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 85);
+            this.label2.Location = new System.Drawing.Point(15, 84);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Tipo";
+            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Nome do Produto:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 122);
+            this.label3.Location = new System.Drawing.Point(15, 126);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Tamanho: ";
+            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Data Entrega: ";
+            // 
+            // dtpDataEntrega
+            // 
+            this.dtpDataEntrega.Location = new System.Drawing.Point(145, 119);
+            this.dtpDataEntrega.Name = "dtpDataEntrega";
+            this.dtpDataEntrega.Size = new System.Drawing.Size(200, 20);
+            this.dtpDataEntrega.TabIndex = 6;
+            // 
+            // dtpDataPedido
+            // 
+            this.dtpDataPedido.Location = new System.Drawing.Point(145, 159);
+            this.dtpDataPedido.Name = "dtpDataPedido";
+            this.dtpDataPedido.Size = new System.Drawing.Size(200, 20);
+            this.dtpDataPedido.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 156);
+            this.label4.Location = new System.Drawing.Point(15, 165);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Peso: ";
+            this.label4.Size = new System.Drawing.Size(72, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Data Pedido: ";
             // 
-            // label5
+            // bntPesquisar
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 185);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Unidade de Medida: ";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 223);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(101, 13);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Custo por Unidade: ";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 261);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(151, 13);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Preço de Venda por Unidade: ";
-            // 
-            // bntCadastrar
-            // 
-            this.bntCadastrar.Location = new System.Drawing.Point(16, 331);
-            this.bntCadastrar.Name = "bntCadastrar";
-            this.bntCadastrar.Size = new System.Drawing.Size(75, 23);
-            this.bntCadastrar.TabIndex = 10;
-            this.bntCadastrar.Text = "Cadastrar";
-            this.bntCadastrar.UseVisualStyleBackColor = true;
-            this.bntCadastrar.Click += new System.EventHandler(this.bntCadastrar_Click);
+            this.bntPesquisar.Location = new System.Drawing.Point(18, 218);
+            this.bntPesquisar.Name = "bntPesquisar";
+            this.bntPesquisar.Size = new System.Drawing.Size(75, 23);
+            this.bntPesquisar.TabIndex = 9;
+            this.bntPesquisar.Text = "Pesquisar";
+            this.bntPesquisar.UseVisualStyleBackColor = true;
+            this.bntPesquisar.Click += new System.EventHandler(this.bntPesquisar_Click);
             // 
             // bntCancelar
             // 
-            this.bntCancelar.Location = new System.Drawing.Point(176, 331);
+            this.bntCancelar.Location = new System.Drawing.Point(145, 217);
             this.bntCancelar.Name = "bntCancelar";
             this.bntCancelar.Size = new System.Drawing.Size(75, 23);
-            this.bntCancelar.TabIndex = 11;
+            this.bntCancelar.TabIndex = 10;
             this.bntCancelar.Text = "Cancelar";
             this.bntCancelar.UseVisualStyleBackColor = true;
             this.bntCancelar.Click += new System.EventHandler(this.bntCancelar_Click);
             // 
             // bntSair
             // 
-            this.bntSair.Location = new System.Drawing.Point(321, 331);
+            this.bntSair.Location = new System.Drawing.Point(270, 217);
             this.bntSair.Name = "bntSair";
             this.bntSair.Size = new System.Drawing.Size(75, 23);
-            this.bntSair.TabIndex = 12;
+            this.bntSair.TabIndex = 11;
             this.bntSair.Text = "Sair";
             this.bntSair.UseVisualStyleBackColor = true;
             this.bntSair.Click += new System.EventHandler(this.bntSair_Click);
             // 
-            // dgvProduto
+            // dataGridView1
             // 
-            this.dgvProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProduto.Location = new System.Drawing.Point(16, 387);
-            this.dgvProduto.Name = "dgvProduto";
-            this.dgvProduto.Size = new System.Drawing.Size(1277, 216);
-            this.dgvProduto.TabIndex = 13;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(18, 279);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1275, 324);
+            this.dataGridView1.TabIndex = 12;
             // 
-            // txtNome
+            // txtDescricaoTela
             // 
-            this.txtNome.Location = new System.Drawing.Point(216, 46);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(180, 20);
-            this.txtNome.TabIndex = 14;
+            this.txtDescricaoTela.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.txtDescricaoTela.Location = new System.Drawing.Point(406, 38);
+            this.txtDescricaoTela.Multiline = true;
+            this.txtDescricaoTela.Name = "txtDescricaoTela";
+            this.txtDescricaoTela.Size = new System.Drawing.Size(887, 202);
+            this.txtDescricaoTela.TabIndex = 13;
+            this.txtDescricaoTela.Text = "Nesta tela, o gerente responsável pela padaria da APAC pode pesquisar e visualiza" +
+    "r os pedidos, pesquisando pelo nome do cliente, nome do produto, data de entrega" +
+    " ou pela data do pedido.";
             // 
-            // txtTipo
-            // 
-            this.txtTipo.Location = new System.Drawing.Point(216, 78);
-            this.txtTipo.Name = "txtTipo";
-            this.txtTipo.Size = new System.Drawing.Size(180, 20);
-            this.txtTipo.TabIndex = 15;
-            // 
-            // txtTamanho
-            // 
-            this.txtTamanho.Location = new System.Drawing.Point(216, 115);
-            this.txtTamanho.Name = "txtTamanho";
-            this.txtTamanho.Size = new System.Drawing.Size(180, 20);
-            this.txtTamanho.TabIndex = 16;
-            // 
-            // txtPeso
-            // 
-            this.txtPeso.Location = new System.Drawing.Point(216, 149);
-            this.txtPeso.Name = "txtPeso";
-            this.txtPeso.Size = new System.Drawing.Size(180, 20);
-            this.txtPeso.TabIndex = 17;
-            // 
-            // txtUDM
-            // 
-            this.txtUDM.Location = new System.Drawing.Point(216, 182);
-            this.txtUDM.Name = "txtUDM";
-            this.txtUDM.Size = new System.Drawing.Size(180, 20);
-            this.txtUDM.TabIndex = 18;
-            // 
-            // txtCustoPorUnidade
-            // 
-            this.txtCustoPorUnidade.Location = new System.Drawing.Point(216, 220);
-            this.txtCustoPorUnidade.Name = "txtCustoPorUnidade";
-            this.txtCustoPorUnidade.Size = new System.Drawing.Size(180, 20);
-            this.txtCustoPorUnidade.TabIndex = 20;
-            // 
-            // txtPrecoVendaPorUnidade
-            // 
-            this.txtPrecoVendaPorUnidade.Location = new System.Drawing.Point(216, 254);
-            this.txtPrecoVendaPorUnidade.Name = "txtPrecoVendaPorUnidade";
-            this.txtPrecoVendaPorUnidade.Size = new System.Drawing.Size(180, 20);
-            this.txtPrecoVendaPorUnidade.TabIndex = 21;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.textBox1.Location = new System.Drawing.Point(795, 41);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(481, 260);
-            this.textBox1.TabIndex = 22;
-            this.textBox1.Text = "Nesta tela o responsável pela gerência da padaria cadastra os Produtos fabricados" +
-    " pela padaria da APAC e que são disponibilizados para venda.";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(451, 49);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(61, 13);
-            this.label9.TabIndex = 23;
-            this.label9.Text = "Descrição: ";
-            // 
-            // txtDescricao
-            // 
-            this.txtDescricao.Location = new System.Drawing.Point(528, 49);
-            this.txtDescricao.Multiline = true;
-            this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(252, 180);
-            this.txtDescricao.TabIndex = 24;
-            // 
-            // frmCadastrarProduto
+            // frmVisualizarPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1305, 615);
-            this.Controls.Add(this.txtDescricao);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.txtPrecoVendaPorUnidade);
-            this.Controls.Add(this.txtCustoPorUnidade);
-            this.Controls.Add(this.txtUDM);
-            this.Controls.Add(this.txtPeso);
-            this.Controls.Add(this.txtTamanho);
-            this.Controls.Add(this.txtTipo);
-            this.Controls.Add(this.txtNome);
-            this.Controls.Add(this.dgvProduto);
+            this.Controls.Add(this.txtDescricaoTela);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.bntSair);
             this.Controls.Add(this.bntCancelar);
-            this.Controls.Add(this.bntCadastrar);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.bntPesquisar);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.dtpDataPedido);
+            this.Controls.Add(this.dtpDataEntrega);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtNomeProduto);
+            this.Controls.Add(this.txtNomeCliente);
             this.Controls.Add(this.menuStrip2);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmCadastrarProduto";
-            this.Text = "Cadastrar Produto";
+            this.Controls.Add(this.label1);
+            this.Name = "frmVisualizarPedido";
+            this.Text = "Visualizar Pedido";
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProduto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -538,6 +456,7 @@
 
         #endregion
 
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
@@ -570,26 +489,17 @@
         private System.Windows.Forms.ToolStripMenuItem lucrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem bancoDeDadosToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtNomeCliente;
+        private System.Windows.Forms.TextBox txtNomeProduto;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dtpDataEntrega;
+        private System.Windows.Forms.DateTimePicker dtpDataPedido;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button bntCadastrar;
+        private System.Windows.Forms.Button bntPesquisar;
         private System.Windows.Forms.Button bntCancelar;
         private System.Windows.Forms.Button bntSair;
-        private System.Windows.Forms.DataGridView dgvProduto;
-        private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.TextBox txtTipo;
-        private System.Windows.Forms.TextBox txtTamanho;
-        private System.Windows.Forms.TextBox txtPeso;
-        private System.Windows.Forms.TextBox txtUDM;
-        private System.Windows.Forms.TextBox txtCustoPorUnidade;
-        private System.Windows.Forms.TextBox txtPrecoVendaPorUnidade;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtDescricao;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txtDescricaoTela;
     }
 }

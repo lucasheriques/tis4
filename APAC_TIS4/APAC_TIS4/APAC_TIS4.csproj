@@ -79,6 +79,26 @@
     <Compile Include="frmCadastrarProduto.Designer.cs">
       <DependentUpon>frmCadastrarProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCadastroPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroPedido.Designer.cs">
+      <DependentUpon>frmCadastroPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVisualizarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVisualizarCliente.Designer.cs">
+      <DependentUpon>frmVisualizarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVisualizarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVisualizarPedido.Designer.cs">
+      <DependentUpon>frmVisualizarPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PedidoDAO.cs" />
+    <Compile Include="PedidoModels.cs" />
     <Compile Include="ProdutoDAO.cs" />
     <Compile Include="ProdutoModels.cs" />
     <Compile Include="Program.cs" />
@@ -95,6 +115,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCadastrarProduto.resx">
       <DependentUpon>frmCadastrarProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastroPedido.resx">
+      <DependentUpon>frmCadastroPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVisualizarCliente.resx">
+      <DependentUpon>frmVisualizarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVisualizarPedido.resx">
+      <DependentUpon>frmVisualizarPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

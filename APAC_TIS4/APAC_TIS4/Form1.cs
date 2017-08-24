@@ -39,5 +39,49 @@ namespace APAC_TIS4
             _frmCadastrarProduto.Show();
             this.Hide();
         }
+
+        private void btnCadastrarPedio_Click(object sender, EventArgs e)
+        {
+            frmCadastroPedido vfrmCadastroPedido = new frmCadastroPedido(this);
+            vfrmCadastroPedido.Show();
+            this.Hide();
+        }
+
+        private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastroPedido vfrmCadastroPedido = new frmCadastroPedido(this);
+            vfrmCadastroPedido.Show();
+            this.Hide();
+        }
+
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarCliente cadastrarCliente = new frmCadastrarCliente(this);
+            this.Hide();
+            cadastrarCliente.Show();
+        }
+
+        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarProduto _frmCadastrarProduto = new frmCadastrarProduto(this);
+
+            _frmCadastrarProduto.Show();
+            this.Hide();
+
+        }
+
+        private void bntVisualizarCliente_Click(object sender, EventArgs e)
+        {
+            frmVisualizarCliente _frmVisualizarCliente = new frmVisualizarCliente(this);
+            this.Hide();
+            _frmVisualizarCliente.Show();
+        }
+
+        private void bntVisualizarPedido_Click(object sender, EventArgs e)
+        {
+            frmVisualizarPedido _frmVisualizarPedido = new frmVisualizarPedido(this);
+            _frmVisualizarPedido.Show();
+            this.Hide();
+        }
     }
 }

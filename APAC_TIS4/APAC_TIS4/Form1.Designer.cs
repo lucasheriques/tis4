@@ -127,6 +127,7 @@
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
             this.clienteToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.clienteToolStripMenuItem.Text = "Cliente";
+            this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
             // 
             // insumoToolStripMenuItem
             // 
@@ -139,12 +140,14 @@
             this.pedidoToolStripMenuItem.Name = "pedidoToolStripMenuItem";
             this.pedidoToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.pedidoToolStripMenuItem.Text = "Pedido";
+            this.pedidoToolStripMenuItem.Click += new System.EventHandler(this.pedidoToolStripMenuItem_Click);
             // 
             // produtoToolStripMenuItem
             // 
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
             this.produtoToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.produtoToolStripMenuItem.Text = "Produto";
+            this.produtoToolStripMenuItem.Click += new System.EventHandler(this.produtoToolStripMenuItem_Click);
             // 
             // receitaToolStripMenuItem
             // 
@@ -338,6 +341,7 @@
             // btnCadastrarInsumos
             // 
             this.btnCadastrarInsumos.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnCadastrarInsumos.Enabled = false;
             this.btnCadastrarInsumos.Image = ((System.Drawing.Image)(resources.GetObject("btnCadastrarInsumos.Image")));
             this.btnCadastrarInsumos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCadastrarInsumos.Location = new System.Drawing.Point(290, 42);
@@ -360,6 +364,7 @@
             this.btnCadastrarPedio.Text = "Cadastrar Pedido";
             this.btnCadastrarPedio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCadastrarPedio.UseVisualStyleBackColor = false;
+            this.btnCadastrarPedio.Click += new System.EventHandler(this.btnCadastrarPedio_Click);
             // 
             // bntCadastrarProduto
             // 
@@ -378,6 +383,7 @@
             // bntCadastrarReceita
             // 
             this.bntCadastrarReceita.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.bntCadastrarReceita.Enabled = false;
             this.bntCadastrarReceita.Image = ((System.Drawing.Image)(resources.GetObject("bntCadastrarReceita.Image")));
             this.bntCadastrarReceita.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntCadastrarReceita.Location = new System.Drawing.Point(1072, 42);
@@ -391,6 +397,7 @@
             // bntExcluirCliente
             // 
             this.bntExcluirCliente.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.bntExcluirCliente.Enabled = false;
             this.bntExcluirCliente.Image = ((System.Drawing.Image)(resources.GetObject("bntExcluirCliente.Image")));
             this.bntExcluirCliente.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.bntExcluirCliente.Location = new System.Drawing.Point(35, 163);
@@ -404,6 +411,7 @@
             // bntExcluirInsumo
             // 
             this.bntExcluirInsumo.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.bntExcluirInsumo.Enabled = false;
             this.bntExcluirInsumo.Image = ((System.Drawing.Image)(resources.GetObject("bntExcluirInsumo.Image")));
             this.bntExcluirInsumo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntExcluirInsumo.Location = new System.Drawing.Point(290, 163);
@@ -417,6 +425,7 @@
             // bntExcluirPedido
             // 
             this.bntExcluirPedido.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.bntExcluirPedido.Enabled = false;
             this.bntExcluirPedido.Image = ((System.Drawing.Image)(resources.GetObject("bntExcluirPedido.Image")));
             this.bntExcluirPedido.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntExcluirPedido.Location = new System.Drawing.Point(559, 163);
@@ -430,6 +439,7 @@
             // bntExcluirProduto
             // 
             this.bntExcluirProduto.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.bntExcluirProduto.Enabled = false;
             this.bntExcluirProduto.Image = ((System.Drawing.Image)(resources.GetObject("bntExcluirProduto.Image")));
             this.bntExcluirProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntExcluirProduto.Location = new System.Drawing.Point(820, 163);
@@ -443,6 +453,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.button1.Enabled = false;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(1072, 163);
@@ -469,6 +480,7 @@
             // bntAtualizarInsumo
             // 
             this.bntAtualizarInsumo.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.bntAtualizarInsumo.Enabled = false;
             this.bntAtualizarInsumo.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarInsumo.Image")));
             this.bntAtualizarInsumo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntAtualizarInsumo.Location = new System.Drawing.Point(290, 289);
@@ -482,6 +494,7 @@
             // bntAtualizarPedido
             // 
             this.bntAtualizarPedido.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.bntAtualizarPedido.Enabled = false;
             this.bntAtualizarPedido.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarPedido.Image")));
             this.bntAtualizarPedido.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntAtualizarPedido.Location = new System.Drawing.Point(559, 289);
@@ -495,6 +508,7 @@
             // bntAtualizarProduto
             // 
             this.bntAtualizarProduto.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.bntAtualizarProduto.Enabled = false;
             this.bntAtualizarProduto.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarProduto.Image")));
             this.bntAtualizarProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntAtualizarProduto.Location = new System.Drawing.Point(820, 289);
@@ -508,6 +522,7 @@
             // bntAtualizarReceita
             // 
             this.bntAtualizarReceita.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.bntAtualizarReceita.Enabled = false;
             this.bntAtualizarReceita.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarReceita.Image")));
             this.bntAtualizarReceita.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntAtualizarReceita.Location = new System.Drawing.Point(1072, 289);
@@ -530,10 +545,12 @@
             this.bntVisualizarCliente.Text = "Visualizar Cliente";
             this.bntVisualizarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bntVisualizarCliente.UseVisualStyleBackColor = false;
+            this.bntVisualizarCliente.Click += new System.EventHandler(this.bntVisualizarCliente_Click);
             // 
             // bntVisualizarInsumo
             // 
             this.bntVisualizarInsumo.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.bntVisualizarInsumo.Enabled = false;
             this.bntVisualizarInsumo.Image = ((System.Drawing.Image)(resources.GetObject("bntVisualizarInsumo.Image")));
             this.bntVisualizarInsumo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntVisualizarInsumo.Location = new System.Drawing.Point(290, 407);
@@ -556,6 +573,7 @@
             this.bntVisualizarPedido.Text = "Visualizar Pedido";
             this.bntVisualizarPedido.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bntVisualizarPedido.UseVisualStyleBackColor = false;
+            this.bntVisualizarPedido.Click += new System.EventHandler(this.bntVisualizarPedido_Click);
             // 
             // bntVisualizarProduto
             // 
@@ -573,6 +591,7 @@
             // bntRelatorioProducao
             // 
             this.bntRelatorioProducao.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.bntRelatorioProducao.Enabled = false;
             this.bntRelatorioProducao.Image = ((System.Drawing.Image)(resources.GetObject("bntRelatorioProducao.Image")));
             this.bntRelatorioProducao.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.bntRelatorioProducao.Location = new System.Drawing.Point(35, 525);
@@ -586,6 +605,7 @@
             // bntRelatorioGastos
             // 
             this.bntRelatorioGastos.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.bntRelatorioGastos.Enabled = false;
             this.bntRelatorioGastos.Image = ((System.Drawing.Image)(resources.GetObject("bntRelatorioGastos.Image")));
             this.bntRelatorioGastos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.bntRelatorioGastos.Location = new System.Drawing.Point(290, 525);
@@ -599,6 +619,7 @@
             // bntVisualizarReceita
             // 
             this.bntVisualizarReceita.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.bntVisualizarReceita.Enabled = false;
             this.bntVisualizarReceita.Image = ((System.Drawing.Image)(resources.GetObject("bntVisualizarReceita.Image")));
             this.bntVisualizarReceita.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntVisualizarReceita.Location = new System.Drawing.Point(1072, 407);
@@ -612,6 +633,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.button2.Enabled = false;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button2.Location = new System.Drawing.Point(559, 525);

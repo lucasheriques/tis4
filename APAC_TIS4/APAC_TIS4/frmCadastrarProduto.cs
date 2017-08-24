@@ -26,7 +26,6 @@ namespace APAC_TIS4
             produto.Nome = txtNome.Text;
             produto.Peso = float.Parse(txtPeso.Text);
             produto.CustoPorUnidade = float.Parse(txtCustoPorUnidade.Text);
-            produto.Preco = float.Parse(txtPreco.Text);
             produto.PrecoDeVendaUnidade = float.Parse(txtPrecoVendaPorUnidade.Text);
             produto.Tamanho = txtTamanho.Text;
             produto.Tipo = txtTipo.Text;
@@ -48,11 +47,24 @@ namespace APAC_TIS4
             else
             {
                 MessageBox.Show("Cliente inserido com sucesso!!!");
+                setValoresEmBanco();
             }
             popularGrid();
         }
 
-        public void popularGrid()
+        private void setValoresEmBanco()
+        {
+            txtNome.Text = "";
+            txtCustoPorUnidade.Text = "";
+            txtDescricao.Text = "";
+            txtPeso.Text = "";
+            txtPrecoVendaPorUnidade.Text = "";
+            txtTamanho.Text = "";
+            txtTipo.Text = "";
+            txtUDM.Text = "";
+        }
+
+        private void popularGrid()
         {
             ProdutoDAO produto = new ProdutoDAO();
 
@@ -81,5 +93,6 @@ namespace APAC_TIS4
             this.Hide();
             this._frmPrincipal.Show();
         }
+
     }
 }

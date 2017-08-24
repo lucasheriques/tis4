@@ -13,7 +13,6 @@ namespace APAC_TIS4
         private string tamanho;
         private float peso;
         private string uDM;
-        private float preco;
         private float custoPorUnidade;
         private float precoDeVendaUnidade;
         private string descricao;
@@ -23,7 +22,6 @@ namespace APAC_TIS4
         public string Tamanho { get { return tamanho; } set { this.tamanho = value;  } }
         public float Peso { get { return peso; } set { this.peso = value; } }
         public string UDM { get { return uDM;  } set { this.uDM = value; } }
-        public float Preco { get { return preco; } set { this.preco = value; } }
         public float CustoPorUnidade { get { return custoPorUnidade; } set { this.custoPorUnidade = value; } }
         public float PrecoDeVendaUnidade { get { return precoDeVendaUnidade; } set { this.precoDeVendaUnidade = value; } }
         public string Descricao { get { return descricao;  } set { this.descricao = value; } }
