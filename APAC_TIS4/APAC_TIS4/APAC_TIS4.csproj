@@ -97,6 +97,12 @@
     <Compile Include="frmVisualizarPedido.Designer.cs">
       <DependentUpon>frmVisualizarPedido.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmVisualizarProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVisualizarProdutos.Designer.cs">
+      <DependentUpon>frmVisualizarProdutos.cs</DependentUpon>
+    </Compile>
     <Compile Include="PedidoDAO.cs" />
     <Compile Include="PedidoModels.cs" />
     <Compile Include="ProdutoDAO.cs" />
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmVisualizarPedido.resx">
       <DependentUpon>frmVisualizarPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVisualizarProdutos.resx">
+      <DependentUpon>frmVisualizarProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

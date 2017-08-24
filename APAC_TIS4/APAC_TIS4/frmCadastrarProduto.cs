@@ -27,7 +27,7 @@ namespace APAC_TIS4
             produto.Peso = float.Parse(txtPeso.Text);
             produto.CustoPorUnidade = float.Parse(txtCustoPorUnidade.Text);
             produto.PrecoDeVendaUnidade = float.Parse(txtPrecoVendaPorUnidade.Text);
-            produto.Tamanho = txtTamanho.Text;
+            produto.Tamanho = cmbTamanho.Text;
             produto.Tipo = txtTipo.Text;
             produto.UDM = txtUDM.Text;
             produto.Descricao = txtDescricao.Text;
@@ -59,11 +59,10 @@ namespace APAC_TIS4
             txtDescricao.Text = "";
             txtPeso.Text = "";
             txtPrecoVendaPorUnidade.Text = "";
-            txtTamanho.Text = "";
             txtTipo.Text = "";
             txtUDM.Text = "";
         }
-
+        
         private void popularGrid()
         {
             ProdutoDAO produto = new ProdutoDAO();

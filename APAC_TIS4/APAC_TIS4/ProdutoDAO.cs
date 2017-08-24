@@ -156,5 +156,49 @@ namespace APAC_TIS4
                 return precoDeVendaUnidade;
             }
         }
+
+        public DataSet visualizarGridComParametros(ProdutoModels produto)
+        {
+            DataSet sDs = new DataSet();
+            SingletonBD singleton = SingletonBD.getInstancia();
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            {
+                try
+                {
+                    conexaoMySQL.Open();
+
+                    /* criando o comando sql indicando a nossa conexão e a nossa
+                    procedure */
+                    string query = "select nome, Tipo, Tamanho, Peso, UDM, CustoPorUnidade, PrecoDeVendaUnidade, Descricao from produto where nome LIKE @nome OR Tipo LIKE @Tipo OR Tamanho LIKE @Tamanho OR Descricao LIKE @Descricao;";
+                    if (produto.Descricao == "%%%") {
+                        query = "select nome, Tipo, Tamanho, Peso, UDM, CustoPorUnidade, PrecoDeVendaUnidade, Descricao from produto where (nome LIKE @nome OR Tipo LIKE @Tipo OR Tamanho LIKE @Tamanho) AND Descricao LIKE @Descricao;";
+                    }
+                    MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
+
+                    cmd.Parameters.AddWithValue("@nome", produto.Nome);
+                    cmd.Parameters.AddWithValue("@Tipo", produto.Tipo);
+                    cmd.Parameters.AddWithValue("@Tamanho", produto.Tamanho);
+                    cmd.Parameters.AddWithValue("@Descricao", produto.Descricao);
+
+
+                    MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
+
+                    MySqlCommandBuilder sBuilder = new MySqlCommandBuilder(sAdapter);
+
+                    sAdapter.Fill(sDs, "characters");
+
+                    DataTable sTable = sDs.Tables["characters"];
+                }
+                catch (MySqlException msqle)
+                {
+
+                }
+                finally
+                {
+                    conexaoMySQL.Close();
+                }
+                return sDs;
+            }
+        }
     }
 }

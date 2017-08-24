@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVisualizarPedido));
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -444,6 +445,7 @@
             this.Controls.Add(this.txtNomeCliente);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmVisualizarPedido";
             this.Text = "Visualizar Pedido";
             this.menuStrip2.ResumeLayout(false);

@@ -83,5 +83,12 @@ namespace APAC_TIS4
             _frmVisualizarPedido.Show();
             this.Hide();
         }
+
+        private void bntVisualizarProduto_Click(object sender, EventArgs e)
+        {
+            frmVisualizarProdutos _frmVisualizarProdutos = new frmVisualizarProdutos(this);
+            this.Hide();
+            _frmVisualizarProdutos.Show();
+        }
     }
 }

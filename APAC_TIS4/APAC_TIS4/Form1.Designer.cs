@@ -587,6 +587,7 @@
             this.bntVisualizarProduto.Text = "Visualizar Produto";
             this.bntVisualizarProduto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bntVisualizarProduto.UseVisualStyleBackColor = false;
+            this.bntVisualizarProduto.Click += new System.EventHandler(this.bntVisualizarProduto_Click);
             // 
             // bntRelatorioProducao
             // 
