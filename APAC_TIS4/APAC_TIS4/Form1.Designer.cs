@@ -476,6 +476,7 @@
             this.bntAtualizarCliente.Text = "Atualizar Cliente";
             this.bntAtualizarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bntAtualizarCliente.UseVisualStyleBackColor = false;
+            this.bntAtualizarCliente.Click += new System.EventHandler(this.bntAtualizarCliente_Click);
             // 
             // bntAtualizarInsumo
             // 

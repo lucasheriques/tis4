@@ -35,8 +35,6 @@ namespace APAC_TIS4
             for (int i = 0; i < dgvClientes.Columns.Count; i++) {
                 dgvClientes.Columns[i].Width = 400;
             }
-
-            
         }
 
         private void bntCancelar_Click(object sender, EventArgs e)

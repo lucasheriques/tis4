@@ -90,5 +90,12 @@ namespace APAC_TIS4
             this.Hide();
             _frmVisualizarProdutos.Show();
         }
+
+        private void bntAtualizarCliente_Click(object sender, EventArgs e)
+        {
+            frmAtualizarCliente _frmAtualizarCliente = new frmAtualizarCliente(this);
+            this.Hide();
+            _frmAtualizarCliente.Show();
+        }
     }
 }

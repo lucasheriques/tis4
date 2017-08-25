@@ -354,10 +354,9 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Escola Municipal",
-            "Escola Estadual",
-            "Escola",
-            "Outros"});
+            "Pátio de Obras",
+            "Escolas",
+            "Casas de Acolhimento"});
             this.comboBox1.Location = new System.Drawing.Point(126, 130);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(216, 21);
