@@ -77,6 +77,21 @@ namespace APAC_TIS4
                 cliente.Tipo = "%";
             }
 
+            if (string.IsNullOrEmpty(cliente.nome))
+            {
+                cliente.nome = "%";
+            }
+
+            if (string.IsNullOrEmpty(cliente.localidade))
+            {
+                cliente.localidade = "%";
+            }
+
+            if (string.IsNullOrEmpty(cliente.Tipo))
+            {
+                cliente.Tipo = "%";
+            }
+
             preencheGridComParametros(cliente);
         }
     }

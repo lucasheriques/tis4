@@ -74,6 +74,10 @@
             this.bntSair = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtDescricaoTela = new System.Windows.Forms.TextBox();
+            this.bntDesabilitarEntrega = new System.Windows.Forms.Button();
+            this.bntDesabilitarPedido = new System.Windows.Forms.Button();
+            this.bntHabilitarEntregar = new System.Windows.Forms.Button();
+            this.bntHabilitarPedido = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -416,14 +420,54 @@
             // txtDescricaoTela
             // 
             this.txtDescricaoTela.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.txtDescricaoTela.Location = new System.Drawing.Point(406, 38);
+            this.txtDescricaoTela.Location = new System.Drawing.Point(562, 38);
             this.txtDescricaoTela.Multiline = true;
             this.txtDescricaoTela.Name = "txtDescricaoTela";
-            this.txtDescricaoTela.Size = new System.Drawing.Size(887, 202);
+            this.txtDescricaoTela.Size = new System.Drawing.Size(731, 202);
             this.txtDescricaoTela.TabIndex = 13;
             this.txtDescricaoTela.Text = "Nesta tela, o gerente responsável pela padaria da APAC pode pesquisar e visualiza" +
     "r os pedidos, pesquisando pelo nome do cliente, nome do produto, data de entrega" +
     " ou pela data do pedido.";
+            // 
+            // bntDesabilitarEntrega
+            // 
+            this.bntDesabilitarEntrega.Location = new System.Drawing.Point(368, 119);
+            this.bntDesabilitarEntrega.Name = "bntDesabilitarEntrega";
+            this.bntDesabilitarEntrega.Size = new System.Drawing.Size(75, 23);
+            this.bntDesabilitarEntrega.TabIndex = 14;
+            this.bntDesabilitarEntrega.Text = "Desabilitar";
+            this.bntDesabilitarEntrega.UseVisualStyleBackColor = true;
+            this.bntDesabilitarEntrega.Click += new System.EventHandler(this.bntDesabilitarEntrega_Click);
+            // 
+            // bntDesabilitarPedido
+            // 
+            this.bntDesabilitarPedido.Location = new System.Drawing.Point(368, 159);
+            this.bntDesabilitarPedido.Name = "bntDesabilitarPedido";
+            this.bntDesabilitarPedido.Size = new System.Drawing.Size(75, 23);
+            this.bntDesabilitarPedido.TabIndex = 15;
+            this.bntDesabilitarPedido.Text = "Desabilitar";
+            this.bntDesabilitarPedido.UseVisualStyleBackColor = true;
+            this.bntDesabilitarPedido.Click += new System.EventHandler(this.bntDesabilitarPedido_Click);
+            // 
+            // bntHabilitarEntregar
+            // 
+            this.bntHabilitarEntregar.Location = new System.Drawing.Point(465, 121);
+            this.bntHabilitarEntregar.Name = "bntHabilitarEntregar";
+            this.bntHabilitarEntregar.Size = new System.Drawing.Size(75, 23);
+            this.bntHabilitarEntregar.TabIndex = 16;
+            this.bntHabilitarEntregar.Text = "Habilitar";
+            this.bntHabilitarEntregar.UseVisualStyleBackColor = true;
+            this.bntHabilitarEntregar.Click += new System.EventHandler(this.bntHabilitarEntregar_Click);
+            // 
+            // bntHabilitarPedido
+            // 
+            this.bntHabilitarPedido.Location = new System.Drawing.Point(465, 155);
+            this.bntHabilitarPedido.Name = "bntHabilitarPedido";
+            this.bntHabilitarPedido.Size = new System.Drawing.Size(75, 23);
+            this.bntHabilitarPedido.TabIndex = 17;
+            this.bntHabilitarPedido.Text = "Habilitar";
+            this.bntHabilitarPedido.UseVisualStyleBackColor = true;
+            this.bntHabilitarPedido.Click += new System.EventHandler(this.bntHabilitarPedido_Click);
             // 
             // frmVisualizarPedido
             // 
@@ -431,6 +475,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1305, 615);
+            this.Controls.Add(this.bntHabilitarPedido);
+            this.Controls.Add(this.bntHabilitarEntregar);
+            this.Controls.Add(this.bntDesabilitarPedido);
+            this.Controls.Add(this.bntDesabilitarEntrega);
             this.Controls.Add(this.txtDescricaoTela);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.bntSair);
@@ -503,5 +551,9 @@
         private System.Windows.Forms.Button bntSair;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox txtDescricaoTela;
+        private System.Windows.Forms.Button bntDesabilitarEntrega;
+        private System.Windows.Forms.Button bntDesabilitarPedido;
+        private System.Windows.Forms.Button bntHabilitarEntregar;
+        private System.Windows.Forms.Button bntHabilitarPedido;
     }
 }

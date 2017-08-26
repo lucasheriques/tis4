@@ -53,7 +53,7 @@ namespace APAC_TIS4
 
             cliente.nome = txtNome.Text;
             cliente.localidade = txtLocalidade.Text;
-            cliente.Tipo = cmbTipo.SelectedItem.ToString();
+            cliente.Tipo = cmbTipo.Text.ToString();
 
             if ((string.IsNullOrEmpty(cliente.nome) && (string.IsNullOrEmpty(cliente.localidade)) && (string.IsNullOrEmpty(cliente.Tipo))))
             {
@@ -91,7 +91,7 @@ namespace APAC_TIS4
 
             for (int i = 0; i < dgvClientes.Rows.Count - 1; i++)
             {
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(50);
                 CienteModels cliente = new CienteModels();
                 cliente.Cliente_ID = int.Parse(dgvClientes.Rows[i].Cells[0].Value.ToString());
                 cliente.nome = dgvClientes.Rows[i].Cells[1].Value.ToString();

@@ -57,9 +57,22 @@ namespace APAC_TIS4
             produto.Nome = txtNomeProduto.Text;
 
             PedidoModels pedido = new PedidoModels(produto, cliente);
-            pedido.Data_Pedido = DateTime.Parse(dtpDataPedido.Value.ToShortDateString());
-            pedido.Data_Entrega = DateTime.Parse(dtpDataEntrega.Value.ToShortDateString());
+            if (dtpDataPedido.Enabled)
+            {
+                pedido.Data_Pedido = DateTime.Parse(dtpDataPedido.Value.ToShortDateString());
+            }
+            else {
+                pedido.Data_Pedido = DateTime.MinValue;
+            }
 
+            if (dtpDataEntrega.Enabled)
+            {
+                pedido.Data_Entrega = DateTime.Parse(dtpDataEntrega.Value.ToShortDateString());
+            }
+            else
+            {
+                pedido.Data_Entrega = DateTime.MinValue;
+            }
 
             PedidoDAO pedidoDAO = new PedidoDAO();
             DataSet sDs = pedidoDAO.visualizarGridComParametros(pedido);
@@ -71,6 +84,26 @@ namespace APAC_TIS4
             }
 
             //            visualizarGridComParametros();
+        }
+
+        private void bntDesabilitarEntrega_Click(object sender, EventArgs e)
+        {
+            dtpDataEntrega.Enabled = false;
+        }
+
+        private void bntDesabilitarPedido_Click(object sender, EventArgs e)
+        {
+            dtpDataPedido.Enabled = false;
+        }
+
+        private void bntHabilitarEntregar_Click(object sender, EventArgs e)
+        {
+            dtpDataEntrega.Enabled = true;
+        }
+
+        private void bntHabilitarPedido_Click(object sender, EventArgs e)
+        {
+            dtpDataPedido.Enabled = true;
         }
     }
 }

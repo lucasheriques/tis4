@@ -57,10 +57,11 @@ namespace APAC_TIS4
             produtoModels.Tamanho = cmbTamanho.Text;
             produtoModels.Descricao = txtDescricao.Text;
 
-            if ((!string.IsNullOrEmpty(produtoModels.Nome) || !string.IsNullOrEmpty(produtoModels.Tipo) || !string.IsNullOrEmpty(produtoModels.Tamanho)) && string.IsNullOrEmpty(produtoModels.Descricao))
+            if (string.IsNullOrEmpty(produtoModels.Descricao))
             {
                 produtoModels.Descricao = "%%%";
             }
+
 
             ProdutoDAO produtoDAO = new ProdutoDAO();
             DataSet sDs = produtoDAO.visualizarGridComParametros(produtoModels);

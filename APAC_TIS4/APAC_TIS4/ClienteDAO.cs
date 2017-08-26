@@ -92,17 +92,40 @@ namespace APAC_TIS4
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
 
-                    string query = "SELECT Cliente_ID, Nome, Localidade, Tipo FROM cliente WHERE Nome LIKE @Nome OR Localidade LIKE @Localidade OR Tipo LIKE @Tipo;";
+                    string query = "SELECT Cliente_ID, Nome, Localidade, Tipo FROM cliente WHERE Nome LIKE @Nome AND Localidade LIKE @Localidade AND Tipo LIKE @Tipo;";
 
-                    if (string.IsNullOrEmpty(cliente.nome) && string.IsNullOrEmpty(cliente.localidade) && !string.IsNullOrEmpty(cliente.Tipo)) {
-                        query = "SELECT Cliente_ID, Nome, Localidade, Tipo FROM cliente WHERE (Nome LIKE @Nome OR Localidade LIKE @Localidade) OR Tipo LIKE @Tipo;";
+                    if (string.IsNullOrEmpty(cliente.nome))
+                    {
+                        cliente.nome = "%";
+                    }
+                    else
+                    {
+                        cliente.nome = "%" + cliente.nome + "%";
+                    }
+
+                    if (string.IsNullOrEmpty(cliente.localidade))
+                    {
+                        cliente.localidade = "%";
+                    }
+                    else
+                    {
+                        cliente.localidade = "%" + cliente.localidade + "%";
+                    }
+
+                    if (string.IsNullOrEmpty(cliente.Tipo))
+                    {
+                        cliente.Tipo = "%";
+                    }
+                    else
+                    {
+                        cliente.Tipo = "%" + cliente.Tipo + "%";
                     }
 
                     MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
 
-                    cmd.Parameters.AddWithValue("@nome", cliente.nome);
-                    cmd.Parameters.AddWithValue("@localidade", cliente.localidade);
-                    cmd.Parameters.AddWithValue("@tipo", cliente.Tipo);
+                    cmd.Parameters.AddWithValue("@nome", "%"+cliente.nome.ToLower()+"%");
+                    cmd.Parameters.AddWithValue("@localidade", "%" + cliente.localidade.ToLower());
+                    cmd.Parameters.AddWithValue("@tipo", "%" + cliente.Tipo.ToLower() + "%");
 
                     MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
 
@@ -136,11 +159,92 @@ namespace APAC_TIS4
 
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
-                    MySqlCommand cmd = new MySqlCommand("SELECT Nome, Localidade, Tipo FROM cliente WHERE Nome LIKE @Nome OR Localidade LIKE @Localidade OR Tipo LIKE @Tipo;", conexaoMySQL);
+                    string query = "SELECT Nome, Localidade, Tipo FROM cliente WHERE (LOWER(Nome) LIKE @Nome OR LOWER(Localidade) LIKE @Localidade) AND LOWER(Tipo) LIKE @Tipo;";
 
-                    cmd.Parameters.AddWithValue("@nome", cliente.nome);
-                    cmd.Parameters.AddWithValue("@localidade", cliente.localidade);
-                    cmd.Parameters.AddWithValue("@tipo", cliente.Tipo);
+                    if (cliente.Tipo == "%" && (cliente.nome != "%" || cliente.localidade != "%"))
+                    {
+                        query = "SELECT Nome, Localidade, Tipo FROM cliente WHERE LOWER(Nome) LIKE @Nome OR LOWER(Localidade) LIKE @Localidade OR LOWER(Tipo) LIKE @Tipo;";
+
+                        cliente.Tipo = "";
+
+                        if (cliente.nome == "%")
+                        {
+                            cliente.nome = "";
+                        }
+                        else
+                        {
+                            cliente.nome = "%" + cliente.nome + "%";
+                        }
+
+                        if (cliente.localidade == "%")
+                        {
+                            cliente.localidade = "";
+                        }
+                        else
+                        {
+                            cliente.localidade = "%" + cliente.localidade + "%";
+                        }
+                    }
+                    else if ((cliente.Tipo != "%" && cliente.nome != "%") && cliente.localidade == "%")
+                    {
+                        query = "SELECT Nome, Localidade, Tipo FROM cliente WHERE LOWER(Nome) LIKE @Nome AND LOWER(Tipo) LIKE @Tipo;";
+
+                        cliente.nome = "%" + cliente.nome + "%";
+
+                        cliente.Tipo = "%" + cliente.Tipo + "%";
+                    }
+                    else if (cliente.Tipo != "%" && cliente.nome == "%" && cliente.localidade != "%")
+                    {
+                        query = "SELECT Nome, Localidade, Tipo FROM cliente WHERE LOWER(Localidade) LIKE @Localidade AND LOWER(Tipo) LIKE @Tipo;";
+
+                        cliente.localidade = "%" + cliente.localidade + "%";
+
+                        cliente.Tipo = "%" + cliente.Tipo + "%";
+                    }
+                    else {
+                        if (cliente.Tipo == "%")
+                        {
+                            cliente.Tipo = "%";
+                        }
+                        else
+                        {
+                            cliente.Tipo = "%" + cliente.Tipo + "%";
+                        }
+
+                        if (cliente.nome == "%")
+                        {
+                            cliente.nome = "%";
+                        }
+                        else
+                        {
+                            cliente.nome = "%" + cliente.nome + "%";
+                        }
+
+                        if (cliente.nome == "%")
+                        {
+                            cliente.nome = "%";
+                        }
+                        else
+                        {
+                            cliente.nome = "%" + cliente.nome + "%";
+                        }
+
+                        if (cliente.localidade == "%")
+                        {
+                            cliente.localidade = "";
+                        }
+                        else
+                        {
+                            cliente.localidade = "%" + cliente.localidade + "%";
+                        }
+
+                    }
+
+                    MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
+
+                    cmd.Parameters.AddWithValue("@nome", cliente.nome.ToLower());
+                    cmd.Parameters.AddWithValue("@localidade", cliente.localidade.ToLower());
+                    cmd.Parameters.AddWithValue("@tipo", cliente.Tipo.ToLower());
 
                     MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
 

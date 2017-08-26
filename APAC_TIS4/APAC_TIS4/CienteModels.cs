@@ -18,6 +18,6 @@ namespace APAC_TIS4
 
         public int Cliente_ID { get { return this.cliente_ID; } set { this.cliente_ID = value; } }
 
-        public String Tipo { get { return this.tipo; } set { if (value == "Pátio de Obras" || value == "Escolas" || value == "Casas de Acolhimento") { tipo = value; } } }
+        public String Tipo { get { return this.tipo; } set { if (value == "Pátio de Obras" || value == "Escolas" || value == "Casas de Acolhimento" || value == "%" || value == "") { tipo = value; } } }
     }
 }

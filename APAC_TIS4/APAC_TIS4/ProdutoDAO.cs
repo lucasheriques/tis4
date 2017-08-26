@@ -165,14 +165,51 @@ namespace APAC_TIS4
             {
                 try
                 {
+                    string query = "select nome, Tipo, Tamanho, Peso, UDM, CustoPorUnidade, PrecoDeVendaUnidade, Descricao from produto where nome LIKE @nome AND Tipo LIKE @Tipo AND Tamanho LIKE @Tamanho AND Descricao LIKE @Descricao;";
+
+                    if (string.IsNullOrEmpty(produto.Nome))
+                    {
+                        produto.Nome = "%";
+                    }
+                    else
+                    {
+                        produto.Nome = "%" + produto.Nome + "%";
+                    }
+
+                    if (string.IsNullOrEmpty(produto.Tipo))
+                    {
+                        produto.Tipo = "%";
+                    }
+                    else
+                    {
+                        produto.Tipo = "%" + produto.Tipo + "%";
+                    }
+
+                    if (string.IsNullOrEmpty(produto.Tamanho))
+                    {
+                        produto.Tamanho = "%";
+                    }
+                    else
+                    {
+                        produto.Tamanho = "%" + produto.Tamanho + "%";
+                    }
+                    if (string.IsNullOrEmpty(produto.Descricao))
+                    {
+                        produto.Descricao = "%";
+                    }
+                    else
+                    {
+                        produto.Descricao = "%" + produto.Descricao + "%";
+                    }
+
                     conexaoMySQL.Open();
 
-                    /* criando o comando sql indicando a nossa conexão e a nossa
-                    procedure */
+                    /*
                     string query = "select nome, Tipo, Tamanho, Peso, UDM, CustoPorUnidade, PrecoDeVendaUnidade, Descricao from produto where nome LIKE @nome OR Tipo LIKE @Tipo OR Tamanho LIKE @Tamanho OR Descricao LIKE @Descricao;";
-                    if (produto.Descricao == "%%%") {
+                    if ((!string.IsNullOrEmpty(produto.Nome) || !string.IsNullOrEmpty(produto.Tipo) || !string.IsNullOrEmpty(produto.Tamanho)) && produto.Descricao == "%%%") { 
                         query = "select nome, Tipo, Tamanho, Peso, UDM, CustoPorUnidade, PrecoDeVendaUnidade, Descricao from produto where (nome LIKE @nome OR Tipo LIKE @Tipo OR Tamanho LIKE @Tamanho) AND Descricao LIKE @Descricao;";
-                    }
+                    }*/
+
                     MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
 
                     cmd.Parameters.AddWithValue("@nome", produto.Nome);

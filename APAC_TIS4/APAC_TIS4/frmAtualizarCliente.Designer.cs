@@ -415,12 +415,14 @@
             // 
             // bntAtualizar
             // 
+            this.bntAtualizar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.bntAtualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bntAtualizar.Location = new System.Drawing.Point(27, 372);
             this.bntAtualizar.Name = "bntAtualizar";
             this.bntAtualizar.Size = new System.Drawing.Size(75, 23);
             this.bntAtualizar.TabIndex = 24;
             this.bntAtualizar.Text = "Atualizar";
-            this.bntAtualizar.UseVisualStyleBackColor = true;
+            this.bntAtualizar.UseVisualStyleBackColor = false;
             this.bntAtualizar.Click += new System.EventHandler(this.bntAtualizar_Click);
             // 
             // frmAtualizarCliente
