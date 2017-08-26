@@ -226,7 +226,8 @@
             this.txtDescricao.ReadOnly = true;
             this.txtDescricao.Size = new System.Drawing.Size(380, 210);
             this.txtDescricao.TabIndex = 23;
-            this.txtDescricao.Text = resources.GetString("txtDescricao.Text");
+            this.txtDescricao.Text = "Nesta tela o usuários podem atualizar os dados do clientes, a atualização é feita" +
+    " alterando o(s) dado(s) no gid e clicar em atualizar.";
             // 
             // produtoToolStripMenuItem1
             // 
