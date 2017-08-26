@@ -97,5 +97,38 @@ namespace APAC_TIS4
             this.Hide();
             _frmAtualizarCliente.Show();
         }
+
+        private void insumoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clienteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmAtualizarCliente atualizarCliente = new frmAtualizarCliente(this);
+            atualizarCliente.Show();
+            this.Hide();
+        }
+
+        private void clienteToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmVisualizarCliente visualizarCliente = new frmVisualizarCliente(this);
+            visualizarCliente.Show();
+            this.Hide();
+        }
+
+        private void pedidoToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmVisualizarPedido visualizarPedido = new frmVisualizarPedido(this);
+            visualizarPedido.Show();
+            this.Hide();
+        }
+
+        private void produtoToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmVisualizarProdutos visualizarProdutos = new frmVisualizarProdutos(this);
+            visualizarProdutos.Show();
+            this.Hide();
+        }
     }
 }

@@ -12,11 +12,11 @@ namespace APAC_TIS4
 {
     public partial class frmCadastroPedido : Form
     {
-        private frmPrincipal _frmPrincipal;
+        private Form _frmPrincipal;
         private ClienteDAO cliente;
         private ProdutoDAO produto;
 
-        public frmCadastroPedido(frmPrincipal frmPrincipal)
+        public frmCadastroPedido(Form frmPrincipal)
         {
             InitializeComponent();
             this._frmPrincipal = frmPrincipal;
@@ -142,6 +142,48 @@ namespace APAC_TIS4
 
                 textBox3.Text = precoTotal.ToString();
             }
+        }
+
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarCliente cadastrarCliente = new frmCadastrarCliente(this);
+            this.Hide();
+            cadastrarCliente.Show();
+        }
+
+        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarProduto _frmCadastrarProduto = new frmCadastrarProduto(this);
+            _frmCadastrarProduto.Show();
+            this.Hide();
+        }
+
+        private void clienteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmAtualizarCliente atualizarCliente = new frmAtualizarCliente(this);
+            atualizarCliente.Show();
+            this.Hide();
+        }
+
+        private void clienteToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmVisualizarCliente visualizarCliente = new frmVisualizarCliente(this);
+            visualizarCliente.Show();
+            this.Hide();
+        }
+
+        private void pedidoToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmVisualizarPedido visualizarPedido = new frmVisualizarPedido(this);
+            visualizarPedido.Show();
+            this.Hide();
+        }
+
+        private void produtoToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmVisualizarProdutos visualizarProdutos = new frmVisualizarProdutos(this);
+            visualizarProdutos.Show();
+            this.Hide();
         }
     }
 }
