@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace APAC_TIS4
         {
             DataSet sDs = new DataSet();
             SingletonBD singleton = SingletonBD.getInstancia();
-            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            using (SqlConnection conexaoMySQL = singleton.getConexao())
             {
                 try
                 {
@@ -23,17 +24,17 @@ namespace APAC_TIS4
 
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
-                    MySqlCommand cmd = new MySqlCommand("SELECT Nome, Cliente_ID FROM Cliente;", conexaoMySQL);
+                    SqlCommand cmd = new SqlCommand("SELECT Nome, Cliente_ID FROM Cliente;", conexaoMySQL);
 
-                    MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
+                    SqlDataAdapter sAdapter = new SqlDataAdapter(cmd);
 
-                    MySqlCommandBuilder sBuilder = new MySqlCommandBuilder(sAdapter);
+                    SqlCommandBuilder sBuilder = new SqlCommandBuilder(sAdapter);
 
                     sAdapter.Fill(sDs, "characters");
 
                     DataTable sTable = sDs.Tables["characters"];
                 }
-                catch (MySqlException msqle)
+                catch (SqlException msqle)
                 {
 
                 }
@@ -49,7 +50,7 @@ namespace APAC_TIS4
         {
             DataSet sDs = new DataSet();
             SingletonBD singleton = SingletonBD.getInstancia();
-            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            using (SqlConnection conexaoMySQL = singleton.getConexao())
             {
                 try
                 {
@@ -57,17 +58,17 @@ namespace APAC_TIS4
 
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
-                    MySqlCommand cmd = new MySqlCommand("SELECT Nome, Localidade, Tipo FROM cliente;", conexaoMySQL);
+                    SqlCommand cmd = new SqlCommand("SELECT Nome, Localidade, Tipo FROM cliente;", conexaoMySQL);
 
-                    MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
+                    SqlDataAdapter sAdapter = new SqlDataAdapter(cmd);
 
-                    MySqlCommandBuilder sBuilder = new MySqlCommandBuilder(sAdapter);
+                    SqlCommandBuilder sBuilder = new SqlCommandBuilder(sAdapter);
 
                     sAdapter.Fill(sDs, "characters");
 
                     DataTable sTable = sDs.Tables["characters"];
                 }
-                catch (MySqlException msqle)
+                catch (SqlException msqle)
                 {
 
                 }
@@ -83,7 +84,7 @@ namespace APAC_TIS4
         {
             DataSet sDs = new DataSet();
             SingletonBD singleton = SingletonBD.getInstancia();
-            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            using (SqlConnection conexaoMySQL = singleton.getConexao())
             {
                 try
                 {
@@ -121,21 +122,21 @@ namespace APAC_TIS4
                         cliente.Tipo = "%" + cliente.Tipo + "%";
                     }
 
-                    MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
+                    SqlCommand cmd = new SqlCommand(query, conexaoMySQL);
 
                     cmd.Parameters.AddWithValue("@nome", "%"+cliente.nome.ToLower()+"%");
                     cmd.Parameters.AddWithValue("@localidade", "%" + cliente.localidade.ToLower());
                     cmd.Parameters.AddWithValue("@tipo", "%" + cliente.Tipo.ToLower() + "%");
 
-                    MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
+                    SqlDataAdapter sAdapter = new SqlDataAdapter(cmd);
 
-                    MySqlCommandBuilder sBuilder = new MySqlCommandBuilder(sAdapter);
+                    SqlCommandBuilder sBuilder = new SqlCommandBuilder(sAdapter);
 
                     sAdapter.Fill(sDs, "characters");
 
                     DataTable sTable = sDs.Tables["characters"];
                 }
-                catch (MySqlException msqle)
+                catch (SqlException msqle)
                 {
 
                 }
@@ -151,7 +152,7 @@ namespace APAC_TIS4
         {
             DataSet sDs = new DataSet();
             SingletonBD singleton = SingletonBD.getInstancia();
-            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            using (SqlConnection conexaoMySQL = singleton.getConexao())
             {
                 try
                 {
@@ -240,21 +241,21 @@ namespace APAC_TIS4
 
                     }
 
-                    MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
+                    SqlCommand cmd = new SqlCommand(query, conexaoMySQL);
 
                     cmd.Parameters.AddWithValue("@nome", cliente.nome.ToLower());
                     cmd.Parameters.AddWithValue("@localidade", cliente.localidade.ToLower());
                     cmd.Parameters.AddWithValue("@tipo", cliente.Tipo.ToLower());
 
-                    MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
+                    SqlDataAdapter sAdapter = new SqlDataAdapter(cmd);
 
-                    MySqlCommandBuilder sBuilder = new MySqlCommandBuilder(sAdapter);
+                    SqlCommandBuilder sBuilder = new SqlCommandBuilder(sAdapter);
 
                     sAdapter.Fill(sDs, "characters");
 
                     DataTable sTable = sDs.Tables["characters"];
                 }
-                catch (MySqlException msqle)
+                catch (SqlException msqle)
                 {
 
                 }
@@ -268,7 +269,7 @@ namespace APAC_TIS4
 
         public string cadastrar(CienteModels cliente) {
             string retorno = null;
-            using (MySqlConnection conexaoMySQL = SingletonBD.getInstancia().getConexao())
+            using (SqlConnection conexaoMySQL = SingletonBD.getInstancia().getConexao())
             {
                 try
                 {
@@ -276,7 +277,7 @@ namespace APAC_TIS4
 
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
-                    MySqlCommand cmd = new MySqlCommand("SP_clienteInsert", conexaoMySQL);
+                    SqlCommand cmd = new SqlCommand("SP_clienteInsert", conexaoMySQL);
                     /* aqui indicamos que usaremos stored procedure como tipo de comando*/
                     cmd.CommandType = CommandType.StoredProcedure;
                     /* aqui passamos os parametros para a procedure spInsere que criamos
@@ -290,7 +291,7 @@ namespace APAC_TIS4
                     retorno = "OK";
                     return retorno;
                 }
-                catch (MySqlException msqle)
+                catch (SqlException msqle)
                 {
                    retorno = "Erro de acesso ao MySQL : " + msqle.Message;
                 }
@@ -306,7 +307,7 @@ namespace APAC_TIS4
         {
             DataSet sDs = new DataSet();
             SingletonBD singleton = SingletonBD.getInstancia();
-            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            using (SqlConnection conexaoMySQL = singleton.getConexao())
             {
                 try
                 {
@@ -314,17 +315,17 @@ namespace APAC_TIS4
 
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
-                    MySqlCommand cmd = new MySqlCommand("SELECT Cliente_ID, Nome, Localidade, Tipo FROM cliente;", conexaoMySQL);
+                    SqlCommand cmd = new SqlCommand("SELECT Cliente_ID, Nome, Localidade, Tipo FROM cliente;", conexaoMySQL);
 
-                    MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
+                    SqlDataAdapter sAdapter = new SqlDataAdapter(cmd);
 
-                    MySqlCommandBuilder sBuilder = new MySqlCommandBuilder(sAdapter);
+                    SqlCommandBuilder sBuilder = new SqlCommandBuilder(sAdapter);
 
                     sAdapter.Fill(sDs, "characters");
 
                     DataTable sTable = sDs.Tables["characters"];
                 }
-                catch (MySqlException msqle)
+                catch (SqlException msqle)
                 {
 
                 }
@@ -341,7 +342,7 @@ namespace APAC_TIS4
             bool verificaAtualizacao = false;
 
             SingletonBD singleton = SingletonBD.getInstancia();
-            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            using (SqlConnection conexaoMySQL = singleton.getConexao())
             {
                 conexaoMySQL.Open();
 
@@ -350,7 +351,7 @@ namespace APAC_TIS4
                 try
                 {
                     foreach (CienteModels cliente in listClientes) {
-                        MySqlCommand cmd = new MySqlCommand("UPDATE cliente SET Nome = @Nome, Localidade = @Localidade, Tipo = @Tipo WHERE Cliente_ID = @Cliente_ID;", conexaoMySQL);
+                        SqlCommand cmd = new SqlCommand("UPDATE cliente SET Nome = @Nome, Localidade = @Localidade, Tipo = @Tipo WHERE Cliente_ID = @Cliente_ID;", conexaoMySQL);
 
                         //cmd.Transaction = tran;
 
@@ -365,7 +366,7 @@ namespace APAC_TIS4
                     //tran.Commit();
                     verificaAtualizacao = true;
                 }
-                catch (MySqlException msqle)
+                catch (SqlException msqle)
                 {
                     //tran.Rollback();
                 }

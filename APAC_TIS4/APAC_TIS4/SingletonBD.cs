@@ -41,10 +41,10 @@ namespace APAC_TIS4
             return instanciaMySQL;
         }
 
-        public MySqlConnection getConexao()
+        public SqlConnection getConexao()
         {
             string conn = "Data Source=" + Server + ";Initial Catalog=" + Database + ";User ID=" + Usuario + @";Password='" + Senha + @"'";
-            return new MySqlConnection(conn);
+            return new SqlConnection(conn);
         }
     }
 }
