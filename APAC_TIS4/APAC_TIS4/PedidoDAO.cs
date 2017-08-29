@@ -17,7 +17,7 @@ namespace APAC_TIS4
         {
             DataSet sDs = new DataSet();
             SingletonBD singleton = SingletonBD.getInstancia();
-            using (SqlConnection conexaoMySQL = singleton.getConexao())
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
             {
                 try
                 {
@@ -28,17 +28,17 @@ namespace APAC_TIS4
 
                     string query = "SELECT cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN produto ON produto.Produto_ID = pedido.Produto_ID;";
 
-                    SqlCommand cmd = new SqlCommand(query, conexaoMySQL);
+                    MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
 
-                    SqlDataAdapter sAdapter = new SqlDataAdapter(cmd);
+                    MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
 
-                    SqlCommandBuilder sBuilder = new SqlCommandBuilder(sAdapter);
+                    MySqlCommandBuilder sBuilder = new MySqlCommandBuilder(sAdapter);
 
                     sAdapter.Fill(sDs, "characters");
 
                     DataTable sTable = sDs.Tables["characters"];
                 }
-                catch (SqlException msqle)
+                catch (MySqlException msqle)
                 {
 
                 }
@@ -54,7 +54,7 @@ namespace APAC_TIS4
         {
             DataSet sDs = new DataSet();
             SingletonBD singleton = SingletonBD.getInstancia();
-            using (SqlConnection conexaoMySQL = singleton.getConexao())
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
             {
                 try
                 {
@@ -77,7 +77,7 @@ namespace APAC_TIS4
                         query = "SELECT cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo  FROM  cliente INNER JOIN pedido ON pedido.Cliente_ID = cliente.Cliente_ID INNER JOIN produto ON produto.Produto_ID = pedido.Produto_ID WHERE cliente.Nome LIKE @NomeCliente AND produto.nome LIKE @NomeProduto;";
                     }
 
-                    SqlCommand cmd = new SqlCommand(query, conexaoMySQL);
+                    MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
 
                     if (string.IsNullOrEmpty(pedido.Cliente.nome))
                     {
@@ -101,15 +101,15 @@ namespace APAC_TIS4
                     cmd.Parameters.AddWithValue("@Data_Pedido", pedido.Data_Pedido);
                     cmd.Parameters.AddWithValue("@Data_Entrega", pedido.Data_Entrega);
 
-                    SqlDataAdapter sAdapter = new SqlDataAdapter(cmd);
+                    MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
 
-                    SqlCommandBuilder sBuilder = new SqlCommandBuilder(sAdapter);
+                    MySqlCommandBuilder sBuilder = new MySqlCommandBuilder(sAdapter);
 
                     sAdapter.Fill(sDs, "characters");
 
                     DataTable sTable = sDs.Tables["characters"];
                 }
-                catch (SqlException msqle)
+                catch (MySqlException msqle)
                 {
 
                 }
@@ -125,7 +125,7 @@ namespace APAC_TIS4
         public string cadastrar(PedidoModels pedido)
         {
             string retorno = null;
-            using (SqlConnection conexaoMySQL = SingletonBD.getInstancia().getConexao())
+            using (MySqlConnection conexaoMySQL = SingletonBD.getInstancia().getConexao())
             {
                 try
                 {
@@ -133,7 +133,7 @@ namespace APAC_TIS4
 
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
-                    SqlCommand cmd = new SqlCommand("SP_pedidoInsert", conexaoMySQL);
+                    MySqlCommand cmd = new MySqlCommand("SP_pedidoInsert", conexaoMySQL);
                     /* aqui indicamos que usaremos stored procedure como tipo de comando*/
                     cmd.CommandType = CommandType.StoredProcedure;
                     /* aqui passamos os parametros para a procedure spInsere que criamos
@@ -149,7 +149,7 @@ namespace APAC_TIS4
                     retorno = "OK";
                     return retorno;
                 }
-                catch (SqlException msqle)
+                catch (MySqlException msqle)
                 {
                     retorno = "Erro de acesso ao MySQL : " + msqle.Message;
                 }
