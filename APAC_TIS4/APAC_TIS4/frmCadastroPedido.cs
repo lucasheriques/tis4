@@ -56,8 +56,9 @@ namespace APAC_TIS4
         private void button1_Click(object sender, EventArgs e)
         {
             PedidoModels pedido = new PedidoModels();
-            pedido.Cliente_ID = (int) cmbCliente.SelectedValue;
-            pedido.Produto_ID = (int) cmbProduto.SelectedValue;
+            pedido._ItemPedido = new ItemPedido();
+            pedido._ItemPedido.Cliente_ID = (int) cmbCliente.SelectedValue;
+            pedido._ItemPedido.Produto_ID = (int) cmbProduto.SelectedValue;
             pedido.Data_Pedido = dateTimePicker1.Value.Date;
             pedido.Data_Entrega =  dateTimePicker2.Value.Date;
             pedido.Quantidade = int.Parse(textBox1.Text);

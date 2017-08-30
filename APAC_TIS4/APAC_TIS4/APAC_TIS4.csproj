@@ -137,6 +137,7 @@
     <Compile Include="frmVisualizarProdutos.Designer.cs">
       <DependentUpon>frmVisualizarProdutos.cs</DependentUpon>
     </Compile>
+    <Compile Include="ItemPedido.cs" />
     <Compile Include="PedidoDAO.cs" />
     <Compile Include="PedidoModels.cs" />
     <Compile Include="ProdutoDAO.cs" />

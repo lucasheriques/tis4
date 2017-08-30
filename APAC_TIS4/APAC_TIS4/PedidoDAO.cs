@@ -26,7 +26,7 @@ namespace APAC_TIS4
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
 
-                    string query = "SELECT cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN produto ON produto.Produto_ID = pedido.Produto_ID;";
+                    string query = "SELECT cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN itemPedido ON itemPedido.Pedido_ID = pedido.Pedido_ID INNER JOIN produto ON produto.Produto_ID = itemPedido.Produto_ID;";
 
                     MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
 
@@ -62,42 +62,29 @@ namespace APAC_TIS4
 
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
-                    string query = "SELECT cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo  FROM  cliente INNER JOIN pedido ON pedido.Cliente_ID = cliente.Cliente_ID INNER JOIN produto ON produto.Produto_ID = pedido.Produto_ID WHERE cliente.Nome LIKE @NomeCliente AND produto.nome LIKE @NomeProduto OR (pedido.Data_Pedido between now() and @Data_Pedido OR pedido.Data_Pedido between @Data_Pedido and NOW()) OR (pedido.Data_Entrega between now() and @Data_Entrega OR pedido.Data_Entrega between @Data_Entrega and NOW());";
-
-                    if (pedido.Data_Pedido == DateTime.MinValue && pedido.Data_Entrega != DateTime.MinValue)
-                    {
-                        query = "SELECT cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo  FROM  cliente INNER JOIN pedido ON pedido.Cliente_ID = cliente.Cliente_ID INNER JOIN produto ON produto.Produto_ID = pedido.Produto_ID WHERE cliente.Nome LIKE @NomeCliente AND produto.nome LIKE @NomeProduto OR (pedido.Data_Entrega between now() and @Data_Entrega OR pedido.Data_Entrega between @Data_Entrega and NOW());";
-                    }
-                    if (pedido.Data_Pedido == DateTime.MinValue && pedido.Data_Entrega != DateTime.MinValue)
-                    {
-                        query = "SELECT cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo  FROM  cliente INNER JOIN pedido ON pedido.Cliente_ID = cliente.Cliente_ID INNER JOIN produto ON produto.Produto_ID = pedido.Produto_ID WHERE cliente.Nome LIKE @NomeCliente AND produto.nome LIKE @NomeProduto OR (pedido.Data_Pedido between now() and @Data_Pedido OR pedido.Data_Pedido between @Data_Pedido and NOW())";
-                    }
-                    if (pedido.Data_Pedido != DateTime.MinValue && pedido.Data_Entrega != DateTime.MinValue)
-                    {
-                        query = "SELECT cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo  FROM  cliente INNER JOIN pedido ON pedido.Cliente_ID = cliente.Cliente_ID INNER JOIN produto ON produto.Produto_ID = pedido.Produto_ID WHERE cliente.Nome LIKE @NomeCliente AND produto.nome LIKE @NomeProduto;";
-                    }
+                    string query = "SELECT cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN itemPedido ON itemPedido.Pedido_ID = pedido.Pedido_ID INNER JOIN produto ON produto.Produto_ID = itemPedido.Produto_ID WHERE cliente.Nome LIKE @NomeCliente AND produto.nome LIKE @NomeProduto AND (pedido.Data_Pedido = @Data_Pedido OR pedido.Data_Pedido between Year('1900-01-01') and YEAR(NOW())) OR (pedido.Data_Entrega = @Data_Entrega OR pedido.Data_Entrega between Year('1900-01-01') and YEAR(NOW()));";
 
                     MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
 
-                    if (string.IsNullOrEmpty(pedido.Cliente.nome))
+                    if (string.IsNullOrEmpty(pedido._ItemPedido.Cliente.nome))
                     {
-                        pedido.Cliente.nome = "%";
+                        pedido._ItemPedido.Cliente.nome = "%";
                     }
                     else {
-                        pedido.Cliente.nome = "%" + pedido.Cliente.nome + "%";
+                        pedido._ItemPedido.Cliente.nome = "%" + pedido._ItemPedido.Cliente.nome + "%";
                     }
 
-                    if (string.IsNullOrEmpty(pedido.Produto.Nome))
+                    if (string.IsNullOrEmpty(pedido._ItemPedido.Produto.Nome))
                     {
-                        pedido.Cliente.nome = "%";
+                        pedido._ItemPedido.Cliente.nome = "%";
                     }
                     else
                     {
-                        pedido.Produto.Nome = "%" + pedido.Produto.Nome + "%";
+                        pedido._ItemPedido.Produto.Nome = "%" + pedido._ItemPedido.Produto.Nome + "%";
                     }
 
-                    cmd.Parameters.AddWithValue("@NomeCliente", pedido.Cliente.nome);
-                    cmd.Parameters.AddWithValue("@NomeProduto", pedido.Produto.Nome);
+                    cmd.Parameters.AddWithValue("@NomeCliente", pedido._ItemPedido.Cliente.nome);
+                    cmd.Parameters.AddWithValue("@NomeProduto", pedido._ItemPedido.Produto.Nome);
                     cmd.Parameters.AddWithValue("@Data_Pedido", pedido.Data_Pedido);
                     cmd.Parameters.AddWithValue("@Data_Entrega", pedido.Data_Entrega);
 
@@ -138,8 +125,8 @@ namespace APAC_TIS4
                     cmd.CommandType = CommandType.StoredProcedure;
                     /* aqui passamos os parametros para a procedure spInsere que criamos
                     de acordo com os textbox*/
-                    cmd.Parameters.AddWithValue("_Produto_ID", pedido.Produto_ID);
-                    cmd.Parameters.AddWithValue("_Cliente_ID", pedido.Cliente_ID);
+                    cmd.Parameters.AddWithValue("_Produto_ID", pedido._ItemPedido.Produto_ID);
+                    cmd.Parameters.AddWithValue("_Cliente_ID", pedido._ItemPedido.Cliente_ID);
                     cmd.Parameters.AddWithValue("_Data_Entrega", pedido.Data_Entrega);
                     cmd.Parameters.AddWithValue("_Data_Pedido", pedido.Data_Pedido);
                     cmd.Parameters.AddWithValue("_Quantidade", pedido.Quantidade);
