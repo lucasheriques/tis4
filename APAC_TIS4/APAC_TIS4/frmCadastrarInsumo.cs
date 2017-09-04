@@ -23,7 +23,7 @@ namespace APAC_TIS4
 
         private void popularGrid()
         {
-            ClienteDAO cliente = new ClienteDAO();
+            //ClienteDAO cliente = new ClienteDAO();
             InsumoDAO insumo = new InsumoDAO();
 
             DataSet dataSet = insumo.visualizarGrid();

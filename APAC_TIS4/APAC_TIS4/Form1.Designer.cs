@@ -486,7 +486,6 @@
             // bntAtualizarInsumo
             // 
             this.bntAtualizarInsumo.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntAtualizarInsumo.Enabled = false;
             this.bntAtualizarInsumo.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarInsumo.Image")));
             this.bntAtualizarInsumo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntAtualizarInsumo.Location = new System.Drawing.Point(290, 289);
@@ -496,6 +495,7 @@
             this.bntAtualizarInsumo.Text = "Atualizar Insumo";
             this.bntAtualizarInsumo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bntAtualizarInsumo.UseVisualStyleBackColor = false;
+            this.bntAtualizarInsumo.Click += new System.EventHandler(this.bntAtualizarInsumo_Click);
             // 
             // bntAtualizarPedido
             // 
@@ -556,7 +556,6 @@
             // bntVisualizarInsumo
             // 
             this.bntVisualizarInsumo.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntVisualizarInsumo.Enabled = false;
             this.bntVisualizarInsumo.Image = ((System.Drawing.Image)(resources.GetObject("bntVisualizarInsumo.Image")));
             this.bntVisualizarInsumo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntVisualizarInsumo.Location = new System.Drawing.Point(290, 407);
@@ -566,6 +565,7 @@
             this.bntVisualizarInsumo.Text = "Visualizar Insumo";
             this.bntVisualizarInsumo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bntVisualizarInsumo.UseVisualStyleBackColor = false;
+            this.bntVisualizarInsumo.Click += new System.EventHandler(this.bntVisualizarInsumo_Click);
             // 
             // bntVisualizarPedido
             // 
@@ -626,7 +626,6 @@
             // bntVisualizarReceita
             // 
             this.bntVisualizarReceita.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntVisualizarReceita.Enabled = false;
             this.bntVisualizarReceita.Image = ((System.Drawing.Image)(resources.GetObject("bntVisualizarReceita.Image")));
             this.bntVisualizarReceita.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntVisualizarReceita.Location = new System.Drawing.Point(1072, 407);
@@ -636,6 +635,7 @@
             this.bntVisualizarReceita.Text = "Visualizar Receita";
             this.bntVisualizarReceita.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bntVisualizarReceita.UseVisualStyleBackColor = false;
+            this.bntVisualizarReceita.Click += new System.EventHandler(this.bntVisualizarReceita_Click);
             // 
             // button2
             // 

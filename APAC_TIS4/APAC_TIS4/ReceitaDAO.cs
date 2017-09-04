@@ -12,6 +12,46 @@ namespace APAC_TIS4
     {
         public ReceitaDAO() { }
 
+        public DataSet visualizarGridComParametros(ProdutoModels produtoModels) {
+            DataSet sDs = new DataSet();
+            SingletonBD singleton = SingletonBD.getInstancia();
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            {
+                try
+                {
+                    conexaoMySQL.Open();
+
+                    /* criando o comando sql indicando a nossa conexão e a nossa
+                    procedure */
+
+                    string query = "SELECT Produto.Nome, produto.Tipo, produto.Tamanho, PRODUTO.Peso, produto.UDM, produto.Descricao, insumo.Nome, Receita_Insumo.unidadeDeMedida, receita.Modo_de_Preparo, Receita.Observacao FROM Produto INNER JOIN Receita ON Produto.Produto_ID = Receita.Produto_ID INNER JOIN Receita_Insumo ON Receita_Insumo.Receita_ID = Receita.Receita_ID INNER JOIN insumo ON Receita_Insumo.Insumo_ID = insumo.Insumo_ID WHERE produto.Produto_ID = @Produto_ID OR produto.nome LIKE @nome;";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
+
+                    cmd.Parameters.AddWithValue("@Produto_ID", produtoModels.Produto_ID);
+                    cmd.Parameters.AddWithValue("@nome", produtoModels.Nome);
+
+
+                    MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
+
+                    MySqlCommandBuilder sBuilder = new MySqlCommandBuilder(sAdapter);
+
+                    sAdapter.Fill(sDs, "characters");
+
+                    DataTable sTable = sDs.Tables["characters"];
+                }
+                catch (MySqlException msqle)
+                {
+
+                }
+                finally
+                {
+                    conexaoMySQL.Close();
+                }
+                return sDs;
+            }
+        }
+
         public DataSet visualizarGrid()
         {
             DataSet sDs = new DataSet();

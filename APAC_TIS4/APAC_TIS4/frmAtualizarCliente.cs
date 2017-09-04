@@ -88,7 +88,6 @@ namespace APAC_TIS4
         {
             List<CienteModels> listClientes = new List<CienteModels>();
 
-
             for (int i = 0; i < dgvClientes.Rows.Count - 1; i++)
             {
                 System.Threading.Thread.Sleep(50);
@@ -99,20 +98,6 @@ namespace APAC_TIS4
                 cliente.Tipo = dgvClientes.Rows[i].Cells[3].Value.ToString();
                 listClientes.Add(cliente);
             }
-
-            /*
-            foreach (DataGridViewRow linha in dgvClientes.Rows)
-            {
-                if (!string.IsNullOrEmpty(linha.Cells[0].Value.ToString()))
-                {
-                    CienteModels cliente = new CienteModels();
-                    cliente.Cliente_ID = int.Parse(linha.Cells[0].Value.ToString());
-                    cliente.nome = linha.Cells[1].Value.ToString();
-                    cliente.localidade = linha.Cells[2].Value.ToString();
-                    cliente.Tipo = linha.Cells[3].Value.ToString();
-                    listClientes.Add(cliente);
-                }
-            }*/
 
             ClienteDAO clienteDAO = new ClienteDAO();
 

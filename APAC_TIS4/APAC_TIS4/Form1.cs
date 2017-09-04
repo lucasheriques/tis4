@@ -146,5 +146,26 @@ namespace APAC_TIS4
             _frmCadastrarReceita.Show();
             this.Hide();
         }
+
+        private void bntVisualizarInsumo_Click(object sender, EventArgs e)
+        {
+            frmVisualizarInsumo _frmVisualizarInsumo = new frmVisualizarInsumo(this);
+            _frmVisualizarInsumo.Show();
+            this.Hide();
+        }
+
+        private void bntVisualizarReceita_Click(object sender, EventArgs e)
+        {
+            frmVisualizarReceita _frmVisualizarReceita = new frmVisualizarReceita(this);
+            this.Hide();
+            _frmVisualizarReceita.Show();
+        }
+
+        private void bntAtualizarInsumo_Click(object sender, EventArgs e)
+        {
+            frmAtualizarInsumo _frmAtualizarInsumo = new frmAtualizarInsumo(this);
+            this.Hide();
+            _frmAtualizarInsumo.Show();
+        }
     }
 }

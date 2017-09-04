@@ -101,6 +101,12 @@
     <Compile Include="frmAtualizarCliente.Designer.cs">
       <DependentUpon>frmAtualizarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAtualizarInsumo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAtualizarInsumo.Designer.cs">
+      <DependentUpon>frmAtualizarInsumo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCadastrarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,12 @@
     <Compile Include="frmVisualizarCliente.Designer.cs">
       <DependentUpon>frmVisualizarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmVisualizarInsumo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVisualizarInsumo.Designer.cs">
+      <DependentUpon>frmVisualizarInsumo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmVisualizarPedido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +160,12 @@
     </Compile>
     <Compile Include="frmVisualizarProdutos.Designer.cs">
       <DependentUpon>frmVisualizarProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmVisualizarReceita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVisualizarReceita.Designer.cs">
+      <DependentUpon>frmVisualizarReceita.cs</DependentUpon>
     </Compile>
     <Compile Include="InsumoDAO.cs" />
     <Compile Include="InsumoModels.cs" />
@@ -171,6 +189,9 @@
     <EmbeddedResource Include="frmAtualizarCliente.resx">
       <DependentUpon>frmAtualizarCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAtualizarInsumo.resx">
+      <DependentUpon>frmAtualizarInsumo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCadastrarCliente.resx">
       <DependentUpon>frmCadastrarCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,11 +210,17 @@
     <EmbeddedResource Include="frmVisualizarCliente.resx">
       <DependentUpon>frmVisualizarCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmVisualizarInsumo.resx">
+      <DependentUpon>frmVisualizarInsumo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmVisualizarPedido.resx">
       <DependentUpon>frmVisualizarPedido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVisualizarProdutos.resx">
       <DependentUpon>frmVisualizarProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVisualizarReceita.resx">
+      <DependentUpon>frmVisualizarReceita.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
