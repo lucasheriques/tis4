@@ -8,6 +8,7 @@ namespace APAC_TIS4
 {
     class ProdutoModels
     {
+        private int produto_ID;
         private string nome;
         private string tipo;
         private string tamanho;
@@ -25,5 +26,6 @@ namespace APAC_TIS4
         public float CustoPorUnidade { get { return custoPorUnidade; } set { this.custoPorUnidade = value; } }
         public float PrecoDeVendaUnidade { get { return precoDeVendaUnidade; } set { this.precoDeVendaUnidade = value; } }
         public string Descricao { get { return descricao;  } set { this.descricao = value; } }
+        public int Produto_ID { get { return this.produto_ID; } set { this.produto_ID = value; } }
     }
 }

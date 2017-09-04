@@ -130,5 +130,21 @@ namespace APAC_TIS4
             visualizarProdutos.Show();
             this.Hide();
         }
+
+        private void btnCadastrarInsumos_Click(object sender, EventArgs e)
+        {
+            frmCadastrarInsumo _frmCadastrarInsumo = new frmCadastrarInsumo(this);
+
+            this.Hide();
+            _frmCadastrarInsumo.Show();
+        }
+
+        private void bntCadastrarReceita_Click(object sender, EventArgs e)
+        {
+            frmCadastrarReceita _frmCadastrarReceita = new frmCadastrarReceita(this);
+
+            _frmCadastrarReceita.Show();
+            this.Hide();
+        }
     }
 }

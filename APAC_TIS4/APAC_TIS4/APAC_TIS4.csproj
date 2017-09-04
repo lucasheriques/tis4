@@ -107,11 +107,23 @@
     <Compile Include="frmCadastrarCliente.Designer.cs">
       <DependentUpon>frmCadastrarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCadastrarInsumo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastrarInsumo.Designer.cs">
+      <DependentUpon>frmCadastrarInsumo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCadastrarProduto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCadastrarProduto.Designer.cs">
       <DependentUpon>frmCadastrarProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCadastrarReceita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastrarReceita.Designer.cs">
+      <DependentUpon>frmCadastrarReceita.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCadastroPedido.cs">
       <SubType>Form</SubType>
@@ -137,6 +149,8 @@
     <Compile Include="frmVisualizarProdutos.Designer.cs">
       <DependentUpon>frmVisualizarProdutos.cs</DependentUpon>
     </Compile>
+    <Compile Include="InsumoDAO.cs" />
+    <Compile Include="InsumoModels.cs" />
     <Compile Include="ItemPedido.cs" />
     <Compile Include="PedidoDAO.cs" />
     <Compile Include="PedidoModels.cs" />
@@ -144,6 +158,9 @@
     <Compile Include="ProdutoModels.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceitaDAO.cs" />
+    <Compile Include="ReceitaModels.cs" />
+    <Compile Include="Receita_InsumoModels.cs" />
     <Compile Include="SingletonBD.cs" />
     <EmbeddedResource Include="ConfiguracaoDoBancoDeDados.resx">
       <DependentUpon>ConfiguracaoDoBancoDeDados.cs</DependentUpon>
@@ -157,8 +174,14 @@
     <EmbeddedResource Include="frmCadastrarCliente.resx">
       <DependentUpon>frmCadastrarCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastrarInsumo.resx">
+      <DependentUpon>frmCadastrarInsumo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCadastrarProduto.resx">
       <DependentUpon>frmCadastrarProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastrarReceita.resx">
+      <DependentUpon>frmCadastrarReceita.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCadastroPedido.resx">
       <DependentUpon>frmCadastroPedido.cs</DependentUpon>
