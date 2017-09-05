@@ -38,10 +38,6 @@ namespace APAC_TIS4
 
                     DataTable sTable = sDs.Tables["characters"];
                 }
-                catch (MySqlException msqle)
-                {
-
-                }
                 finally
                 {
                     conexaoMySQL.Close();
@@ -74,10 +70,6 @@ namespace APAC_TIS4
                     sAdapter.Fill(sDs, "characters");
 
                     DataTable sTable = sDs.Tables["characters"];
-                }
-                catch (MySqlException msqle)
-                {
-
                 }
                 finally
                 {
@@ -114,10 +106,6 @@ namespace APAC_TIS4
 
                     //tran.Commit();
                     verificaAtualizacao = true;
-                }
-                catch (MySqlException msqle)
-                {
-                    //tran.Rollback();
                 }
                 finally
                 {
@@ -174,10 +162,6 @@ namespace APAC_TIS4
 
                     DataTable sTable = sDs.Tables["characters"];
                 }
-                catch (MySqlException msqle)
-                {
-
-                }
                 finally
                 {
                     conexaoMySQL.Close();
@@ -231,10 +215,6 @@ namespace APAC_TIS4
                     sAdapter.Fill(sDs, "characters");
 
                     DataTable sTable = sDs.Tables["characters"];
-                }
-                catch (MySqlException msqle)
-                {
-
                 }
                 finally
                 {

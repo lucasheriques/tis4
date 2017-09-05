@@ -11,7 +11,6 @@ namespace APAC_TIS4
     class Arquivo
     {
         private StreamWriter escrita;
-        private StreamReader leitura;
         private string nomeCaminhoArquivo;
 
         private Object thisLock = new Object();
