@@ -51,10 +51,25 @@ namespace APAC_TIS4
         private void bntPesquisar_Click(object sender, EventArgs e)
         {
             CienteModels cliente = new CienteModels();
-            cliente.nome = txtNomeCliente.Text;
+            if (string.IsNullOrEmpty(txtNomeCliente.Text))
+            {
+                cliente.nome = "%";
+            }
+            else {
+                cliente.nome = txtNomeCliente.Text;
+            }
+            
 
             ProdutoModels produto = new ProdutoModels();
-            produto.Nome = txtNomeProduto.Text;
+
+            if (string.IsNullOrEmpty(txtNomeProduto.Text))
+            {
+                produto.Nome = "%";
+            }
+            else {
+                produto.Nome = txtNomeProduto.Text;
+            }
+
 
             PedidoModels pedido = new PedidoModels(produto, cliente);
             if (dtpDataPedido.Enabled)

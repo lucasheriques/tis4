@@ -58,7 +58,7 @@ namespace APAC_TIS4
             PedidoModels pedido = new PedidoModels();
             pedido._ItemPedido = new ItemPedido();
             pedido._ItemPedido.Cliente_ID = (int) cmbCliente.SelectedValue;
-            pedido._ItemPedido.Produto_ID = (int) cmbProduto.SelectedValue;
+            pedido._ItemPedido.Produto_ID = int.Parse(cmbProduto.SelectedValue.ToString());
             pedido.Data_Pedido = dateTimePicker1.Value.Date;
             pedido.Data_Entrega =  dateTimePicker2.Value.Date;
             pedido.Quantidade = int.Parse(textBox1.Text);
@@ -135,7 +135,7 @@ namespace APAC_TIS4
                 ProdutoModels produto = new ProdutoModels();
                 ProdutoDAO produtoDAO = new ProdutoDAO();
 
-                int Produto_ID = (int)cmbProduto.SelectedValue;
+                int Produto_ID = int.Parse(cmbProduto.SelectedValue.ToString());
 
                 produto.PrecoDeVendaUnidade = produtoDAO.getPrecoDeVendaUnidade(Produto_ID);
 

@@ -351,7 +351,7 @@ namespace APAC_TIS4
                 {
                     foreach (CienteModels cliente in listClientes) {
                         MySqlCommand cmd = new MySqlCommand("UPDATE cliente SET Nome = @Nome, Localidade = @Localidade, Tipo = @Tipo WHERE Cliente_ID = @Cliente_ID;", conexaoMySQL);
-
+                        cmd.CommandType = CommandType.StoredProcedure;
                         //cmd.Transaction = tran;
 
                         cmd.Parameters.AddWithValue("@Nome", cliente.nome);

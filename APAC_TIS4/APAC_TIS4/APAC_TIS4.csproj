@@ -107,6 +107,18 @@
     <Compile Include="frmAtualizarInsumo.Designer.cs">
       <DependentUpon>frmAtualizarInsumo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAtualizarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAtualizarPedido.Designer.cs">
+      <DependentUpon>frmAtualizarPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAtualizarProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAtualizarProduto.Designer.cs">
+      <DependentUpon>frmAtualizarProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCadastrarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +203,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAtualizarInsumo.resx">
       <DependentUpon>frmAtualizarInsumo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAtualizarPedido.resx">
+      <DependentUpon>frmAtualizarPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAtualizarProduto.resx">
+      <DependentUpon>frmAtualizarProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCadastrarCliente.resx">
       <DependentUpon>frmCadastrarCliente.cs</DependentUpon>

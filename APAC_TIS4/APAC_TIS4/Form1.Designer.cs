@@ -500,7 +500,6 @@
             // bntAtualizarPedido
             // 
             this.bntAtualizarPedido.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntAtualizarPedido.Enabled = false;
             this.bntAtualizarPedido.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarPedido.Image")));
             this.bntAtualizarPedido.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntAtualizarPedido.Location = new System.Drawing.Point(559, 289);
@@ -510,11 +509,11 @@
             this.bntAtualizarPedido.Text = "Atualizar Pedido";
             this.bntAtualizarPedido.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bntAtualizarPedido.UseVisualStyleBackColor = false;
+            this.bntAtualizarPedido.Click += new System.EventHandler(this.bntAtualizarPedido_Click);
             // 
             // bntAtualizarProduto
             // 
             this.bntAtualizarProduto.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntAtualizarProduto.Enabled = false;
             this.bntAtualizarProduto.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarProduto.Image")));
             this.bntAtualizarProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntAtualizarProduto.Location = new System.Drawing.Point(820, 289);
@@ -524,6 +523,7 @@
             this.bntAtualizarProduto.Text = "Atualizar Produto";
             this.bntAtualizarProduto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bntAtualizarProduto.UseVisualStyleBackColor = false;
+            this.bntAtualizarProduto.Click += new System.EventHandler(this.bntAtualizarProduto_Click);
             // 
             // bntAtualizarReceita
             // 

@@ -167,5 +167,19 @@ namespace APAC_TIS4
             this.Hide();
             _frmAtualizarInsumo.Show();
         }
+
+        private void bntAtualizarPedido_Click(object sender, EventArgs e)
+        {
+            frmAtualizarPedido _frmAtualizarPedido = new frmAtualizarPedido(this);
+            this.Hide();
+            _frmAtualizarPedido.Show();
+        }
+
+        private void bntAtualizarProduto_Click(object sender, EventArgs e)
+        {
+            frmAtualizarProduto _frmAtualizarProduto = new frmAtualizarProduto(this);
+            _frmAtualizarProduto.Show();
+            this.Hide();
+        }
     }
 }

@@ -81,6 +81,40 @@ namespace APAC_TIS4
             }
         }
 
+        public DataSet visualizarGridEID()
+        {
+            DataSet sDs = new DataSet();
+            SingletonBD singleton = SingletonBD.getInstancia();
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            {
+                try
+                {
+                    conexaoMySQL.Open();
+
+                    /* criando o comando sql indicando a nossa conexão e a nossa
+                    procedure */
+                    MySqlCommand cmd = new MySqlCommand("select Produto_ID, nome, Tipo, Tamanho, Peso, UDM, CustoPorUnidade, PrecoDeVendaUnidade, Descricao from produto;", conexaoMySQL);
+
+                    MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
+
+                    MySqlCommandBuilder sBuilder = new MySqlCommandBuilder(sAdapter);
+
+                    sAdapter.Fill(sDs, "characters");
+
+                    DataTable sTable = sDs.Tables["characters"];
+                }
+                catch (MySqlException msqle)
+                {
+
+                }
+                finally
+                {
+                    conexaoMySQL.Close();
+                }
+                return sDs;
+            }
+        }
+
         public string cadastrar(ProdutoModels produto)
         {
             string retorno = null;
@@ -236,6 +270,133 @@ namespace APAC_TIS4
                     conexaoMySQL.Close();
                 }
                 return sDs;
+            }
+        }
+
+        public DataSet visualizarGridComParametrosEID(ProdutoModels produto)
+        {
+            DataSet sDs = new DataSet();
+            SingletonBD singleton = SingletonBD.getInstancia();
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            {
+                try
+                {
+                    string query = "select Produto_ID, nome, Tipo, Tamanho, Peso, UDM, CustoPorUnidade, PrecoDeVendaUnidade, Descricao from produto where nome LIKE @nome AND Tipo LIKE @Tipo AND Tamanho LIKE @Tamanho AND Descricao LIKE @Descricao;";
+
+                    if (string.IsNullOrEmpty(produto.Nome))
+                    {
+                        produto.Nome = "%";
+                    }
+                    else
+                    {
+                        produto.Nome = "%" + produto.Nome + "%";
+                    }
+
+                    if (string.IsNullOrEmpty(produto.Tipo))
+                    {
+                        produto.Tipo = "%";
+                    }
+                    else
+                    {
+                        produto.Tipo = "%" + produto.Tipo + "%";
+                    }
+
+                    if (string.IsNullOrEmpty(produto.Tamanho))
+                    {
+                        produto.Tamanho = "%";
+                    }
+                    else
+                    {
+                        produto.Tamanho = "%" + produto.Tamanho + "%";
+                    }
+                    if (string.IsNullOrEmpty(produto.Descricao))
+                    {
+                        produto.Descricao = "%";
+                    }
+                    else
+                    {
+                        produto.Descricao = "%" + produto.Descricao + "%";
+                    }
+
+                    conexaoMySQL.Open();
+
+                    /*
+                    string query = "select nome, Tipo, Tamanho, Peso, UDM, CustoPorUnidade, PrecoDeVendaUnidade, Descricao from produto where nome LIKE @nome OR Tipo LIKE @Tipo OR Tamanho LIKE @Tamanho OR Descricao LIKE @Descricao;";
+                    if ((!string.IsNullOrEmpty(produto.Nome) || !string.IsNullOrEmpty(produto.Tipo) || !string.IsNullOrEmpty(produto.Tamanho)) && produto.Descricao == "%%%") { 
+                        query = "select nome, Tipo, Tamanho, Peso, UDM, CustoPorUnidade, PrecoDeVendaUnidade, Descricao from produto where (nome LIKE @nome OR Tipo LIKE @Tipo OR Tamanho LIKE @Tamanho) AND Descricao LIKE @Descricao;";
+                    }*/
+
+                    MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
+
+                    cmd.Parameters.AddWithValue("@nome", produto.Nome);
+                    cmd.Parameters.AddWithValue("@Tipo", produto.Tipo);
+                    cmd.Parameters.AddWithValue("@Tamanho", produto.Tamanho);
+                    cmd.Parameters.AddWithValue("@Descricao", produto.Descricao);
+
+
+                    MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
+
+                    MySqlCommandBuilder sBuilder = new MySqlCommandBuilder(sAdapter);
+
+                    sAdapter.Fill(sDs, "characters");
+
+                    DataTable sTable = sDs.Tables["characters"];
+                }
+                catch (MySqlException msqle)
+                {
+
+                }
+                finally
+                {
+                    conexaoMySQL.Close();
+                }
+                return sDs;
+            }
+        }
+
+        public bool atualizarProdutos(List<ProdutoModels> listProduto)
+        {
+            bool verificaAtualizacao = false;
+
+            SingletonBD singleton = SingletonBD.getInstancia();
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            {
+                conexaoMySQL.Open();
+
+                //MySqlTransaction tran = conexaoMySQL.BeginTransaction();
+
+                try
+                {
+                    foreach (ProdutoModels produto in listProduto)
+                    {
+                        MySqlCommand cmd = new MySqlCommand("UPDATE produto SET  Tipo = @Tipo, Tamanho = @Tamanho, Peso = @Peso, UDM = @UDM, nome = @nome, CustoPorUnidade = @CustoPorUnidade, PrecoDeVendaUnidade = @PrecoDeVendaUnidade, Descricao = @Descricao WHERE Produto_ID = @Produto_ID;", conexaoMySQL);
+                        //cmd.Transaction = tran;
+
+                        cmd.Parameters.AddWithValue("@nome", produto.Nome);
+                        cmd.Parameters.AddWithValue("@Tipo", produto.Tipo);
+                        cmd.Parameters.AddWithValue("@Tamanho", produto.Tamanho);
+                        cmd.Parameters.AddWithValue("@Peso", produto.Peso);
+                        cmd.Parameters.AddWithValue("@UDM", produto.UDM);
+                        cmd.Parameters.AddWithValue("@CustoPorUnidade", produto.CustoPorUnidade);
+                        cmd.Parameters.AddWithValue("@PrecoDeVendaUnidade", produto.PrecoDeVendaUnidade);
+                        cmd.Parameters.AddWithValue("@Descricao", produto.Descricao);
+                        cmd.Parameters.AddWithValue("@Produto_ID", produto.Produto_ID);
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    //tran.Commit();
+                    verificaAtualizacao = true;
+                }
+                catch (MySqlException msqle)
+                {
+                    //tran.Rollback();
+                }
+                finally
+                {
+                    conexaoMySQL.Close();
+                }
+                return verificaAtualizacao;
             }
         }
     }
