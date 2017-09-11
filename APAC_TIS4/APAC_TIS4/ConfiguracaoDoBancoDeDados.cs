@@ -12,13 +12,13 @@ namespace APAC_TIS4
 {
     public partial class ConfiguracaoDoBancoDeDados : Form
     {
-        private frmPrincipal _frmPrincipal;
+        private Form _frmPrincipal;
         public ConfiguracaoDoBancoDeDados()
         {
             InitializeComponent();
         }
 
-        public void setFrmPrincipal(frmPrincipal FrmPrincipal) {
+        public void setFrmPrincipal(Form FrmPrincipal) {
             this._frmPrincipal = FrmPrincipal;
         }
 

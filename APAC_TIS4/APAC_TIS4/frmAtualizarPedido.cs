@@ -183,5 +183,111 @@ namespace APAC_TIS4
 
             popularGrid();
         }
+
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarCliente _frmCadastrarCliente = new frmCadastrarCliente(this);
+            _frmCadastrarCliente.Show();
+            this.Hide();
+        }
+
+        private void insumoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarInsumo _frmCadastrarInsumo = new frmCadastrarInsumo(this);
+            _frmCadastrarInsumo.Show();
+            this.Close();
+        }
+
+        private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastroPedido _frmCadastroPedido = new frmCadastroPedido(this);
+            _frmCadastroPedido.Show();
+            this.Hide();
+        }
+
+        private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarProduto _frmCadastrarProduto = new frmCadastrarProduto(this);
+            _frmCadastrarProduto.Show();
+            this.Hide();
+        }
+
+        private void receitaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarReceita _frmCadastrarReceita = new frmCadastrarReceita(this);
+            _frmCadastrarReceita.Show();
+            this.Hide();
+        }
+
+        private void clienteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmAtualizarCliente _frmAtualizarCliente = new frmAtualizarCliente(this);
+            _frmAtualizarCliente.Show();
+            this.Hide();
+        }
+
+        private void insumoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmAtualizarInsumo _frmAtualizarInsumo = new frmAtualizarInsumo(this);
+            _frmAtualizarInsumo.Show();
+            this.Hide();
+        }
+
+        private void pedidoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmAtualizarPedido _frmAtualizarPedido = new frmAtualizarPedido(this);
+            _frmAtualizarPedido.Show();
+            this.Hide();
+        }
+
+        private void produtoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmAtualizarProduto _frmAtualizarProduto = new frmAtualizarProduto(this);
+            _frmAtualizarProduto.Show();
+            this.Hide();
+        }
+
+        private void clienteToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmVisualizarCliente _frmVisualizarCliente = new frmVisualizarCliente(this);
+            _frmVisualizarCliente.Show();
+            this.Hide();
+        }
+
+        private void insumoToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmVisualizarInsumo _frmVisualizarInsumo = new frmVisualizarInsumo(this);
+            _frmVisualizarInsumo.Show();
+            this.Hide();
+        }
+
+        private void pedidoToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmVisualizarPedido _frmVisualizarPedido = new frmVisualizarPedido(this);
+            _frmVisualizarPedido.Show();
+            this.Hide();
+        }
+
+        private void produtoToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmVisualizarProdutos _frmVisualizarProdutos = new frmVisualizarProdutos(this);
+            _frmVisualizarProdutos.Show();
+            this.Hide();
+        }
+
+        private void receitaToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            frmVisualizarReceita _frmVisualizarReceita = new frmVisualizarReceita(this);
+            _frmVisualizarReceita.Show();
+            this.Hide();
+        }
+
+        private void bancoDeDadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfiguracaoDoBancoDeDados configuracaoDoBancoDeDados = new ConfiguracaoDoBancoDeDados();
+            configuracaoDoBancoDeDados.setFrmPrincipal(this);
+            this.Hide();
+            configuracaoDoBancoDeDados.Show();
+        }
     }
 }

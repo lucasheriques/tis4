@@ -201,7 +201,7 @@ namespace APAC_TIS4
         private void pedidoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmAtualizarPedido _frmAtualizarPedido = new frmAtualizarPedido(this);
-            _frmAtualizarPedido.Show();]
+            _frmAtualizarPedido.Show();
             this.Hide();
         }
 
