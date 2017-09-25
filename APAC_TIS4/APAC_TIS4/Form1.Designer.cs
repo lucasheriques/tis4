@@ -84,7 +84,19 @@
             this.bntRelatorioGastos = new System.Windows.Forms.Button();
             this.bntVisualizarReceita = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabCadastro = new System.Windows.Forms.TabPage();
+            this.tabVisualizacao = new System.Windows.Forms.TabPage();
+            this.tabAtualizacao = new System.Windows.Forms.TabPage();
+            this.Excluir = new System.Windows.Forms.TabPage();
+            this.tabRelatorios = new System.Windows.Forms.TabPage();
             this.menuStrip2.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabCadastro.SuspendLayout();
+            this.tabVisualizacao.SuspendLayout();
+            this.tabAtualizacao.SuspendLayout();
+            this.Excluir.SuspendLayout();
+            this.tabRelatorios.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -119,41 +131,41 @@
             this.produtoToolStripMenuItem,
             this.receitaToolStripMenuItem});
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(138, 22);
             this.toolStripMenuItem3.Text = "Cadastro";
             // 
             // clienteToolStripMenuItem
             // 
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.clienteToolStripMenuItem.Text = "Cliente";
             this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
             // 
             // insumoToolStripMenuItem
             // 
             this.insumoToolStripMenuItem.Name = "insumoToolStripMenuItem";
-            this.insumoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.insumoToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.insumoToolStripMenuItem.Text = "Insumo";
             this.insumoToolStripMenuItem.Click += new System.EventHandler(this.insumoToolStripMenuItem_Click);
             // 
             // pedidoToolStripMenuItem
             // 
             this.pedidoToolStripMenuItem.Name = "pedidoToolStripMenuItem";
-            this.pedidoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pedidoToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.pedidoToolStripMenuItem.Text = "Pedido";
             this.pedidoToolStripMenuItem.Click += new System.EventHandler(this.pedidoToolStripMenuItem_Click);
             // 
             // produtoToolStripMenuItem
             // 
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.produtoToolStripMenuItem.Text = "Produto";
             this.produtoToolStripMenuItem.Click += new System.EventHandler(this.produtoToolStripMenuItem_Click);
             // 
             // receitaToolStripMenuItem
             // 
             this.receitaToolStripMenuItem.Name = "receitaToolStripMenuItem";
-            this.receitaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.receitaToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.receitaToolStripMenuItem.Text = "Receita";
             this.receitaToolStripMenuItem.Click += new System.EventHandler(this.receitaToolStripMenuItem_Click);
             // 
@@ -166,7 +178,7 @@
             this.produtoToolStripMenuItem1,
             this.receitaToolStripMenuItem1});
             this.atualizaçãoToolStripMenuItem.Name = "atualizaçãoToolStripMenuItem";
-            this.atualizaçãoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.atualizaçãoToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.atualizaçãoToolStripMenuItem.Text = "Atualização";
             // 
             // clienteToolStripMenuItem1
@@ -179,21 +191,21 @@
             // insumoToolStripMenuItem1
             // 
             this.insumoToolStripMenuItem1.Name = "insumoToolStripMenuItem1";
-            this.insumoToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.insumoToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.insumoToolStripMenuItem1.Text = "Insumo";
             this.insumoToolStripMenuItem1.Click += new System.EventHandler(this.insumoToolStripMenuItem1_Click);
             // 
             // pedidoToolStripMenuItem1
             // 
             this.pedidoToolStripMenuItem1.Name = "pedidoToolStripMenuItem1";
-            this.pedidoToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.pedidoToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.pedidoToolStripMenuItem1.Text = "Pedido";
             this.pedidoToolStripMenuItem1.Click += new System.EventHandler(this.pedidoToolStripMenuItem1_Click);
             // 
             // produtoToolStripMenuItem1
             // 
             this.produtoToolStripMenuItem1.Name = "produtoToolStripMenuItem1";
-            this.produtoToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.produtoToolStripMenuItem1.Size = new System.Drawing.Size(117, 22);
             this.produtoToolStripMenuItem1.Text = "Produto";
             this.produtoToolStripMenuItem1.Click += new System.EventHandler(this.produtoToolStripMenuItem1_Click);
             // 
@@ -212,7 +224,7 @@
             this.produtoToolStripMenuItem2,
             this.receitaToolStripMenuItem2});
             this.exclusãoToolStripMenuItem.Name = "exclusãoToolStripMenuItem";
-            this.exclusãoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exclusãoToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.exclusãoToolStripMenuItem.Text = "Exclusão";
             // 
             // clienteToolStripMenuItem2
@@ -254,7 +266,7 @@
             this.produtoToolStripMenuItem3,
             this.receitaToolStripMenuItem3});
             this.visualizaçãoToolStripMenuItem.Name = "visualizaçãoToolStripMenuItem";
-            this.visualizaçãoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.visualizaçãoToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.visualizaçãoToolStripMenuItem.Text = "Visualização";
             // 
             // clienteToolStripMenuItem3
@@ -267,7 +279,7 @@
             // insumoToolStripMenuItem3
             // 
             this.insumoToolStripMenuItem3.Name = "insumoToolStripMenuItem3";
-            this.insumoToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.insumoToolStripMenuItem3.Size = new System.Drawing.Size(117, 22);
             this.insumoToolStripMenuItem3.Text = "Insumo";
             this.insumoToolStripMenuItem3.Click += new System.EventHandler(this.insumoToolStripMenuItem3_Click);
             // 
@@ -288,7 +300,7 @@
             // receitaToolStripMenuItem3
             // 
             this.receitaToolStripMenuItem3.Name = "receitaToolStripMenuItem3";
-            this.receitaToolStripMenuItem3.Size = new System.Drawing.Size(152, 22);
+            this.receitaToolStripMenuItem3.Size = new System.Drawing.Size(117, 22);
             this.receitaToolStripMenuItem3.Text = "Receita";
             this.receitaToolStripMenuItem3.Click += new System.EventHandler(this.receitaToolStripMenuItem3_Click);
             // 
@@ -340,7 +352,7 @@
             this.bntCadastrarCliente.BackColor = System.Drawing.SystemColors.HighlightText;
             this.bntCadastrarCliente.Image = ((System.Drawing.Image)(resources.GetObject("bntCadastrarCliente.Image")));
             this.bntCadastrarCliente.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.bntCadastrarCliente.Location = new System.Drawing.Point(35, 42);
+            this.bntCadastrarCliente.Location = new System.Drawing.Point(26, 176);
             this.bntCadastrarCliente.Name = "bntCadastrarCliente";
             this.bntCadastrarCliente.Size = new System.Drawing.Size(181, 78);
             this.bntCadastrarCliente.TabIndex = 1;
@@ -354,7 +366,7 @@
             this.btnCadastrarInsumos.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnCadastrarInsumos.Image = ((System.Drawing.Image)(resources.GetObject("btnCadastrarInsumos.Image")));
             this.btnCadastrarInsumos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCadastrarInsumos.Location = new System.Drawing.Point(290, 42);
+            this.btnCadastrarInsumos.Location = new System.Drawing.Point(280, 176);
             this.btnCadastrarInsumos.Name = "btnCadastrarInsumos";
             this.btnCadastrarInsumos.Size = new System.Drawing.Size(204, 78);
             this.btnCadastrarInsumos.TabIndex = 2;
@@ -368,7 +380,7 @@
             this.btnCadastrarPedio.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnCadastrarPedio.Image = ((System.Drawing.Image)(resources.GetObject("btnCadastrarPedio.Image")));
             this.btnCadastrarPedio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCadastrarPedio.Location = new System.Drawing.Point(559, 42);
+            this.btnCadastrarPedio.Location = new System.Drawing.Point(546, 176);
             this.btnCadastrarPedio.Name = "btnCadastrarPedio";
             this.btnCadastrarPedio.Size = new System.Drawing.Size(204, 78);
             this.btnCadastrarPedio.TabIndex = 3;
@@ -382,7 +394,7 @@
             this.bntCadastrarProduto.BackColor = System.Drawing.SystemColors.HighlightText;
             this.bntCadastrarProduto.Image = ((System.Drawing.Image)(resources.GetObject("bntCadastrarProduto.Image")));
             this.bntCadastrarProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntCadastrarProduto.Location = new System.Drawing.Point(820, 42);
+            this.bntCadastrarProduto.Location = new System.Drawing.Point(801, 176);
             this.bntCadastrarProduto.Name = "bntCadastrarProduto";
             this.bntCadastrarProduto.Size = new System.Drawing.Size(204, 78);
             this.bntCadastrarProduto.TabIndex = 4;
@@ -396,7 +408,7 @@
             this.bntCadastrarReceita.BackColor = System.Drawing.SystemColors.HighlightText;
             this.bntCadastrarReceita.Image = ((System.Drawing.Image)(resources.GetObject("bntCadastrarReceita.Image")));
             this.bntCadastrarReceita.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntCadastrarReceita.Location = new System.Drawing.Point(1072, 42);
+            this.bntCadastrarReceita.Location = new System.Drawing.Point(1058, 176);
             this.bntCadastrarReceita.Name = "bntCadastrarReceita";
             this.bntCadastrarReceita.Size = new System.Drawing.Size(204, 78);
             this.bntCadastrarReceita.TabIndex = 5;
@@ -411,7 +423,7 @@
             this.bntExcluirCliente.Enabled = false;
             this.bntExcluirCliente.Image = ((System.Drawing.Image)(resources.GetObject("bntExcluirCliente.Image")));
             this.bntExcluirCliente.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.bntExcluirCliente.Location = new System.Drawing.Point(35, 163);
+            this.bntExcluirCliente.Location = new System.Drawing.Point(26, 176);
             this.bntExcluirCliente.Name = "bntExcluirCliente";
             this.bntExcluirCliente.Size = new System.Drawing.Size(181, 78);
             this.bntExcluirCliente.TabIndex = 6;
@@ -425,7 +437,7 @@
             this.bntExcluirInsumo.Enabled = false;
             this.bntExcluirInsumo.Image = ((System.Drawing.Image)(resources.GetObject("bntExcluirInsumo.Image")));
             this.bntExcluirInsumo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntExcluirInsumo.Location = new System.Drawing.Point(290, 163);
+            this.bntExcluirInsumo.Location = new System.Drawing.Point(280, 176);
             this.bntExcluirInsumo.Name = "bntExcluirInsumo";
             this.bntExcluirInsumo.Size = new System.Drawing.Size(204, 78);
             this.bntExcluirInsumo.TabIndex = 7;
@@ -439,7 +451,7 @@
             this.bntExcluirPedido.Enabled = false;
             this.bntExcluirPedido.Image = ((System.Drawing.Image)(resources.GetObject("bntExcluirPedido.Image")));
             this.bntExcluirPedido.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntExcluirPedido.Location = new System.Drawing.Point(559, 163);
+            this.bntExcluirPedido.Location = new System.Drawing.Point(546, 176);
             this.bntExcluirPedido.Name = "bntExcluirPedido";
             this.bntExcluirPedido.Size = new System.Drawing.Size(204, 78);
             this.bntExcluirPedido.TabIndex = 8;
@@ -453,7 +465,7 @@
             this.bntExcluirProduto.Enabled = false;
             this.bntExcluirProduto.Image = ((System.Drawing.Image)(resources.GetObject("bntExcluirProduto.Image")));
             this.bntExcluirProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntExcluirProduto.Location = new System.Drawing.Point(820, 163);
+            this.bntExcluirProduto.Location = new System.Drawing.Point(801, 176);
             this.bntExcluirProduto.Name = "bntExcluirProduto";
             this.bntExcluirProduto.Size = new System.Drawing.Size(204, 78);
             this.bntExcluirProduto.TabIndex = 9;
@@ -467,7 +479,7 @@
             this.button1.Enabled = false;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(1072, 163);
+            this.button1.Location = new System.Drawing.Point(1058, 176);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(204, 78);
             this.button1.TabIndex = 10;
@@ -480,7 +492,7 @@
             this.bntAtualizarCliente.BackColor = System.Drawing.SystemColors.HighlightText;
             this.bntAtualizarCliente.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarCliente.Image")));
             this.bntAtualizarCliente.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.bntAtualizarCliente.Location = new System.Drawing.Point(35, 289);
+            this.bntAtualizarCliente.Location = new System.Drawing.Point(26, 176);
             this.bntAtualizarCliente.Name = "bntAtualizarCliente";
             this.bntAtualizarCliente.Size = new System.Drawing.Size(181, 78);
             this.bntAtualizarCliente.TabIndex = 11;
@@ -494,7 +506,7 @@
             this.bntAtualizarInsumo.BackColor = System.Drawing.SystemColors.HighlightText;
             this.bntAtualizarInsumo.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarInsumo.Image")));
             this.bntAtualizarInsumo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntAtualizarInsumo.Location = new System.Drawing.Point(290, 289);
+            this.bntAtualizarInsumo.Location = new System.Drawing.Point(280, 176);
             this.bntAtualizarInsumo.Name = "bntAtualizarInsumo";
             this.bntAtualizarInsumo.Size = new System.Drawing.Size(204, 78);
             this.bntAtualizarInsumo.TabIndex = 12;
@@ -508,7 +520,7 @@
             this.bntAtualizarPedido.BackColor = System.Drawing.SystemColors.HighlightText;
             this.bntAtualizarPedido.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarPedido.Image")));
             this.bntAtualizarPedido.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntAtualizarPedido.Location = new System.Drawing.Point(559, 289);
+            this.bntAtualizarPedido.Location = new System.Drawing.Point(546, 176);
             this.bntAtualizarPedido.Name = "bntAtualizarPedido";
             this.bntAtualizarPedido.Size = new System.Drawing.Size(204, 78);
             this.bntAtualizarPedido.TabIndex = 13;
@@ -522,7 +534,7 @@
             this.bntAtualizarProduto.BackColor = System.Drawing.SystemColors.HighlightText;
             this.bntAtualizarProduto.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarProduto.Image")));
             this.bntAtualizarProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntAtualizarProduto.Location = new System.Drawing.Point(820, 289);
+            this.bntAtualizarProduto.Location = new System.Drawing.Point(801, 176);
             this.bntAtualizarProduto.Name = "bntAtualizarProduto";
             this.bntAtualizarProduto.Size = new System.Drawing.Size(204, 78);
             this.bntAtualizarProduto.TabIndex = 14;
@@ -537,7 +549,7 @@
             this.bntAtualizarReceita.Enabled = false;
             this.bntAtualizarReceita.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarReceita.Image")));
             this.bntAtualizarReceita.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntAtualizarReceita.Location = new System.Drawing.Point(1072, 289);
+            this.bntAtualizarReceita.Location = new System.Drawing.Point(1058, 176);
             this.bntAtualizarReceita.Name = "bntAtualizarReceita";
             this.bntAtualizarReceita.Size = new System.Drawing.Size(204, 78);
             this.bntAtualizarReceita.TabIndex = 15;
@@ -550,7 +562,7 @@
             this.bntVisualizarCliente.BackColor = System.Drawing.SystemColors.HighlightText;
             this.bntVisualizarCliente.Image = ((System.Drawing.Image)(resources.GetObject("bntVisualizarCliente.Image")));
             this.bntVisualizarCliente.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.bntVisualizarCliente.Location = new System.Drawing.Point(35, 407);
+            this.bntVisualizarCliente.Location = new System.Drawing.Point(26, 176);
             this.bntVisualizarCliente.Name = "bntVisualizarCliente";
             this.bntVisualizarCliente.Size = new System.Drawing.Size(181, 78);
             this.bntVisualizarCliente.TabIndex = 16;
@@ -564,7 +576,7 @@
             this.bntVisualizarInsumo.BackColor = System.Drawing.SystemColors.HighlightText;
             this.bntVisualizarInsumo.Image = ((System.Drawing.Image)(resources.GetObject("bntVisualizarInsumo.Image")));
             this.bntVisualizarInsumo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntVisualizarInsumo.Location = new System.Drawing.Point(290, 407);
+            this.bntVisualizarInsumo.Location = new System.Drawing.Point(280, 176);
             this.bntVisualizarInsumo.Name = "bntVisualizarInsumo";
             this.bntVisualizarInsumo.Size = new System.Drawing.Size(204, 78);
             this.bntVisualizarInsumo.TabIndex = 17;
@@ -578,7 +590,7 @@
             this.bntVisualizarPedido.BackColor = System.Drawing.SystemColors.HighlightText;
             this.bntVisualizarPedido.Image = ((System.Drawing.Image)(resources.GetObject("bntVisualizarPedido.Image")));
             this.bntVisualizarPedido.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntVisualizarPedido.Location = new System.Drawing.Point(559, 407);
+            this.bntVisualizarPedido.Location = new System.Drawing.Point(546, 176);
             this.bntVisualizarPedido.Name = "bntVisualizarPedido";
             this.bntVisualizarPedido.Size = new System.Drawing.Size(204, 78);
             this.bntVisualizarPedido.TabIndex = 18;
@@ -592,7 +604,7 @@
             this.bntVisualizarProduto.BackColor = System.Drawing.SystemColors.HighlightText;
             this.bntVisualizarProduto.Image = ((System.Drawing.Image)(resources.GetObject("bntVisualizarProduto.Image")));
             this.bntVisualizarProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntVisualizarProduto.Location = new System.Drawing.Point(820, 407);
+            this.bntVisualizarProduto.Location = new System.Drawing.Point(801, 176);
             this.bntVisualizarProduto.Name = "bntVisualizarProduto";
             this.bntVisualizarProduto.Size = new System.Drawing.Size(204, 78);
             this.bntVisualizarProduto.TabIndex = 19;
@@ -607,7 +619,7 @@
             this.bntRelatorioProducao.Enabled = false;
             this.bntRelatorioProducao.Image = ((System.Drawing.Image)(resources.GetObject("bntRelatorioProducao.Image")));
             this.bntRelatorioProducao.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.bntRelatorioProducao.Location = new System.Drawing.Point(35, 525);
+            this.bntRelatorioProducao.Location = new System.Drawing.Point(26, 176);
             this.bntRelatorioProducao.Name = "bntRelatorioProducao";
             this.bntRelatorioProducao.Size = new System.Drawing.Size(181, 78);
             this.bntRelatorioProducao.TabIndex = 20;
@@ -621,7 +633,7 @@
             this.bntRelatorioGastos.Enabled = false;
             this.bntRelatorioGastos.Image = ((System.Drawing.Image)(resources.GetObject("bntRelatorioGastos.Image")));
             this.bntRelatorioGastos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.bntRelatorioGastos.Location = new System.Drawing.Point(290, 525);
+            this.bntRelatorioGastos.Location = new System.Drawing.Point(280, 176);
             this.bntRelatorioGastos.Name = "bntRelatorioGastos";
             this.bntRelatorioGastos.Size = new System.Drawing.Size(204, 78);
             this.bntRelatorioGastos.TabIndex = 21;
@@ -634,7 +646,7 @@
             this.bntVisualizarReceita.BackColor = System.Drawing.SystemColors.HighlightText;
             this.bntVisualizarReceita.Image = ((System.Drawing.Image)(resources.GetObject("bntVisualizarReceita.Image")));
             this.bntVisualizarReceita.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntVisualizarReceita.Location = new System.Drawing.Point(1072, 407);
+            this.bntVisualizarReceita.Location = new System.Drawing.Point(1058, 176);
             this.bntVisualizarReceita.Name = "bntVisualizarReceita";
             this.bntVisualizarReceita.Size = new System.Drawing.Size(204, 78);
             this.bntVisualizarReceita.TabIndex = 22;
@@ -649,7 +661,7 @@
             this.button2.Enabled = false;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.Location = new System.Drawing.Point(559, 525);
+            this.button2.Location = new System.Drawing.Point(546, 176);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(204, 78);
             this.button2.TabIndex = 23;
@@ -657,33 +669,94 @@
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = false;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabCadastro);
+            this.tabControl1.Controls.Add(this.tabVisualizacao);
+            this.tabControl1.Controls.Add(this.tabAtualizacao);
+            this.tabControl1.Controls.Add(this.Excluir);
+            this.tabControl1.Controls.Add(this.tabRelatorios);
+            this.tabControl1.Location = new System.Drawing.Point(27, 38);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1278, 591);
+            this.tabControl1.TabIndex = 24;
+            // 
+            // tabCadastro
+            // 
+            this.tabCadastro.BackColor = System.Drawing.SystemColors.Control;
+            this.tabCadastro.Controls.Add(this.bntCadastrarCliente);
+            this.tabCadastro.Controls.Add(this.btnCadastrarInsumos);
+            this.tabCadastro.Controls.Add(this.btnCadastrarPedio);
+            this.tabCadastro.Controls.Add(this.bntCadastrarProduto);
+            this.tabCadastro.Controls.Add(this.bntCadastrarReceita);
+            this.tabCadastro.Location = new System.Drawing.Point(4, 22);
+            this.tabCadastro.Name = "tabCadastro";
+            this.tabCadastro.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCadastro.Size = new System.Drawing.Size(1270, 565);
+            this.tabCadastro.TabIndex = 0;
+            this.tabCadastro.Text = "Cadastro";
+            // 
+            // tabVisualizacao
+            // 
+            this.tabVisualizacao.BackColor = System.Drawing.SystemColors.Control;
+            this.tabVisualizacao.Controls.Add(this.bntVisualizarCliente);
+            this.tabVisualizacao.Controls.Add(this.bntVisualizarInsumo);
+            this.tabVisualizacao.Controls.Add(this.bntVisualizarReceita);
+            this.tabVisualizacao.Controls.Add(this.bntVisualizarPedido);
+            this.tabVisualizacao.Controls.Add(this.bntVisualizarProduto);
+            this.tabVisualizacao.Location = new System.Drawing.Point(4, 22);
+            this.tabVisualizacao.Name = "tabVisualizacao";
+            this.tabVisualizacao.Padding = new System.Windows.Forms.Padding(3);
+            this.tabVisualizacao.Size = new System.Drawing.Size(1270, 565);
+            this.tabVisualizacao.TabIndex = 1;
+            this.tabVisualizacao.Text = "Visualização";
+            // 
+            // tabAtualizacao
+            // 
+            this.tabAtualizacao.BackColor = System.Drawing.SystemColors.Control;
+            this.tabAtualizacao.Controls.Add(this.bntAtualizarCliente);
+            this.tabAtualizacao.Controls.Add(this.bntAtualizarInsumo);
+            this.tabAtualizacao.Controls.Add(this.bntAtualizarPedido);
+            this.tabAtualizacao.Controls.Add(this.bntAtualizarProduto);
+            this.tabAtualizacao.Controls.Add(this.bntAtualizarReceita);
+            this.tabAtualizacao.Location = new System.Drawing.Point(4, 22);
+            this.tabAtualizacao.Name = "tabAtualizacao";
+            this.tabAtualizacao.Size = new System.Drawing.Size(1270, 565);
+            this.tabAtualizacao.TabIndex = 2;
+            this.tabAtualizacao.Text = "Atualização";
+            // 
+            // Excluir
+            // 
+            this.Excluir.BackColor = System.Drawing.SystemColors.Control;
+            this.Excluir.Controls.Add(this.bntExcluirCliente);
+            this.Excluir.Controls.Add(this.bntExcluirInsumo);
+            this.Excluir.Controls.Add(this.bntExcluirPedido);
+            this.Excluir.Controls.Add(this.bntExcluirProduto);
+            this.Excluir.Controls.Add(this.button1);
+            this.Excluir.Location = new System.Drawing.Point(4, 22);
+            this.Excluir.Name = "Excluir";
+            this.Excluir.Size = new System.Drawing.Size(1270, 565);
+            this.Excluir.TabIndex = 3;
+            this.Excluir.Text = "Excluir";
+            // 
+            // tabRelatorios
+            // 
+            this.tabRelatorios.BackColor = System.Drawing.SystemColors.Control;
+            this.tabRelatorios.Controls.Add(this.bntRelatorioProducao);
+            this.tabRelatorios.Controls.Add(this.button2);
+            this.tabRelatorios.Controls.Add(this.bntRelatorioGastos);
+            this.tabRelatorios.Location = new System.Drawing.Point(4, 22);
+            this.tabRelatorios.Name = "tabRelatorios";
+            this.tabRelatorios.Size = new System.Drawing.Size(1270, 565);
+            this.tabRelatorios.TabIndex = 4;
+            this.tabRelatorios.Text = "Relatórios";
+            // 
             // frmPrincipal
             // 
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1305, 615);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.bntVisualizarReceita);
-            this.Controls.Add(this.bntRelatorioGastos);
-            this.Controls.Add(this.bntRelatorioProducao);
-            this.Controls.Add(this.bntVisualizarProduto);
-            this.Controls.Add(this.bntVisualizarPedido);
-            this.Controls.Add(this.bntVisualizarInsumo);
-            this.Controls.Add(this.bntVisualizarCliente);
-            this.Controls.Add(this.bntAtualizarReceita);
-            this.Controls.Add(this.bntAtualizarProduto);
-            this.Controls.Add(this.bntAtualizarPedido);
-            this.Controls.Add(this.bntAtualizarInsumo);
-            this.Controls.Add(this.bntAtualizarCliente);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.bntExcluirProduto);
-            this.Controls.Add(this.bntExcluirPedido);
-            this.Controls.Add(this.bntExcluirInsumo);
-            this.Controls.Add(this.bntExcluirCliente);
-            this.Controls.Add(this.bntCadastrarReceita);
-            this.Controls.Add(this.bntCadastrarProduto);
-            this.Controls.Add(this.btnCadastrarPedio);
-            this.Controls.Add(this.btnCadastrarInsumos);
-            this.Controls.Add(this.bntCadastrarCliente);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip2;
@@ -691,6 +764,12 @@
             this.Text = "Principal - Padaria";
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabCadastro.ResumeLayout(false);
+            this.tabVisualizacao.ResumeLayout(false);
+            this.tabAtualizacao.ResumeLayout(false);
+            this.Excluir.ResumeLayout(false);
+            this.tabRelatorios.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -759,6 +838,12 @@
         private System.Windows.Forms.Button bntVisualizarReceita;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ToolStripMenuItem bancoDeDadosToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabCadastro;
+        private System.Windows.Forms.TabPage tabVisualizacao;
+        private System.Windows.Forms.TabPage tabAtualizacao;
+        private System.Windows.Forms.TabPage Excluir;
+        private System.Windows.Forms.TabPage tabRelatorios;
     }
 }
 
