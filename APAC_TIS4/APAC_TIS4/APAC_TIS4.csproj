@@ -88,7 +88,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Arquivo.cs" />
-    <Compile Include="CienteModels.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Models\CienteModels.cs" />
     <Compile Include="ClienteDAO.cs" />
     <Compile Include="ConfiguracaoDoBancoDeDados.cs">
       <SubType>Form</SubType>
@@ -96,11 +97,11 @@
     <Compile Include="ConfiguracaoDoBancoDeDados.Designer.cs">
       <DependentUpon>ConfiguracaoDoBancoDeDados.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Views\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAtualizarCliente.cs">
       <SubType>Form</SubType>
@@ -203,8 +204,8 @@
     <EmbeddedResource Include="ConfiguracaoDoBancoDeDados.resx">
       <DependentUpon>ConfiguracaoDoBancoDeDados.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Views\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAtualizarCliente.resx">
       <DependentUpon>frmAtualizarCliente.cs</DependentUpon>

@@ -49,7 +49,7 @@ namespace APAC_TIS4
 
         private void bntCadastrar_Click(object sender, EventArgs e)
         {
-            CienteModels cliente = new CienteModels();
+            ClientModel cliente = new ClientModel();
 
             cliente.nome = txtNome.Text;
             cliente.localidade = txtLocalidade.Text;
@@ -65,7 +65,7 @@ namespace APAC_TIS4
             preencheGridComParametros(cliente);
         }
 
-        private void preencheGridComParametros(CienteModels ciente)
+        private void preencheGridComParametros(ClientModel ciente)
         {
             ClienteDAO cliente = new ClienteDAO();
 
@@ -86,12 +86,12 @@ namespace APAC_TIS4
 
         private void bntAtualizar_Click(object sender, EventArgs e)
         {
-            List<CienteModels> listClientes = new List<CienteModels>();
+            List<ClientModel> listClientes = new List<ClientModel>();
 
             for (int i = 0; i < dgvClientes.Rows.Count - 1; i++)
             {
                 System.Threading.Thread.Sleep(50);
-                CienteModels cliente = new CienteModels();
+                ClientModel cliente = new ClientModel();
                 cliente.Cliente_ID = int.Parse(dgvClientes.Rows[i].Cells[0].Value.ToString());
                 cliente.nome = dgvClientes.Rows[i].Cells[1].Value.ToString();
                 cliente.localidade = dgvClientes.Rows[i].Cells[2].Value.ToString();

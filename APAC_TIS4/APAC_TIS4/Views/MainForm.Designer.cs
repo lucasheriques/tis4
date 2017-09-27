@@ -38,8 +38,9 @@
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.gdfgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.clientsTab = new MetroFramework.Controls.MetroTabPage();
+            this.productPage = new MetroFramework.Controls.MetroTabPage();
+            this.clientPage = new MetroFramework.Controls.MetroTabPage();
+            this.btnClearFields = new MetroFramework.Controls.MetroButton();
             this.btnUpdateClient = new MetroFramework.Controls.MetroButton();
             this.lblClientID = new MetroFramework.Controls.MetroLabel();
             this.txtClientId = new MetroFramework.Controls.MetroTextBox();
@@ -57,11 +58,11 @@
             this.lblClientName = new MetroFramework.Controls.MetroLabel();
             this.txtClientName = new MetroFramework.Controls.MetroTextBox();
             this.dvgClientes = new MetroFramework.Controls.MetroGrid();
-            this.entityTab = new MetroFramework.Controls.MetroTabControl();
             this.ItemsSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.entityTab = new MetroFramework.Controls.MetroTabControl();
             this.contextMenuStrip3.SuspendLayout();
-            this.clientsTab.SuspendLayout();
+            this.clientPage.SuspendLayout();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dvgClientes)).BeginInit();
             this.entityTab.SuspendLayout();
@@ -90,49 +91,65 @@
             this.gdfgToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.gdfgToolStripMenuItem.Text = "gdfg.";
             // 
-            // metroTabPage1
+            // productPage
             // 
-            this.metroTabPage1.HorizontalScrollbarBarColor = true;
-            this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.HorizontalScrollbarSize = 10;
-            this.metroTabPage1.Location = new System.Drawing.Point(4, 35);
-            this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(1297, 470);
-            this.metroTabPage1.TabIndex = 2;
-            this.metroTabPage1.Text = "metroTabPage1";
-            this.metroTabPage1.VerticalScrollbarBarColor = true;
-            this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.VerticalScrollbarSize = 10;
+            this.productPage.HorizontalScrollbarBarColor = true;
+            this.productPage.HorizontalScrollbarHighlightOnWheel = false;
+            this.productPage.HorizontalScrollbarSize = 10;
+            this.productPage.Location = new System.Drawing.Point(4, 38);
+            this.productPage.Name = "productPage";
+            this.productPage.Size = new System.Drawing.Size(1297, 596);
+            this.productPage.TabIndex = 2;
+            this.productPage.Text = "Produtos";
+            this.productPage.VerticalScrollbarBarColor = true;
+            this.productPage.VerticalScrollbarHighlightOnWheel = false;
+            this.productPage.VerticalScrollbarSize = 10;
             // 
-            // clientsTab
+            // clientPage
             // 
-            this.clientsTab.Controls.Add(this.btnUpdateClient);
-            this.clientsTab.Controls.Add(this.lblClientID);
-            this.clientsTab.Controls.Add(this.txtClientId);
-            this.clientsTab.Controls.Add(this.lblReturnLabel);
-            this.clientsTab.Controls.Add(this.metroPanel1);
-            this.clientsTab.Controls.Add(this.spiClientActions);
-            this.clientsTab.Controls.Add(this.btnAddClient);
-            this.clientsTab.Controls.Add(this.cmdClientType);
-            this.clientsTab.Controls.Add(this.lblClientType);
-            this.clientsTab.Controls.Add(this.lblClientAddress);
-            this.clientsTab.Controls.Add(this.txtClientLocal);
-            this.clientsTab.Controls.Add(this.lblClientName);
-            this.clientsTab.Controls.Add(this.txtClientName);
-            this.clientsTab.Controls.Add(this.dvgClientes);
-            this.clientsTab.HorizontalScrollbarBarColor = true;
-            this.clientsTab.HorizontalScrollbarHighlightOnWheel = false;
-            this.clientsTab.HorizontalScrollbarSize = 10;
-            this.clientsTab.Location = new System.Drawing.Point(4, 38);
-            this.clientsTab.Name = "clientsTab";
-            this.clientsTab.Size = new System.Drawing.Size(1297, 467);
-            this.clientsTab.TabIndex = 1;
-            this.clientsTab.Text = "Clientes";
-            this.clientsTab.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.clientsTab.VerticalScrollbarBarColor = true;
-            this.clientsTab.VerticalScrollbarHighlightOnWheel = false;
-            this.clientsTab.VerticalScrollbarSize = 10;
-            this.clientsTab.Click += new System.EventHandler(this.clientsTab_Click);
+            this.clientPage.Controls.Add(this.btnClearFields);
+            this.clientPage.Controls.Add(this.btnUpdateClient);
+            this.clientPage.Controls.Add(this.lblClientID);
+            this.clientPage.Controls.Add(this.txtClientId);
+            this.clientPage.Controls.Add(this.lblReturnLabel);
+            this.clientPage.Controls.Add(this.metroPanel1);
+            this.clientPage.Controls.Add(this.spiClientActions);
+            this.clientPage.Controls.Add(this.btnAddClient);
+            this.clientPage.Controls.Add(this.cmdClientType);
+            this.clientPage.Controls.Add(this.lblClientType);
+            this.clientPage.Controls.Add(this.lblClientAddress);
+            this.clientPage.Controls.Add(this.txtClientLocal);
+            this.clientPage.Controls.Add(this.lblClientName);
+            this.clientPage.Controls.Add(this.txtClientName);
+            this.clientPage.Controls.Add(this.dvgClientes);
+            this.clientPage.HorizontalScrollbarBarColor = true;
+            this.clientPage.HorizontalScrollbarHighlightOnWheel = false;
+            this.clientPage.HorizontalScrollbarSize = 10;
+            this.clientPage.Location = new System.Drawing.Point(4, 38);
+            this.clientPage.Name = "clientPage";
+            this.clientPage.Size = new System.Drawing.Size(1297, 596);
+            this.clientPage.TabIndex = 1;
+            this.clientPage.Text = "Clientes";
+            this.clientPage.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.clientPage.VerticalScrollbarBarColor = true;
+            this.clientPage.VerticalScrollbarHighlightOnWheel = false;
+            this.clientPage.VerticalScrollbarSize = 10;
+            // 
+            // btnClearFields
+            // 
+            this.btnClearFields.BackColor = System.Drawing.SystemColors.Menu;
+            this.btnClearFields.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnClearFields.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnClearFields.Location = new System.Drawing.Point(14, 396);
+            this.btnClearFields.Name = "btnClearFields";
+            this.btnClearFields.Size = new System.Drawing.Size(150, 31);
+            this.btnClearFields.TabIndex = 4;
+            this.btnClearFields.Text = "Limpar campos";
+            this.btnClearFields.UseCustomBackColor = true;
+            this.btnClearFields.UseCustomForeColor = true;
+            this.btnClearFields.UseSelectable = true;
+            this.btnClearFields.UseStyleColors = true;
+            this.btnClearFields.Click += new System.EventHandler(this.btnClearFields_Click);
             // 
             // btnUpdateClient
             // 
@@ -140,7 +157,7 @@
             this.btnUpdateClient.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnUpdateClient.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnUpdateClient.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUpdateClient.Location = new System.Drawing.Point(966, 321);
+            this.btnUpdateClient.Location = new System.Drawing.Point(929, 396);
             this.btnUpdateClient.Name = "btnUpdateClient";
             this.btnUpdateClient.Size = new System.Drawing.Size(150, 31);
             this.btnUpdateClient.TabIndex = 16;
@@ -155,7 +172,7 @@
             // lblClientID
             // 
             this.lblClientID.AutoSize = true;
-            this.lblClientID.Location = new System.Drawing.Point(0, 55);
+            this.lblClientID.Location = new System.Drawing.Point(14, 55);
             this.lblClientID.Margin = new System.Windows.Forms.Padding(0);
             this.lblClientID.Name = "lblClientID";
             this.lblClientID.Size = new System.Drawing.Size(21, 19);
@@ -165,14 +182,12 @@
             // 
             // txtClientId
             // 
-            this.txtClientId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtClientId.BackColor = System.Drawing.SystemColors.ButtonFace;
             // 
             // 
             // 
             this.txtClientId.CustomButton.Image = null;
-            this.txtClientId.CustomButton.Location = new System.Drawing.Point(12, 1);
+            this.txtClientId.CustomButton.Location = new System.Drawing.Point(38, 1);
             this.txtClientId.CustomButton.Name = "";
             this.txtClientId.CustomButton.Size = new System.Drawing.Size(33, 33);
             this.txtClientId.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -183,7 +198,7 @@
             this.txtClientId.DisplayIcon = true;
             this.txtClientId.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.txtClientId.Lines = new string[0];
-            this.txtClientId.Location = new System.Drawing.Point(0, 77);
+            this.txtClientId.Location = new System.Drawing.Point(14, 77);
             this.txtClientId.Margin = new System.Windows.Forms.Padding(32, 3, 3, 32);
             this.txtClientId.MaxLength = 32767;
             this.txtClientId.Name = "txtClientId";
@@ -194,7 +209,7 @@
             this.txtClientId.SelectionLength = 0;
             this.txtClientId.SelectionStart = 0;
             this.txtClientId.ShortcutsEnabled = true;
-            this.txtClientId.Size = new System.Drawing.Size(46, 35);
+            this.txtClientId.Size = new System.Drawing.Size(72, 35);
             this.txtClientId.TabIndex = 14;
             this.txtClientId.UseCustomBackColor = true;
             this.txtClientId.UseCustomForeColor = true;
@@ -208,7 +223,7 @@
             this.lblReturnLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblReturnLabel.BackColor = System.Drawing.SystemColors.ControlText;
             this.lblReturnLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblReturnLabel.Location = new System.Drawing.Point(929, 365);
+            this.lblReturnLabel.Location = new System.Drawing.Point(918, 430);
             this.lblReturnLabel.Name = "lblReturnLabel";
             this.lblReturnLabel.Size = new System.Drawing.Size(366, 23);
             this.lblReturnLabel.TabIndex = 13;
@@ -228,9 +243,9 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(-4, 3);
+            this.metroPanel1.Location = new System.Drawing.Point(14, 11);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(1302, 42);
+            this.metroPanel1.Size = new System.Drawing.Size(1270, 41);
             this.metroPanel1.Style = MetroFramework.MetroColorStyle.White;
             this.metroPanel1.TabIndex = 12;
             this.metroPanel1.UseCustomBackColor = true;
@@ -241,8 +256,7 @@
             // 
             // btnClientDelMenu
             // 
-            this.btnClientDelMenu.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnClientDelMenu.Location = new System.Drawing.Point(275, 3);
+            this.btnClientDelMenu.Location = new System.Drawing.Point(275, 5);
             this.btnClientDelMenu.Name = "btnClientDelMenu";
             this.btnClientDelMenu.Size = new System.Drawing.Size(128, 29);
             this.btnClientDelMenu.TabIndex = 4;
@@ -251,7 +265,7 @@
             // 
             // btnClientUpdateMenu
             // 
-            this.btnClientUpdateMenu.Location = new System.Drawing.Point(141, 3);
+            this.btnClientUpdateMenu.Location = new System.Drawing.Point(141, 5);
             this.btnClientUpdateMenu.Name = "btnClientUpdateMenu";
             this.btnClientUpdateMenu.Size = new System.Drawing.Size(128, 29);
             this.btnClientUpdateMenu.TabIndex = 3;
@@ -261,7 +275,7 @@
             // 
             // btnClientAddMenu
             // 
-            this.btnClientAddMenu.Location = new System.Drawing.Point(7, 3);
+            this.btnClientAddMenu.Location = new System.Drawing.Point(7, 5);
             this.btnClientAddMenu.Name = "btnClientAddMenu";
             this.btnClientAddMenu.Size = new System.Drawing.Size(128, 29);
             this.btnClientAddMenu.TabIndex = 2;
@@ -272,7 +286,7 @@
             // spiClientActions
             // 
             this.spiClientActions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.spiClientActions.Location = new System.Drawing.Point(1108, 321);
+            this.spiClientActions.Location = new System.Drawing.Point(1085, 396);
             this.spiClientActions.Maximum = 100;
             this.spiClientActions.Name = "spiClientActions";
             this.spiClientActions.Size = new System.Drawing.Size(27, 31);
@@ -287,7 +301,7 @@
             this.btnAddClient.BackColor = System.Drawing.Color.LimeGreen;
             this.btnAddClient.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnAddClient.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAddClient.Location = new System.Drawing.Point(1145, 321);
+            this.btnAddClient.Location = new System.Drawing.Point(1134, 396);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(150, 31);
             this.btnAddClient.TabIndex = 3;
@@ -309,16 +323,16 @@
             "Pátio de Obras",
             "Escolas",
             "Casas de Acolhimento"});
-            this.cmdClientType.Location = new System.Drawing.Point(969, 147);
+            this.cmdClientType.Location = new System.Drawing.Point(14, 217);
             this.cmdClientType.Name = "cmdClientType";
-            this.cmdClientType.Size = new System.Drawing.Size(325, 35);
-            this.cmdClientType.TabIndex = 2;
+            this.cmdClientType.Size = new System.Drawing.Size(1270, 35);
+            this.cmdClientType.TabIndex = 1;
             this.cmdClientType.UseSelectable = true;
             // 
             // lblClientType
             // 
             this.lblClientType.AutoSize = true;
-            this.lblClientType.Location = new System.Drawing.Point(966, 125);
+            this.lblClientType.Location = new System.Drawing.Point(14, 195);
             this.lblClientType.Name = "lblClientType";
             this.lblClientType.Size = new System.Drawing.Size(35, 19);
             this.lblClientType.TabIndex = 8;
@@ -327,7 +341,7 @@
             // lblClientAddress
             // 
             this.lblClientAddress.AutoSize = true;
-            this.lblClientAddress.Location = new System.Drawing.Point(0, 195);
+            this.lblClientAddress.Location = new System.Drawing.Point(14, 270);
             this.lblClientAddress.Name = "lblClientAddress";
             this.lblClientAddress.Size = new System.Drawing.Size(72, 19);
             this.lblClientAddress.TabIndex = 6;
@@ -341,7 +355,7 @@
             // 
             // 
             this.txtClientLocal.CustomButton.Image = null;
-            this.txtClientLocal.CustomButton.Location = new System.Drawing.Point(1226, 1);
+            this.txtClientLocal.CustomButton.Location = new System.Drawing.Point(1202, 1);
             this.txtClientLocal.CustomButton.Name = "";
             this.txtClientLocal.CustomButton.Size = new System.Drawing.Size(67, 67);
             this.txtClientLocal.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -352,7 +366,7 @@
             this.txtClientLocal.DisplayIcon = true;
             this.txtClientLocal.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.txtClientLocal.Lines = new string[0];
-            this.txtClientLocal.Location = new System.Drawing.Point(0, 217);
+            this.txtClientLocal.Location = new System.Drawing.Point(14, 292);
             this.txtClientLocal.Margin = new System.Windows.Forms.Padding(3, 3, 3, 32);
             this.txtClientLocal.MaxLength = 32767;
             this.txtClientLocal.Multiline = true;
@@ -363,8 +377,8 @@
             this.txtClientLocal.SelectionLength = 0;
             this.txtClientLocal.SelectionStart = 0;
             this.txtClientLocal.ShortcutsEnabled = true;
-            this.txtClientLocal.Size = new System.Drawing.Size(1294, 69);
-            this.txtClientLocal.TabIndex = 1;
+            this.txtClientLocal.Size = new System.Drawing.Size(1270, 69);
+            this.txtClientLocal.TabIndex = 2;
             this.txtClientLocal.UseSelectable = true;
             this.txtClientLocal.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtClientLocal.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -372,7 +386,7 @@
             // lblClientName
             // 
             this.lblClientName.AutoSize = true;
-            this.lblClientName.Location = new System.Drawing.Point(0, 125);
+            this.lblClientName.Location = new System.Drawing.Point(14, 125);
             this.lblClientName.Margin = new System.Windows.Forms.Padding(0);
             this.lblClientName.Name = "lblClientName";
             this.lblClientName.Size = new System.Drawing.Size(46, 19);
@@ -387,7 +401,7 @@
             // 
             // 
             this.txtClientName.CustomButton.Image = null;
-            this.txtClientName.CustomButton.Location = new System.Drawing.Point(577, 1);
+            this.txtClientName.CustomButton.Location = new System.Drawing.Point(1236, 1);
             this.txtClientName.CustomButton.Name = "";
             this.txtClientName.CustomButton.Size = new System.Drawing.Size(33, 33);
             this.txtClientName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -398,7 +412,7 @@
             this.txtClientName.DisplayIcon = true;
             this.txtClientName.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.txtClientName.Lines = new string[0];
-            this.txtClientName.Location = new System.Drawing.Point(0, 147);
+            this.txtClientName.Location = new System.Drawing.Point(14, 147);
             this.txtClientName.Margin = new System.Windows.Forms.Padding(32, 3, 3, 32);
             this.txtClientName.MaxLength = 32767;
             this.txtClientName.Name = "txtClientName";
@@ -408,7 +422,7 @@
             this.txtClientName.SelectionLength = 0;
             this.txtClientName.SelectionStart = 0;
             this.txtClientName.ShortcutsEnabled = true;
-            this.txtClientName.Size = new System.Drawing.Size(611, 35);
+            this.txtClientName.Size = new System.Drawing.Size(1270, 35);
             this.txtClientName.TabIndex = 0;
             this.txtClientName.UseSelectable = true;
             this.txtClientName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -449,7 +463,7 @@
             this.dvgClientes.EnableHeadersVisualStyles = false;
             this.dvgClientes.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dvgClientes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dvgClientes.Location = new System.Drawing.Point(0, 55);
+            this.dvgClientes.Location = new System.Drawing.Point(0, 315);
             this.dvgClientes.Name = "dvgClientes";
             this.dvgClientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -462,24 +476,10 @@
             this.dvgClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dvgClientes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dvgClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgClientes.Size = new System.Drawing.Size(1297, 412);
+            this.dvgClientes.Size = new System.Drawing.Size(1297, 281);
             this.dvgClientes.Style = MetroFramework.MetroColorStyle.Green;
             this.dvgClientes.TabIndex = 2;
             this.dvgClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgClientes_CellContentClick);
-            // 
-            // entityTab
-            // 
-            this.entityTab.Controls.Add(this.clientsTab);
-            this.entityTab.Controls.Add(this.metroTabPage1);
-            this.entityTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.entityTab.Location = new System.Drawing.Point(0, 60);
-            this.entityTab.Margin = new System.Windows.Forms.Padding(30, 32, 32, 3);
-            this.entityTab.Name = "entityTab";
-            this.entityTab.SelectedIndex = 0;
-            this.entityTab.Size = new System.Drawing.Size(1305, 509);
-            this.entityTab.Style = MetroFramework.MetroColorStyle.Green;
-            this.entityTab.TabIndex = 3;
-            this.entityTab.UseSelectable = true;
             // 
             // ItemsSelected
             // 
@@ -497,9 +497,23 @@
             this.Editar.Name = "Editar";
             this.Editar.Width = 56;
             // 
+            // entityTab
+            // 
+            this.entityTab.Controls.Add(this.clientPage);
+            this.entityTab.Controls.Add(this.productPage);
+            this.entityTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.entityTab.Location = new System.Drawing.Point(0, 60);
+            this.entityTab.Margin = new System.Windows.Forms.Padding(30, 32, 32, 3);
+            this.entityTab.Name = "entityTab";
+            this.entityTab.SelectedIndex = 0;
+            this.entityTab.Size = new System.Drawing.Size(1305, 638);
+            this.entityTab.Style = MetroFramework.MetroColorStyle.Green;
+            this.entityTab.TabIndex = 3;
+            this.entityTab.UseSelectable = true;
+            // 
             // frmPrincipal
             // 
-            this.ClientSize = new System.Drawing.Size(1305, 569);
+            this.ClientSize = new System.Drawing.Size(1305, 698);
             this.Controls.Add(this.entityTab);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPrincipal";
@@ -507,8 +521,8 @@
             this.Text = "Padaria APAC";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.contextMenuStrip3.ResumeLayout(false);
-            this.clientsTab.ResumeLayout(false);
-            this.clientsTab.PerformLayout();
+            this.clientPage.ResumeLayout(false);
+            this.clientPage.PerformLayout();
             this.metroPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dvgClientes)).EndInit();
             this.entityTab.ResumeLayout(false);
@@ -522,8 +536,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
         private System.Windows.Forms.ToolStripMenuItem gdfgToolStripMenuItem;
-        private MetroFramework.Controls.MetroTabPage metroTabPage1;
-        private MetroFramework.Controls.MetroTabPage clientsTab;
+        private MetroFramework.Controls.MetroTabPage productPage;
+        private MetroFramework.Controls.MetroTabPage clientPage;
         private MetroFramework.Controls.MetroButton btnUpdateClient;
         private MetroFramework.Controls.MetroLabel lblClientID;
         private MetroFramework.Controls.MetroTextBox txtClientId;
@@ -544,6 +558,7 @@
         private MetroFramework.Controls.MetroTabControl entityTab;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ItemsSelected;
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
+        private MetroFramework.Controls.MetroButton btnClearFields;
     }
 }
 

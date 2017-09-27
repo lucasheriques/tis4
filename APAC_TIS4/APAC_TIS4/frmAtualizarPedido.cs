@@ -101,7 +101,7 @@ namespace APAC_TIS4
 
         private void bntPesquisar_Click(object sender, EventArgs e)
         {
-            CienteModels cliente = new CienteModels();
+            ClientModel cliente = new ClientModel();
             if (string.IsNullOrEmpty(txtNomeCliente.Text))
             {
                 cliente.nome = "%";

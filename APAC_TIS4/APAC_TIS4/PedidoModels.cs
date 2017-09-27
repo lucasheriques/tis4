@@ -28,7 +28,7 @@ namespace APAC_TIS4
 
         public PedidoModels() { }
 
-        public PedidoModels(ProdutoModels pProduto_ID, CienteModels pCliente_ID) {
+        public PedidoModels(ProdutoModels pProduto_ID, ClientModel pCliente_ID) {
             this._ItemPedido.Produto = pProduto_ID;
             this._ItemPedido.Cliente = pCliente_ID;
         }

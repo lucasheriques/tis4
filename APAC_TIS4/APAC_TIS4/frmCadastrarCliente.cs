@@ -54,7 +54,7 @@ namespace APAC_TIS4
 
         private void bntCadastrar_Click(object sender, EventArgs e)
         {
-            CienteModels cliente = new CienteModels();
+            ClientModel cliente = new ClientModel();
 
             cliente.nome = txtNome.Text;
             cliente.localidade = txtLocalidade.Text;

@@ -71,7 +71,7 @@ namespace APAC_TIS4
             }
         }
 
-        public DataSet visualizarGridComParametrosEID(CienteModels cliente)
+        public DataSet visualizarGridComParametrosEID(ClientModel cliente)
         {
             DataSet sDs = new DataSet();
             SingletonBD singleton = SingletonBD.getInstancia();
@@ -135,7 +135,7 @@ namespace APAC_TIS4
             }
         }
 
-        public DataSet visualizarGridComParametros(CienteModels cliente)
+        public DataSet visualizarGridComParametros(ClientModel cliente)
         {
             DataSet sDs = new DataSet();
             SingletonBD singleton = SingletonBD.getInstancia();
@@ -250,7 +250,7 @@ namespace APAC_TIS4
             }
         }
 
-        public string cadastrar(CienteModels cliente) {
+        public string cadastrar(ClientModel cliente) {
             string retorno = null;
             using (MySqlConnection conexaoMySQL = SingletonBD.getInstancia().getConexao())
             {
@@ -316,7 +316,7 @@ namespace APAC_TIS4
             }
         }
 
-        public bool atualizarClientes(List<CienteModels> listClientes)
+        public bool atualizarClientes(List<ClientModel> listClientes)
         {
             bool verificaAtualizacao = false;
 
@@ -329,7 +329,7 @@ namespace APAC_TIS4
 
                 try
                 {
-                    foreach (CienteModels cliente in listClientes) {
+                    foreach (ClientModel cliente in listClientes) {
                         MySqlCommand cmd = new MySqlCommand("UPDATE cliente SET Nome = @Nome, Localidade = @Localidade, Tipo = @Tipo WHERE Cliente_ID = @Cliente_ID;", conexaoMySQL);
                         cmd.CommandType = CommandType.StoredProcedure;
                         //cmd.Transaction = tran;

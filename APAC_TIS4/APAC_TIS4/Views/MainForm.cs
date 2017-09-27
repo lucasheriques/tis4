@@ -30,14 +30,22 @@ namespace APAC_TIS4
             {
                 dvgClientes.Columns[i].Width = 400;
             }
-        }        
+        }
+
+        public void clearClientFields()
+        {
+            txtClientId.Clear();
+            txtClientLocal.Clear();
+            txtClientName.Clear();
+            cmdClientType.ResetText();
+        }
 
         private void btnAddClient_Click(object sender, EventArgs e)
         {
             spiClientActions.Show();
-            Util.WaitNSeconds(1);
+            Util.WaitNSeconds(0.5);
 
-            CienteModels cliente = new CienteModels();
+            ClientModel cliente = new ClientModel();
 
             cliente.nome = txtClientName.Text;
             cliente.localidade = txtClientLocal.Text;
@@ -64,11 +72,6 @@ namespace APAC_TIS4
             
         }
 
-        private void clientsTab_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnClientUpdateMenu_Click(object sender, EventArgs e)
         {
             btnAddClient.Hide();
@@ -89,10 +92,10 @@ namespace APAC_TIS4
         {
             if (txtClientId.Visible)
             {
-                txtClientId.Text = dvgClientes.SelectedRows[0].Cells[0].Value.ToString();
-                txtClientName.Text = dvgClientes.SelectedRows[0].Cells[1].Value.ToString();
-                txtClientLocal.Text = dvgClientes.SelectedRows[0].Cells[2].Value.ToString();
-                cmdClientType.Text = dvgClientes.SelectedRows[0].Cells[3].Value.ToString();
+                txtClientId.Text = dvgClientes.SelectedRows[0].Cells[2].Value.ToString();
+                txtClientName.Text = dvgClientes.SelectedRows[0].Cells[3].Value.ToString();
+                txtClientLocal.Text = dvgClientes.SelectedRows[0].Cells[4].Value.ToString();
+                cmdClientType.Text = dvgClientes.SelectedRows[0].Cells[5].Value.ToString();
             }
         }
 
@@ -104,6 +107,11 @@ namespace APAC_TIS4
         private void lblReturnLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnClearFields_Click(object sender, EventArgs e)
+        {
+            clearClientFields();
         }
     }
 }

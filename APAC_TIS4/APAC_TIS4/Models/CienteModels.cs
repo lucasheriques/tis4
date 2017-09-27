@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace APAC_TIS4
 {
-    class CienteModels
+    class ClientModel
     {
         private int cliente_ID;
 
