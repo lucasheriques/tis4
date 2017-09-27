@@ -199,6 +199,7 @@
     <Compile Include="ReceitaModels.cs" />
     <Compile Include="Receita_InsumoModels.cs" />
     <Compile Include="SingletonBD.cs" />
+    <Compile Include="Util.cs" />
     <EmbeddedResource Include="ConfiguracaoDoBancoDeDados.resx">
       <DependentUpon>ConfiguracaoDoBancoDeDados.cs</DependentUpon>
     </EmbeddedResource>
