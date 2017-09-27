@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,42 +65,36 @@
             this.lucrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.bancoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bntCadastrarCliente = new System.Windows.Forms.Button();
-            this.btnCadastrarInsumos = new System.Windows.Forms.Button();
-            this.btnCadastrarPedio = new System.Windows.Forms.Button();
-            this.bntCadastrarProduto = new System.Windows.Forms.Button();
-            this.bntCadastrarReceita = new System.Windows.Forms.Button();
-            this.bntExcluirCliente = new System.Windows.Forms.Button();
-            this.bntExcluirInsumo = new System.Windows.Forms.Button();
-            this.bntExcluirPedido = new System.Windows.Forms.Button();
-            this.bntExcluirProduto = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.bntAtualizarCliente = new System.Windows.Forms.Button();
-            this.bntAtualizarInsumo = new System.Windows.Forms.Button();
-            this.bntAtualizarPedido = new System.Windows.Forms.Button();
-            this.bntAtualizarProduto = new System.Windows.Forms.Button();
-            this.bntAtualizarReceita = new System.Windows.Forms.Button();
-            this.bntVisualizarCliente = new System.Windows.Forms.Button();
-            this.bntVisualizarInsumo = new System.Windows.Forms.Button();
-            this.bntVisualizarPedido = new System.Windows.Forms.Button();
-            this.bntVisualizarProduto = new System.Windows.Forms.Button();
-            this.bntRelatorioProducao = new System.Windows.Forms.Button();
-            this.bntRelatorioGastos = new System.Windows.Forms.Button();
-            this.bntVisualizarReceita = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabCadastro = new System.Windows.Forms.TabPage();
-            this.tabVisualizacao = new System.Windows.Forms.TabPage();
-            this.tabAtualizacao = new System.Windows.Forms.TabPage();
-            this.Excluir = new System.Windows.Forms.TabPage();
-            this.tabRelatorios = new System.Windows.Forms.TabPage();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.gdfgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.entityTab = new MetroFramework.Controls.MetroTabControl();
+            this.clientsTab = new MetroFramework.Controls.MetroTabPage();
+            this.btnUpdateClient = new MetroFramework.Controls.MetroButton();
+            this.lblClientID = new MetroFramework.Controls.MetroLabel();
+            this.txtClientId = new MetroFramework.Controls.MetroTextBox();
+            this.lblReturnLabel = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.btnClientDelMenu = new MetroFramework.Controls.MetroButton();
+            this.btnClientUpdateMenu = new MetroFramework.Controls.MetroButton();
+            this.btnClientAddMenu = new MetroFramework.Controls.MetroButton();
+            this.spiClientActions = new MetroFramework.Controls.MetroProgressSpinner();
+            this.btnAddClient = new MetroFramework.Controls.MetroButton();
+            this.cmdClientType = new MetroFramework.Controls.MetroComboBox();
+            this.lblClientType = new MetroFramework.Controls.MetroLabel();
+            this.lblClientAddress = new MetroFramework.Controls.MetroLabel();
+            this.txtClientLocal = new MetroFramework.Controls.MetroTextBox();
+            this.lblClientName = new MetroFramework.Controls.MetroLabel();
+            this.txtClientName = new MetroFramework.Controls.MetroTextBox();
+            this.dvgClientes = new MetroFramework.Controls.MetroGrid();
+            this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.menuStrip2.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabCadastro.SuspendLayout();
-            this.tabVisualizacao.SuspendLayout();
-            this.tabAtualizacao.SuspendLayout();
-            this.Excluir.SuspendLayout();
-            this.tabRelatorios.SuspendLayout();
+            this.contextMenuStrip3.SuspendLayout();
+            this.entityTab.SuspendLayout();
+            this.clientsTab.SuspendLayout();
+            this.metroPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip2
@@ -105,7 +103,7 @@
             this.toolStripMenuItem1,
             this.toolStripMenuItem2,
             this.toolStripMenuItem4});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Location = new System.Drawing.Point(0, 60);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(1305, 24);
             this.menuStrip2.TabIndex = 0;
@@ -347,429 +345,436 @@
             this.bancoDeDadosToolStripMenuItem.Text = "Banco de Dados";
             this.bancoDeDadosToolStripMenuItem.Click += new System.EventHandler(this.bancoDeDadosToolStripMenuItem_Click);
             // 
-            // bntCadastrarCliente
+            // contextMenuStrip1
             // 
-            this.bntCadastrarCliente.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntCadastrarCliente.Image = ((System.Drawing.Image)(resources.GetObject("bntCadastrarCliente.Image")));
-            this.bntCadastrarCliente.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.bntCadastrarCliente.Location = new System.Drawing.Point(26, 176);
-            this.bntCadastrarCliente.Name = "bntCadastrarCliente";
-            this.bntCadastrarCliente.Size = new System.Drawing.Size(181, 78);
-            this.bntCadastrarCliente.TabIndex = 1;
-            this.bntCadastrarCliente.Text = "Cadastrar Cliente";
-            this.bntCadastrarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntCadastrarCliente.UseVisualStyleBackColor = false;
-            this.bntCadastrarCliente.Click += new System.EventHandler(this.bntCadastrarCliente_Click);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // btnCadastrarInsumos
+            // contextMenuStrip2
             // 
-            this.btnCadastrarInsumos.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btnCadastrarInsumos.Image = ((System.Drawing.Image)(resources.GetObject("btnCadastrarInsumos.Image")));
-            this.btnCadastrarInsumos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCadastrarInsumos.Location = new System.Drawing.Point(280, 176);
-            this.btnCadastrarInsumos.Name = "btnCadastrarInsumos";
-            this.btnCadastrarInsumos.Size = new System.Drawing.Size(204, 78);
-            this.btnCadastrarInsumos.TabIndex = 2;
-            this.btnCadastrarInsumos.Text = "Cadastrar Insumo";
-            this.btnCadastrarInsumos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCadastrarInsumos.UseVisualStyleBackColor = false;
-            this.btnCadastrarInsumos.Click += new System.EventHandler(this.btnCadastrarInsumos_Click);
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
             // 
-            // btnCadastrarPedio
+            // contextMenuStrip3
             // 
-            this.btnCadastrarPedio.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.btnCadastrarPedio.Image = ((System.Drawing.Image)(resources.GetObject("btnCadastrarPedio.Image")));
-            this.btnCadastrarPedio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCadastrarPedio.Location = new System.Drawing.Point(546, 176);
-            this.btnCadastrarPedio.Name = "btnCadastrarPedio";
-            this.btnCadastrarPedio.Size = new System.Drawing.Size(204, 78);
-            this.btnCadastrarPedio.TabIndex = 3;
-            this.btnCadastrarPedio.Text = "Cadastrar Pedido";
-            this.btnCadastrarPedio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCadastrarPedio.UseVisualStyleBackColor = false;
-            this.btnCadastrarPedio.Click += new System.EventHandler(this.btnCadastrarPedio_Click);
+            this.contextMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gdfgToolStripMenuItem});
+            this.contextMenuStrip3.Name = "contextMenuStrip3";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(103, 26);
             // 
-            // bntCadastrarProduto
+            // gdfgToolStripMenuItem
             // 
-            this.bntCadastrarProduto.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntCadastrarProduto.Image = ((System.Drawing.Image)(resources.GetObject("bntCadastrarProduto.Image")));
-            this.bntCadastrarProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntCadastrarProduto.Location = new System.Drawing.Point(801, 176);
-            this.bntCadastrarProduto.Name = "bntCadastrarProduto";
-            this.bntCadastrarProduto.Size = new System.Drawing.Size(204, 78);
-            this.bntCadastrarProduto.TabIndex = 4;
-            this.bntCadastrarProduto.Text = "Cadastrar Produto";
-            this.bntCadastrarProduto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntCadastrarProduto.UseVisualStyleBackColor = false;
-            this.bntCadastrarProduto.Click += new System.EventHandler(this.bntCadastrarProduto_Click);
+            this.gdfgToolStripMenuItem.Name = "gdfgToolStripMenuItem";
+            this.gdfgToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.gdfgToolStripMenuItem.Text = "gdfg.";
             // 
-            // bntCadastrarReceita
+            // entityTab
             // 
-            this.bntCadastrarReceita.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntCadastrarReceita.Image = ((System.Drawing.Image)(resources.GetObject("bntCadastrarReceita.Image")));
-            this.bntCadastrarReceita.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntCadastrarReceita.Location = new System.Drawing.Point(1058, 176);
-            this.bntCadastrarReceita.Name = "bntCadastrarReceita";
-            this.bntCadastrarReceita.Size = new System.Drawing.Size(204, 78);
-            this.bntCadastrarReceita.TabIndex = 5;
-            this.bntCadastrarReceita.Text = "Cadastrar Receita";
-            this.bntCadastrarReceita.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntCadastrarReceita.UseVisualStyleBackColor = false;
-            this.bntCadastrarReceita.Click += new System.EventHandler(this.bntCadastrarReceita_Click);
+            this.entityTab.Controls.Add(this.clientsTab);
+            this.entityTab.Controls.Add(this.metroTabPage1);
+            this.entityTab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.entityTab.Location = new System.Drawing.Point(0, 84);
+            this.entityTab.Margin = new System.Windows.Forms.Padding(30, 32, 32, 3);
+            this.entityTab.Name = "entityTab";
+            this.entityTab.SelectedIndex = 0;
+            this.entityTab.Size = new System.Drawing.Size(1305, 485);
+            this.entityTab.Style = MetroFramework.MetroColorStyle.Green;
+            this.entityTab.TabIndex = 3;
+            this.entityTab.UseSelectable = true;
             // 
-            // bntExcluirCliente
+            // clientsTab
             // 
-            this.bntExcluirCliente.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntExcluirCliente.Enabled = false;
-            this.bntExcluirCliente.Image = ((System.Drawing.Image)(resources.GetObject("bntExcluirCliente.Image")));
-            this.bntExcluirCliente.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.bntExcluirCliente.Location = new System.Drawing.Point(26, 176);
-            this.bntExcluirCliente.Name = "bntExcluirCliente";
-            this.bntExcluirCliente.Size = new System.Drawing.Size(181, 78);
-            this.bntExcluirCliente.TabIndex = 6;
-            this.bntExcluirCliente.Text = "Excluir Cliente";
-            this.bntExcluirCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntExcluirCliente.UseVisualStyleBackColor = false;
+            this.clientsTab.Controls.Add(this.btnUpdateClient);
+            this.clientsTab.Controls.Add(this.lblClientID);
+            this.clientsTab.Controls.Add(this.txtClientId);
+            this.clientsTab.Controls.Add(this.lblReturnLabel);
+            this.clientsTab.Controls.Add(this.metroPanel1);
+            this.clientsTab.Controls.Add(this.spiClientActions);
+            this.clientsTab.Controls.Add(this.btnAddClient);
+            this.clientsTab.Controls.Add(this.cmdClientType);
+            this.clientsTab.Controls.Add(this.lblClientType);
+            this.clientsTab.Controls.Add(this.lblClientAddress);
+            this.clientsTab.Controls.Add(this.txtClientLocal);
+            this.clientsTab.Controls.Add(this.lblClientName);
+            this.clientsTab.Controls.Add(this.txtClientName);
+            this.clientsTab.Controls.Add(this.dvgClientes);
+            this.clientsTab.HorizontalScrollbarBarColor = true;
+            this.clientsTab.HorizontalScrollbarHighlightOnWheel = false;
+            this.clientsTab.HorizontalScrollbarSize = 10;
+            this.clientsTab.Location = new System.Drawing.Point(4, 38);
+            this.clientsTab.Name = "clientsTab";
+            this.clientsTab.Size = new System.Drawing.Size(1297, 443);
+            this.clientsTab.TabIndex = 1;
+            this.clientsTab.Text = "Clientes";
+            this.clientsTab.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.clientsTab.VerticalScrollbarBarColor = true;
+            this.clientsTab.VerticalScrollbarHighlightOnWheel = false;
+            this.clientsTab.VerticalScrollbarSize = 10;
+            this.clientsTab.Click += new System.EventHandler(this.clientsTab_Click);
             // 
-            // bntExcluirInsumo
+            // btnUpdateClient
             // 
-            this.bntExcluirInsumo.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntExcluirInsumo.Enabled = false;
-            this.bntExcluirInsumo.Image = ((System.Drawing.Image)(resources.GetObject("bntExcluirInsumo.Image")));
-            this.bntExcluirInsumo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntExcluirInsumo.Location = new System.Drawing.Point(280, 176);
-            this.bntExcluirInsumo.Name = "bntExcluirInsumo";
-            this.bntExcluirInsumo.Size = new System.Drawing.Size(204, 78);
-            this.bntExcluirInsumo.TabIndex = 7;
-            this.bntExcluirInsumo.Text = "Excluir Insumo";
-            this.bntExcluirInsumo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntExcluirInsumo.UseVisualStyleBackColor = false;
+            this.btnUpdateClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdateClient.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnUpdateClient.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnUpdateClient.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnUpdateClient.Location = new System.Drawing.Point(966, 321);
+            this.btnUpdateClient.Name = "btnUpdateClient";
+            this.btnUpdateClient.Size = new System.Drawing.Size(150, 31);
+            this.btnUpdateClient.TabIndex = 16;
+            this.btnUpdateClient.Text = "Atualizar cliente";
+            this.btnUpdateClient.UseCustomBackColor = true;
+            this.btnUpdateClient.UseCustomForeColor = true;
+            this.btnUpdateClient.UseSelectable = true;
+            this.btnUpdateClient.UseStyleColors = true;
+            this.btnUpdateClient.Visible = false;
+            this.btnUpdateClient.Click += new System.EventHandler(this.btnUpdateClient_Click);
             // 
-            // bntExcluirPedido
+            // lblClientID
             // 
-            this.bntExcluirPedido.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntExcluirPedido.Enabled = false;
-            this.bntExcluirPedido.Image = ((System.Drawing.Image)(resources.GetObject("bntExcluirPedido.Image")));
-            this.bntExcluirPedido.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntExcluirPedido.Location = new System.Drawing.Point(546, 176);
-            this.bntExcluirPedido.Name = "bntExcluirPedido";
-            this.bntExcluirPedido.Size = new System.Drawing.Size(204, 78);
-            this.bntExcluirPedido.TabIndex = 8;
-            this.bntExcluirPedido.Text = "Excluir Pedido";
-            this.bntExcluirPedido.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntExcluirPedido.UseVisualStyleBackColor = false;
+            this.lblClientID.AutoSize = true;
+            this.lblClientID.Location = new System.Drawing.Point(0, 55);
+            this.lblClientID.Margin = new System.Windows.Forms.Padding(0);
+            this.lblClientID.Name = "lblClientID";
+            this.lblClientID.Size = new System.Drawing.Size(21, 19);
+            this.lblClientID.TabIndex = 15;
+            this.lblClientID.Text = "ID";
+            this.lblClientID.Visible = false;
             // 
-            // bntExcluirProduto
+            // txtClientId
             // 
-            this.bntExcluirProduto.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntExcluirProduto.Enabled = false;
-            this.bntExcluirProduto.Image = ((System.Drawing.Image)(resources.GetObject("bntExcluirProduto.Image")));
-            this.bntExcluirProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntExcluirProduto.Location = new System.Drawing.Point(801, 176);
-            this.bntExcluirProduto.Name = "bntExcluirProduto";
-            this.bntExcluirProduto.Size = new System.Drawing.Size(204, 78);
-            this.bntExcluirProduto.TabIndex = 9;
-            this.bntExcluirProduto.Text = "Excluir Produto";
-            this.bntExcluirProduto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntExcluirProduto.UseVisualStyleBackColor = false;
+            this.txtClientId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtClientId.BackColor = System.Drawing.SystemColors.ButtonFace;
             // 
-            // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.button1.Enabled = false;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(1058, 176);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(204, 78);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Excluir Receita";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
             // 
-            // bntAtualizarCliente
+            this.txtClientId.CustomButton.Image = null;
+            this.txtClientId.CustomButton.Location = new System.Drawing.Point(12, 1);
+            this.txtClientId.CustomButton.Name = "";
+            this.txtClientId.CustomButton.Size = new System.Drawing.Size(33, 33);
+            this.txtClientId.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtClientId.CustomButton.TabIndex = 1;
+            this.txtClientId.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtClientId.CustomButton.UseSelectable = true;
+            this.txtClientId.CustomButton.Visible = false;
+            this.txtClientId.DisplayIcon = true;
+            this.txtClientId.FontSize = MetroFramework.MetroTextBoxSize.Tall;
+            this.txtClientId.Lines = new string[0];
+            this.txtClientId.Location = new System.Drawing.Point(0, 77);
+            this.txtClientId.Margin = new System.Windows.Forms.Padding(32, 3, 3, 32);
+            this.txtClientId.MaxLength = 32767;
+            this.txtClientId.Name = "txtClientId";
+            this.txtClientId.PasswordChar = '\0';
+            this.txtClientId.ReadOnly = true;
+            this.txtClientId.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtClientId.SelectedText = "";
+            this.txtClientId.SelectionLength = 0;
+            this.txtClientId.SelectionStart = 0;
+            this.txtClientId.ShortcutsEnabled = true;
+            this.txtClientId.Size = new System.Drawing.Size(46, 35);
+            this.txtClientId.TabIndex = 14;
+            this.txtClientId.UseCustomBackColor = true;
+            this.txtClientId.UseCustomForeColor = true;
+            this.txtClientId.UseSelectable = true;
+            this.txtClientId.Visible = false;
+            this.txtClientId.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtClientId.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            this.bntAtualizarCliente.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntAtualizarCliente.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarCliente.Image")));
-            this.bntAtualizarCliente.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.bntAtualizarCliente.Location = new System.Drawing.Point(26, 176);
-            this.bntAtualizarCliente.Name = "bntAtualizarCliente";
-            this.bntAtualizarCliente.Size = new System.Drawing.Size(181, 78);
-            this.bntAtualizarCliente.TabIndex = 11;
-            this.bntAtualizarCliente.Text = "Atualizar Cliente";
-            this.bntAtualizarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntAtualizarCliente.UseVisualStyleBackColor = false;
-            this.bntAtualizarCliente.Click += new System.EventHandler(this.bntAtualizarCliente_Click);
+            // lblReturnLabel
             // 
-            // bntAtualizarInsumo
+            this.lblReturnLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblReturnLabel.BackColor = System.Drawing.SystemColors.ControlText;
+            this.lblReturnLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblReturnLabel.Location = new System.Drawing.Point(929, 365);
+            this.lblReturnLabel.Name = "lblReturnLabel";
+            this.lblReturnLabel.Size = new System.Drawing.Size(366, 23);
+            this.lblReturnLabel.TabIndex = 13;
+            this.lblReturnLabel.Text = "Cliente adicionado com sucesso!";
+            this.lblReturnLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblReturnLabel.Visible = false;
+            this.lblReturnLabel.Click += new System.EventHandler(this.lblReturnLabel_Click);
             // 
-            this.bntAtualizarInsumo.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntAtualizarInsumo.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarInsumo.Image")));
-            this.bntAtualizarInsumo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntAtualizarInsumo.Location = new System.Drawing.Point(280, 176);
-            this.bntAtualizarInsumo.Name = "bntAtualizarInsumo";
-            this.bntAtualizarInsumo.Size = new System.Drawing.Size(204, 78);
-            this.bntAtualizarInsumo.TabIndex = 12;
-            this.bntAtualizarInsumo.Text = "Atualizar Insumo";
-            this.bntAtualizarInsumo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntAtualizarInsumo.UseVisualStyleBackColor = false;
-            this.bntAtualizarInsumo.Click += new System.EventHandler(this.bntAtualizarInsumo_Click);
+            // metroPanel1
             // 
-            // bntAtualizarPedido
+            this.metroPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroPanel1.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.metroPanel1.Controls.Add(this.btnClientDelMenu);
+            this.metroPanel1.Controls.Add(this.btnClientUpdateMenu);
+            this.metroPanel1.Controls.Add(this.btnClientAddMenu);
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(-4, 3);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(1302, 42);
+            this.metroPanel1.Style = MetroFramework.MetroColorStyle.White;
+            this.metroPanel1.TabIndex = 12;
+            this.metroPanel1.UseCustomBackColor = true;
+            this.metroPanel1.UseCustomForeColor = true;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
             // 
-            this.bntAtualizarPedido.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntAtualizarPedido.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarPedido.Image")));
-            this.bntAtualizarPedido.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntAtualizarPedido.Location = new System.Drawing.Point(546, 176);
-            this.bntAtualizarPedido.Name = "bntAtualizarPedido";
-            this.bntAtualizarPedido.Size = new System.Drawing.Size(204, 78);
-            this.bntAtualizarPedido.TabIndex = 13;
-            this.bntAtualizarPedido.Text = "Atualizar Pedido";
-            this.bntAtualizarPedido.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntAtualizarPedido.UseVisualStyleBackColor = false;
-            this.bntAtualizarPedido.Click += new System.EventHandler(this.bntAtualizarPedido_Click);
+            // btnClientDelMenu
             // 
-            // bntAtualizarProduto
+            this.btnClientDelMenu.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnClientDelMenu.Location = new System.Drawing.Point(275, 3);
+            this.btnClientDelMenu.Name = "btnClientDelMenu";
+            this.btnClientDelMenu.Size = new System.Drawing.Size(128, 29);
+            this.btnClientDelMenu.TabIndex = 4;
+            this.btnClientDelMenu.Text = "Excluir";
+            this.btnClientDelMenu.UseSelectable = true;
             // 
-            this.bntAtualizarProduto.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntAtualizarProduto.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarProduto.Image")));
-            this.bntAtualizarProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntAtualizarProduto.Location = new System.Drawing.Point(801, 176);
-            this.bntAtualizarProduto.Name = "bntAtualizarProduto";
-            this.bntAtualizarProduto.Size = new System.Drawing.Size(204, 78);
-            this.bntAtualizarProduto.TabIndex = 14;
-            this.bntAtualizarProduto.Text = "Atualizar Produto";
-            this.bntAtualizarProduto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntAtualizarProduto.UseVisualStyleBackColor = false;
-            this.bntAtualizarProduto.Click += new System.EventHandler(this.bntAtualizarProduto_Click);
+            // btnClientUpdateMenu
             // 
-            // bntAtualizarReceita
+            this.btnClientUpdateMenu.Location = new System.Drawing.Point(141, 3);
+            this.btnClientUpdateMenu.Name = "btnClientUpdateMenu";
+            this.btnClientUpdateMenu.Size = new System.Drawing.Size(128, 29);
+            this.btnClientUpdateMenu.TabIndex = 3;
+            this.btnClientUpdateMenu.Text = "Atualizar";
+            this.btnClientUpdateMenu.UseSelectable = true;
+            this.btnClientUpdateMenu.Click += new System.EventHandler(this.btnClientUpdateMenu_Click);
             // 
-            this.bntAtualizarReceita.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntAtualizarReceita.Enabled = false;
-            this.bntAtualizarReceita.Image = ((System.Drawing.Image)(resources.GetObject("bntAtualizarReceita.Image")));
-            this.bntAtualizarReceita.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntAtualizarReceita.Location = new System.Drawing.Point(1058, 176);
-            this.bntAtualizarReceita.Name = "bntAtualizarReceita";
-            this.bntAtualizarReceita.Size = new System.Drawing.Size(204, 78);
-            this.bntAtualizarReceita.TabIndex = 15;
-            this.bntAtualizarReceita.Text = "Atualizar Receita";
-            this.bntAtualizarReceita.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntAtualizarReceita.UseVisualStyleBackColor = false;
+            // btnClientAddMenu
             // 
-            // bntVisualizarCliente
+            this.btnClientAddMenu.Location = new System.Drawing.Point(7, 3);
+            this.btnClientAddMenu.Name = "btnClientAddMenu";
+            this.btnClientAddMenu.Size = new System.Drawing.Size(128, 29);
+            this.btnClientAddMenu.TabIndex = 2;
+            this.btnClientAddMenu.Text = "Adicionar";
+            this.btnClientAddMenu.UseSelectable = true;
+            this.btnClientAddMenu.Click += new System.EventHandler(this.btnClientAddMenu_Click);
             // 
-            this.bntVisualizarCliente.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntVisualizarCliente.Image = ((System.Drawing.Image)(resources.GetObject("bntVisualizarCliente.Image")));
-            this.bntVisualizarCliente.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.bntVisualizarCliente.Location = new System.Drawing.Point(26, 176);
-            this.bntVisualizarCliente.Name = "bntVisualizarCliente";
-            this.bntVisualizarCliente.Size = new System.Drawing.Size(181, 78);
-            this.bntVisualizarCliente.TabIndex = 16;
-            this.bntVisualizarCliente.Text = "Visualizar Cliente";
-            this.bntVisualizarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntVisualizarCliente.UseVisualStyleBackColor = false;
-            this.bntVisualizarCliente.Click += new System.EventHandler(this.bntVisualizarCliente_Click);
+            // spiClientActions
             // 
-            // bntVisualizarInsumo
+            this.spiClientActions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.spiClientActions.Location = new System.Drawing.Point(1108, 321);
+            this.spiClientActions.Maximum = 100;
+            this.spiClientActions.Name = "spiClientActions";
+            this.spiClientActions.Size = new System.Drawing.Size(27, 31);
+            this.spiClientActions.TabIndex = 10;
+            this.spiClientActions.UseSelectable = true;
+            this.spiClientActions.Value = 20;
+            this.spiClientActions.Visible = false;
             // 
-            this.bntVisualizarInsumo.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntVisualizarInsumo.Image = ((System.Drawing.Image)(resources.GetObject("bntVisualizarInsumo.Image")));
-            this.bntVisualizarInsumo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntVisualizarInsumo.Location = new System.Drawing.Point(280, 176);
-            this.bntVisualizarInsumo.Name = "bntVisualizarInsumo";
-            this.bntVisualizarInsumo.Size = new System.Drawing.Size(204, 78);
-            this.bntVisualizarInsumo.TabIndex = 17;
-            this.bntVisualizarInsumo.Text = "Visualizar Insumo";
-            this.bntVisualizarInsumo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntVisualizarInsumo.UseVisualStyleBackColor = false;
-            this.bntVisualizarInsumo.Click += new System.EventHandler(this.bntVisualizarInsumo_Click);
+            // btnAddClient
             // 
-            // bntVisualizarPedido
+            this.btnAddClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddClient.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnAddClient.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.btnAddClient.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddClient.Location = new System.Drawing.Point(1145, 321);
+            this.btnAddClient.Name = "btnAddClient";
+            this.btnAddClient.Size = new System.Drawing.Size(150, 31);
+            this.btnAddClient.TabIndex = 3;
+            this.btnAddClient.Text = "Adicionar cliente";
+            this.btnAddClient.UseCustomBackColor = true;
+            this.btnAddClient.UseCustomForeColor = true;
+            this.btnAddClient.UseSelectable = true;
+            this.btnAddClient.UseStyleColors = true;
+            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
             // 
-            this.bntVisualizarPedido.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntVisualizarPedido.Image = ((System.Drawing.Image)(resources.GetObject("bntVisualizarPedido.Image")));
-            this.bntVisualizarPedido.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntVisualizarPedido.Location = new System.Drawing.Point(546, 176);
-            this.bntVisualizarPedido.Name = "bntVisualizarPedido";
-            this.bntVisualizarPedido.Size = new System.Drawing.Size(204, 78);
-            this.bntVisualizarPedido.TabIndex = 18;
-            this.bntVisualizarPedido.Text = "Visualizar Pedido";
-            this.bntVisualizarPedido.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntVisualizarPedido.UseVisualStyleBackColor = false;
-            this.bntVisualizarPedido.Click += new System.EventHandler(this.bntVisualizarPedido_Click);
+            // cmdClientType
             // 
-            // bntVisualizarProduto
+            this.cmdClientType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmdClientType.FontSize = MetroFramework.MetroComboBoxSize.Tall;
+            this.cmdClientType.FormattingEnabled = true;
+            this.cmdClientType.ItemHeight = 29;
+            this.cmdClientType.Items.AddRange(new object[] {
+            "Pátio de Obras",
+            "Escolas",
+            "Casas de Acolhimento"});
+            this.cmdClientType.Location = new System.Drawing.Point(969, 147);
+            this.cmdClientType.Name = "cmdClientType";
+            this.cmdClientType.Size = new System.Drawing.Size(325, 35);
+            this.cmdClientType.TabIndex = 2;
+            this.cmdClientType.UseSelectable = true;
+            this.cmdClientType.SelectedIndexChanged += new System.EventHandler(this.metroComboBox1_SelectedIndexChanged);
             // 
-            this.bntVisualizarProduto.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntVisualizarProduto.Image = ((System.Drawing.Image)(resources.GetObject("bntVisualizarProduto.Image")));
-            this.bntVisualizarProduto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntVisualizarProduto.Location = new System.Drawing.Point(801, 176);
-            this.bntVisualizarProduto.Name = "bntVisualizarProduto";
-            this.bntVisualizarProduto.Size = new System.Drawing.Size(204, 78);
-            this.bntVisualizarProduto.TabIndex = 19;
-            this.bntVisualizarProduto.Text = "Visualizar Produto";
-            this.bntVisualizarProduto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntVisualizarProduto.UseVisualStyleBackColor = false;
-            this.bntVisualizarProduto.Click += new System.EventHandler(this.bntVisualizarProduto_Click);
+            // lblClientType
             // 
-            // bntRelatorioProducao
+            this.lblClientType.AutoSize = true;
+            this.lblClientType.Location = new System.Drawing.Point(966, 125);
+            this.lblClientType.Name = "lblClientType";
+            this.lblClientType.Size = new System.Drawing.Size(35, 19);
+            this.lblClientType.TabIndex = 8;
+            this.lblClientType.Text = "Tipo";
             // 
-            this.bntRelatorioProducao.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntRelatorioProducao.Enabled = false;
-            this.bntRelatorioProducao.Image = ((System.Drawing.Image)(resources.GetObject("bntRelatorioProducao.Image")));
-            this.bntRelatorioProducao.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.bntRelatorioProducao.Location = new System.Drawing.Point(26, 176);
-            this.bntRelatorioProducao.Name = "bntRelatorioProducao";
-            this.bntRelatorioProducao.Size = new System.Drawing.Size(181, 78);
-            this.bntRelatorioProducao.TabIndex = 20;
-            this.bntRelatorioProducao.Text = "Relatório Produção";
-            this.bntRelatorioProducao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntRelatorioProducao.UseVisualStyleBackColor = false;
+            // lblClientAddress
             // 
-            // bntRelatorioGastos
+            this.lblClientAddress.AutoSize = true;
+            this.lblClientAddress.Location = new System.Drawing.Point(0, 195);
+            this.lblClientAddress.Name = "lblClientAddress";
+            this.lblClientAddress.Size = new System.Drawing.Size(72, 19);
+            this.lblClientAddress.TabIndex = 6;
+            this.lblClientAddress.Text = "Localidade";
             // 
-            this.bntRelatorioGastos.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntRelatorioGastos.Enabled = false;
-            this.bntRelatorioGastos.Image = ((System.Drawing.Image)(resources.GetObject("bntRelatorioGastos.Image")));
-            this.bntRelatorioGastos.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.bntRelatorioGastos.Location = new System.Drawing.Point(280, 176);
-            this.bntRelatorioGastos.Name = "bntRelatorioGastos";
-            this.bntRelatorioGastos.Size = new System.Drawing.Size(204, 78);
-            this.bntRelatorioGastos.TabIndex = 21;
-            this.bntRelatorioGastos.Text = "Relatório Custo";
-            this.bntRelatorioGastos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntRelatorioGastos.UseVisualStyleBackColor = false;
+            // txtClientLocal
             // 
-            // bntVisualizarReceita
+            this.txtClientLocal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             // 
-            this.bntVisualizarReceita.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bntVisualizarReceita.Image = ((System.Drawing.Image)(resources.GetObject("bntVisualizarReceita.Image")));
-            this.bntVisualizarReceita.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntVisualizarReceita.Location = new System.Drawing.Point(1058, 176);
-            this.bntVisualizarReceita.Name = "bntVisualizarReceita";
-            this.bntVisualizarReceita.Size = new System.Drawing.Size(204, 78);
-            this.bntVisualizarReceita.TabIndex = 22;
-            this.bntVisualizarReceita.Text = "Visualizar Receita";
-            this.bntVisualizarReceita.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bntVisualizarReceita.UseVisualStyleBackColor = false;
-            this.bntVisualizarReceita.Click += new System.EventHandler(this.bntVisualizarReceita_Click);
             // 
-            // button2
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.button2.Enabled = false;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button2.Location = new System.Drawing.Point(546, 176);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(204, 78);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Relatório Lucros";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = false;
+            this.txtClientLocal.CustomButton.Image = null;
+            this.txtClientLocal.CustomButton.Location = new System.Drawing.Point(1226, 1);
+            this.txtClientLocal.CustomButton.Name = "";
+            this.txtClientLocal.CustomButton.Size = new System.Drawing.Size(67, 67);
+            this.txtClientLocal.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtClientLocal.CustomButton.TabIndex = 1;
+            this.txtClientLocal.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtClientLocal.CustomButton.UseSelectable = true;
+            this.txtClientLocal.CustomButton.Visible = false;
+            this.txtClientLocal.DisplayIcon = true;
+            this.txtClientLocal.FontSize = MetroFramework.MetroTextBoxSize.Tall;
+            this.txtClientLocal.Lines = new string[0];
+            this.txtClientLocal.Location = new System.Drawing.Point(0, 217);
+            this.txtClientLocal.Margin = new System.Windows.Forms.Padding(3, 3, 3, 32);
+            this.txtClientLocal.MaxLength = 32767;
+            this.txtClientLocal.Multiline = true;
+            this.txtClientLocal.Name = "txtClientLocal";
+            this.txtClientLocal.PasswordChar = '\0';
+            this.txtClientLocal.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtClientLocal.SelectedText = "";
+            this.txtClientLocal.SelectionLength = 0;
+            this.txtClientLocal.SelectionStart = 0;
+            this.txtClientLocal.ShortcutsEnabled = true;
+            this.txtClientLocal.Size = new System.Drawing.Size(1294, 69);
+            this.txtClientLocal.TabIndex = 1;
+            this.txtClientLocal.UseSelectable = true;
+            this.txtClientLocal.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtClientLocal.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // tabControl1
+            // lblClientName
             // 
-            this.tabControl1.Controls.Add(this.tabCadastro);
-            this.tabControl1.Controls.Add(this.tabVisualizacao);
-            this.tabControl1.Controls.Add(this.tabAtualizacao);
-            this.tabControl1.Controls.Add(this.Excluir);
-            this.tabControl1.Controls.Add(this.tabRelatorios);
-            this.tabControl1.Location = new System.Drawing.Point(27, 38);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1278, 591);
-            this.tabControl1.TabIndex = 24;
+            this.lblClientName.AutoSize = true;
+            this.lblClientName.Location = new System.Drawing.Point(0, 125);
+            this.lblClientName.Margin = new System.Windows.Forms.Padding(0);
+            this.lblClientName.Name = "lblClientName";
+            this.lblClientName.Size = new System.Drawing.Size(46, 19);
+            this.lblClientName.TabIndex = 4;
+            this.lblClientName.Text = "Nome";
             // 
-            // tabCadastro
+            // txtClientName
             // 
-            this.tabCadastro.BackColor = System.Drawing.SystemColors.Control;
-            this.tabCadastro.Controls.Add(this.bntCadastrarCliente);
-            this.tabCadastro.Controls.Add(this.btnCadastrarInsumos);
-            this.tabCadastro.Controls.Add(this.btnCadastrarPedio);
-            this.tabCadastro.Controls.Add(this.bntCadastrarProduto);
-            this.tabCadastro.Controls.Add(this.bntCadastrarReceita);
-            this.tabCadastro.Location = new System.Drawing.Point(4, 22);
-            this.tabCadastro.Name = "tabCadastro";
-            this.tabCadastro.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCadastro.Size = new System.Drawing.Size(1270, 565);
-            this.tabCadastro.TabIndex = 0;
-            this.tabCadastro.Text = "Cadastro";
+            this.txtClientName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             // 
-            // tabVisualizacao
             // 
-            this.tabVisualizacao.BackColor = System.Drawing.SystemColors.Control;
-            this.tabVisualizacao.Controls.Add(this.bntVisualizarCliente);
-            this.tabVisualizacao.Controls.Add(this.bntVisualizarInsumo);
-            this.tabVisualizacao.Controls.Add(this.bntVisualizarReceita);
-            this.tabVisualizacao.Controls.Add(this.bntVisualizarPedido);
-            this.tabVisualizacao.Controls.Add(this.bntVisualizarProduto);
-            this.tabVisualizacao.Location = new System.Drawing.Point(4, 22);
-            this.tabVisualizacao.Name = "tabVisualizacao";
-            this.tabVisualizacao.Padding = new System.Windows.Forms.Padding(3);
-            this.tabVisualizacao.Size = new System.Drawing.Size(1270, 565);
-            this.tabVisualizacao.TabIndex = 1;
-            this.tabVisualizacao.Text = "Visualização";
             // 
-            // tabAtualizacao
+            this.txtClientName.CustomButton.Image = null;
+            this.txtClientName.CustomButton.Location = new System.Drawing.Point(577, 1);
+            this.txtClientName.CustomButton.Name = "";
+            this.txtClientName.CustomButton.Size = new System.Drawing.Size(33, 33);
+            this.txtClientName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtClientName.CustomButton.TabIndex = 1;
+            this.txtClientName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtClientName.CustomButton.UseSelectable = true;
+            this.txtClientName.CustomButton.Visible = false;
+            this.txtClientName.DisplayIcon = true;
+            this.txtClientName.FontSize = MetroFramework.MetroTextBoxSize.Tall;
+            this.txtClientName.Lines = new string[0];
+            this.txtClientName.Location = new System.Drawing.Point(0, 147);
+            this.txtClientName.Margin = new System.Windows.Forms.Padding(32, 3, 3, 32);
+            this.txtClientName.MaxLength = 32767;
+            this.txtClientName.Name = "txtClientName";
+            this.txtClientName.PasswordChar = '\0';
+            this.txtClientName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtClientName.SelectedText = "";
+            this.txtClientName.SelectionLength = 0;
+            this.txtClientName.SelectionStart = 0;
+            this.txtClientName.ShortcutsEnabled = true;
+            this.txtClientName.Size = new System.Drawing.Size(611, 35);
+            this.txtClientName.TabIndex = 0;
+            this.txtClientName.UseSelectable = true;
+            this.txtClientName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtClientName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            this.tabAtualizacao.BackColor = System.Drawing.SystemColors.Control;
-            this.tabAtualizacao.Controls.Add(this.bntAtualizarCliente);
-            this.tabAtualizacao.Controls.Add(this.bntAtualizarInsumo);
-            this.tabAtualizacao.Controls.Add(this.bntAtualizarPedido);
-            this.tabAtualizacao.Controls.Add(this.bntAtualizarProduto);
-            this.tabAtualizacao.Controls.Add(this.bntAtualizarReceita);
-            this.tabAtualizacao.Location = new System.Drawing.Point(4, 22);
-            this.tabAtualizacao.Name = "tabAtualizacao";
-            this.tabAtualizacao.Size = new System.Drawing.Size(1270, 565);
-            this.tabAtualizacao.TabIndex = 2;
-            this.tabAtualizacao.Text = "Atualização";
+            // dvgClientes
             // 
-            // Excluir
+            this.dvgClientes.AllowUserToAddRows = false;
+            this.dvgClientes.AllowUserToDeleteRows = false;
+            this.dvgClientes.AllowUserToResizeRows = false;
+            this.dvgClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dvgClientes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dvgClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dvgClientes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dvgClientes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dvgClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dvgClientes.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dvgClientes.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dvgClientes.EnableHeadersVisualStyles = false;
+            this.dvgClientes.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dvgClientes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dvgClientes.Location = new System.Drawing.Point(0, -15);
+            this.dvgClientes.Name = "dvgClientes";
+            this.dvgClientes.ReadOnly = true;
+            this.dvgClientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dvgClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dvgClientes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dvgClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dvgClientes.Size = new System.Drawing.Size(1297, 458);
+            this.dvgClientes.TabIndex = 2;
+            this.dvgClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgClientes_CellContentClick);
             // 
-            this.Excluir.BackColor = System.Drawing.SystemColors.Control;
-            this.Excluir.Controls.Add(this.bntExcluirCliente);
-            this.Excluir.Controls.Add(this.bntExcluirInsumo);
-            this.Excluir.Controls.Add(this.bntExcluirPedido);
-            this.Excluir.Controls.Add(this.bntExcluirProduto);
-            this.Excluir.Controls.Add(this.button1);
-            this.Excluir.Location = new System.Drawing.Point(4, 22);
-            this.Excluir.Name = "Excluir";
-            this.Excluir.Size = new System.Drawing.Size(1270, 565);
-            this.Excluir.TabIndex = 3;
-            this.Excluir.Text = "Excluir";
+            // metroTabPage1
             // 
-            // tabRelatorios
-            // 
-            this.tabRelatorios.BackColor = System.Drawing.SystemColors.Control;
-            this.tabRelatorios.Controls.Add(this.bntRelatorioProducao);
-            this.tabRelatorios.Controls.Add(this.button2);
-            this.tabRelatorios.Controls.Add(this.bntRelatorioGastos);
-            this.tabRelatorios.Location = new System.Drawing.Point(4, 22);
-            this.tabRelatorios.Name = "tabRelatorios";
-            this.tabRelatorios.Size = new System.Drawing.Size(1270, 565);
-            this.tabRelatorios.TabIndex = 4;
-            this.tabRelatorios.Text = "Relatórios";
+            this.metroTabPage1.HorizontalScrollbarBarColor = true;
+            this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPage1.HorizontalScrollbarSize = 10;
+            this.metroTabPage1.Location = new System.Drawing.Point(4, 35);
+            this.metroTabPage1.Name = "metroTabPage1";
+            this.metroTabPage1.Size = new System.Drawing.Size(1297, 446);
+            this.metroTabPage1.TabIndex = 2;
+            this.metroTabPage1.Text = "metroTabPage1";
+            this.metroTabPage1.VerticalScrollbarBarColor = true;
+            this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
             // frmPrincipal
             // 
-            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(1305, 615);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(1305, 569);
+            this.Controls.Add(this.entityTab);
             this.Controls.Add(this.menuStrip2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip2;
             this.Name = "frmPrincipal";
-            this.Text = "Principal - Padaria";
+            this.Padding = new System.Windows.Forms.Padding(0, 60, 0, 0);
+            this.Text = "Padaria APAC";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabCadastro.ResumeLayout(false);
-            this.tabVisualizacao.ResumeLayout(false);
-            this.tabAtualizacao.ResumeLayout(false);
-            this.Excluir.ResumeLayout(false);
-            this.tabRelatorios.ResumeLayout(false);
+            this.contextMenuStrip3.ResumeLayout(false);
+            this.entityTab.ResumeLayout(false);
+            this.clientsTab.ResumeLayout(false);
+            this.clientsTab.PerformLayout();
+            this.metroPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dvgClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -814,36 +819,31 @@
         private System.Windows.Forms.ToolStripMenuItem gastosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lucrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.Button bntCadastrarCliente;
-        private System.Windows.Forms.Button btnCadastrarInsumos;
-        private System.Windows.Forms.Button btnCadastrarPedio;
-        private System.Windows.Forms.Button bntCadastrarProduto;
-        private System.Windows.Forms.Button bntCadastrarReceita;
-        private System.Windows.Forms.Button bntExcluirCliente;
-        private System.Windows.Forms.Button bntExcluirInsumo;
-        private System.Windows.Forms.Button bntExcluirPedido;
-        private System.Windows.Forms.Button bntExcluirProduto;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button bntAtualizarCliente;
-        private System.Windows.Forms.Button bntAtualizarInsumo;
-        private System.Windows.Forms.Button bntAtualizarPedido;
-        private System.Windows.Forms.Button bntAtualizarProduto;
-        private System.Windows.Forms.Button bntAtualizarReceita;
-        private System.Windows.Forms.Button bntVisualizarCliente;
-        private System.Windows.Forms.Button bntVisualizarInsumo;
-        private System.Windows.Forms.Button bntVisualizarPedido;
-        private System.Windows.Forms.Button bntVisualizarProduto;
-        private System.Windows.Forms.Button bntRelatorioProducao;
-        private System.Windows.Forms.Button bntRelatorioGastos;
-        private System.Windows.Forms.Button bntVisualizarReceita;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ToolStripMenuItem bancoDeDadosToolStripMenuItem;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabCadastro;
-        private System.Windows.Forms.TabPage tabVisualizacao;
-        private System.Windows.Forms.TabPage tabAtualizacao;
-        private System.Windows.Forms.TabPage Excluir;
-        private System.Windows.Forms.TabPage tabRelatorios;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
+        private System.Windows.Forms.ToolStripMenuItem gdfgToolStripMenuItem;
+        private MetroFramework.Controls.MetroTabControl entityTab;
+        private MetroFramework.Controls.MetroTabPage clientsTab;
+        private MetroFramework.Controls.MetroGrid dvgClientes;
+        private MetroFramework.Controls.MetroTextBox txtClientName;
+        private MetroFramework.Controls.MetroLabel lblClientType;
+        private MetroFramework.Controls.MetroLabel lblClientAddress;
+        private MetroFramework.Controls.MetroTextBox txtClientLocal;
+        private MetroFramework.Controls.MetroLabel lblClientName;
+        private MetroFramework.Controls.MetroComboBox cmdClientType;
+        private MetroFramework.Controls.MetroButton btnAddClient;
+        private MetroFramework.Controls.MetroProgressSpinner spiClientActions;
+        private MetroFramework.Controls.MetroPanel metroPanel1;
+        private MetroFramework.Controls.MetroLabel lblReturnLabel;
+        private MetroFramework.Controls.MetroButton btnClientDelMenu;
+        private MetroFramework.Controls.MetroButton btnClientUpdateMenu;
+        private MetroFramework.Controls.MetroButton btnClientAddMenu;
+        private MetroFramework.Controls.MetroLabel lblClientID;
+        private MetroFramework.Controls.MetroTextBox txtClientId;
+        private MetroFramework.Controls.MetroButton btnUpdateClient;
+        private MetroFramework.Controls.MetroTabPage metroTabPage1;
     }
 }
 

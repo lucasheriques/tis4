@@ -53,7 +53,7 @@ namespace APAC_TIS4
 
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
-                    MySqlCommand cmd = new MySqlCommand("SELECT Nome, Localidade, Tipo FROM cliente;", conexaoMySQL);
+                    MySqlCommand cmd = new MySqlCommand("SELECT Cliente_ID as ID, Nome, Localidade, Tipo FROM cliente;", conexaoMySQL);
 
                     MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
 

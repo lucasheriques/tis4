@@ -7,14 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 
 namespace APAC_TIS4
 {
-    public partial class frmPrincipal : Form
+    public partial class frmPrincipal : MetroForm
     {
         public frmPrincipal()
         {
             InitializeComponent();
+            popularCliente();
+        }
+
+        public void popularCliente()
+        {
+            ClienteDAO cliente = new ClienteDAO();
+
+            DataSet dataSet = cliente.visualizarGrid();
+            dvgClientes.DataSource = dataSet.Tables["characters"];
+
+            for (int i = 0; i < dvgClientes.Columns.Count; i++)
+            {
+                dvgClientes.Columns[i].Width = 400;
+            }
         }
 
         private void bntCadastrarCliente_Click(object sender, EventArgs e)
@@ -31,14 +46,7 @@ namespace APAC_TIS4
             this.Hide();
             configuracaoDoBancoDeDados.Show();
         }
-
-        private void bntCadastrarProduto_Click(object sender, EventArgs e)
-        {
-            frmCadastrarProduto _frmCadastrarProduto = new frmCadastrarProduto(this);
-
-            _frmCadastrarProduto.Show();
-            this.Hide();
-        }
+        
 
         private void btnCadastrarPedio_Click(object sender, EventArgs e)
         {
@@ -224,6 +232,100 @@ namespace APAC_TIS4
             frmVisualizarProdutos _frmVisualizarProdutos = new frmVisualizarProdutos(this);
             _frmVisualizarProdutos.Show();
             this.Hide();
+        }
+
+        private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroProgressSpinner1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void WaitNSeconds(int segundos)
+        {
+            if (segundos < 1) return;
+            DateTime _desired = DateTime.Now.AddSeconds(segundos);
+            while (DateTime.Now < _desired)
+            {
+                System.Windows.Forms.Application.DoEvents();
+            }
+        }
+
+        private void btnAddClient_Click(object sender, EventArgs e)
+        {
+            spiClientActions.Show();
+            WaitNSeconds(1);
+
+            CienteModels cliente = new CienteModels();
+
+            cliente.nome = txtClientName.Text;
+            cliente.localidade = txtClientLocal.Text;
+            cliente.Tipo = cmdClientType.Text;
+
+            ClienteDAO clienteDAO = new ClienteDAO();
+            string retorno = clienteDAO.cadastrar(cliente);
+
+            if (String.IsNullOrEmpty(retorno))
+            {
+                MessageBox.Show("Erro ao criar cliente!!!");
+            }
+            else if (retorno.Contains("Erro de acesso ao MySQL : "))
+            {
+                MessageBox.Show(retorno);
+            }
+            else
+            {
+                spiClientActions.Hide();
+                lblReturnLabel.Show();
+                lblReturnLabel.Text = "Cliente adicionado com sucesso!";
+                popularCliente();
+            }
+            
+        }
+
+        private void clientsTab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClientUpdateMenu_Click(object sender, EventArgs e)
+        {
+            btnAddClient.Hide();
+            btnUpdateClient.Show();
+            lblClientID.Show();
+            txtClientId.Show();
+        }
+
+        private void btnClientAddMenu_Click(object sender, EventArgs e)
+        {
+            btnAddClient.Show();
+            btnUpdateClient.Hide();
+            lblClientID.Hide();
+            txtClientId.Hide();
+        }
+
+        private void dvgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (txtClientId.Visible)
+            {
+                txtClientId.Text = dvgClientes.SelectedRows[0].Cells[0].Value.ToString();
+                txtClientName.Text = dvgClientes.SelectedRows[0].Cells[1].Value.ToString();
+                txtClientLocal.Text = dvgClientes.SelectedRows[0].Cells[2].Value.ToString();
+                cmdClientType.Text = dvgClientes.SelectedRows[0].Cells[3].Value.ToString();
+            }
+        }
+
+        private void btnUpdateClient_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblReturnLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
