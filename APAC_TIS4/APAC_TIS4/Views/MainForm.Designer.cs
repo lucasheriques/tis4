@@ -283,7 +283,7 @@
             this.mbAtualizarProdutos.BackColor = System.Drawing.SystemColors.HotTrack;
             this.mbAtualizarProdutos.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.mbAtualizarProdutos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.mbAtualizarProdutos.Location = new System.Drawing.Point(910, 367);
+            this.mbAtualizarProdutos.Location = new System.Drawing.Point(897, 367);
             this.mbAtualizarProdutos.Name = "mbAtualizarProdutos";
             this.mbAtualizarProdutos.Size = new System.Drawing.Size(166, 31);
             this.mbAtualizarProdutos.TabIndex = 31;
@@ -713,7 +713,7 @@
             this.btnUpdateClient.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnUpdateClient.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnUpdateClient.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnUpdateClient.Location = new System.Drawing.Point(918, 379);
+            this.btnUpdateClient.Location = new System.Drawing.Point(918, 369);
             this.btnUpdateClient.Name = "btnUpdateClient";
             this.btnUpdateClient.Size = new System.Drawing.Size(150, 31);
             this.btnUpdateClient.TabIndex = 16;
@@ -779,7 +779,7 @@
             this.lblReturnLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblReturnLabel.BackColor = System.Drawing.SystemColors.ControlText;
             this.lblReturnLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.lblReturnLabel.Location = new System.Drawing.Point(918, 431);
+            this.lblReturnLabel.Location = new System.Drawing.Point(918, 413);
             this.lblReturnLabel.Name = "lblReturnLabel";
             this.lblReturnLabel.Size = new System.Drawing.Size(366, 23);
             this.lblReturnLabel.TabIndex = 13;
@@ -857,7 +857,7 @@
             this.btnAddClient.BackColor = System.Drawing.Color.LimeGreen;
             this.btnAddClient.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnAddClient.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnAddClient.Location = new System.Drawing.Point(1134, 379);
+            this.btnAddClient.Location = new System.Drawing.Point(1134, 369);
             this.btnAddClient.Name = "btnAddClient";
             this.btnAddClient.Size = new System.Drawing.Size(150, 31);
             this.btnAddClient.TabIndex = 3;
@@ -1019,7 +1019,7 @@
             this.dvgClientes.EnableHeadersVisualStyles = false;
             this.dvgClientes.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dvgClientes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dvgClientes.Location = new System.Drawing.Point(0, 431);
+            this.dvgClientes.Location = new System.Drawing.Point(0, 439);
             this.dvgClientes.Name = "dvgClientes";
             this.dvgClientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1032,7 +1032,7 @@
             this.dvgClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dvgClientes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dvgClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgClientes.Size = new System.Drawing.Size(1297, 165);
+            this.dvgClientes.Size = new System.Drawing.Size(1297, 157);
             this.dvgClientes.Style = MetroFramework.MetroColorStyle.Green;
             this.dvgClientes.TabIndex = 2;
             this.dvgClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgClientes_CellContentClick);
