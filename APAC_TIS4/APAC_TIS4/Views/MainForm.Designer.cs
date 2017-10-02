@@ -93,9 +93,9 @@
             this.ItemsSelected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.entityTab = new MetroFramework.Controls.MetroTabControl();
-            this.tabPedidos = new System.Windows.Forms.TabPage();
-            this.tabInsumos = new System.Windows.Forms.TabPage();
-            this.tabReceitas = new System.Windows.Forms.TabPage();
+            this.PedidosPage = new MetroFramework.Controls.MetroTabPage();
+            this.Insumo = new MetroFramework.Controls.MetroTabPage();
+            this.ReceitaPage = new MetroFramework.Controls.MetroTabPage();
             this.contextMenuStrip3.SuspendLayout();
             this.productPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mgProduto)).BeginInit();
@@ -1057,9 +1057,9 @@
             // 
             this.entityTab.Controls.Add(this.clientPage);
             this.entityTab.Controls.Add(this.productPage);
-            this.entityTab.Controls.Add(this.tabPedidos);
-            this.entityTab.Controls.Add(this.tabInsumos);
-            this.entityTab.Controls.Add(this.tabReceitas);
+            this.entityTab.Controls.Add(this.PedidosPage);
+            this.entityTab.Controls.Add(this.Insumo);
+            this.entityTab.Controls.Add(this.ReceitaPage);
             this.entityTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.entityTab.Location = new System.Drawing.Point(0, 60);
             this.entityTab.Margin = new System.Windows.Forms.Padding(30, 32, 32, 3);
@@ -1070,29 +1070,47 @@
             this.entityTab.TabIndex = 3;
             this.entityTab.UseSelectable = true;
             // 
-            // tabPedidos
+            // PedidosPage
             // 
-            this.tabPedidos.Location = new System.Drawing.Point(4, 38);
-            this.tabPedidos.Name = "tabPedidos";
-            this.tabPedidos.Size = new System.Drawing.Size(1297, 596);
-            this.tabPedidos.TabIndex = 3;
-            this.tabPedidos.Text = "Pedidos";
+            this.PedidosPage.HorizontalScrollbarBarColor = true;
+            this.PedidosPage.HorizontalScrollbarHighlightOnWheel = false;
+            this.PedidosPage.HorizontalScrollbarSize = 10;
+            this.PedidosPage.Location = new System.Drawing.Point(4, 38);
+            this.PedidosPage.Name = "PedidosPage";
+            this.PedidosPage.Size = new System.Drawing.Size(1297, 596);
+            this.PedidosPage.TabIndex = 6;
+            this.PedidosPage.Text = "Pedidos";
+            this.PedidosPage.VerticalScrollbarBarColor = true;
+            this.PedidosPage.VerticalScrollbarHighlightOnWheel = false;
+            this.PedidosPage.VerticalScrollbarSize = 10;
             // 
-            // tabInsumos
+            // Insumo
             // 
-            this.tabInsumos.Location = new System.Drawing.Point(4, 38);
-            this.tabInsumos.Name = "tabInsumos";
-            this.tabInsumos.Size = new System.Drawing.Size(1297, 596);
-            this.tabInsumos.TabIndex = 4;
-            this.tabInsumos.Text = "Insumos";
+            this.Insumo.HorizontalScrollbarBarColor = true;
+            this.Insumo.HorizontalScrollbarHighlightOnWheel = false;
+            this.Insumo.HorizontalScrollbarSize = 10;
+            this.Insumo.Location = new System.Drawing.Point(4, 38);
+            this.Insumo.Name = "Insumo";
+            this.Insumo.Size = new System.Drawing.Size(1297, 596);
+            this.Insumo.TabIndex = 7;
+            this.Insumo.Text = "Insumo";
+            this.Insumo.VerticalScrollbarBarColor = true;
+            this.Insumo.VerticalScrollbarHighlightOnWheel = false;
+            this.Insumo.VerticalScrollbarSize = 10;
             // 
-            // tabReceitas
+            // ReceitaPage
             // 
-            this.tabReceitas.Location = new System.Drawing.Point(4, 38);
-            this.tabReceitas.Name = "tabReceitas";
-            this.tabReceitas.Size = new System.Drawing.Size(1297, 596);
-            this.tabReceitas.TabIndex = 5;
-            this.tabReceitas.Text = "Receitas";
+            this.ReceitaPage.HorizontalScrollbarBarColor = true;
+            this.ReceitaPage.HorizontalScrollbarHighlightOnWheel = false;
+            this.ReceitaPage.HorizontalScrollbarSize = 10;
+            this.ReceitaPage.Location = new System.Drawing.Point(4, 38);
+            this.ReceitaPage.Name = "ReceitaPage";
+            this.ReceitaPage.Size = new System.Drawing.Size(1297, 596);
+            this.ReceitaPage.TabIndex = 8;
+            this.ReceitaPage.Text = "Receita";
+            this.ReceitaPage.VerticalScrollbarBarColor = true;
+            this.ReceitaPage.VerticalScrollbarHighlightOnWheel = false;
+            this.ReceitaPage.VerticalScrollbarSize = 10;
             // 
             // frmPrincipal
             // 
@@ -1174,9 +1192,9 @@
         private MetroFramework.Controls.MetroGrid mgProduto;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
-        private System.Windows.Forms.TabPage tabPedidos;
-        private System.Windows.Forms.TabPage tabInsumos;
-        private System.Windows.Forms.TabPage tabReceitas;
+        private MetroFramework.Controls.MetroTabPage PedidosPage;
+        private MetroFramework.Controls.MetroTabPage Insumo;
+        private MetroFramework.Controls.MetroTabPage ReceitaPage;
     }
 }
 
