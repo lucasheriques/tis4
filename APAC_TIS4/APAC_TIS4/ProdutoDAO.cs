@@ -371,5 +371,39 @@ namespace APAC_TIS4
                 return verificaAtualizacao;
             }
         }
+
+        public bool excluirProdutos(List<int> listProdutosId) {
+            bool verifica = false;
+
+            SingletonBD singleton = SingletonBD.getInstancia();
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            {
+                conexaoMySQL.Open();
+
+                //MySqlTransaction tran = conexaoMySQL.BeginTransaction();
+
+                try
+                {
+                    foreach (int produtoID in listProdutosId)
+                    {
+                        MySqlCommand cmd = new MySqlCommand("DELETE FROM produto WHERE Produto_ID = @Produto_ID;", conexaoMySQL);
+                        //cmd.Transaction = tran;
+
+                        cmd.Parameters.AddWithValue("@Produto_ID", produtoID);
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    //tran.Commit();
+                    verifica = true;
+                }
+                finally
+                {
+                    conexaoMySQL.Close();
+                }
+            }
+
+            return verifica;
+        }
     }
 }
