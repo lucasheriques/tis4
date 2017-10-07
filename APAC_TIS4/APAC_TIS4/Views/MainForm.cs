@@ -399,31 +399,25 @@ namespace APAC_TIS4
 
         private void metroButton7_Click(object sender, EventArgs e)
         {
+            PedidoModels pedidoModels = new PedidoModels();
+            pedidoModels.Pedido_ID = int.Parse(metroTextBox3.Text.ToString());
 
-            /*            metroProgressSpinner2.Show();
-            Util.WaitNSeconds(0.5);
-
-            List<PedidoModels> listPedidos = new List<PedidoModels>();
-
-            for (int i = 0; i < dvgPedidos.Rows.Count - 1; i++)
-            {
-                System.Threading.Thread.Sleep(50);
-                PedidoModels pedido = new PedidoModels();
-                pedido.Pedido_ID = int.Parse(dvgPedidos.Rows[i].Cells[0].Value.ToString());
-                pedido.Data_Entrega = DateTime.Parse(dvgPedidos.Rows[i].Cells[4].Value.ToString());
-                pedido.Quantidade = int.Parse(dvgPedidos.Rows[i].Cells[6].Value.ToString());
-                pedido.StrData_Entrega = pedido.Data_Entrega.ToString("yyyy-MM-dd HH:mm:ss");
-                listPedidos.Add(pedido);
-            }
+            pedidoModels._ItemPedido = new ItemPedido();
+            pedidoModels._ItemPedido.Cliente_ID = int.Parse(metroComboBox1.SelectedValue.ToString());
+            pedidoModels._ItemPedido.Produto_ID = int.Parse(metroComboBox2.SelectedValue.ToString());
+            pedidoModels.Data_Pedido = dateTimePicker1.Value.Date;
+            pedidoModels.Data_Entrega = dateTimePicker2.Value.Date;
+            pedidoModels.Quantidade = int.Parse(mtxtQantidade.Text);
+            pedidoModels.PrecoTotal = float.Parse(metroTextBox2.Text);
 
             PedidoDAO pedidoDAO = new PedidoDAO();
 
-            bool verificaAtualizacao = pedidoDAO.atualizarInumos(listPedidos);
+            bool verificaAtualizacao = pedidoDAO.atualizar(pedidoModels);
             if (verificaAtualizacao)
             {
                 metroProgressSpinner2.Hide();
                 metroLabel16.Show();
-                metroLabel16.Text = "Pedido adicionado com sucesso!";
+                metroLabel16.Text = "Pedido atualizado com sucesso!";
                 popularPedidos();
                 setReadOnlyGridPedidos(true);
             }
@@ -431,7 +425,6 @@ namespace APAC_TIS4
             {
                 MessageBox.Show("Erro na atualização dos dados.");
             }
-            */
         }
 
         private void metroButton6_Click(object sender, EventArgs e)
@@ -622,5 +615,40 @@ namespace APAC_TIS4
                 }
             }
         }
+
+        private void metroButton8_Click(object sender, EventArgs e)
+        {
+            spiClientActions.Show();
+            Util.WaitNSeconds(0.5);
+            List<int> listPedidosID = new List<int>();
+            for (int i = 0; i < mgProduto.RowCount-1; i++)
+            {
+                PedidoModels pedidoModels = new PedidoModels();
+
+                var checkbox = dvgPedidos.Rows[i].Cells[0].Value;
+
+                if (checkbox != null)
+                {
+                    if (checkbox.ToString().ToLower() == "true")
+                    {
+                        listPedidosID.Add(int.Parse(dvgPedidos.Rows[i].Cells[2].Value.ToString()));
+                    }
+                }
+
+            }
+
+            PedidoDAO pedidoDAO = new PedidoDAO();
+            bool verifica = pedidoDAO.excluirPedidos(listPedidosID);
+            if (verifica)
+            {
+                metroLabel16.Show();
+                metroLabel16.Text = "Pedidos(s) deletado(s) com sucesso!";
+                popularPedidos();
+                setReadOnlyGridProduto(true);
+            }
+
+        }
+
+        
     }
 }

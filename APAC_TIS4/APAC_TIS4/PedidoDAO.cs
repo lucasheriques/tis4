@@ -224,6 +224,45 @@ namespace APAC_TIS4
             }
         }
 
+        public bool atualizar(PedidoModels pedidoModels) {
+            bool verifica = false;
+
+            using (MySqlConnection conexaoMySQL = SingletonBD.getInstancia().getConexao())
+            {
+                try
+                {
+                    conexaoMySQL.Open();
+
+                    /* criando o comando sql indicando a nossa conexão e a nossa
+                    procedure */
+                    MySqlCommand cmd = new MySqlCommand("SP_pedidoUpdate", conexaoMySQL);
+                    /* aqui indicamos que usaremos stored procedure como tipo de comando*/
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    /* aqui passamos os parametros para a procedure spInsere que criamos
+                    de acordo com os textbox*/
+                    cmd.Parameters.AddWithValue("_Pedido_ID", pedidoModels.Pedido_ID);
+                    cmd.Parameters.AddWithValue("_Produto_ID", pedidoModels._ItemPedido.Produto_ID);
+                    cmd.Parameters.AddWithValue("_Cliente_ID", pedidoModels._ItemPedido.Cliente_ID);
+                    cmd.Parameters.AddWithValue("_Data_Entrega", pedidoModels.Data_Entrega);
+                    cmd.Parameters.AddWithValue("_Data_Pedido", pedidoModels.Data_Pedido);
+                    cmd.Parameters.AddWithValue("_Quantidade", pedidoModels.Quantidade);
+                    cmd.Parameters.AddWithValue("_PrecoTotal", pedidoModels.PrecoTotal);
+
+                    cmd.ExecuteNonQuery();
+                    verifica = true;
+                }
+                catch (MySqlException msqle)
+                {
+
+                }
+                finally
+                {
+                    conexaoMySQL.Close();
+                }
+            }
+
+            return verifica;
+        }
 
         public string cadastrar(PedidoModels pedido)
         {
@@ -264,6 +303,39 @@ namespace APAC_TIS4
             }
         }
 
+        public bool excluirPedidos(List<int> listPedidosID) {
+            bool verifica = false;
+
+            SingletonBD singleton = SingletonBD.getInstancia();
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            {
+                conexaoMySQL.Open();
+
+                //MySqlTransaction tran = conexaoMySQL.BeginTransaction();
+
+                try
+                {
+                    foreach (int pedidosID in listPedidosID)
+                    {
+                        MySqlCommand cmd = new MySqlCommand("DELETE FROM Pedido WHERE Pedido_ID = @Pedido_ID;", conexaoMySQL);
+                        //cmd.Transaction = tran;
+
+                        cmd.Parameters.AddWithValue("@Pedido_ID", pedidosID);
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    //tran.Commit();
+                    verifica = true;
+                }
+                finally
+                {
+                    conexaoMySQL.Close();
+                }
+            }
+
+            return verifica;
+        }
 
     }
 }
