@@ -868,7 +868,7 @@ namespace APAC_TIS4
         private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
         {
             int quantidadeInsumo = listBox2.Items.Count;
-            int quantidadePeso = textBox2.Text.Split('\n').Length;
+            int quantidadePeso = textBox5.Text.Split('\n').Length;
             if ((Keys)e.KeyChar == Keys.Enter && e.Handled != true)
             {
                 if (quantidadePeso >= quantidadeInsumo)

@@ -23,7 +23,7 @@ namespace APAC_TIS4
 
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
-                    MySqlCommand cmd = new MySqlCommand(@"SELECT '' AS Nome, '' AS Insumo_ID  UNION SELECT Nome, Insumo_ID FROM insumo;", conexaoMySQL);
+                    MySqlCommand cmd = new MySqlCommand("SELECT Nome, Insumo_ID FROM insumo;", conexaoMySQL);
 
                     MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
 
