@@ -23,7 +23,58 @@ namespace APAC_TIS4
             popularComboPedidos();
             inicializarProdutos();
             inicializarPedidos();
+            inicializarReceita();
         }
+
+        private void inicializarReceita() {
+            popularComboProdutoReceita(); //metroComboBox3
+            popularReceita();
+            popularInsumo(); // textBox3
+            metroTextBox1.Hide();
+            metroLabel19.Hide();
+            metroButton12.Hide();
+            metroButton15.Hide();
+            metroButton14.Hide();
+        }
+
+        private void popularInsumo()
+        {
+            InsumoDAO insumoDAO = new InsumoDAO();
+
+            DataSet dataSet = insumoDAO.preencheCombo();
+
+            foreach (DataTable table in dataSet.Tables)
+            {
+                foreach (DataRow dr in table.Rows)
+                {
+                    listBox1.Items.Add(dr["Nome"].ToString());
+                }
+            }
+        }
+
+        private void popularReceita() {
+            ReceitaDAO receitaDAO = new ReceitaDAO();
+
+            DataSet dataSet = receitaDAO.visualizarGridComID();
+
+            metroGrid1.DataSource = dataSet.Tables["characters"];
+
+            for (int i = 0; i < metroGrid1.Columns.Count; i++)
+            {
+                metroGrid1.Columns[i].Width = 400;
+            }
+        }
+
+        private void popularComboProdutoReceita() {
+            ProdutoDAO produtoDAO = new ProdutoDAO();
+
+            DataSet dataSet = produtoDAO.preencheCombo();
+            metroComboBox3.ValueMember = "Produto_ID";
+            metroComboBox3.DisplayMember = "nome";
+            metroComboBox3.DataSource = dataSet.Tables["characters"];
+        }
+
+
 
         private void popularPedidos() {
             PedidoDAO pedidoDAO= new PedidoDAO();
@@ -649,6 +700,182 @@ namespace APAC_TIS4
 
         }
 
-        
+        private void metroButton11_Click(object sender, EventArgs e)
+        {
+            metroLabel19.Hide();
+            metroTextBox1.Hide();
+            metroButton12.Hide();
+            metroButton15.Hide();
+            metroButton14.Show();
+        }
+
+        private void metroButton9_Click(object sender, EventArgs e)
+        {
+            metroLabel19.Hide();
+            metroTextBox1.Hide();
+            metroButton12.Show();
+            metroButton15.Hide();
+            metroButton14.Hide();
+        }
+
+        private void metroButton10_Click(object sender, EventArgs e)
+        {
+            metroLabel19.Show();
+            metroTextBox1.Show();
+            metroButton12.Hide();
+            metroButton15.Show();
+            metroButton14.Hide();
+        }
+
+        private void metroButton13_Click(object sender, EventArgs e)
+        {
+            metroTextBox1.Text = "";
+            metroTextBox4.Text = "";
+            textBox1.Text = "";
+            metroComboBox3.SelectedIndex = -1;
+
+            foreach (string strItem in listBox2.Items)
+            {
+                listBox1.Items.Add(strItem);
+            }
+            foreach (string s in listBox2.Items.OfType<string>().ToList())
+                listBox2.Items.Remove(s);
+
+            textBox4.Text = "";
+            textBox5.Text = "";
+        }
+
+        private void metroButton14_Click(object sender, EventArgs e)
+        {
+            metroProgressSpinner3.Show();
+            Util.WaitNSeconds(0.5);
+
+            ReceitaModels receita = new ReceitaModels();
+            receita.Observacao = metroTextBox4.Text;
+            receita.ModoDePreparo = textBox1.Text;
+            receita.Produto = new ProdutoModels();
+            receita.Produto.Produto_ID = int.Parse(metroComboBox3.SelectedValue.ToString());
+
+            receita.Receita_Insumo = new Receita_InsumoModels();
+            receita.Receita_Insumo.Insumo = new List<InsumoModels>();
+            string[] nomeInsumo = new string[listBox2.Items.Count];
+            for (int i = 0; i < listBox2.Items.Count; i++) {
+                nomeInsumo[i] = listBox2.Items[i].ToString();
+            }
+
+            foreach (string nome in nomeInsumo) {
+                InsumoModels insumoModels = new InsumoModels();
+                insumoModels.Nome = nome;
+                receita.Receita_Insumo.Insumo.Add(insumoModels);
+            }
+            //receita.Receita_Insumo.Insumo
+            string[] strPeso = textBox4.Text.Split('\n');
+            receita.Receita_Insumo.Peso = new List<float>();
+            for (int i = 0; i< strPeso.Length; i++) {
+                receita.Receita_Insumo.Peso.Add(float.Parse(strPeso[i].ToString()));
+            }
+
+            string[] strUnidadeDeMedida = textBox5.Text.Split('\n');
+            receita.Receita_Insumo.UnidadeDeMedida = new List<string>();
+            for(int i = 0; i < strUnidadeDeMedida.Length; i++)
+            {
+                receita.Receita_Insumo.UnidadeDeMedida.Add(strUnidadeDeMedida[i]);
+            }
+
+            ReceitaDAO receitaDAO = new ReceitaDAO();
+
+            String retorno = receitaDAO.cadastrar(receita);
+
+            if (retorno == "OK")
+            {
+                metroProgressSpinner3.Hide();
+                metroLabel23.Show();
+                metroLabel23.Text = "Receita adicionada com sucesso!";
+                popularReceita();
+                //setReadOnlyGridPedidos(false);
+            }
+            else
+            {
+                MessageBox.Show("Erro ao cadastrar a receita: " + retorno);
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (string strItem in listBox1.SelectedItems) {
+                listBox2.Items.Add(strItem);
+            }
+            foreach (string s in listBox1.SelectedItems.OfType<string>().ToList())
+                listBox1.Items.Remove(s);            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (string strItem in listBox2.SelectedItems)
+            {
+                listBox1.Items.Add(strItem);
+            }
+            foreach (string s in listBox2.SelectedItems.OfType<string>().ToList())
+                listBox2.Items.Remove(s);
+
+        }
+
+        private void metroButton12_Click(object sender, EventArgs e)
+        {
+            spiClientActions.Show();
+            Util.WaitNSeconds(0.5);
+            List<int> listReceitaID = new List<int>();
+            for (int i = 0; i < metroGrid1.RowCount; i++)
+            {
+                ReceitaModels pedidoModels = new ReceitaModels();
+
+                var checkbox = metroGrid1.Rows[i].Cells[0].Value;
+
+                if (checkbox != null)
+                {
+                    if (checkbox.ToString().ToLower() == "true")
+                    {
+                        listReceitaID.Add(int.Parse(metroGrid1.Rows[i].Cells[2].Value.ToString()));
+                    }
+                }
+            }
+
+            ReceitaDAO receitaDAO = new ReceitaDAO();
+            bool verifica = receitaDAO.excluirPedidos(listReceitaID);
+            if (verifica)
+            {
+                metroLabel23.Show();
+                metroLabel23.Text = "Receitas(s) deletada(s) com sucesso!";
+                popularReceita();
+                setReadOnlyGridProduto(true);
+            }
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int quantidadeInsumo = listBox2.Items.Count;
+            int quantidadePeso = textBox1.Text.Split('\n').Length;
+            if ((Keys)e.KeyChar == Keys.Enter && e.Handled != true)
+            {
+                if (quantidadePeso >= quantidadeInsumo)
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            int quantidadeInsumo = listBox2.Items.Count;
+            int quantidadePeso = textBox2.Text.Split('\n').Length;
+            if ((Keys)e.KeyChar == Keys.Enter && e.Handled != true)
+            {
+                if (quantidadePeso >= quantidadeInsumo)
+                {
+                    e.Handled = true;
+                }
+            }
+        }
     }
 }

@@ -8,6 +8,7 @@ namespace APAC_TIS4
 {
     class ReceitaModels
     {
+        private int receitaID;
         private DateTime dataCriacao;
         private DateTime dataUltimaAtualizacao;
         private string observacao;
@@ -15,6 +16,7 @@ namespace APAC_TIS4
         private Receita_InsumoModels receita_Insumo;
         private ProdutoModels produto;
 
+        public int ReceitaID { get { return this.receitaID; } set { this.receitaID = value; } }
         public DateTime DataCriacao { get { return this.dataCriacao; } set { this.dataCriacao = value; } }
         public DateTime DataUltimaAtualizacao { get { return this.dataUltimaAtualizacao; } set { this.dataUltimaAtualizacao = value; } }
         public string Observacao { get { return this.observacao; } set { this.observacao = value; } }

@@ -11,11 +11,13 @@ namespace APAC_TIS4
         private int receita_ID;
         private ReceitaModels receita;
         private List<InsumoModels> insumo;
+        private List<float> peso;
         private List<string> unidadeDeMedida;
 
         public int Receita_ID { get { return this.receita_ID; } set { this.receita_ID = value; } }
         public ReceitaModels Receita { get { return this.receita; } set { this.receita = value; } }
         public List<InsumoModels> Insumo { get { return this.insumo; } set { this.insumo = value; } }
+        public List<float> Peso { get { return this.peso; } set { this.peso = value; } }
         public List<string> UnidadeDeMedida { get { return this.unidadeDeMedida; } set { this.unidadeDeMedida = value; } }
 
     }
