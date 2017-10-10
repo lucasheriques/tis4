@@ -12,7 +12,8 @@ namespace APAC_TIS4
     {
         public InsumoDAO() { }
 
-        public DataSet preencheCombo() {
+        public DataSet preencheCombo()
+        {
             DataSet dsInsumo = new DataSet();
             SingletonBD singleton = SingletonBD.getInstancia();
             using (MySqlConnection conexaoMySQL = singleton.getConexao())
@@ -41,6 +42,36 @@ namespace APAC_TIS4
             }
 
 
+        }
+
+        public DataSet preencheComboComWhere(string clausulaWhere)
+        {
+            DataSet dsInsumo = new DataSet();
+            SingletonBD singleton = SingletonBD.getInstancia();
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            {
+                try
+                {
+                    conexaoMySQL.Open();
+
+                    /* criando o comando sql indicando a nossa conexão e a nossa
+                    procedure */
+                    MySqlCommand cmd = new MySqlCommand("SELECT Nome, Insumo_ID FROM insumo WHERE Nome NOT IN(" + clausulaWhere + ");", conexaoMySQL);
+
+                    MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
+
+                    MySqlCommandBuilder sBuilder = new MySqlCommandBuilder(sAdapter);
+
+                    sAdapter.Fill(dsInsumo, "characters");
+
+                    DataTable sTable = dsInsumo.Tables["characters"];
+                }
+                finally
+                {
+                    conexaoMySQL.Close();
+                }
+                return dsInsumo;
+            }
         }
 
         public DataSet visualizarGridComParametros(InsumoModels insumoModels)

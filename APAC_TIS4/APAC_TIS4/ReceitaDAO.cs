@@ -61,7 +61,7 @@ namespace APAC_TIS4
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
 
-                    string query = "SELECT receita.Receita_ID, Produto.Nome, produto.Tipo, produto.Tamanho, PRODUTO.Peso, produto.UDM, produto.Descricao, insumo.Nome, Receita_Insumo.unidadeDeMedida, receita.Modo_de_Preparo, Receita.Observacao FROM Produto INNER JOIN Receita ON Produto.Produto_ID = Receita.Produto_ID INNER JOIN Receita_Insumo ON Receita_Insumo.Receita_ID = Receita.Receita_ID INNER JOIN insumo ON Receita_Insumo.Insumo_ID = insumo.Insumo_ID;";
+                    string query = "SELECT receita.Receita_ID, Produto.Nome, produto.Tipo, produto.Tamanho, PRODUTO.Peso, produto.UDM, produto.Descricao, insumo.Nome, Receita_Insumo.Peso, Receita_Insumo.unidadeDeMedida, receita.Modo_de_Preparo, Receita.Observacao FROM Produto INNER JOIN Receita ON Produto.Produto_ID = Receita.Produto_ID INNER JOIN Receita_Insumo ON Receita_Insumo.Receita_ID = Receita.Receita_ID INNER JOIN insumo ON Receita_Insumo.Insumo_ID = insumo.Insumo_ID;";
 
                     MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
 
@@ -214,6 +214,75 @@ namespace APAC_TIS4
 
                         cmdReceita_Insumo.ExecuteNonQuery();
 
+                    }
+
+                    //tran.Commit();
+                    verifica = true;
+                }
+                finally
+                {
+                    conexaoMySQL.Close();
+                }
+            }
+
+            return verifica;
+        }
+
+        public bool atualizar(ReceitaModels receitaModels) {
+            bool verifica = false;
+
+            SingletonBD singleton = SingletonBD.getInstancia();
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            {
+                conexaoMySQL.Open();
+
+                //MySqlTransaction tran = conexaoMySQL.BeginTransaction();
+
+                try
+                {
+                        MySqlCommand cmd = new MySqlCommand("UPDATE receita SET DataUltimaAtualizacao = now(), Observacao = @Observacao, Produto_ID = @Produto_ID, Modo_de_Preparo = @Modo_de_Preparo WHERE Receita_ID = @Receita_ID;", conexaoMySQL);
+                        //cmd.Transaction = tran;
+
+                        cmd.Parameters.AddWithValue("@Observacao", receitaModels.Observacao);
+                        cmd.Parameters.AddWithValue("@Produto_ID", receitaModels.Produto.Produto_ID);
+                        cmd.Parameters.AddWithValue("@Modo_de_Preparo", receitaModels.ModoDePreparo);
+                        cmd.Parameters.AddWithValue("@Receita_ID", receitaModels.ReceitaID);
+                        cmd.ExecuteNonQuery();
+
+                    int i = 0;
+                    string[] arrayInsumo = new string[receitaModels.Receita_Insumo.Insumo.Count];
+                    foreach (InsumoModels insumo in receitaModels.Receita_Insumo.Insumo)
+                    {
+                        arrayInsumo[i++] = insumo.Nome;
+                    }
+
+                    float[] arrayPeso = new float[receitaModels.Receita_Insumo.Peso.Count];
+                    i = 0;
+                    foreach (float peso in receitaModels.Receita_Insumo.Peso)
+                    {
+                        arrayPeso[i++] = peso;
+                    }
+
+                    string[] arrayUnidadeDeMedida = new string[receitaModels.Receita_Insumo.UnidadeDeMedida.Count];
+                    i = 0;
+                    foreach (string unidadeDeMedida in receitaModels.Receita_Insumo.UnidadeDeMedida)
+                    {
+                        arrayUnidadeDeMedida[i++] = unidadeDeMedida;
+                    }
+
+                    for (int j = 0; j < arrayInsumo.Length; j++)
+                    {
+                        MySqlCommand receita_insumoCmd = new MySqlCommand("SP_receitaInsumoInsertOrUpdate", conexaoMySQL);
+                        /* aqui indicamos que usaremos stored procedure como tipo de comando*/
+                        receita_insumoCmd.CommandType = CommandType.StoredProcedure;
+                        /* aqui passamos os parametros para a procedure spInsere que criamos
+                        de acordo com os textbox*/
+                        receita_insumoCmd.Parameters.AddWithValue("_insumo_Nome", arrayInsumo[j]);
+                        receita_insumoCmd.Parameters.AddWithValue("_peso", arrayPeso[j]);
+                        receita_insumoCmd.Parameters.AddWithValue("_unidadeDeMedida", arrayUnidadeDeMedida[j]);
+                        receita_insumoCmd.Parameters.AddWithValue("_Receita_ID", receitaModels.ReceitaID);
+
+                        receita_insumoCmd.ExecuteNonQuery();
                     }
 
                     //tran.Commit();

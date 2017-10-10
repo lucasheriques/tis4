@@ -17,7 +17,7 @@ namespace APAC_TIS4
         private float custo;
         private int quantidade_Estoque;
         private float custo_Total;
-
+ 
         public string Nome { get { return this.nome; } set { this.nome = value; } }
         public string Descricao { get { return this.descricao; } set { this.descricao = value; } }
         public float Peso_Por_Unidade { get { return this.peso_Por_Unidade; } set { this.peso_Por_Unidade = value; } }
@@ -27,6 +27,5 @@ namespace APAC_TIS4
         public int Quantidade_Estoque { get { return this.quantidade_Estoque; } set { this.quantidade_Estoque = value; } }
         public float Custo_Total { get { return this.custo_Total; } set { this.custo_Total = value; } }
         public int Insumo_ID { get { return this.insumo_ID; } set { this.insumo_ID = value; } }
-
     }
 }

@@ -877,5 +877,125 @@ namespace APAC_TIS4
                 }
             }
         }
+
+        private void metroGrid1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1)
+            {
+                metroTextBox1.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                metroTextBox4.Text = metroGrid1.Rows[e.RowIndex].Cells[13].Value.ToString();
+                metroComboBox3.SelectedIndex = metroComboBox3.FindStringExact(metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString());
+                textBox1.Text = metroGrid1.Rows[e.RowIndex].Cells[12].Value.ToString();
+                listBox2.Items.Add(metroGrid1.Rows[e.RowIndex].Cells[9].Value.ToString());
+                textBox4.Text = metroGrid1.Rows[e.RowIndex].Cells[10].Value.ToString();
+                textBox5.Text = metroGrid1.Rows[e.RowIndex].Cells[11].Value.ToString();
+
+                string clausulaWhere = "";
+                foreach (string insumo in listBox1.Items) {
+                    clausulaWhere = clausulaWhere + "\'" + insumo + "\',";
+                }
+                for (int i = 0; i < listBox1.Items.Count; i++) {
+                    listBox1.Items.RemoveAt(i);
+                }
+
+                clausulaWhere = clausulaWhere.Substring(0, clausulaWhere.Length-1);
+
+                popularComboInsumoReceitaComWhere(clausulaWhere);
+            }
+            else if (e.ColumnIndex == 0)
+            {
+                var checkbox = metroGrid1.Rows[e.RowIndex].Cells[0].Value;
+
+                if (checkbox != null)
+                {
+                    if (checkbox.ToString().ToLower() == "true")
+                    {
+                        metroGrid1.Rows[e.RowIndex].Cells[0].Value = false;
+                    }
+                    else
+                    {
+                        metroGrid1.Rows[e.RowIndex].Cells[0].Value = true;
+                    }
+                }
+                else
+                {
+                    metroGrid1.Rows[e.RowIndex].Cells[0].Value = true;
+                }
+            }
+        }
+        private void popularComboInsumoReceitaComWhere(string clausulaWhere) {
+            InsumoDAO insumoDAO = new InsumoDAO();
+
+            DataSet dataSet = insumoDAO.preencheComboComWhere(clausulaWhere);
+
+            foreach (DataTable table in dataSet.Tables)
+            {
+                foreach (DataRow dr in table.Rows)
+                {
+                    listBox1.Items.Add(dr["Nome"].ToString());
+                }
+            }
+        }
+
+        private void metroButton15_Click(object sender, EventArgs e)
+        {
+            metroProgressSpinner3.Show();
+            Util.WaitNSeconds(0.5);
+            ReceitaModels receitaModels = new ReceitaModels();
+
+            receitaModels.ReceitaID = int.Parse(metroTextBox1.Text.ToString());
+
+            receitaModels.Produto = new ProdutoModels();
+            receitaModels.Produto.Produto_ID = int.Parse(metroComboBox3.SelectedValue.ToString());
+            receitaModels.Observacao = metroTextBox4.Text;
+            receitaModels.ModoDePreparo = textBox1.Text;
+
+            receitaModels.Receita_Insumo = new Receita_InsumoModels();
+            receitaModels.Receita_Insumo.Insumo = new List<InsumoModels>();
+            string[] nomeInsumo = new string[listBox2.Items.Count];
+            for (int i = 0; i < listBox2.Items.Count; i++)
+            {
+                nomeInsumo[i] = listBox2.Items[i].ToString();
+            }
+
+            foreach (string nome in nomeInsumo)
+            {
+                InsumoModels insumoModels = new InsumoModels();
+                insumoModels.Nome = nome;
+                receitaModels.Receita_Insumo.Insumo.Add(insumoModels);
+            }
+            //receita.Receita_Insumo.Insumo
+            string[] strPeso = textBox4.Text.Split('\n');
+            receitaModels.Receita_Insumo.Peso = new List<float>();
+            for (int i = 0; i < strPeso.Length; i++)
+            {
+                receitaModels.Receita_Insumo.Peso.Add(float.Parse(strPeso[i].ToString()));
+            }
+
+            string[] strUnidadeDeMedida = textBox5.Text.Split('\n');
+            receitaModels.Receita_Insumo.UnidadeDeMedida = new List<string>();
+            for (int i = 0; i < strUnidadeDeMedida.Length; i++)
+            {
+                receitaModels.Receita_Insumo.UnidadeDeMedida.Add(strUnidadeDeMedida[i]);
+            }
+
+
+
+            ReceitaDAO receitaDAO = new ReceitaDAO();
+
+            bool verificaAtualizacao = receitaDAO.atualizar(receitaModels);
+            if (verificaAtualizacao)
+            {
+                metroProgressSpinner3.Hide();
+                metroLabel23.Show();
+                metroLabel23.Text = "Receita atualizada com sucesso!";
+                popularReceita();
+                //setReadOnlyGridPedidos(true);
+            }
+            else
+            {
+                MessageBox.Show("Erro na atualização dos dados.");
+            }
+        }
     }
 }
