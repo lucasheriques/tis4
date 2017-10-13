@@ -13,6 +13,7 @@ namespace APAC_TIS4
 {
     public partial class frmPrincipal : MetroForm
     {
+        Microsoft.Office.Interop.Excel.Application XcelApp = new Microsoft.Office.Interop.Excel.Application();
         private static string verificaAtualizar = "0";
         public frmPrincipal()
         {
@@ -24,6 +25,32 @@ namespace APAC_TIS4
             inicializarProdutos();
             inicializarPedidos();
             inicializarReceita();
+            inicializarInsumo();
+        }
+
+        private void inicializarInsumo() {
+            popularGridInsumo();
+            metroLabel28.Hide();
+            metroTextBox5.Hide();
+            metroButton20.Hide();
+            metroButton23.Hide();
+            metroButton22.Hide();
+            metroLabel37.Hide();
+        }
+
+        private void popularGridInsumo() {
+            //metroGrid2
+            InsumoDAO insumoDAO = new InsumoDAO();
+
+            DataSet dataSet = insumoDAO.visualizarGridComID();
+
+            metroGrid2.DataSource = dataSet.Tables["characters"];
+
+            for (int i = 0; i < metroGrid2.Columns.Count; i++)
+            {
+                metroGrid2.Columns[i].Width = 400;
+            }
+
         }
 
         private void inicializarReceita() {
@@ -995,6 +1022,312 @@ namespace APAC_TIS4
             else
             {
                 MessageBox.Show("Erro na atualização dos dados.");
+            }
+        }
+
+        private void metroButton16_Click(object sender, EventArgs e)
+        {
+            if (metroGrid1.Rows.Count > 0)
+            {
+                try
+                {
+                    XcelApp.Application.Workbooks.Add(Type.Missing);
+                    for (int i = 3; i < metroGrid1.Columns.Count + 1; i++)
+                    {
+                        XcelApp.Cells[1, i-2] = metroGrid1.Columns[i - 1].HeaderText;
+                    }
+                    //
+                    for (int i = 0; i < metroGrid1.Rows.Count; i++)
+                    {
+                        for (int j = 2; j < metroGrid1.Columns.Count; j++)
+                        {
+                            XcelApp.Cells[i + 2, j -1] = metroGrid1.Rows[i].Cells[j].Value.ToString();
+                        }
+                    }
+                    //
+                    XcelApp.Columns.AutoFit();
+                    //
+                    XcelApp.Visible = true;
+                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro : " + ex.Message);
+                    XcelApp.Quit();
+                }
+            }
+        }
+
+        private void metroButton19_Click(object sender, EventArgs e)
+        {
+            metroLabel28.Hide();
+            metroTextBox5.Hide();
+            metroButton20.Hide();
+            metroButton23.Hide();
+            metroButton22.Show();
+            metroLabel37.Hide();
+        }
+
+        private void metroButton18_Click(object sender, EventArgs e)
+        {
+            metroLabel28.Show();
+            metroTextBox5.Show();
+            metroButton20.Hide();
+            metroButton23.Show();
+            metroButton22.Hide();
+            metroLabel37.Hide();
+        }
+
+        private void metroButton17_Click(object sender, EventArgs e)
+        {
+            metroLabel28.Hide();
+            metroTextBox5.Hide();
+            metroButton20.Show();
+            metroButton23.Hide();
+            metroButton22.Hide();
+            metroLabel37.Hide();
+        }
+
+        private void metroButton21_Click(object sender, EventArgs e)
+        {
+            metroTextBox5.Text = "";
+            metroTextBox6.Text = "";
+            metroTextBox7.Text = "";
+            metroTextBox8.Text = "";
+            metroTextBox9.Text = "";
+            metroTextBox10.Text = "";
+            metroTextBox11.Text = "";
+            metroTextBox12.Text = "";
+            metroComboBox4.SelectedIndex = -1;
+        }
+
+        private void metroTextBox11_TextChanged(object sender, EventArgs e)
+        {
+            /*if ((!string.IsNullOrEmpty(metroTextBox9.Text)) && (!string.IsNullOrEmpty(metroTextBox10.Text))) {
+                int quantidade = int.Parse(metroTextBox9.Text);
+                int custoPorUnidade = int.Parse(metroTextBox10.Text);
+                int resultado = quantidade * custoPorUnidade;
+                metroTextBox11.Text = resultado.ToString();
+            }*/
+        }
+
+        private void metroTextBox8_TextChanged(object sender, EventArgs e)
+        {/*
+            if ((!string.IsNullOrEmpty(metroTextBox9.Text)) && (!string.IsNullOrEmpty(metroTextBox10.Text)))
+            {
+                int quantidade = int.Parse(metroTextBox9.Text);
+                int pesoPorUnidade = int.Parse(metroTextBox8.Text);
+                int resultado = quantidade * pesoPorUnidade;
+                metroTextBox8.Text = resultado.ToString();
+            }*/
+        }
+
+        private void metroTextBox7_TextChanged(object sender, EventArgs e)
+        {
+            float output;
+            if (((!string.IsNullOrEmpty(metroTextBox9.Text)) && (float.TryParse(metroTextBox9.Text.Trim(), out output))) && (!string.IsNullOrEmpty(metroTextBox7.Text)) && (float.TryParse(metroTextBox7.Text.Trim(), out output)))
+            {
+                float quantidade = float.Parse(metroTextBox9.Text);
+                float pesoPorUnidade = float.Parse(metroTextBox7.Text);
+                float resultado = quantidade * pesoPorUnidade;
+                metroTextBox8.Text = resultado.ToString();
+            }
+            else {
+                metroTextBox8.Text = "";
+            }
+        }
+
+        private void metroTextBox10_TextChanged(object sender, EventArgs e)
+        {
+            float output;
+            if (((!string.IsNullOrEmpty(metroTextBox9.Text)) && (float.TryParse(metroTextBox9.Text.Trim(), out output))) && (!string.IsNullOrEmpty(metroTextBox10.Text)) && (float.TryParse(metroTextBox10.Text.Trim(), out output)))
+            {
+                float quantidade = float.Parse(metroTextBox9.Text);
+                float pesoPorUnidade = float.Parse(metroTextBox10.Text);
+                float resultado = quantidade * pesoPorUnidade;
+                metroTextBox11.Text = resultado.ToString();
+            }
+            else
+            {
+                metroTextBox11.Text = "";
+            }
+        }
+
+        private void metroTextBox9_TextChanged(object sender, EventArgs e)
+        {
+            float output;
+            if (((!string.IsNullOrEmpty(metroTextBox9.Text)) && (float.TryParse(metroTextBox9.Text.Trim(), out output))) && (!string.IsNullOrEmpty(metroTextBox7.Text)) && (float.TryParse(metroTextBox7.Text.Trim(), out output)))
+            {
+                float quantidade = float.Parse(metroTextBox9.Text);
+                float pesoPorUnidade = float.Parse(metroTextBox7.Text);
+                float resultado = quantidade * pesoPorUnidade;
+                metroTextBox8.Text = resultado.ToString();
+            }
+            else
+            {
+                metroTextBox8.Text = "";
+            }
+
+            float output2;
+            if (((!string.IsNullOrEmpty(metroTextBox9.Text)) && (float.TryParse(metroTextBox9.Text.Trim(), out output2))) && (!string.IsNullOrEmpty(metroTextBox10.Text)) && (float.TryParse(metroTextBox10.Text.Trim(), out output2)))
+            {
+                float quantidade = float.Parse(metroTextBox9.Text);
+                float pesoPorUnidade = float.Parse(metroTextBox10.Text);
+                float resultado = quantidade * pesoPorUnidade;
+                metroTextBox11.Text = resultado.ToString();
+            }
+            else
+            {
+                metroTextBox11.Text = "";
+            }
+
+        }
+
+        private void metroButton22_Click(object sender, EventArgs e)
+        {
+            metroProgressSpinner4.Show();
+            Util.WaitNSeconds(0.5);
+
+            InsumoModels insumoModels = new InsumoModels();
+            insumoModels.Nome = metroTextBox6.Text;
+            insumoModels.Peso_Por_Unidade = float.Parse(metroTextBox7.Text);
+            insumoModels.Unidade_De_Medida = metroComboBox4.Text.Substring(0,2).Trim();
+            insumoModels.Peso_Total = float.Parse(metroTextBox8.Text);
+            insumoModels.Quantidade_Estoque = int.Parse(metroTextBox9.Text);
+            insumoModels.Custo = float.Parse(metroTextBox10.Text);
+            insumoModels.Custo_Total = float.Parse(metroTextBox11.Text);
+            insumoModels.Descricao = metroTextBox12.Text;
+
+            InsumoDAO insumoDAO = new InsumoDAO();
+
+            String retorno = insumoDAO.cadastrar(insumoModels);
+
+            if (retorno == "OK")
+            {
+                metroProgressSpinner4.Hide();
+                metroLabel37.Show();
+                metroLabel37.Text = "Insumo adicionado com sucesso!";
+                popularGridInsumo();
+                //setReadOnlyGridPedidos(false);
+            }
+            else
+            {
+                MessageBox.Show("Erro ao cadastrar o insumo: " + retorno);
+            }
+
+        }
+
+        private void metroButton20_Click(object sender, EventArgs e)
+        {
+            metroProgressSpinner4.Show();
+            Util.WaitNSeconds(0.5);
+            List<int> listInsumosID = new List<int>();
+            for (int i = 0; i < metroGrid2.RowCount; i++)
+            {
+                var checkbox = metroGrid2.Rows[i].Cells[0].Value;
+
+                if (checkbox != null)
+                {
+                    if (checkbox.ToString().ToLower() == "true")
+                    {
+                        listInsumosID.Add(int.Parse(metroGrid2.Rows[i].Cells[2].Value.ToString()));
+                    }
+                }
+
+            }
+
+            InsumoDAO insumoDAO = new InsumoDAO();
+            bool verifica = insumoDAO.excluirInsumo(listInsumosID);
+            if (verifica)
+            {
+                metroProgressSpinner4.Hide();
+                metroLabel37.Show();
+                metroLabel37.Text = "Inumo(s) deletado(s) com sucesso!";
+                popularGridInsumo();
+                setReadOnlyGridProduto(true);
+            }
+        }
+
+        private void metroGrid2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1)
+            {
+                string unidadeDeMedida = metroGrid2.Rows[e.RowIndex].Cells[6].Value.ToString();
+                if (unidadeDeMedida == "Kg")
+                {
+                    unidadeDeMedida += " - Quilograma";
+                }
+                else if (unidadeDeMedida == "gr")
+                {
+                    unidadeDeMedida += " - Grama";
+                }
+                else if (unidadeDeMedida == "mg")
+                {
+                    unidadeDeMedida += " - Miligrama";
+                }
+                metroTextBox5.Text = metroGrid2.Rows[e.RowIndex].Cells[2].Value.ToString();
+                metroTextBox6.Text = metroGrid2.Rows[e.RowIndex].Cells[3].Value.ToString();
+                metroTextBox7.Text = metroGrid2.Rows[e.RowIndex].Cells[5].Value.ToString();
+                metroComboBox4.SelectedIndex = metroComboBox4.FindStringExact(unidadeDeMedida);
+                metroTextBox8.Text = metroGrid2.Rows[e.RowIndex].Cells[7].Value.ToString();
+                metroTextBox9.Text = metroGrid2.Rows[e.RowIndex].Cells[9].Value.ToString();
+                metroTextBox10.Text = metroGrid2.Rows[e.RowIndex].Cells[8].Value.ToString();
+                metroTextBox11.Text = metroGrid2.Rows[e.RowIndex].Cells[10].Value.ToString();
+                metroTextBox12.Text = metroGrid2.Rows[e.RowIndex].Cells[5].Value.ToString();
+            }
+            else if (e.ColumnIndex == 0)
+            {
+                var checkbox = metroGrid2.Rows[e.RowIndex].Cells[0].Value;
+
+                if (checkbox != null)
+                {
+                    if (checkbox.ToString().ToLower() == "true")
+                    {
+                        metroGrid2.Rows[e.RowIndex].Cells[0].Value = false;
+                    }
+                    else
+                    {
+                        metroGrid2.Rows[e.RowIndex].Cells[0].Value = true;
+                    }
+                }
+                else
+                {
+                    mgProduto.Rows[e.RowIndex].Cells[0].Value = true;
+                }
+            }
+        }
+
+        private void metroButton23_Click(object sender, EventArgs e)
+        {
+            metroProgressSpinner3.Show();
+            Util.WaitNSeconds(0.5);
+            InsumoModels insumoModels = new InsumoModels();
+
+            insumoModels.Insumo_ID = int.Parse(metroTextBox5.Text.ToString());
+            insumoModels.Nome = metroTextBox6.Text;
+            insumoModels.Peso_Por_Unidade = float.Parse(metroTextBox7.Text);
+            insumoModels.Unidade_De_Medida = metroComboBox4.Text.Substring(0, 2).Trim();
+            insumoModels.Peso_Total = float.Parse(metroTextBox8.Text);
+            insumoModels.Quantidade_Estoque = int.Parse(metroTextBox9.Text);
+            insumoModels.Custo = float.Parse(metroTextBox10.Text);
+            insumoModels.Custo_Total = float.Parse(metroTextBox11.Text);
+            insumoModels.Descricao = metroTextBox12.Text;
+
+            InsumoDAO insumoDAO = new InsumoDAO();
+
+            bool retorno = insumoDAO.atualizarInumos(insumoModels);
+
+            if (retorno)
+            {
+                metroProgressSpinner4.Hide();
+                metroLabel37.Show();
+                metroLabel37.Text = "Insumo atualizado com sucesso!";
+                popularGridInsumo();
+                //setReadOnlyGridPedidos(false);
+            }
+            else
+            {
+                MessageBox.Show("Erro ao atualizar o insumo: " + retorno);
             }
         }
     }

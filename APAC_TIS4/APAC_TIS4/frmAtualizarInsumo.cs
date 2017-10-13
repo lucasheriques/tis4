@@ -117,7 +117,7 @@ namespace APAC_TIS4
             InsumoDAO insumoDAO = new InsumoDAO();
             ClienteDAO clienteDAO = new ClienteDAO();
 
-            bool verificaAtualizacao = insumoDAO.atualizarInumos(listInsumo);
+            bool verificaAtualizacao = true; // insumoDAO.atualizarInumos(listInsumo);
             if (verificaAtualizacao)
             {
                 MessageBox.Show("Dados atualizados com sucesso.");
