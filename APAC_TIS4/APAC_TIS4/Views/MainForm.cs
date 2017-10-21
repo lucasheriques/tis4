@@ -37,7 +37,22 @@ namespace APAC_TIS4
             //this.chartGrafico.Series.Add("Dados");
             this.chartGrafico.Series.RemoveAt(0);
             loadGrafico();
-            this.chartGrafico.Legends.Add(new Legend("Lucro"));
+            loagGrid();
+            
+        }
+
+        public void loagGrid() {
+            RelatoriosDAO relatoriosDAO = new RelatoriosDAO();
+
+            DataSet dataSet = relatoriosDAO.loadGrid();
+
+            metroGrid3.DataSource = dataSet.Tables["characters"];
+
+            for (int i = 0; i < metroGrid3.Columns.Count; i++)
+            {
+                metroGrid3.Columns[i].Width = 400;
+            }
+
         }
 
         private void loadGrafico() {
@@ -1211,27 +1226,30 @@ namespace APAC_TIS4
                     XcelApp.Application.Workbooks.Add(Type.Missing);
                     for (int i = 3; i < metroGrid1.Columns.Count + 1; i++)
                     {
-                        XcelApp.Cells[1, i-2] = metroGrid1.Columns[i - 1].HeaderText;
+                        XcelApp.Cells[1, i - 2] = metroGrid1.Columns[i - 1].HeaderText;
                     }
                     //
                     for (int i = 0; i < metroGrid1.Rows.Count; i++)
                     {
                         for (int j = 2; j < metroGrid1.Columns.Count; j++)
                         {
-                            XcelApp.Cells[i + 2, j -1] = metroGrid1.Rows[i].Cells[j].Value.ToString();
+                            XcelApp.Cells[i + 2, j - 1] = metroGrid1.Rows[i].Cells[j].Value.ToString();
                         }
                     }
                     //
                     XcelApp.Columns.AutoFit();
                     //
                     XcelApp.Visible = true;
-                    
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Erro : " + ex.Message);
                     XcelApp.Quit();
                 }
+            }
+            else {
+                MessageBox.Show("Não existem dados para serem exportados!!!");
             }
         }
 
@@ -1705,6 +1723,39 @@ namespace APAC_TIS4
                 else
                 {
                     mgProduto.Rows[e.RowIndex].Cells[0].Value = true;
+                }
+            }
+        }
+
+        private void metroButton28_Click(object sender, EventArgs e)
+        {
+            if (metroGrid3.Rows.Count > 0)
+            {
+                try
+                {
+                    XcelApp.Application.Workbooks.Add(Type.Missing);
+                    for (int i = 3; i < metroGrid3.Columns.Count + 1; i++)
+                    {
+                        XcelApp.Cells[1, i - 2] = metroGrid3.Columns[i - 1].HeaderText;
+                    }
+                    //
+                    for (int i = 0; i < metroGrid3.Rows.Count; i++)
+                    {
+                        for (int j = 2; j < metroGrid3.Columns.Count; j++)
+                        {
+                            XcelApp.Cells[i + 2, j - 1] = metroGrid3.Rows[i].Cells[j].Value.ToString();
+                        }
+                    }
+                    //
+                    XcelApp.Columns.AutoFit();
+                    //
+                    XcelApp.Visible = true;
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro : " + ex.Message);
+                    XcelApp.Quit();
                 }
             }
         }
