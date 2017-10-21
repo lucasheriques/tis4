@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace APAC_TIS4
 {
@@ -22,10 +23,36 @@ namespace APAC_TIS4
             popularProduto();
             popularPedidos();
             popularComboPedidos();
+            inicializarCliente();
             inicializarProdutos();
             inicializarPedidos();
             inicializarReceita();
             inicializarInsumo();
+            inicializarRelatorios();
+        }
+
+        private void inicializarRelatorios() {
+            //this.chartGrafico.Legends.Clear();
+            //chartGrafico.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Range;
+            //this.chartGrafico.Series.Add("Dados");
+            this.chartGrafico.Series.RemoveAt(0);
+            loadGrafico();
+            this.chartGrafico.Legends.Add(new Legend("Lucro"));
+        }
+
+        private void loadGrafico() {
+            RelatoriosDAO relatoriosDAO = new RelatoriosDAO();
+            this.chartGrafico = relatoriosDAO.loadChart(this.chartGrafico);
+            //Series series = this.chartGrafico.Series["dados"];
+        }
+        private void inicializarCliente() {
+            lblClientID.Hide();
+            txtClientId.Hide();
+            btnUpdateClient.Hide();
+            spiClientActions.Hide();
+            btnAddClient.Hide();
+            metroButton27.Hide();
+            lblReturnLabel.Hide();
         }
 
         private void inicializarInsumo() {
@@ -191,55 +218,68 @@ namespace APAC_TIS4
             txtClientId.Clear();
             txtClientLocal.Clear();
             txtClientName.Clear();
-            cmdClientType.ResetText();
+            cmdClientType.SelectedIndex = -1;
         }
 
         private void btnAddClient_Click(object sender, EventArgs e)
         {
-            spiClientActions.Show();
-            Util.WaitNSeconds(0.5);
-
-            ClientModel cliente = new ClientModel();
-
-            cliente.nome = txtClientName.Text;
-            cliente.localidade = txtClientLocal.Text;
-            cliente.Tipo = cmdClientType.Text;
-
-            ClienteDAO clienteDAO = new ClienteDAO();
-            string retorno = clienteDAO.cadastrar(cliente);
-
-            if (String.IsNullOrEmpty(retorno))
+            if ((!string.IsNullOrEmpty(txtClientName.Text.ToString())) && (!string.IsNullOrEmpty(txtClientLocal.Text.ToString())) && (!string.IsNullOrEmpty(cmdClientType.Text.ToString())))
             {
-                MessageBox.Show("Erro ao criar cliente!!!");
+                spiClientActions.Show();
+                Util.WaitNSeconds(0.5);
+
+                ClientModel cliente = new ClientModel();
+
+                cliente.nome = txtClientName.Text;
+                cliente.localidade = txtClientLocal.Text;
+                cliente.Tipo = cmdClientType.Text;
+
+                ClienteDAO clienteDAO = new ClienteDAO();
+                string retorno = clienteDAO.cadastrar(cliente);
+
+                if (String.IsNullOrEmpty(retorno))
+                {
+                    spiClientActions.Hide();
+                    MessageBox.Show("Erro ao criar cliente!!!");
+                }
+                else if (retorno.Contains("Erro de acesso ao MySQL : "))
+                {
+                    spiClientActions.Hide();
+                    MessageBox.Show(retorno);
+                }
+                else
+                {
+                    spiClientActions.Hide();
+                    lblReturnLabel.Show();
+                    lblReturnLabel.Text = "Cliente adicionado com sucesso!";
+                    popularCliente();
+                    clearClientFields();
+                }
             }
-            else if (retorno.Contains("Erro de acesso ao MySQL : "))
-            {
-                MessageBox.Show(retorno);
+            else {
+                MessageBox.Show("Preencha os dados do cliente!!!");
             }
-            else
-            {
-                spiClientActions.Hide();
-                lblReturnLabel.Show();
-                lblReturnLabel.Text = "Cliente adicionado com sucesso!";
-                popularCliente();
-            }
-            
+
         }
 
         private void btnClientUpdateMenu_Click(object sender, EventArgs e)
         {
-            btnAddClient.Hide();
-            btnUpdateClient.Show();
             lblClientID.Show();
             txtClientId.Show();
+            btnAddClient.Hide();
+            btnUpdateClient.Show();
+            lblReturnLabel.Hide();
+            metroButton27.Hide();
         }
 
         private void btnClientAddMenu_Click(object sender, EventArgs e)
         {
-            btnAddClient.Show();
-            btnUpdateClient.Hide();
             lblClientID.Hide();
             txtClientId.Hide();
+            btnAddClient.Show();
+            btnUpdateClient.Hide();
+            lblReturnLabel.Hide();
+            metroButton27.Hide();
         }
 
         private void dvgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -255,6 +295,43 @@ namespace APAC_TIS4
 
         private void btnUpdateClient_Click(object sender, EventArgs e)
         {
+            spiClientActions.Show();
+            Util.WaitNSeconds(0.5);
+
+            if (string.IsNullOrEmpty(cmdClientType.Text))
+            {
+                MessageBox.Show("Selecione o Cliente que deseja atualizar.");
+                spiClientActions.Hide();
+                return;
+            }
+
+            List<ClientModel> listClienteModels = new List<ClientModel>();
+
+            ClientModel clienteModels = new ClientModel();
+
+            clienteModels.Cliente_ID = int.Parse(txtClientId.Text.ToString());
+            clienteModels.nome = txtClientName.Text;
+            clienteModels.localidade = txtClientLocal.Text;
+            clienteModels.Tipo = cmdClientType.Text;
+
+            listClienteModels.Add(clienteModels);
+
+            ClienteDAO clienteDAO = new ClienteDAO();
+            bool verifica = clienteDAO.atualizarClientes(listClienteModels);
+            if (verifica)
+            {
+                lblReturnLabel.Show();
+                lblReturnLabel.Text = "Cliente atualizado com sucesso!";
+                spiClientActions.Hide();
+                popularCliente();
+                clearClientFields();
+            }
+            else {
+                lblReturnLabel.Hide();
+                spiClientActions.Hide();
+                popularCliente();
+                MessageBox.Show("Erro ao atualizar cliente!!!");
+            }
         }
 
         private void lblReturnLabel_Click(object sender, EventArgs e)
@@ -347,20 +424,25 @@ namespace APAC_TIS4
 
             if (retorno == "OK")
             {
-                spiClientActions.Hide();
+                metroProgressSpinner1.Hide();
                 metroLabel9.Show();
                 metroLabel9.Text = "Produto adicionado com sucesso!";
                 popularProduto();
+                clearProducts();
                 setReadOnlyGridProduto(false);
             }
             else {
+                metroProgressSpinner1.Hide();
+                metroLabel9.Show();
                 MessageBox.Show("Erro ao cadastrar produto: " + retorno);
+                popularProduto();
+                setReadOnlyGridProduto(false);
             }
         }
 
         private void mbAtualizarProdutos_Click(object sender, EventArgs e)
         {
-            spiClientActions.Show();
+            metroProgressSpinner1.Show();
             Util.WaitNSeconds(0.5);
 
             if (string.IsNullOrEmpty(mcmbTipo.Text))
@@ -411,9 +493,19 @@ namespace APAC_TIS4
 */
             ProdutoDAO produtoDAO = new ProdutoDAO();
             bool verifica = produtoDAO.atualizarProdutos(listProdutoModels);
-            if (verifica) {
+            if (verifica)
+            {
+                metroProgressSpinner1.Hide();
                 metroLabel9.Show();
                 metroLabel9.Text = "Produto atualizado com sucesso!";
+                popularProduto();
+                clearProducts();
+                setReadOnlyGridProduto(true);
+            }
+            else {
+                metroProgressSpinner1.Hide();
+                metroLabel9.Hide();
+                MessageBox.Show("Erro ao atualizar produto!!!");
                 popularProduto();
                 setReadOnlyGridProduto(true);
             }
@@ -422,6 +514,12 @@ namespace APAC_TIS4
 
         private void metroTextBox1_TextChanged(object sender, EventArgs e)
         {
+            Util util2 = new Util();
+            string strQuantidade2 = mtxtQantidade.Text;
+            if (!util2.IsFloatOrInt(strQuantidade2)) {
+                return;
+            }
+
             if (verificaAtualizar == "2") {
                 verificaAtualizar = "0";
                 return;
@@ -431,17 +529,21 @@ namespace APAC_TIS4
                 string strProduto_ID = metroComboBox2.SelectedValue.ToString();
                 if (!string.IsNullOrEmpty(strProduto_ID) || !string.IsNullOrWhiteSpace(strProduto_ID))
                 {
-                    int produto_ID = int.Parse(strProduto_ID);
+                    string strQuantidade = mtxtQantidade.Text.ToString();
+                    Util util = new Util();
+                    if (util.IsFloatOrInt(strProduto_ID) && util.IsFloatOrInt(strQuantidade)) {
+                        int produto_ID = int.Parse(strProduto_ID);
 
-                    ProdutoDAO produtoDAO = new ProdutoDAO();
+                        ProdutoDAO produtoDAO = new ProdutoDAO();
 
-                    float precodeVendaUnidade = produtoDAO.getPrecoDeVendaUnidade(produto_ID);
+                        float precodeVendaUnidade = produtoDAO.getPrecoDeVendaUnidade(produto_ID);
 
-                    float quantidade = float.Parse(mtxtQantidade.Text.ToString());
+                        float quantidade = float.Parse(mtxtQantidade.Text.ToString());
 
-                    float precoTotal = precodeVendaUnidade * quantidade;
+                        float precoTotal = precodeVendaUnidade * quantidade;
 
-                    metroTextBox2.Text = precoTotal.ToString();
+                        metroTextBox2.Text = precoTotal.ToString();
+                    }
                 }
             }
         }
@@ -477,6 +579,9 @@ namespace APAC_TIS4
 
         private void metroButton7_Click(object sender, EventArgs e)
         {
+            metroProgressSpinner2.Show();
+            Util.WaitNSeconds(0.5);
+
             PedidoModels pedidoModels = new PedidoModels();
             pedidoModels.Pedido_ID = int.Parse(metroTextBox3.Text.ToString());
 
@@ -497,6 +602,7 @@ namespace APAC_TIS4
                 metroLabel16.Show();
                 metroLabel16.Text = "Pedido atualizado com sucesso!";
                 popularPedidos();
+                clearPedidos();
                 setReadOnlyGridPedidos(true);
             }
             else
@@ -507,7 +613,7 @@ namespace APAC_TIS4
 
         private void metroButton6_Click(object sender, EventArgs e)
         {
-            spiClientActions.Show();
+            metroProgressSpinner2.Show();
             Util.WaitNSeconds(0.5);
 
             PedidoModels pedidoModels = new PedidoModels();
@@ -527,14 +633,16 @@ namespace APAC_TIS4
 
             if (retorno == "OK")
             {
-                spiClientActions.Hide();
+                metroProgressSpinner2.Hide();
                 lblReturnLabel.Show();
                 lblReturnLabel.Text = "Pedido adicionado com sucesso!";
                 popularPedidos();
+                clearPedidos();
                 setReadOnlyGridPedidos(false);
             }
             else
             {
+                metroProgressSpinner2.Hide();
                 MessageBox.Show("Erro ao cadastrar Pedido: " + retorno);
             }
         }
@@ -622,7 +730,7 @@ namespace APAC_TIS4
 
         private void mbExcluirProdutos_Click(object sender, EventArgs e)
         {
-            spiClientActions.Show();
+            metroProgressSpinner1.Show();
             Util.WaitNSeconds(0.5);
             List<int> listProductID = new List<int>();
                         for (int i = 0; i < mgProduto.RowCount; i++)
@@ -643,12 +751,31 @@ namespace APAC_TIS4
             bool verifica = produtoDAO.excluirProdutos(listProductID);
             if (verifica)
             {
+                metroProgressSpinner1.Hide();
                 metroLabel9.Show();
                 metroLabel9.Text = "Produto(s) deletado(s) com sucesso!";
                 popularProduto();
                 setReadOnlyGridProduto(true);
             }
+            else {
+                metroProgressSpinner1.Hide();
+                metroLabel9.Hide();
+                MessageBox.Show("Erro ao apagar o(s) produto(s)!!!");
+                popularProduto();
+                setReadOnlyGridProduto(true);
+            }
 
+        }
+
+        private void clearProducts() {
+            mcmbTipo.Text = "";
+            mcmbTamanho.Text = "";
+            mcmbUDM.Text = "";
+            mtxtPeso.Text = "";
+            mtxtNome.Text = "";
+            mtxtCustoPorUnidade.Text = "";
+            mtxtPVU.Text = "";
+            mtxtDescricao.Text = "";
         }
 
         private void metroButton2_Click(object sender, EventArgs e)
@@ -696,14 +823,14 @@ namespace APAC_TIS4
 
         private void metroButton8_Click(object sender, EventArgs e)
         {
-            spiClientActions.Show();
+            metroProgressSpinner2.Show();
             Util.WaitNSeconds(0.5);
             List<int> listPedidosID = new List<int>();
-            for (int i = 0; i < mgProduto.RowCount-1; i++)
+            for (int i = 0; i < dvgPedidos.RowCount; i++)
             {
                 PedidoModels pedidoModels = new PedidoModels();
 
-                var checkbox = dvgPedidos.Rows[i].Cells[0].Value;
+                var checkbox = dvgPedidos.Rows[i].Cells[0].Value.ToString();
 
                 if (checkbox != null)
                 {
@@ -719,12 +846,28 @@ namespace APAC_TIS4
             bool verifica = pedidoDAO.excluirPedidos(listPedidosID);
             if (verifica)
             {
+                metroProgressSpinner2.Hide();
                 metroLabel16.Show();
                 metroLabel16.Text = "Pedidos(s) deletado(s) com sucesso!";
                 popularPedidos();
+                clearPedidos();
                 setReadOnlyGridProduto(true);
             }
+            else {
+                metroProgressSpinner2.Hide();
+                metroLabel16.Hide();
+                MessageBox.Show("Erro ao deletar Pedidos(s)!!");
+                popularPedidos();
+                clearPedidos();
+                setReadOnlyGridProduto(true);
+            }
+        }
 
+        private void clearPedidos() {
+            metroComboBox1.SelectedIndex = -1;
+            metroComboBox2.SelectedIndex = -1;
+            mtxtQantidade.Text = "";
+            metroTextBox2.Text = "";
         }
 
         private void metroButton11_Click(object sender, EventArgs e)
@@ -819,11 +962,15 @@ namespace APAC_TIS4
                 metroLabel23.Show();
                 metroLabel23.Text = "Receita adicionada com sucesso!";
                 popularReceita();
+                clearReceita();
                 //setReadOnlyGridPedidos(false);
             }
             else
             {
+                metroProgressSpinner3.Hide();
+                metroLabel23.Hide();
                 MessageBox.Show("Erro ao cadastrar a receita: " + retorno);
+                clearReceita();
             }
 
         }
@@ -850,7 +997,7 @@ namespace APAC_TIS4
 
         private void metroButton12_Click(object sender, EventArgs e)
         {
-            spiClientActions.Show();
+            metroProgressSpinner3.Show();
             Util.WaitNSeconds(0.5);
             List<int> listReceitaID = new List<int>();
             for (int i = 0; i < metroGrid1.RowCount; i++)
@@ -872,11 +1019,37 @@ namespace APAC_TIS4
             bool verifica = receitaDAO.excluirPedidos(listReceitaID);
             if (verifica)
             {
+                metroProgressSpinner3.Hide();
                 metroLabel23.Show();
                 metroLabel23.Text = "Receitas(s) deletada(s) com sucesso!";
                 popularReceita();
-                setReadOnlyGridProduto(true);
+                clearReceita();
             }
+            else {
+                metroProgressSpinner3.Hide();
+                metroLabel23.Hide();
+                MessageBox.Show("Erro ao apagar receitas(s)!");
+                popularReceita();
+                clearReceita();
+            }
+        }
+
+        private void clearReceita()
+        {
+            metroTextBox1.Text = "";
+            metroTextBox4.Text = "";
+            textBox1.Text = "";
+            metroComboBox3.SelectedIndex = -1;
+
+            foreach (string strItem in listBox2.Items)
+            {
+                listBox1.Items.Add(strItem);
+            }
+            foreach (string s in listBox2.Items.OfType<string>().ToList())
+                listBox2.Items.Remove(s);
+
+            textBox4.Text = "";
+            textBox5.Text = "";
         }
 
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
@@ -1017,10 +1190,14 @@ namespace APAC_TIS4
                 metroLabel23.Show();
                 metroLabel23.Text = "Receita atualizada com sucesso!";
                 popularReceita();
+                clearReceita();
                 //setReadOnlyGridPedidos(true);
             }
             else
             {
+                metroProgressSpinner3.Hide();
+                metroLabel23.Hide();
+                clearReceita();
                 MessageBox.Show("Erro na atualização dos dados.");
             }
         }
@@ -1208,11 +1385,15 @@ namespace APAC_TIS4
                 metroLabel37.Show();
                 metroLabel37.Text = "Insumo adicionado com sucesso!";
                 popularGridInsumo();
+                clearInsumo();
                 //setReadOnlyGridPedidos(false);
             }
             else
             {
+                metroProgressSpinner4.Hide();
+                metroLabel37.Hide();
                 MessageBox.Show("Erro ao cadastrar o insumo: " + retorno);
+                clearInsumo();
             }
 
         }
@@ -1244,8 +1425,28 @@ namespace APAC_TIS4
                 metroLabel37.Show();
                 metroLabel37.Text = "Inumo(s) deletado(s) com sucesso!";
                 popularGridInsumo();
-                setReadOnlyGridProduto(true);
+                clearInsumo();
             }
+            else {
+                metroProgressSpinner4.Hide();
+                metroLabel37.Hide();
+                MessageBox.Show("Erro ao apagar inumo(s)!!!");
+                popularGridInsumo();
+                clearInsumo();
+            }
+        }
+
+        private void clearInsumo()
+        {
+            metroTextBox5.Text = "";
+            metroTextBox6.Text = "";
+            metroTextBox7.Text = "";
+            metroTextBox8.Text = "";
+            metroTextBox9.Text = "";
+            metroTextBox10.Text = "";
+            metroTextBox11.Text = "";
+            metroTextBox12.Text = "";
+            metroComboBox4.SelectedIndex = -1;
         }
 
         private void metroGrid2_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1299,7 +1500,7 @@ namespace APAC_TIS4
 
         private void metroButton23_Click(object sender, EventArgs e)
         {
-            metroProgressSpinner3.Show();
+            metroProgressSpinner4.Show();
             Util.WaitNSeconds(0.5);
             InsumoModels insumoModels = new InsumoModels();
 
@@ -1323,11 +1524,188 @@ namespace APAC_TIS4
                 metroLabel37.Show();
                 metroLabel37.Text = "Insumo atualizado com sucesso!";
                 popularGridInsumo();
+                clearInsumo();
                 //setReadOnlyGridPedidos(false);
             }
             else
             {
+                metroProgressSpinner4.Hide();
+                metroLabel37.Hide();
+                clearInsumo();
                 MessageBox.Show("Erro ao atualizar o insumo: " + retorno);
+            }
+        }
+
+        private void metroButton24_Click(object sender, EventArgs e)
+        {
+            if (dvgClientes.Rows.Count > 0)
+            {
+                try
+                {
+                    XcelApp.Application.Workbooks.Add(Type.Missing);
+                    for (int i = 3; i < dvgClientes.Columns.Count + 1; i++)
+                    {
+                        XcelApp.Cells[1, i - 2] = dvgClientes.Columns[i - 1].HeaderText;
+                    }
+                    //
+                    for (int i = 0; i < dvgClientes.Rows.Count; i++)
+                    {
+                        for (int j = 2; j < dvgClientes.Columns.Count; j++)
+                        {
+                            XcelApp.Cells[i + 2, j - 1] = dvgClientes.Rows[i].Cells[j].Value.ToString();
+                        }
+                    }
+                    //
+                    XcelApp.Columns.AutoFit();
+                    //
+                    XcelApp.Visible = true;
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro : " + ex.Message);
+                    XcelApp.Quit();
+                }
+            }
+        }
+
+        private void metroButton25_Click(object sender, EventArgs e)
+        {
+            if (mgProduto.Rows.Count > 0)
+            {
+                try
+                {
+                    XcelApp.Application.Workbooks.Add(Type.Missing);
+                    for (int i = 3; i < mgProduto.Columns.Count + 1; i++)
+                    {
+                        XcelApp.Cells[1, i - 2] = mgProduto.Columns[i - 1].HeaderText;
+                    }
+                    //
+                    for (int i = 0; i < mgProduto.Rows.Count; i++)
+                    {
+                        for (int j = 2; j < mgProduto.Columns.Count; j++)
+                        {
+                            XcelApp.Cells[i + 2, j - 1] = mgProduto.Rows[i].Cells[j].Value.ToString();
+                        }
+                    }
+                    //
+                    XcelApp.Columns.AutoFit();
+                    //
+                    XcelApp.Visible = true;
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro : " + ex.Message);
+                    XcelApp.Quit();
+                }
+            }
+        }
+
+        private void metroButton26_Click(object sender, EventArgs e)
+        {
+            if (dvgPedidos.Rows.Count > 0)
+            {
+                try
+                {
+                    XcelApp.Application.Workbooks.Add(Type.Missing);
+                    for (int i = 3; i < dvgPedidos.Columns.Count + 1; i++)
+                    {
+                        XcelApp.Cells[1, i - 2] = dvgPedidos.Columns[i - 1].HeaderText;
+                    }
+                    //
+                    for (int i = 0; i < dvgPedidos.Rows.Count; i++)
+                    {
+                        for (int j = 2; j < dvgPedidos.Columns.Count; j++)
+                        {
+                            XcelApp.Cells[i + 2, j - 1] = dvgPedidos.Rows[i].Cells[j].Value.ToString();
+                        }
+                    }
+                    //
+                    XcelApp.Columns.AutoFit();
+                    //
+                    XcelApp.Visible = true;
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro : " + ex.Message);
+                    XcelApp.Quit();
+                }
+            }
+        }
+
+        private void btnClientDelMenu_Click(object sender, EventArgs e)
+        {
+            lblClientID.Hide();
+            txtClientId.Hide();
+            btnAddClient.Hide();
+            btnUpdateClient.Hide();
+            lblReturnLabel.Hide();
+            metroButton27.Show();
+        }
+
+        private void metroButton27_Click(object sender, EventArgs e)
+        {
+            spiClientActions.Show();
+            Util.WaitNSeconds(0.5);
+
+            List<int> listClienteID = new List<int>();
+
+            for (int i = 0; i < dvgClientes.RowCount; i++)
+            {
+                var checkbox = dvgClientes.Rows[i].Cells[0].Value;
+
+                if (checkbox != null)
+                {
+                    if (checkbox.ToString().ToLower() == "true")
+                    {
+                        listClienteID.Add(int.Parse(dvgClientes.Rows[i].Cells[2].Value.ToString()));
+                    }
+                }
+
+            }
+
+            ClienteDAO clienteDAO = new ClienteDAO();
+            bool verifica = clienteDAO.excluirClientes(listClienteID);
+            if (verifica)
+            {
+                lblReturnLabel.Show();
+                lblReturnLabel.Text = "Cliente(s) deletado(s) com sucesso!";
+                spiClientActions.Hide();
+                popularCliente();
+            }
+
+        }
+
+        private void dvgClientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1)
+            {
+                txtClientId.Text = dvgClientes.Rows[e.RowIndex].Cells[2].Value.ToString();
+                txtClientName.Text = dvgClientes.Rows[e.RowIndex].Cells[3].Value.ToString();
+                txtClientLocal.Text = dvgClientes.Rows[e.RowIndex].Cells[4].Value.ToString();
+                cmdClientType.SelectedIndex = cmdClientType.FindStringExact(dvgClientes.Rows[e.RowIndex].Cells[5].Value.ToString());
+            }
+            else if (e.ColumnIndex == 0)
+            {
+                var checkbox = dvgClientes.Rows[e.RowIndex].Cells[0].Value;
+
+                if (checkbox != null)
+                {
+                    if (checkbox.ToString().ToLower() == "true")
+                    {
+                        dvgClientes.Rows[e.RowIndex].Cells[0].Value = false;
+                    }
+                    else
+                    {
+                        dvgClientes.Rows[e.RowIndex].Cells[0].Value = true;
+                    }
+                }
+                else
+                {
+                    mgProduto.Rows[e.RowIndex].Cells[0].Value = true;
+                }
             }
         }
     }

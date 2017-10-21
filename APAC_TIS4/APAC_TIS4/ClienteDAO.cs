@@ -331,7 +331,6 @@ namespace APAC_TIS4
                 {
                     foreach (ClientModel cliente in listClientes) {
                         MySqlCommand cmd = new MySqlCommand("UPDATE cliente SET Nome = @Nome, Localidade = @Localidade, Tipo = @Tipo WHERE Cliente_ID = @Cliente_ID;", conexaoMySQL);
-                        cmd.CommandType = CommandType.StoredProcedure;
                         //cmd.Transaction = tran;
 
                         cmd.Parameters.AddWithValue("@Nome", cliente.nome);
@@ -351,6 +350,40 @@ namespace APAC_TIS4
                 }
                 return verificaAtualizacao;
             }
+        }
+
+        public bool excluirClientes(List<int> listClienteID) {
+            bool verifica = false;
+
+            SingletonBD singleton = SingletonBD.getInstancia();
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            {
+                conexaoMySQL.Open();
+
+                //MySqlTransaction tran = conexaoMySQL.BeginTransaction();
+
+                try
+                {
+                    foreach (int clienteID in listClienteID)
+                    {
+                        MySqlCommand cmd = new MySqlCommand("DELETE FROM cliente WHERE Cliente_ID = @Cliente_ID;", conexaoMySQL);
+                        //cmd.Transaction = tran;
+
+                        cmd.Parameters.AddWithValue("@Cliente_ID", clienteID);
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    //tran.Commit();
+                    verifica = true;
+                }
+                finally
+                {
+                    conexaoMySQL.Close();
+                }
+            }
+
+            return verifica;
         }
     }
 }
