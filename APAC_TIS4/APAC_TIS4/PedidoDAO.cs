@@ -59,7 +59,7 @@ namespace APAC_TIS4
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
 
-                    string query = "SELECT pedido.Pedido_ID, cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN itemPedido ON itemPedido.Pedido_ID = pedido.Pedido_ID INNER JOIN produto ON produto.Produto_ID = itemPedido.Produto_ID;";
+                    string query = "SELECT pedido.Pedido_ID, cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo, produto.Produto_ID FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN itemPedido ON itemPedido.Pedido_ID = pedido.Pedido_ID INNER JOIN produto ON produto.Produto_ID = itemPedido.Produto_ID;";
 
                     MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
 
@@ -303,7 +303,7 @@ namespace APAC_TIS4
             }
         }
 
-        public bool excluirPedidos(List<int> listPedidosID) {
+        public bool excluirPedidos(List<Tuple<int, int>> listPedidosID) {
             bool verifica = false;
 
             SingletonBD singleton = SingletonBD.getInstancia();
@@ -315,12 +315,15 @@ namespace APAC_TIS4
 
                 try
                 {
-                    foreach (int pedidosID in listPedidosID)
+                    foreach (Tuple<int, int> IDs in listPedidosID)
                     {
-                        MySqlCommand cmd = new MySqlCommand("DELETE FROM Pedido WHERE Pedido_ID = @Pedido_ID;", conexaoMySQL);
+                        MySqlCommand cmd = new MySqlCommand("SP_Pedido_Delete", conexaoMySQL);
                         //cmd.Transaction = tran;
+                        cmd.CommandType = CommandType.StoredProcedure;
 
-                        cmd.Parameters.AddWithValue("@Pedido_ID", pedidosID);
+                        cmd.Parameters.AddWithValue("_Produto_ID", IDs.Item2);
+
+                        cmd.Parameters.AddWithValue("_Pedido_ID", IDs.Item1);
 
                         cmd.ExecuteNonQuery();
                     }

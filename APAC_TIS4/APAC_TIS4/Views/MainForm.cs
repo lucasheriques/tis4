@@ -840,7 +840,7 @@ namespace APAC_TIS4
         {
             metroProgressSpinner2.Show();
             Util.WaitNSeconds(0.5);
-            List<int> listPedidosID = new List<int>();
+            List<Tuple<int, int>> listPedidosID = new List<Tuple<int, int>>();
             for (int i = 0; i < dvgPedidos.RowCount; i++)
             {
                 PedidoModels pedidoModels = new PedidoModels();
@@ -851,7 +851,7 @@ namespace APAC_TIS4
                 {
                     if (checkbox.ToString().ToLower() == "true")
                     {
-                        listPedidosID.Add(int.Parse(dvgPedidos.Rows[i].Cells[2].Value.ToString()));
+                        listPedidosID.Add(new Tuple<int, int>(int.Parse(dvgPedidos.Rows[i].Cells[2].Value.ToString()), int.Parse(dvgPedidos.Rows[i].Cells[14].Value.ToString())));
                     }
                 }
 
@@ -1014,7 +1014,7 @@ namespace APAC_TIS4
         {
             metroProgressSpinner3.Show();
             Util.WaitNSeconds(0.5);
-            List<int> listReceitaID = new List<int>();
+            List<Tuple<int, int>> listReceitaID = new List<Tuple<int, int>>();
             for (int i = 0; i < metroGrid1.RowCount; i++)
             {
                 ReceitaModels pedidoModels = new ReceitaModels();
@@ -1025,7 +1025,7 @@ namespace APAC_TIS4
                 {
                     if (checkbox.ToString().ToLower() == "true")
                     {
-                        listReceitaID.Add(int.Parse(metroGrid1.Rows[i].Cells[2].Value.ToString()));
+                        listReceitaID.Add(new Tuple<int, int>(int.Parse(metroGrid1.Rows[i].Cells[2].Value.ToString()), int.Parse(metroGrid1.Rows[i].Cells[14].Value.ToString())));
                     }
                 }
             }

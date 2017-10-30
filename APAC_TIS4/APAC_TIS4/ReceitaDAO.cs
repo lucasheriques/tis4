@@ -61,7 +61,7 @@ namespace APAC_TIS4
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
 
-                    string query = "SELECT receita.Receita_ID, Produto.Nome, produto.Tipo, produto.Tamanho, PRODUTO.Peso, produto.UDM, produto.Descricao, insumo.Nome, Receita_Insumo.Peso, Receita_Insumo.unidadeDeMedida, receita.Modo_de_Preparo, Receita.Observacao FROM Produto INNER JOIN Receita ON Produto.Produto_ID = Receita.Produto_ID INNER JOIN Receita_Insumo ON Receita_Insumo.Receita_ID = Receita.Receita_ID INNER JOIN insumo ON Receita_Insumo.Insumo_ID = insumo.Insumo_ID;";
+                    string query = "SELECT receita.Receita_ID, Produto.Nome, produto.Tipo, produto.Tamanho, PRODUTO.Peso, produto.UDM, produto.Descricao, insumo.Nome, Receita_Insumo.Peso, Receita_Insumo.unidadeDeMedida, receita.Modo_de_Preparo, Receita.Observacao, insumo.Insumo_ID FROM Produto INNER JOIN Receita ON Produto.Produto_ID = Receita.Produto_ID INNER JOIN Receita_Insumo ON Receita_Insumo.Receita_ID = Receita.Receita_ID INNER JOIN insumo ON Receita_Insumo.Insumo_ID = insumo.Insumo_ID;";
 
                     MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
 
@@ -188,7 +188,7 @@ namespace APAC_TIS4
             }
         }
 
-        public bool excluirPedidos(List<int> listReceitaID) {
+        public bool excluirPedidos(List<Tuple<int, int>> listReceitaID) {
             bool verifica = false;
 
             SingletonBD singleton = SingletonBD.getInstancia();
@@ -200,20 +200,14 @@ namespace APAC_TIS4
 
                 try
                 {
-                    foreach (int ReceitaID in listReceitaID)
+                    foreach (Tuple<int, int> IDs in listReceitaID)
                     {
-                        MySqlCommand cmd = new MySqlCommand("DELETE FROM receita WHERE Receita_ID = @Receita_ID;", conexaoMySQL);
+                        MySqlCommand cmd = new MySqlCommand("SP_receita_Delete", conexaoMySQL);
 
-                        cmd.Parameters.AddWithValue("@Receita_ID", ReceitaID);
+                        cmd.Parameters.AddWithValue("_Insumo_ID", IDs.Item2);
+                        cmd.Parameters.AddWithValue("_Receita_ID", IDs.Item1);
 
                         cmd.ExecuteNonQuery();
-
-                        MySqlCommand cmdReceita_Insumo = new MySqlCommand("DELETE FROM receita_insumo WHERE Receita_ID = @Receita_ID;", conexaoMySQL);
-
-                        cmdReceita_Insumo.Parameters.AddWithValue("@Receita_ID", ReceitaID);
-
-                        cmdReceita_Insumo.ExecuteNonQuery();
-
                     }
 
                     //tran.Commit();
