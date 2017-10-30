@@ -35,7 +35,9 @@ namespace APAC_TIS4
             //this.chartGrafico.Legends.Clear();
             //chartGrafico.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Range;
             //this.chartGrafico.Series.Add("Dados");
-            this.chartGrafico.Series.RemoveAt(0);
+            if (this.chartGrafico.Series.Count > 0) {
+                this.chartGrafico.Series.RemoveAt(0);
+            }
             loadGrafico();
             loagGrid();
             
@@ -684,6 +686,10 @@ namespace APAC_TIS4
 
         private void metroButton5_Click(object sender, EventArgs e)
         {
+            clearPedidosFields();
+        }
+
+        private void clearPedidosFields() {
             metroComboBox1.SelectedIndex = -1;
             metroComboBox2.SelectedIndex = -1;
             mtxtQantidade.Text = "";
@@ -913,6 +919,11 @@ namespace APAC_TIS4
         }
 
         private void metroButton13_Click(object sender, EventArgs e)
+        {
+            clearReceitaFields();
+        }
+
+        private void clearReceitaFields()
         {
             metroTextBox1.Text = "";
             metroTextBox4.Text = "";
@@ -1285,6 +1296,10 @@ namespace APAC_TIS4
 
         private void metroButton21_Click(object sender, EventArgs e)
         {
+            clearInsumoFields();
+        }
+
+        private void clearInsumoFields() {
             metroTextBox5.Text = "";
             metroTextBox6.Text = "";
             metroTextBox7.Text = "";
@@ -1758,6 +1773,44 @@ namespace APAC_TIS4
                     XcelApp.Quit();
                 }
             }
+        }
+
+        private void entityTab_TabIndexChanged(object sender, EventArgs e)
+        {
+/*            popularCliente();
+            popularProduto();
+            popularPedidos();
+            popularComboPedidos();
+            inicializarCliente();
+            inicializarProdutos();
+            inicializarPedidos();
+            inicializarReceita();
+            inicializarInsumo();
+            inicializarRelatorios();
+            clearClientFields();
+            clearProductFields();
+            clearPedidosFields();
+            clearInsumoFields();
+            clearReceitaFields();
+  */      }
+
+        private void entityTab_Selected(object sender, TabControlEventArgs e)
+        {
+            popularCliente();
+            popularProduto();
+            popularPedidos();
+            popularComboPedidos();
+            inicializarCliente();
+            inicializarProdutos();
+            inicializarPedidos();
+            inicializarReceita();
+            inicializarInsumo();
+            inicializarRelatorios();
+            clearClientFields();
+            clearProductFields();
+            clearPedidosFields();
+            clearInsumoFields();
+            clearReceitaFields();
         }
     }
 }
