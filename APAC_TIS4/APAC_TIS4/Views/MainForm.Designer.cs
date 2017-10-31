@@ -879,9 +879,9 @@
             this.clientPage.HorizontalScrollbarBarColor = true;
             this.clientPage.HorizontalScrollbarHighlightOnWheel = false;
             this.clientPage.HorizontalScrollbarSize = 10;
-            this.clientPage.Location = new System.Drawing.Point(4, 38);
+            this.clientPage.Location = new System.Drawing.Point(4, 35);
             this.clientPage.Name = "clientPage";
-            this.clientPage.Size = new System.Drawing.Size(1297, 596);
+            this.clientPage.Size = new System.Drawing.Size(1297, 599);
             this.clientPage.TabIndex = 1;
             this.clientPage.Text = "Cliente";
             this.clientPage.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -924,7 +924,7 @@
             this.dvgClientes.EnableHeadersVisualStyles = false;
             this.dvgClientes.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dvgClientes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dvgClientes.Location = new System.Drawing.Point(0, 478);
+            this.dvgClientes.Location = new System.Drawing.Point(0, 481);
             this.dvgClientes.Name = "dvgClientes";
             this.dvgClientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1369,7 +1369,7 @@
             this.dvgPedidos.EnableHeadersVisualStyles = false;
             this.dvgPedidos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dvgPedidos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dvgPedidos.Location = new System.Drawing.Point(0, 453);
+            this.dvgPedidos.Location = new System.Drawing.Point(0, 470);
             this.dvgPedidos.Name = "dvgPedidos";
             this.dvgPedidos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1382,7 +1382,7 @@
             this.dvgPedidos.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dvgPedidos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dvgPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgPedidos.Size = new System.Drawing.Size(1297, 143);
+            this.dvgPedidos.Size = new System.Drawing.Size(1297, 126);
             this.dvgPedidos.Style = MetroFramework.MetroColorStyle.Green;
             this.dvgPedidos.TabIndex = 75;
             this.dvgPedidos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgPedidos_CellContentClick);
@@ -1407,11 +1407,10 @@
             // 
             // metroButton26
             // 
-            this.metroButton26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.metroButton26.BackColor = System.Drawing.Color.Olive;
             this.metroButton26.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton26.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroButton26.Location = new System.Drawing.Point(653, 392);
+            this.metroButton26.Location = new System.Drawing.Point(653, 376);
             this.metroButton26.Name = "metroButton26";
             this.metroButton26.Size = new System.Drawing.Size(151, 31);
             this.metroButton26.TabIndex = 74;
@@ -1424,11 +1423,10 @@
             // 
             // metroButton8
             // 
-            this.metroButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.metroButton8.BackColor = System.Drawing.Color.Red;
             this.metroButton8.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroButton8.Location = new System.Drawing.Point(7, 392);
+            this.metroButton8.Location = new System.Drawing.Point(8, 423);
             this.metroButton8.Name = "metroButton8";
             this.metroButton8.Size = new System.Drawing.Size(150, 31);
             this.metroButton8.TabIndex = 41;
@@ -1490,7 +1488,7 @@
             this.metroLabel16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel16.BackColor = System.Drawing.SystemColors.ControlText;
             this.metroLabel16.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel16.Location = new System.Drawing.Point(878, 358);
+            this.metroLabel16.Location = new System.Drawing.Point(856, 423);
             this.metroLabel16.Name = "metroLabel16";
             this.metroLabel16.Size = new System.Drawing.Size(366, 23);
             this.metroLabel16.TabIndex = 38;
@@ -1500,11 +1498,10 @@
             // 
             // metroButton6
             // 
-            this.metroButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton6.BackColor = System.Drawing.Color.LimeGreen;
             this.metroButton6.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.metroButton6.Location = new System.Drawing.Point(1074, 395);
+            this.metroButton6.Location = new System.Drawing.Point(1072, 376);
             this.metroButton6.Name = "metroButton6";
             this.metroButton6.Size = new System.Drawing.Size(150, 31);
             this.metroButton6.TabIndex = 36;
@@ -1518,7 +1515,7 @@
             // metroProgressSpinner2
             // 
             this.metroProgressSpinner2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroProgressSpinner2.Location = new System.Drawing.Point(1009, 395);
+            this.metroProgressSpinner2.Location = new System.Drawing.Point(1007, 376);
             this.metroProgressSpinner2.Maximum = 100;
             this.metroProgressSpinner2.Name = "metroProgressSpinner2";
             this.metroProgressSpinner2.Size = new System.Drawing.Size(27, 31);
@@ -1529,11 +1526,10 @@
             // 
             // metroButton7
             // 
-            this.metroButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton7.BackColor = System.Drawing.SystemColors.HotTrack;
             this.metroButton7.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.metroButton7.Location = new System.Drawing.Point(832, 395);
+            this.metroButton7.Location = new System.Drawing.Point(832, 376);
             this.metroButton7.Name = "metroButton7";
             this.metroButton7.Size = new System.Drawing.Size(150, 31);
             this.metroButton7.TabIndex = 34;
@@ -1899,7 +1895,6 @@
             // 
             // metroLabel37
             // 
-            this.metroLabel37.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel37.BackColor = System.Drawing.SystemColors.ControlText;
             this.metroLabel37.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel37.Location = new System.Drawing.Point(896, 374);
@@ -1912,7 +1907,6 @@
             // 
             // metroButton22
             // 
-            this.metroButton22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton22.BackColor = System.Drawing.Color.LimeGreen;
             this.metroButton22.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton22.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -1929,7 +1923,6 @@
             // 
             // metroProgressSpinner4
             // 
-            this.metroProgressSpinner4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroProgressSpinner4.Location = new System.Drawing.Point(1030, 400);
             this.metroProgressSpinner4.Maximum = 100;
             this.metroProgressSpinner4.Name = "metroProgressSpinner4";
@@ -1941,7 +1934,6 @@
             // 
             // metroButton23
             // 
-            this.metroButton23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton23.BackColor = System.Drawing.SystemColors.HotTrack;
             this.metroButton23.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton23.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -1958,11 +1950,10 @@
             // 
             // metroButton20
             // 
-            this.metroButton20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.metroButton20.BackColor = System.Drawing.Color.Red;
             this.metroButton20.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton20.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroButton20.Location = new System.Drawing.Point(2, 385);
+            this.metroButton20.Location = new System.Drawing.Point(3, 400);
             this.metroButton20.Name = "metroButton20";
             this.metroButton20.Size = new System.Drawing.Size(150, 31);
             this.metroButton20.TabIndex = 70;
@@ -1978,7 +1969,7 @@
             this.metroButton21.BackColor = System.Drawing.SystemColors.Menu;
             this.metroButton21.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton21.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroButton21.Location = new System.Drawing.Point(3, 363);
+            this.metroButton21.Location = new System.Drawing.Point(3, 354);
             this.metroButton21.Name = "metroButton21";
             this.metroButton21.Size = new System.Drawing.Size(150, 31);
             this.metroButton21.TabIndex = 69;
@@ -2471,11 +2462,10 @@
             // 
             // metroButton16
             // 
-            this.metroButton16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.metroButton16.BackColor = System.Drawing.Color.Olive;
             this.metroButton16.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroButton16.Location = new System.Drawing.Point(672, 397);
+            this.metroButton16.Location = new System.Drawing.Point(712, 394);
             this.metroButton16.Name = "metroButton16";
             this.metroButton16.Size = new System.Drawing.Size(151, 31);
             this.metroButton16.TabIndex = 71;
@@ -2656,7 +2646,7 @@
             this.metroLabel23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel23.BackColor = System.Drawing.SystemColors.ControlText;
             this.metroLabel23.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel23.Location = new System.Drawing.Point(903, 389);
+            this.metroLabel23.Location = new System.Drawing.Point(886, 428);
             this.metroLabel23.Name = "metroLabel23";
             this.metroLabel23.Size = new System.Drawing.Size(366, 23);
             this.metroLabel23.TabIndex = 55;
@@ -2666,11 +2656,10 @@
             // 
             // metroButton14
             // 
-            this.metroButton14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton14.BackColor = System.Drawing.Color.LimeGreen;
             this.metroButton14.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton14.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.metroButton14.Location = new System.Drawing.Point(1102, 415);
+            this.metroButton14.Location = new System.Drawing.Point(1132, 394);
             this.metroButton14.Name = "metroButton14";
             this.metroButton14.Size = new System.Drawing.Size(150, 31);
             this.metroButton14.TabIndex = 54;
@@ -2683,8 +2672,7 @@
             // 
             // metroProgressSpinner3
             // 
-            this.metroProgressSpinner3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroProgressSpinner3.Location = new System.Drawing.Point(1037, 415);
+            this.metroProgressSpinner3.Location = new System.Drawing.Point(1081, 394);
             this.metroProgressSpinner3.Maximum = 100;
             this.metroProgressSpinner3.Name = "metroProgressSpinner3";
             this.metroProgressSpinner3.Size = new System.Drawing.Size(27, 31);
@@ -2695,11 +2683,10 @@
             // 
             // metroButton15
             // 
-            this.metroButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton15.BackColor = System.Drawing.SystemColors.HotTrack;
             this.metroButton15.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton15.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.metroButton15.Location = new System.Drawing.Point(864, 415);
+            this.metroButton15.Location = new System.Drawing.Point(914, 394);
             this.metroButton15.Name = "metroButton15";
             this.metroButton15.Size = new System.Drawing.Size(150, 31);
             this.metroButton15.TabIndex = 52;
@@ -2713,11 +2700,10 @@
             // 
             // metroButton12
             // 
-            this.metroButton12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.metroButton12.BackColor = System.Drawing.Color.Red;
             this.metroButton12.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroButton12.Location = new System.Drawing.Point(10, 397);
+            this.metroButton12.Location = new System.Drawing.Point(11, 405);
             this.metroButton12.Name = "metroButton12";
             this.metroButton12.Size = new System.Drawing.Size(151, 31);
             this.metroButton12.TabIndex = 51;
