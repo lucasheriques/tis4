@@ -11,6 +11,37 @@ namespace APAC_TIS4
 {
     class ClienteDAO
     {
+        public DataSet pesquisaPorNome(string nomeCliente) {
+            DataSet sDs = new DataSet();
+            SingletonBD singleton = SingletonBD.getInstancia();
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            {
+                try
+                {
+                    conexaoMySQL.Open();
+
+                    /* criando o comando sql indicando a nossa conexão e a nossa
+                    procedure */
+                    String query = "SELECT * FROM Cliente WHERE Nome = '" + nomeCliente + "'";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
+
+                    MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
+
+                    MySqlCommandBuilder sBuilder = new MySqlCommandBuilder(sAdapter);
+
+                    sAdapter.Fill(sDs, "characters");
+
+                    DataTable sTable = sDs.Tables["characters"];
+                }
+                finally
+                {
+                    conexaoMySQL.Close();
+                }
+                return sDs;
+            }
+        }
+
         public DataSet preencheCombo()
         {
             DataSet sDs = new DataSet();

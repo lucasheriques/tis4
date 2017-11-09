@@ -217,6 +217,9 @@
             this.metroButton28 = new MetroFramework.Controls.MetroButton();
             this.metroGrid3 = new MetroFramework.Controls.MetroGrid();
             this.chartGrafico = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.lblPesquisarNome = new MetroFramework.Controls.MetroLabel();
+            this.txtPesquisarNome = new MetroFramework.Controls.MetroTextBox();
+            this.bntPesquisar = new MetroFramework.Controls.MetroButton();
             this.contextMenuStrip3.SuspendLayout();
             this.productPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mgProduto)).BeginInit();
@@ -295,9 +298,9 @@
             this.productPage.HorizontalScrollbarBarColor = true;
             this.productPage.HorizontalScrollbarHighlightOnWheel = false;
             this.productPage.HorizontalScrollbarSize = 10;
-            this.productPage.Location = new System.Drawing.Point(4, 38);
+            this.productPage.Location = new System.Drawing.Point(4, 35);
             this.productPage.Name = "productPage";
-            this.productPage.Size = new System.Drawing.Size(1297, 596);
+            this.productPage.Size = new System.Drawing.Size(1297, 599);
             this.productPage.TabIndex = 2;
             this.productPage.Text = "Produtos";
             this.productPage.VerticalScrollbarBarColor = true;
@@ -493,7 +496,7 @@
             this.mgProduto.EnableHeadersVisualStyles = false;
             this.mgProduto.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.mgProduto.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.mgProduto.Location = new System.Drawing.Point(0, 484);
+            this.mgProduto.Location = new System.Drawing.Point(0, 487);
             this.mgProduto.Name = "mgProduto";
             this.mgProduto.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -859,6 +862,9 @@
             // 
             // clientPage
             // 
+            this.clientPage.Controls.Add(this.bntPesquisar);
+            this.clientPage.Controls.Add(this.txtPesquisarNome);
+            this.clientPage.Controls.Add(this.lblPesquisarNome);
             this.clientPage.Controls.Add(this.dvgClientes);
             this.clientPage.Controls.Add(this.metroButton27);
             this.clientPage.Controls.Add(this.metroButton24);
@@ -879,9 +885,9 @@
             this.clientPage.HorizontalScrollbarBarColor = true;
             this.clientPage.HorizontalScrollbarHighlightOnWheel = false;
             this.clientPage.HorizontalScrollbarSize = 10;
-            this.clientPage.Location = new System.Drawing.Point(4, 35);
+            this.clientPage.Location = new System.Drawing.Point(4, 38);
             this.clientPage.Name = "clientPage";
-            this.clientPage.Size = new System.Drawing.Size(1297, 599);
+            this.clientPage.Size = new System.Drawing.Size(1297, 596);
             this.clientPage.TabIndex = 1;
             this.clientPage.Text = "Cliente";
             this.clientPage.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -924,7 +930,7 @@
             this.dvgClientes.EnableHeadersVisualStyles = false;
             this.dvgClientes.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dvgClientes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dvgClientes.Location = new System.Drawing.Point(0, 481);
+            this.dvgClientes.Location = new System.Drawing.Point(0, 478);
             this.dvgClientes.Name = "dvgClientes";
             this.dvgClientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1288,7 +1294,7 @@
             this.entityTab.Location = new System.Drawing.Point(0, 60);
             this.entityTab.Margin = new System.Windows.Forms.Padding(30, 32, 32, 3);
             this.entityTab.Name = "entityTab";
-            this.entityTab.SelectedIndex = 4;
+            this.entityTab.SelectedIndex = 0;
             this.entityTab.Size = new System.Drawing.Size(1305, 638);
             this.entityTab.Style = MetroFramework.MetroColorStyle.Green;
             this.entityTab.TabIndex = 3;
@@ -1325,9 +1331,9 @@
             this.PedidosPage.HorizontalScrollbarBarColor = true;
             this.PedidosPage.HorizontalScrollbarHighlightOnWheel = false;
             this.PedidosPage.HorizontalScrollbarSize = 10;
-            this.PedidosPage.Location = new System.Drawing.Point(4, 38);
+            this.PedidosPage.Location = new System.Drawing.Point(4, 35);
             this.PedidosPage.Name = "PedidosPage";
-            this.PedidosPage.Size = new System.Drawing.Size(1297, 596);
+            this.PedidosPage.Size = new System.Drawing.Size(1297, 599);
             this.PedidosPage.TabIndex = 6;
             this.PedidosPage.Text = "Pedidos";
             this.PedidosPage.VerticalScrollbarBarColor = true;
@@ -1369,7 +1375,7 @@
             this.dvgPedidos.EnableHeadersVisualStyles = false;
             this.dvgPedidos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dvgPedidos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dvgPedidos.Location = new System.Drawing.Point(0, 470);
+            this.dvgPedidos.Location = new System.Drawing.Point(0, 473);
             this.dvgPedidos.Name = "dvgPedidos";
             this.dvgPedidos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1813,9 +1819,9 @@
             this.InsumoPage.HorizontalScrollbarBarColor = true;
             this.InsumoPage.HorizontalScrollbarHighlightOnWheel = false;
             this.InsumoPage.HorizontalScrollbarSize = 10;
-            this.InsumoPage.Location = new System.Drawing.Point(4, 38);
+            this.InsumoPage.Location = new System.Drawing.Point(4, 35);
             this.InsumoPage.Name = "InsumoPage";
-            this.InsumoPage.Size = new System.Drawing.Size(1297, 596);
+            this.InsumoPage.Size = new System.Drawing.Size(1297, 599);
             this.InsumoPage.TabIndex = 7;
             this.InsumoPage.Text = "Insumo";
             this.InsumoPage.VerticalScrollbarBarColor = true;
@@ -1857,7 +1863,7 @@
             this.metroGrid2.EnableHeadersVisualStyles = false;
             this.metroGrid2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid2.Location = new System.Drawing.Point(0, 437);
+            this.metroGrid2.Location = new System.Drawing.Point(0, 440);
             this.metroGrid2.Name = "metroGrid2";
             this.metroGrid2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -3014,6 +3020,56 @@
             title1.Text = "Relatório de Lucros";
             this.chartGrafico.Titles.Add(title1);
             // 
+            // lblPesquisarNome
+            // 
+            this.lblPesquisarNome.AutoSize = true;
+            this.lblPesquisarNome.Location = new System.Drawing.Point(227, 431);
+            this.lblPesquisarNome.Name = "lblPesquisarNome";
+            this.lblPesquisarNome.Size = new System.Drawing.Size(53, 19);
+            this.lblPesquisarNome.TabIndex = 75;
+            this.lblPesquisarNome.Text = "Nome: ";
+            // 
+            // txtPesquisarNome
+            // 
+            // 
+            // 
+            // 
+            this.txtPesquisarNome.CustomButton.Image = null;
+            this.txtPesquisarNome.CustomButton.Location = new System.Drawing.Point(150, 1);
+            this.txtPesquisarNome.CustomButton.Name = "";
+            this.txtPesquisarNome.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtPesquisarNome.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtPesquisarNome.CustomButton.TabIndex = 1;
+            this.txtPesquisarNome.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtPesquisarNome.CustomButton.UseSelectable = true;
+            this.txtPesquisarNome.CustomButton.Visible = false;
+            this.txtPesquisarNome.Lines = new string[0];
+            this.txtPesquisarNome.Location = new System.Drawing.Point(286, 427);
+            this.txtPesquisarNome.MaxLength = 32767;
+            this.txtPesquisarNome.Name = "txtPesquisarNome";
+            this.txtPesquisarNome.PasswordChar = '\0';
+            this.txtPesquisarNome.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtPesquisarNome.SelectedText = "";
+            this.txtPesquisarNome.SelectionLength = 0;
+            this.txtPesquisarNome.SelectionStart = 0;
+            this.txtPesquisarNome.ShortcutsEnabled = true;
+            this.txtPesquisarNome.Size = new System.Drawing.Size(172, 23);
+            this.txtPesquisarNome.TabIndex = 76;
+            this.txtPesquisarNome.UseSelectable = true;
+            this.txtPesquisarNome.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtPesquisarNome.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // bntPesquisar
+            // 
+            this.bntPesquisar.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.bntPesquisar.Location = new System.Drawing.Point(483, 427);
+            this.bntPesquisar.Name = "bntPesquisar";
+            this.bntPesquisar.Size = new System.Drawing.Size(105, 23);
+            this.bntPesquisar.TabIndex = 77;
+            this.bntPesquisar.Text = "Pesquisar";
+            this.bntPesquisar.UseSelectable = true;
+            this.bntPesquisar.Click += new System.EventHandler(this.bntPesquisar_Click);
+            // 
             // frmPrincipal
             // 
             this.ClientSize = new System.Drawing.Size(1305, 698);
@@ -3213,6 +3269,9 @@
         private MetroFramework.Controls.MetroTextBox mtxtID;
         private MetroFramework.Controls.MetroTextBox mtxtPeso;
         private MetroFramework.Controls.MetroComboBox mcmbUDM;
+        private MetroFramework.Controls.MetroButton bntPesquisar;
+        private MetroFramework.Controls.MetroTextBox txtPesquisarNome;
+        private MetroFramework.Controls.MetroLabel lblPesquisarNome;
     }
 }
 

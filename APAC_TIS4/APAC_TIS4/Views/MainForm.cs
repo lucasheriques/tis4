@@ -1812,5 +1812,21 @@ namespace APAC_TIS4
             clearInsumoFields();
             clearReceitaFields();
         }
+
+        private void bntPesquisar_Click(object sender, EventArgs e)
+        {
+            ClienteDAO clienteDAO = new ClienteDAO();
+            string nomeCliente = txtPesquisarNome.Text;
+
+            DataSet dataSet = clienteDAO.pesquisaPorNome(nomeCliente);
+
+            dvgClientes.DataSource = dataSet.Tables["characters"];
+
+            for (int i = 0; i < dvgClientes.Columns.Count; i++)
+            {
+                dvgClientes.Columns[i].Width = 400;
+            }
+
+        }
     }
 }
