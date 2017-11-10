@@ -63,6 +63,11 @@
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.gdfgToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productPage = new MetroFramework.Controls.MetroTabPage();
+            this.cmbTipoPesquisar = new MetroFramework.Controls.MetroComboBox();
+            this.lblTipo = new MetroFramework.Controls.MetroLabel();
+            this.bntPesquisarProduto = new MetroFramework.Controls.MetroButton();
+            this.txtNomePesquisar = new MetroFramework.Controls.MetroTextBox();
+            this.lblNome = new MetroFramework.Controls.MetroLabel();
             this.mcmbUDM = new MetroFramework.Controls.MetroComboBox();
             this.mtxtPeso = new MetroFramework.Controls.MetroTextBox();
             this.mcmbTamanho = new MetroFramework.Controls.MetroComboBox();
@@ -96,6 +101,9 @@
             this.metroButtonAtualizar = new MetroFramework.Controls.MetroButton();
             this.metroButtonAdicionarProdutos = new MetroFramework.Controls.MetroButton();
             this.clientPage = new MetroFramework.Controls.MetroTabPage();
+            this.bntPesquisar = new MetroFramework.Controls.MetroButton();
+            this.txtPesquisarNome = new MetroFramework.Controls.MetroTextBox();
+            this.lblPesquisarNome = new MetroFramework.Controls.MetroLabel();
             this.dvgClientes = new MetroFramework.Controls.MetroGrid();
             this.dataGridViewCheckBoxColumn5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewButtonColumn5 = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -149,7 +157,10 @@
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.InsumoPage = new MetroFramework.Controls.MetroTabPage();
-            this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
+            this.bntPesquisarInsumo = new MetroFramework.Controls.MetroButton();
+            this.txtNomePesquisarInsumo = new MetroFramework.Controls.MetroTextBox();
+            this.lblNomePesquisar = new MetroFramework.Controls.MetroLabel();
+            this.gridInsumo = new MetroFramework.Controls.MetroGrid();
             this.dataGridViewCheckBoxColumn4 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewButtonColumn4 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.metroLabel37 = new MetroFramework.Controls.MetroLabel();
@@ -181,6 +192,9 @@
             this.metroButton18 = new MetroFramework.Controls.MetroButton();
             this.metroButton19 = new MetroFramework.Controls.MetroButton();
             this.ReceitaPage = new MetroFramework.Controls.MetroTabPage();
+            this.btnPesquisarReceita = new MetroFramework.Controls.MetroButton();
+            this.txtProdutoPesquisa = new MetroFramework.Controls.MetroComboBox();
+            this.lblProdutoPesquisa = new MetroFramework.Controls.MetroLabel();
             this.metroButton16 = new MetroFramework.Controls.MetroButton();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
             this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -217,9 +231,11 @@
             this.metroButton28 = new MetroFramework.Controls.MetroButton();
             this.metroGrid3 = new MetroFramework.Controls.MetroGrid();
             this.chartGrafico = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.lblPesquisarNome = new MetroFramework.Controls.MetroLabel();
-            this.txtPesquisarNome = new MetroFramework.Controls.MetroTextBox();
-            this.bntPesquisar = new MetroFramework.Controls.MetroButton();
+            this.lblClientePesquisarPedido = new MetroFramework.Controls.MetroLabel();
+            this.cmbClientesPesquisarReceitas = new MetroFramework.Controls.MetroComboBox();
+            this.bntPesquisarPedido = new MetroFramework.Controls.MetroButton();
+            this.cmbProdutoPedidos = new MetroFramework.Controls.MetroComboBox();
+            this.lblProdutosPesquisaPedidos = new MetroFramework.Controls.MetroLabel();
             this.contextMenuStrip3.SuspendLayout();
             this.productPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mgProduto)).BeginInit();
@@ -232,7 +248,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dvgPedidos)).BeginInit();
             this.metroPanel3.SuspendLayout();
             this.InsumoPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridInsumo)).BeginInit();
             this.metroPanel5.SuspendLayout();
             this.ReceitaPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
@@ -268,6 +284,11 @@
             // 
             // productPage
             // 
+            this.productPage.Controls.Add(this.cmbTipoPesquisar);
+            this.productPage.Controls.Add(this.lblTipo);
+            this.productPage.Controls.Add(this.bntPesquisarProduto);
+            this.productPage.Controls.Add(this.txtNomePesquisar);
+            this.productPage.Controls.Add(this.lblNome);
             this.productPage.Controls.Add(this.mcmbUDM);
             this.productPage.Controls.Add(this.mtxtPeso);
             this.productPage.Controls.Add(this.mcmbTamanho);
@@ -298,14 +319,88 @@
             this.productPage.HorizontalScrollbarBarColor = true;
             this.productPage.HorizontalScrollbarHighlightOnWheel = false;
             this.productPage.HorizontalScrollbarSize = 10;
-            this.productPage.Location = new System.Drawing.Point(4, 35);
+            this.productPage.Location = new System.Drawing.Point(4, 38);
             this.productPage.Name = "productPage";
-            this.productPage.Size = new System.Drawing.Size(1297, 599);
+            this.productPage.Size = new System.Drawing.Size(1297, 596);
             this.productPage.TabIndex = 2;
             this.productPage.Text = "Produtos";
             this.productPage.VerticalScrollbarBarColor = true;
             this.productPage.VerticalScrollbarHighlightOnWheel = false;
             this.productPage.VerticalScrollbarSize = 10;
+            // 
+            // cmbTipoPesquisar
+            // 
+            this.cmbTipoPesquisar.FormattingEnabled = true;
+            this.cmbTipoPesquisar.ItemHeight = 23;
+            this.cmbTipoPesquisar.Items.AddRange(new object[] {
+            "Pão",
+            "Bolo",
+            "Doce",
+            "Outros"});
+            this.cmbTipoPesquisar.Location = new System.Drawing.Point(256, 413);
+            this.cmbTipoPesquisar.Name = "cmbTipoPesquisar";
+            this.cmbTipoPesquisar.Size = new System.Drawing.Size(172, 29);
+            this.cmbTipoPesquisar.TabIndex = 83;
+            this.cmbTipoPesquisar.UseSelectable = true;
+            // 
+            // lblTipo
+            // 
+            this.lblTipo.AutoSize = true;
+            this.lblTipo.Location = new System.Drawing.Point(178, 414);
+            this.lblTipo.Name = "lblTipo";
+            this.lblTipo.Size = new System.Drawing.Size(38, 19);
+            this.lblTipo.TabIndex = 82;
+            this.lblTipo.Text = "Tipo:";
+            // 
+            // bntPesquisarProduto
+            // 
+            this.bntPesquisarProduto.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.bntPesquisarProduto.Location = new System.Drawing.Point(452, 447);
+            this.bntPesquisarProduto.Name = "bntPesquisarProduto";
+            this.bntPesquisarProduto.Size = new System.Drawing.Size(105, 23);
+            this.bntPesquisarProduto.TabIndex = 81;
+            this.bntPesquisarProduto.Text = "Pesquisar";
+            this.bntPesquisarProduto.UseSelectable = true;
+            this.bntPesquisarProduto.Click += new System.EventHandler(this.bntPesquisarProduto_Click);
+            // 
+            // txtNomePesquisar
+            // 
+            // 
+            // 
+            // 
+            this.txtNomePesquisar.CustomButton.Image = null;
+            this.txtNomePesquisar.CustomButton.Location = new System.Drawing.Point(150, 1);
+            this.txtNomePesquisar.CustomButton.Name = "";
+            this.txtNomePesquisar.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtNomePesquisar.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtNomePesquisar.CustomButton.TabIndex = 1;
+            this.txtNomePesquisar.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtNomePesquisar.CustomButton.UseSelectable = true;
+            this.txtNomePesquisar.CustomButton.Visible = false;
+            this.txtNomePesquisar.Lines = new string[0];
+            this.txtNomePesquisar.Location = new System.Drawing.Point(256, 447);
+            this.txtNomePesquisar.MaxLength = 32767;
+            this.txtNomePesquisar.Name = "txtNomePesquisar";
+            this.txtNomePesquisar.PasswordChar = '\0';
+            this.txtNomePesquisar.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtNomePesquisar.SelectedText = "";
+            this.txtNomePesquisar.SelectionLength = 0;
+            this.txtNomePesquisar.SelectionStart = 0;
+            this.txtNomePesquisar.ShortcutsEnabled = true;
+            this.txtNomePesquisar.Size = new System.Drawing.Size(172, 23);
+            this.txtNomePesquisar.TabIndex = 80;
+            this.txtNomePesquisar.UseSelectable = true;
+            this.txtNomePesquisar.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtNomePesquisar.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // lblNome
+            // 
+            this.lblNome.AutoSize = true;
+            this.lblNome.Location = new System.Drawing.Point(178, 451);
+            this.lblNome.Name = "lblNome";
+            this.lblNome.Size = new System.Drawing.Size(53, 19);
+            this.lblNome.TabIndex = 79;
+            this.lblNome.Text = "Nome: ";
             // 
             // mcmbUDM
             // 
@@ -496,7 +591,7 @@
             this.mgProduto.EnableHeadersVisualStyles = false;
             this.mgProduto.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.mgProduto.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.mgProduto.Location = new System.Drawing.Point(0, 487);
+            this.mgProduto.Location = new System.Drawing.Point(0, 484);
             this.mgProduto.Name = "mgProduto";
             this.mgProduto.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -894,6 +989,56 @@
             this.clientPage.VerticalScrollbarBarColor = true;
             this.clientPage.VerticalScrollbarHighlightOnWheel = false;
             this.clientPage.VerticalScrollbarSize = 10;
+            // 
+            // bntPesquisar
+            // 
+            this.bntPesquisar.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.bntPesquisar.Location = new System.Drawing.Point(483, 427);
+            this.bntPesquisar.Name = "bntPesquisar";
+            this.bntPesquisar.Size = new System.Drawing.Size(105, 23);
+            this.bntPesquisar.TabIndex = 77;
+            this.bntPesquisar.Text = "Pesquisar";
+            this.bntPesquisar.UseSelectable = true;
+            this.bntPesquisar.Click += new System.EventHandler(this.bntPesquisar_Click);
+            // 
+            // txtPesquisarNome
+            // 
+            // 
+            // 
+            // 
+            this.txtPesquisarNome.CustomButton.Image = null;
+            this.txtPesquisarNome.CustomButton.Location = new System.Drawing.Point(150, 1);
+            this.txtPesquisarNome.CustomButton.Name = "";
+            this.txtPesquisarNome.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtPesquisarNome.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtPesquisarNome.CustomButton.TabIndex = 1;
+            this.txtPesquisarNome.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtPesquisarNome.CustomButton.UseSelectable = true;
+            this.txtPesquisarNome.CustomButton.Visible = false;
+            this.txtPesquisarNome.Lines = new string[0];
+            this.txtPesquisarNome.Location = new System.Drawing.Point(286, 427);
+            this.txtPesquisarNome.MaxLength = 32767;
+            this.txtPesquisarNome.Name = "txtPesquisarNome";
+            this.txtPesquisarNome.PasswordChar = '\0';
+            this.txtPesquisarNome.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtPesquisarNome.SelectedText = "";
+            this.txtPesquisarNome.SelectionLength = 0;
+            this.txtPesquisarNome.SelectionStart = 0;
+            this.txtPesquisarNome.ShortcutsEnabled = true;
+            this.txtPesquisarNome.Size = new System.Drawing.Size(172, 23);
+            this.txtPesquisarNome.TabIndex = 76;
+            this.txtPesquisarNome.UseSelectable = true;
+            this.txtPesquisarNome.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtPesquisarNome.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // lblPesquisarNome
+            // 
+            this.lblPesquisarNome.AutoSize = true;
+            this.lblPesquisarNome.Location = new System.Drawing.Point(227, 431);
+            this.lblPesquisarNome.Name = "lblPesquisarNome";
+            this.lblPesquisarNome.Size = new System.Drawing.Size(53, 19);
+            this.lblPesquisarNome.TabIndex = 75;
+            this.lblPesquisarNome.Text = "Nome: ";
             // 
             // dvgClientes
             // 
@@ -1294,7 +1439,7 @@
             this.entityTab.Location = new System.Drawing.Point(0, 60);
             this.entityTab.Margin = new System.Windows.Forms.Padding(30, 32, 32, 3);
             this.entityTab.Name = "entityTab";
-            this.entityTab.SelectedIndex = 0;
+            this.entityTab.SelectedIndex = 2;
             this.entityTab.Size = new System.Drawing.Size(1305, 638);
             this.entityTab.Style = MetroFramework.MetroColorStyle.Green;
             this.entityTab.TabIndex = 3;
@@ -1305,6 +1450,11 @@
             // 
             // PedidosPage
             // 
+            this.PedidosPage.Controls.Add(this.cmbProdutoPedidos);
+            this.PedidosPage.Controls.Add(this.lblProdutosPesquisaPedidos);
+            this.PedidosPage.Controls.Add(this.bntPesquisarPedido);
+            this.PedidosPage.Controls.Add(this.cmbClientesPesquisarReceitas);
+            this.PedidosPage.Controls.Add(this.lblClientePesquisarPedido);
             this.PedidosPage.Controls.Add(this.dvgPedidos);
             this.PedidosPage.Controls.Add(this.metroButton26);
             this.PedidosPage.Controls.Add(this.metroButton8);
@@ -1331,9 +1481,9 @@
             this.PedidosPage.HorizontalScrollbarBarColor = true;
             this.PedidosPage.HorizontalScrollbarHighlightOnWheel = false;
             this.PedidosPage.HorizontalScrollbarSize = 10;
-            this.PedidosPage.Location = new System.Drawing.Point(4, 35);
+            this.PedidosPage.Location = new System.Drawing.Point(4, 38);
             this.PedidosPage.Name = "PedidosPage";
-            this.PedidosPage.Size = new System.Drawing.Size(1297, 599);
+            this.PedidosPage.Size = new System.Drawing.Size(1297, 596);
             this.PedidosPage.TabIndex = 6;
             this.PedidosPage.Text = "Pedidos";
             this.PedidosPage.VerticalScrollbarBarColor = true;
@@ -1375,7 +1525,7 @@
             this.dvgPedidos.EnableHeadersVisualStyles = false;
             this.dvgPedidos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dvgPedidos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dvgPedidos.Location = new System.Drawing.Point(0, 473);
+            this.dvgPedidos.Location = new System.Drawing.Point(0, 470);
             this.dvgPedidos.Name = "dvgPedidos";
             this.dvgPedidos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1790,7 +1940,10 @@
             // 
             // InsumoPage
             // 
-            this.InsumoPage.Controls.Add(this.metroGrid2);
+            this.InsumoPage.Controls.Add(this.bntPesquisarInsumo);
+            this.InsumoPage.Controls.Add(this.txtNomePesquisarInsumo);
+            this.InsumoPage.Controls.Add(this.lblNomePesquisar);
+            this.InsumoPage.Controls.Add(this.gridInsumo);
             this.InsumoPage.Controls.Add(this.metroLabel37);
             this.InsumoPage.Controls.Add(this.metroButton22);
             this.InsumoPage.Controls.Add(this.metroProgressSpinner4);
@@ -1819,27 +1972,77 @@
             this.InsumoPage.HorizontalScrollbarBarColor = true;
             this.InsumoPage.HorizontalScrollbarHighlightOnWheel = false;
             this.InsumoPage.HorizontalScrollbarSize = 10;
-            this.InsumoPage.Location = new System.Drawing.Point(4, 35);
+            this.InsumoPage.Location = new System.Drawing.Point(4, 38);
             this.InsumoPage.Name = "InsumoPage";
-            this.InsumoPage.Size = new System.Drawing.Size(1297, 599);
+            this.InsumoPage.Size = new System.Drawing.Size(1297, 596);
             this.InsumoPage.TabIndex = 7;
             this.InsumoPage.Text = "Insumo";
             this.InsumoPage.VerticalScrollbarBarColor = true;
             this.InsumoPage.VerticalScrollbarHighlightOnWheel = false;
             this.InsumoPage.VerticalScrollbarSize = 10;
             // 
-            // metroGrid2
+            // bntPesquisarInsumo
             // 
-            this.metroGrid2.AllowUserToAddRows = false;
-            this.metroGrid2.AllowUserToDeleteRows = false;
-            this.metroGrid2.AllowUserToOrderColumns = true;
-            this.metroGrid2.AllowUserToResizeRows = false;
+            this.bntPesquisarInsumo.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.bntPesquisarInsumo.Location = new System.Drawing.Point(562, 400);
+            this.bntPesquisarInsumo.Name = "bntPesquisarInsumo";
+            this.bntPesquisarInsumo.Size = new System.Drawing.Size(105, 23);
+            this.bntPesquisarInsumo.TabIndex = 80;
+            this.bntPesquisarInsumo.Text = "Pesquisar";
+            this.bntPesquisarInsumo.UseSelectable = true;
+            this.bntPesquisarInsumo.Click += new System.EventHandler(this.bntPesquisarInsumo_Click);
+            // 
+            // txtNomePesquisarInsumo
+            // 
+            // 
+            // 
+            // 
+            this.txtNomePesquisarInsumo.CustomButton.Image = null;
+            this.txtNomePesquisarInsumo.CustomButton.Location = new System.Drawing.Point(150, 1);
+            this.txtNomePesquisarInsumo.CustomButton.Name = "";
+            this.txtNomePesquisarInsumo.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.txtNomePesquisarInsumo.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.txtNomePesquisarInsumo.CustomButton.TabIndex = 1;
+            this.txtNomePesquisarInsumo.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.txtNomePesquisarInsumo.CustomButton.UseSelectable = true;
+            this.txtNomePesquisarInsumo.CustomButton.Visible = false;
+            this.txtNomePesquisarInsumo.Lines = new string[0];
+            this.txtNomePesquisarInsumo.Location = new System.Drawing.Point(365, 400);
+            this.txtNomePesquisarInsumo.MaxLength = 32767;
+            this.txtNomePesquisarInsumo.Name = "txtNomePesquisarInsumo";
+            this.txtNomePesquisarInsumo.PasswordChar = '\0';
+            this.txtNomePesquisarInsumo.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtNomePesquisarInsumo.SelectedText = "";
+            this.txtNomePesquisarInsumo.SelectionLength = 0;
+            this.txtNomePesquisarInsumo.SelectionStart = 0;
+            this.txtNomePesquisarInsumo.ShortcutsEnabled = true;
+            this.txtNomePesquisarInsumo.Size = new System.Drawing.Size(172, 23);
+            this.txtNomePesquisarInsumo.TabIndex = 79;
+            this.txtNomePesquisarInsumo.UseSelectable = true;
+            this.txtNomePesquisarInsumo.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.txtNomePesquisarInsumo.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // lblNomePesquisar
+            // 
+            this.lblNomePesquisar.AutoSize = true;
+            this.lblNomePesquisar.Location = new System.Drawing.Point(306, 404);
+            this.lblNomePesquisar.Name = "lblNomePesquisar";
+            this.lblNomePesquisar.Size = new System.Drawing.Size(53, 19);
+            this.lblNomePesquisar.TabIndex = 78;
+            this.lblNomePesquisar.Text = "Nome: ";
+            // 
+            // gridInsumo
+            // 
+            this.gridInsumo.AllowUserToAddRows = false;
+            this.gridInsumo.AllowUserToDeleteRows = false;
+            this.gridInsumo.AllowUserToOrderColumns = true;
+            this.gridInsumo.AllowUserToResizeRows = false;
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.metroGrid2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
-            this.metroGrid2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.metroGrid2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.metroGrid2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.gridInsumo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            this.gridInsumo.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridInsumo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridInsumo.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.gridInsumo.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -1847,8 +2050,8 @@
             dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(104)))));
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            this.metroGrid2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gridInsumo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.gridInsumo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn4,
             this.dataGridViewButtonColumn4});
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1858,14 +2061,14 @@
             dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(104)))));
             dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGrid2.DefaultCellStyle = dataGridViewCellStyle15;
-            this.metroGrid2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.metroGrid2.EnableHeadersVisualStyles = false;
-            this.metroGrid2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.metroGrid2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid2.Location = new System.Drawing.Point(0, 440);
-            this.metroGrid2.Name = "metroGrid2";
-            this.metroGrid2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.gridInsumo.DefaultCellStyle = dataGridViewCellStyle15;
+            this.gridInsumo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gridInsumo.EnableHeadersVisualStyles = false;
+            this.gridInsumo.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.gridInsumo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.gridInsumo.Location = new System.Drawing.Point(0, 437);
+            this.gridInsumo.Name = "gridInsumo";
+            this.gridInsumo.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(89)))));
             dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -1873,13 +2076,13 @@
             dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(208)))), ((int)(((byte)(104)))));
             dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid2.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
-            this.metroGrid2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.metroGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid2.Size = new System.Drawing.Size(1297, 159);
-            this.metroGrid2.Style = MetroFramework.MetroColorStyle.Green;
-            this.metroGrid2.TabIndex = 75;
-            this.metroGrid2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellClick);
+            this.gridInsumo.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            this.gridInsumo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gridInsumo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridInsumo.Size = new System.Drawing.Size(1297, 159);
+            this.gridInsumo.Style = MetroFramework.MetroColorStyle.Green;
+            this.gridInsumo.TabIndex = 75;
+            this.gridInsumo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellClick);
             // 
             // dataGridViewCheckBoxColumn4
             // 
@@ -2427,6 +2630,9 @@
             // 
             // ReceitaPage
             // 
+            this.ReceitaPage.Controls.Add(this.btnPesquisarReceita);
+            this.ReceitaPage.Controls.Add(this.txtProdutoPesquisa);
+            this.ReceitaPage.Controls.Add(this.lblProdutoPesquisa);
             this.ReceitaPage.Controls.Add(this.metroButton16);
             this.ReceitaPage.Controls.Add(this.metroGrid1);
             this.ReceitaPage.Controls.Add(this.listBox2);
@@ -2465,6 +2671,41 @@
             this.ReceitaPage.VerticalScrollbarBarColor = true;
             this.ReceitaPage.VerticalScrollbarHighlightOnWheel = false;
             this.ReceitaPage.VerticalScrollbarSize = 10;
+            // 
+            // btnPesquisarReceita
+            // 
+            this.btnPesquisarReceita.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.btnPesquisarReceita.Location = new System.Drawing.Point(526, 413);
+            this.btnPesquisarReceita.Name = "btnPesquisarReceita";
+            this.btnPesquisarReceita.Size = new System.Drawing.Size(105, 23);
+            this.btnPesquisarReceita.TabIndex = 86;
+            this.btnPesquisarReceita.Text = "Pesquisar";
+            this.btnPesquisarReceita.UseSelectable = true;
+            this.btnPesquisarReceita.Click += new System.EventHandler(this.btnPesquisarReceita_Click);
+            // 
+            // txtProdutoPesquisa
+            // 
+            this.txtProdutoPesquisa.FormattingEnabled = true;
+            this.txtProdutoPesquisa.ItemHeight = 23;
+            this.txtProdutoPesquisa.Items.AddRange(new object[] {
+            "Pão",
+            "Bolo",
+            "Doce",
+            "Outros"});
+            this.txtProdutoPesquisa.Location = new System.Drawing.Point(329, 407);
+            this.txtProdutoPesquisa.Name = "txtProdutoPesquisa";
+            this.txtProdutoPesquisa.Size = new System.Drawing.Size(191, 29);
+            this.txtProdutoPesquisa.TabIndex = 85;
+            this.txtProdutoPesquisa.UseSelectable = true;
+            // 
+            // lblProdutoPesquisa
+            // 
+            this.lblProdutoPesquisa.AutoSize = true;
+            this.lblProdutoPesquisa.Location = new System.Drawing.Point(263, 417);
+            this.lblProdutoPesquisa.Name = "lblProdutoPesquisa";
+            this.lblProdutoPesquisa.Size = new System.Drawing.Size(60, 19);
+            this.lblProdutoPesquisa.TabIndex = 84;
+            this.lblProdutoPesquisa.Text = "Produto:";
             // 
             // metroButton16
             // 
@@ -2926,9 +3167,9 @@
             this.RelatorioLucroPage.HorizontalScrollbarBarColor = true;
             this.RelatorioLucroPage.HorizontalScrollbarHighlightOnWheel = false;
             this.RelatorioLucroPage.HorizontalScrollbarSize = 10;
-            this.RelatorioLucroPage.Location = new System.Drawing.Point(4, 35);
+            this.RelatorioLucroPage.Location = new System.Drawing.Point(4, 38);
             this.RelatorioLucroPage.Name = "RelatorioLucroPage";
-            this.RelatorioLucroPage.Size = new System.Drawing.Size(1297, 599);
+            this.RelatorioLucroPage.Size = new System.Drawing.Size(1297, 596);
             this.RelatorioLucroPage.TabIndex = 9;
             this.RelatorioLucroPage.Text = "Relatorio Lucro";
             this.RelatorioLucroPage.VerticalScrollbarBarColor = true;
@@ -2984,7 +3225,7 @@
             this.metroGrid3.EnableHeadersVisualStyles = false;
             this.metroGrid3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid3.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid3.Location = new System.Drawing.Point(0, 388);
+            this.metroGrid3.Location = new System.Drawing.Point(0, 385);
             this.metroGrid3.Name = "metroGrid3";
             this.metroGrid3.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -3020,55 +3261,53 @@
             title1.Text = "Relatório de Lucros";
             this.chartGrafico.Titles.Add(title1);
             // 
-            // lblPesquisarNome
+            // lblClientePesquisarPedido
             // 
-            this.lblPesquisarNome.AutoSize = true;
-            this.lblPesquisarNome.Location = new System.Drawing.Point(227, 431);
-            this.lblPesquisarNome.Name = "lblPesquisarNome";
-            this.lblPesquisarNome.Size = new System.Drawing.Size(53, 19);
-            this.lblPesquisarNome.TabIndex = 75;
-            this.lblPesquisarNome.Text = "Nome: ";
+            this.lblClientePesquisarPedido.AutoSize = true;
+            this.lblClientePesquisarPedido.Location = new System.Drawing.Point(193, 388);
+            this.lblClientePesquisarPedido.Name = "lblClientePesquisarPedido";
+            this.lblClientePesquisarPedido.Size = new System.Drawing.Size(56, 19);
+            this.lblClientePesquisarPedido.TabIndex = 76;
+            this.lblClientePesquisarPedido.Text = "Cliente: ";
             // 
-            // txtPesquisarNome
+            // cmbClientesPesquisarReceitas
             // 
+            this.cmbClientesPesquisarReceitas.FormattingEnabled = true;
+            this.cmbClientesPesquisarReceitas.ItemHeight = 23;
+            this.cmbClientesPesquisarReceitas.Location = new System.Drawing.Point(255, 378);
+            this.cmbClientesPesquisarReceitas.Name = "cmbClientesPesquisarReceitas";
+            this.cmbClientesPesquisarReceitas.Size = new System.Drawing.Size(214, 29);
+            this.cmbClientesPesquisarReceitas.TabIndex = 77;
+            this.cmbClientesPesquisarReceitas.UseSelectable = true;
             // 
+            // bntPesquisarPedido
             // 
+            this.bntPesquisarPedido.Location = new System.Drawing.Point(497, 384);
+            this.bntPesquisarPedido.Name = "bntPesquisarPedido";
+            this.bntPesquisarPedido.Size = new System.Drawing.Size(116, 23);
+            this.bntPesquisarPedido.TabIndex = 78;
+            this.bntPesquisarPedido.Text = "Pesquisar";
+            this.bntPesquisarPedido.UseSelectable = true;
+            this.bntPesquisarPedido.Click += new System.EventHandler(this.bntPesquisarPedido_Click);
             // 
-            this.txtPesquisarNome.CustomButton.Image = null;
-            this.txtPesquisarNome.CustomButton.Location = new System.Drawing.Point(150, 1);
-            this.txtPesquisarNome.CustomButton.Name = "";
-            this.txtPesquisarNome.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.txtPesquisarNome.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.txtPesquisarNome.CustomButton.TabIndex = 1;
-            this.txtPesquisarNome.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.txtPesquisarNome.CustomButton.UseSelectable = true;
-            this.txtPesquisarNome.CustomButton.Visible = false;
-            this.txtPesquisarNome.Lines = new string[0];
-            this.txtPesquisarNome.Location = new System.Drawing.Point(286, 427);
-            this.txtPesquisarNome.MaxLength = 32767;
-            this.txtPesquisarNome.Name = "txtPesquisarNome";
-            this.txtPesquisarNome.PasswordChar = '\0';
-            this.txtPesquisarNome.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtPesquisarNome.SelectedText = "";
-            this.txtPesquisarNome.SelectionLength = 0;
-            this.txtPesquisarNome.SelectionStart = 0;
-            this.txtPesquisarNome.ShortcutsEnabled = true;
-            this.txtPesquisarNome.Size = new System.Drawing.Size(172, 23);
-            this.txtPesquisarNome.TabIndex = 76;
-            this.txtPesquisarNome.UseSelectable = true;
-            this.txtPesquisarNome.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.txtPesquisarNome.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // cmbProdutoPedidos
             // 
-            // bntPesquisar
+            this.cmbProdutoPedidos.FormattingEnabled = true;
+            this.cmbProdutoPedidos.ItemHeight = 23;
+            this.cmbProdutoPedidos.Location = new System.Drawing.Point(255, 423);
+            this.cmbProdutoPedidos.Name = "cmbProdutoPedidos";
+            this.cmbProdutoPedidos.Size = new System.Drawing.Size(214, 29);
+            this.cmbProdutoPedidos.TabIndex = 80;
+            this.cmbProdutoPedidos.UseSelectable = true;
             // 
-            this.bntPesquisar.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.bntPesquisar.Location = new System.Drawing.Point(483, 427);
-            this.bntPesquisar.Name = "bntPesquisar";
-            this.bntPesquisar.Size = new System.Drawing.Size(105, 23);
-            this.bntPesquisar.TabIndex = 77;
-            this.bntPesquisar.Text = "Pesquisar";
-            this.bntPesquisar.UseSelectable = true;
-            this.bntPesquisar.Click += new System.EventHandler(this.bntPesquisar_Click);
+            // lblProdutosPesquisaPedidos
+            // 
+            this.lblProdutosPesquisaPedidos.AutoSize = true;
+            this.lblProdutosPesquisaPedidos.Location = new System.Drawing.Point(193, 433);
+            this.lblProdutosPesquisaPedidos.Name = "lblProdutosPesquisaPedidos";
+            this.lblProdutosPesquisaPedidos.Size = new System.Drawing.Size(64, 19);
+            this.lblProdutosPesquisaPedidos.TabIndex = 79;
+            this.lblProdutosPesquisaPedidos.Text = "Produto: ";
             // 
             // frmPrincipal
             // 
@@ -3095,7 +3334,7 @@
             this.metroPanel3.ResumeLayout(false);
             this.InsumoPage.ResumeLayout(false);
             this.InsumoPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridInsumo)).EndInit();
             this.metroPanel5.ResumeLayout(false);
             this.ReceitaPage.ResumeLayout(false);
             this.ReceitaPage.PerformLayout();
@@ -3241,7 +3480,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel30;
         private MetroFramework.Controls.MetroTextBox metroTextBox6;
         private MetroFramework.Controls.MetroLabel metroLabel29;
-        private MetroFramework.Controls.MetroGrid metroGrid2;
+        private MetroFramework.Controls.MetroGrid gridInsumo;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn4;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn4;
         private MetroFramework.Controls.MetroLabel metroLabel37;
@@ -3272,6 +3511,22 @@
         private MetroFramework.Controls.MetroButton bntPesquisar;
         private MetroFramework.Controls.MetroTextBox txtPesquisarNome;
         private MetroFramework.Controls.MetroLabel lblPesquisarNome;
+        private MetroFramework.Controls.MetroComboBox cmbTipoPesquisar;
+        private MetroFramework.Controls.MetroLabel lblTipo;
+        private MetroFramework.Controls.MetroButton bntPesquisarProduto;
+        private MetroFramework.Controls.MetroTextBox txtNomePesquisar;
+        private MetroFramework.Controls.MetroLabel lblNome;
+        private MetroFramework.Controls.MetroButton bntPesquisarInsumo;
+        private MetroFramework.Controls.MetroTextBox txtNomePesquisarInsumo;
+        private MetroFramework.Controls.MetroLabel lblNomePesquisar;
+        private MetroFramework.Controls.MetroButton btnPesquisarReceita;
+        private MetroFramework.Controls.MetroComboBox txtProdutoPesquisa;
+        private MetroFramework.Controls.MetroLabel lblProdutoPesquisa;
+        private MetroFramework.Controls.MetroButton bntPesquisarPedido;
+        private MetroFramework.Controls.MetroComboBox cmbClientesPesquisarReceitas;
+        private MetroFramework.Controls.MetroLabel lblClientePesquisarPedido;
+        private MetroFramework.Controls.MetroComboBox cmbProdutoPedidos;
+        private MetroFramework.Controls.MetroLabel lblProdutosPesquisaPedidos;
     }
 }
 

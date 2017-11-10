@@ -13,6 +13,53 @@ namespace APAC_TIS4
     {
         public ProdutoDAO() { }
 
+        public DataSet visualizarGridComNomeTtipo(string strTipo, string strNome) {
+            DataSet sDs = new DataSet();
+            SingletonBD singleton = SingletonBD.getInstancia();
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            {
+                try
+                {
+                    string query = "select nome, Tipo, Tamanho, Peso, UDM, CustoPorUnidade, PrecoDeVendaUnidade, Descricao from produto where nome LIKE @nome AND Tipo LIKE @Tipo;";
+
+                    if (string.IsNullOrEmpty(strTipo)) {
+                        strTipo = "%%%";
+                    }
+                    else
+                    {
+                        strTipo = "%" + strTipo + "%";
+                    }
+
+                    if (string.IsNullOrEmpty(strNome))
+                    {
+                        strNome = "%%%";
+                    }
+                    else {
+                        strNome = "%" + strNome + "%";
+                    }
+
+                    MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
+
+                    cmd.Parameters.AddWithValue("@nome", strNome);
+                    cmd.Parameters.AddWithValue("@Tipo", strTipo);
+
+
+                    MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
+
+                    MySqlCommandBuilder sBuilder = new MySqlCommandBuilder(sAdapter);
+
+                    sAdapter.Fill(sDs, "characters");
+
+                    DataTable sTable = sDs.Tables["characters"];
+                }
+                finally
+                {
+                    conexaoMySQL.Close();
+                }
+                return sDs;
+            }
+        }
+
         public DataSet preencheCombo()
         {
             DataSet sDs = new DataSet();

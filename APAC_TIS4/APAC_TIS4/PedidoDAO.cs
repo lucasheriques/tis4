@@ -46,6 +46,53 @@ namespace APAC_TIS4
             }
         }
 
+        public DataSet visualizarGridComIDClienteProduto(int clienteID, int produtoID) {
+            DataSet sDs = new DataSet();
+            SingletonBD singleton = SingletonBD.getInstancia();
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            {
+                try
+                {
+                    conexaoMySQL.Open();
+
+                    /* criando o comando sql indicando a nossa conexão e a nossa
+                    procedure */
+
+                    string query = "SELECT pedido.Pedido_ID, cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo, produto.Produto_ID FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN itemPedido ON itemPedido.Pedido_ID = pedido.Pedido_ID INNER JOIN produto ON produto.Produto_ID = itemPedido.Produto_ID WHERE cliente.Cliente_ID LIKE @Cliente_ID AND produto.Produto_ID LIKE @Produto_ID;";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
+
+                    string strClienteID = clienteID.ToString();
+                    if (clienteID == 0) {
+                        strClienteID = "%%%";
+                    }
+                    
+                    string strProdutoID = produtoID.ToString();
+                    if (produtoID == 0)
+                    {
+                        strProdutoID = "%%%";
+                    }
+
+                    cmd.Parameters.AddWithValue("@Cliente_ID", strClienteID);
+                    cmd.Parameters.AddWithValue("@Produto_ID", strProdutoID);
+
+                    MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
+
+                    MySqlCommandBuilder sBuilder = new MySqlCommandBuilder(sAdapter);
+
+                    sAdapter.Fill(sDs, "characters");
+
+                    DataTable sTable = sDs.Tables["characters"];
+                }
+                finally
+                {
+                    conexaoMySQL.Close();
+                }
+                return sDs;
+            }
+
+        }
+
         public DataSet visualizarGridComID()
         {
             DataSet sDs = new DataSet();

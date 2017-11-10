@@ -88,11 +88,11 @@ namespace APAC_TIS4
 
             DataSet dataSet = insumoDAO.visualizarGridComID();
 
-            metroGrid2.DataSource = dataSet.Tables["characters"];
+            gridInsumo.DataSource = dataSet.Tables["characters"];
 
-            for (int i = 0; i < metroGrid2.Columns.Count; i++)
+            for (int i = 0; i < gridInsumo.Columns.Count; i++)
             {
-                metroGrid2.Columns[i].Width = 400;
+                gridInsumo.Columns[i].Width = 400;
             }
 
         }
@@ -100,12 +100,22 @@ namespace APAC_TIS4
         private void inicializarReceita() {
             popularComboProdutoReceita(); //metroComboBox3
             popularReceita();
-            popularInsumo(); // textBox3
+            popularInsumo(); // textBoxre3
+            popularComboProdutoPesquisaReceita();
             metroTextBox1.Hide();
             metroLabel19.Hide();
             metroButton12.Hide();
             metroButton15.Hide();
             metroButton14.Hide();
+        }
+
+        private void popularComboProdutoPesquisaReceita() {
+            ProdutoDAO produtoDAO = new ProdutoDAO();
+
+            DataSet dataSet = produtoDAO.preencheCombo();
+            txtProdutoPesquisa.ValueMember = "Produto_ID";
+            txtProdutoPesquisa.DisplayMember = "nome";
+            txtProdutoPesquisa.DataSource = dataSet.Tables["characters"];
         }
 
         private void popularInsumo()
@@ -185,6 +195,26 @@ namespace APAC_TIS4
         }
         //inicializarPedidos()
 
+        private void popularComboClientePesquisar()
+        {
+            ClienteDAO clienteDAO = new ClienteDAO();
+
+            DataSet dataSet = clienteDAO.preencheCombo();
+            cmbClientesPesquisarReceitas.ValueMember = "Cliente_ID";
+            cmbClientesPesquisarReceitas.DisplayMember = "nome";
+            cmbClientesPesquisarReceitas.DataSource = dataSet.Tables["characters"];
+
+        }
+
+        private void popularProdutoPesquisar() {
+            ProdutoDAO produtoDAO = new ProdutoDAO();
+
+            DataSet dataSet = produtoDAO.preencheCombo();
+            cmbProdutoPedidos.ValueMember = "Produto_ID";
+            cmbProdutoPedidos.DisplayMember = "nome";
+            cmbProdutoPedidos.DataSource = dataSet.Tables["characters"];
+        }
+
         private void inicializarPedidos()
         {
             metroLabel18.Hide();
@@ -192,6 +222,8 @@ namespace APAC_TIS4
             metroButton7.Hide();
             metroButton6.Hide();
             metroButton8.Hide();
+            popularProdutoPesquisar();
+            popularComboClientePesquisar();
             setReadOnlyGridPedidos(true);
         }
 
@@ -232,6 +264,7 @@ namespace APAC_TIS4
 
         public void clearClientFields()
         {
+            txtPesquisarNome.Clear();
             txtClientId.Clear();
             txtClientLocal.Clear();
             txtClientName.Clear();
@@ -363,6 +396,9 @@ namespace APAC_TIS4
 
         public void clearProductFields()
         {
+            cmbTipoPesquisar.SelectedIndex = -1;
+            txtNomePesquisar.Text = "";
+
             mcmbTipo.SelectedIndex = -1;
             mcmbUDM.SelectedIndex = -1;
             mcmbTamanho.SelectedIndex = -1;
@@ -925,6 +961,7 @@ namespace APAC_TIS4
 
         private void clearReceitaFields()
         {
+            txtProdutoPesquisa.SelectedIndex = -1;
             metroTextBox1.Text = "";
             metroTextBox4.Text = "";
             textBox1.Text = "";
@@ -1300,6 +1337,7 @@ namespace APAC_TIS4
         }
 
         private void clearInsumoFields() {
+            txtNomePesquisarInsumo.Clear();
             metroTextBox5.Text = "";
             metroTextBox6.Text = "";
             metroTextBox7.Text = "";
@@ -1436,15 +1474,15 @@ namespace APAC_TIS4
             metroProgressSpinner4.Show();
             Util.WaitNSeconds(0.5);
             List<int> listInsumosID = new List<int>();
-            for (int i = 0; i < metroGrid2.RowCount; i++)
+            for (int i = 0; i < gridInsumo.RowCount; i++)
             {
-                var checkbox = metroGrid2.Rows[i].Cells[0].Value;
+                var checkbox = gridInsumo.Rows[i].Cells[0].Value;
 
                 if (checkbox != null)
                 {
                     if (checkbox.ToString().ToLower() == "true")
                     {
-                        listInsumosID.Add(int.Parse(metroGrid2.Rows[i].Cells[2].Value.ToString()));
+                        listInsumosID.Add(int.Parse(gridInsumo.Rows[i].Cells[2].Value.ToString()));
                     }
                 }
 
@@ -1486,7 +1524,7 @@ namespace APAC_TIS4
         {
             if (e.ColumnIndex == 1)
             {
-                string unidadeDeMedida = metroGrid2.Rows[e.RowIndex].Cells[6].Value.ToString();
+                string unidadeDeMedida = gridInsumo.Rows[e.RowIndex].Cells[6].Value.ToString();
                 if (unidadeDeMedida == "Kg")
                 {
                     unidadeDeMedida += " - Quilograma";
@@ -1499,29 +1537,29 @@ namespace APAC_TIS4
                 {
                     unidadeDeMedida += " - Miligrama";
                 }
-                metroTextBox5.Text = metroGrid2.Rows[e.RowIndex].Cells[2].Value.ToString();
-                metroTextBox6.Text = metroGrid2.Rows[e.RowIndex].Cells[3].Value.ToString();
-                metroTextBox7.Text = metroGrid2.Rows[e.RowIndex].Cells[5].Value.ToString();
+                metroTextBox5.Text = gridInsumo.Rows[e.RowIndex].Cells[2].Value.ToString();
+                metroTextBox6.Text = gridInsumo.Rows[e.RowIndex].Cells[3].Value.ToString();
+                metroTextBox7.Text = gridInsumo.Rows[e.RowIndex].Cells[5].Value.ToString();
                 metroComboBox4.SelectedIndex = metroComboBox4.FindStringExact(unidadeDeMedida);
-                metroTextBox8.Text = metroGrid2.Rows[e.RowIndex].Cells[7].Value.ToString();
-                metroTextBox9.Text = metroGrid2.Rows[e.RowIndex].Cells[9].Value.ToString();
-                metroTextBox10.Text = metroGrid2.Rows[e.RowIndex].Cells[8].Value.ToString();
-                metroTextBox11.Text = metroGrid2.Rows[e.RowIndex].Cells[10].Value.ToString();
-                metroTextBox12.Text = metroGrid2.Rows[e.RowIndex].Cells[5].Value.ToString();
+                metroTextBox8.Text = gridInsumo.Rows[e.RowIndex].Cells[7].Value.ToString();
+                metroTextBox9.Text = gridInsumo.Rows[e.RowIndex].Cells[9].Value.ToString();
+                metroTextBox10.Text = gridInsumo.Rows[e.RowIndex].Cells[8].Value.ToString();
+                metroTextBox11.Text = gridInsumo.Rows[e.RowIndex].Cells[10].Value.ToString();
+                metroTextBox12.Text = gridInsumo.Rows[e.RowIndex].Cells[5].Value.ToString();
             }
             else if (e.ColumnIndex == 0)
             {
-                var checkbox = metroGrid2.Rows[e.RowIndex].Cells[0].Value;
+                var checkbox = gridInsumo.Rows[e.RowIndex].Cells[0].Value;
 
                 if (checkbox != null)
                 {
                     if (checkbox.ToString().ToLower() == "true")
                     {
-                        metroGrid2.Rows[e.RowIndex].Cells[0].Value = false;
+                        gridInsumo.Rows[e.RowIndex].Cells[0].Value = false;
                     }
                     else
                     {
-                        metroGrid2.Rows[e.RowIndex].Cells[0].Value = true;
+                        gridInsumo.Rows[e.RowIndex].Cells[0].Value = true;
                     }
                 }
                 else
@@ -1825,6 +1863,81 @@ namespace APAC_TIS4
             for (int i = 0; i < dvgClientes.Columns.Count; i++)
             {
                 dvgClientes.Columns[i].Width = 400;
+            }
+
+        }
+
+        private void bntPesquisarProduto_Click(object sender, EventArgs e)
+        {
+            string strTipo = cmbTipoPesquisar.Text;
+            string strNome = txtNomePesquisar.Text.ToString();
+
+            ProdutoDAO produtoDAO = new ProdutoDAO();
+
+            DataSet dataSet = produtoDAO.visualizarGridComNomeTtipo(strTipo, strNome);
+
+            mgProduto.DataSource = dataSet.Tables["characters"];
+
+            for (int i = 0; i < mgProduto.Columns.Count; i++)
+            {
+                mgProduto.Columns[i].Width = 400;
+            }
+        }
+
+        private void bntPesquisarInsumo_Click(object sender, EventArgs e)
+        {
+            string strNome = txtNomePesquisarInsumo.Text.ToString();
+
+            InsumoDAO insumoDAO = new InsumoDAO();
+
+            DataSet dataSet = insumoDAO.visualizarGridComNome(strNome);
+
+            gridInsumo.DataSource = dataSet.Tables["characters"];
+
+            for (int i = 0; i < gridInsumo.Columns.Count; i++)
+            {
+                gridInsumo.Columns[i].Width = 400;
+            }
+        }
+
+        private void btnPesquisarReceita_Click(object sender, EventArgs e)
+        {
+            int produto_ID = int.Parse(txtProdutoPesquisa.SelectedValue.ToString());
+
+            ReceitaDAO receitaDAO = new ReceitaDAO();
+
+            DataSet dataSet = receitaDAO.visualizarGridComIDPorProduto(produto_ID);
+
+            metroGrid1.DataSource = dataSet.Tables["characters"];
+
+            for (int i = 0; i < metroGrid1.Columns.Count; i++)
+            {
+                metroGrid1.Columns[i].Width = 400;
+            }
+
+        }
+
+        private void bntPesquisarPedido_Click(object sender, EventArgs e)
+        {
+            int clienteID = 0;
+            int produtoID = 0;
+            if (!string.IsNullOrEmpty(cmbClientesPesquisarReceitas.SelectedValue.ToString()) || cmbClientesPesquisarReceitas.SelectedValue.ToString() != "") {
+                clienteID = int.Parse(cmbClientesPesquisarReceitas.SelectedValue.ToString());
+            }
+
+            if (!string.IsNullOrEmpty(cmbProdutoPedidos.SelectedValue.ToString()) || cmbProdutoPedidos.SelectedValue.ToString() != "") {
+                produtoID = int.Parse(cmbProdutoPedidos.SelectedValue.ToString());
+            }
+
+            PedidoDAO pedidoDAO = new PedidoDAO();
+
+            DataSet dataSet = pedidoDAO.visualizarGridComIDClienteProduto(clienteID, produtoID);
+
+            dvgPedidos.DataSource = dataSet.Tables["characters"];
+
+            for (int i = 0; i < dvgPedidos.Columns.Count; i++)
+            {
+                dvgPedidos.Columns[i].Width = 400;
             }
 
         }

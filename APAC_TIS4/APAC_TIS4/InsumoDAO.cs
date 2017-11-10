@@ -40,8 +40,6 @@ namespace APAC_TIS4
                 }
                 return dsInsumo;
             }
-
-
         }
 
         public DataSet preencheComboComWhere(string clausulaWhere)
@@ -322,6 +320,43 @@ namespace APAC_TIS4
             }
 
             return verifica;
+        }
+        public DataSet visualizarGridComNome(string strNome) {
+            DataSet sDs = new DataSet();
+            SingletonBD singleton = SingletonBD.getInstancia();
+            using (MySqlConnection conexaoMySQL = singleton.getConexao())
+            {
+                try
+                {
+                    string query = "SELECT Insumo_ID, Nome, Descrição, Peso_Por_Unidade, Unidade_De_Medida, Peso_Total, Custo, Quantidade_Estoque, Custo_Total FROM insumo WHERE Nome LIKE @Nome;";
+
+                    if (string.IsNullOrEmpty(strNome))
+                    {
+                        strNome = "%%%";
+                    }
+                    else
+                    {
+                        strNome = "%" + strNome + "%";
+                    }
+
+                    MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
+
+                    cmd.Parameters.AddWithValue("@Nome", strNome);
+
+                    MySqlDataAdapter sAdapter = new MySqlDataAdapter(cmd);
+
+                    MySqlCommandBuilder sBuilder = new MySqlCommandBuilder(sAdapter);
+
+                    sAdapter.Fill(sDs, "characters");
+
+                    DataTable sTable = sDs.Tables["characters"];
+                }
+                finally
+                {
+                    conexaoMySQL.Close();
+                }
+                return sDs;
+            }
         }
     }
 }
