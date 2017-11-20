@@ -22,7 +22,7 @@ namespace APAC_TIS4
 
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
-                    String query = "SELECT * FROM Cliente WHERE Nome = '" + nomeCliente + "'";
+                    String query = "SELECT * FROM Cliente WHERE Nome LIKE '" + nomeCliente + "'";
 
                     MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
 

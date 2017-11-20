@@ -40,7 +40,7 @@ namespace APAC_TIS4
             }
             loadGrafico();
             loagGrid();
-            
+
         }
 
         public void loagGrid() {
@@ -120,6 +120,7 @@ namespace APAC_TIS4
 
         private void popularInsumo()
         {
+            listBox1.Items.Clear();
             InsumoDAO insumoDAO = new InsumoDAO();
 
             DataSet dataSet = insumoDAO.preencheCombo();
@@ -158,7 +159,7 @@ namespace APAC_TIS4
 
 
         private void popularPedidos() {
-            PedidoDAO pedidoDAO= new PedidoDAO();
+            PedidoDAO pedidoDAO = new PedidoDAO();
 
             DataSet dataSet = pedidoDAO.visualizarGridComID();
 
@@ -345,42 +346,49 @@ namespace APAC_TIS4
 
         private void btnUpdateClient_Click(object sender, EventArgs e)
         {
-            spiClientActions.Show();
-            Util.WaitNSeconds(0.5);
-
-            if (string.IsNullOrEmpty(cmdClientType.Text))
+            if (!verificaPreenchimentoCamposClientes())
             {
-                MessageBox.Show("Selecione o Cliente que deseja atualizar.");
-                spiClientActions.Hide();
-                return;
-            }
+                spiClientActions.Show();
+                Util.WaitNSeconds(0.5);
 
-            List<ClientModel> listClienteModels = new List<ClientModel>();
+                if (string.IsNullOrEmpty(cmdClientType.Text))
+                {
+                    MessageBox.Show("Selecione o Cliente que deseja atualizar.");
+                    spiClientActions.Hide();
+                    return;
+                }
 
-            ClientModel clienteModels = new ClientModel();
+                List<ClientModel> listClienteModels = new List<ClientModel>();
 
-            clienteModels.Cliente_ID = int.Parse(txtClientId.Text.ToString());
-            clienteModels.nome = txtClientName.Text;
-            clienteModels.localidade = txtClientLocal.Text;
-            clienteModels.Tipo = cmdClientType.Text;
+                ClientModel clienteModels = new ClientModel();
 
-            listClienteModels.Add(clienteModels);
+                clienteModels.Cliente_ID = int.Parse(txtClientId.Text.ToString());
+                clienteModels.nome = txtClientName.Text;
+                clienteModels.localidade = txtClientLocal.Text;
+                clienteModels.Tipo = cmdClientType.Text;
 
-            ClienteDAO clienteDAO = new ClienteDAO();
-            bool verifica = clienteDAO.atualizarClientes(listClienteModels);
-            if (verifica)
-            {
-                lblReturnLabel.Show();
-                lblReturnLabel.Text = "Cliente atualizado com sucesso!";
-                spiClientActions.Hide();
-                popularCliente();
-                clearClientFields();
+                listClienteModels.Add(clienteModels);
+
+                ClienteDAO clienteDAO = new ClienteDAO();
+                bool verifica = clienteDAO.atualizarClientes(listClienteModels);
+                if (verifica)
+                {
+                    lblReturnLabel.Show();
+                    lblReturnLabel.Text = "Cliente atualizado com sucesso!";
+                    spiClientActions.Hide();
+                    popularCliente();
+                    clearClientFields();
+                }
+                else
+                {
+                    lblReturnLabel.Hide();
+                    spiClientActions.Hide();
+                    popularCliente();
+                    MessageBox.Show("Erro ao atualizar cliente!!!");
+                }
             }
             else {
-                lblReturnLabel.Hide();
-                spiClientActions.Hide();
-                popularCliente();
-                MessageBox.Show("Erro ao atualizar cliente!!!");
+                MessageBox.Show("O(s) dado(s) deve(m) ser preenchido(s)!!!");
             }
         }
 
@@ -459,108 +467,134 @@ namespace APAC_TIS4
 
         private void mbAdicionarProdutos_Click(object sender, EventArgs e)
         {
-            spiClientActions.Show();
-            Util.WaitNSeconds(0.5);
-            ProdutoModels produtoModels = new ProdutoModels();
-
-            produtoModels.Tipo = mcmbTipo.Text;
-            produtoModels.Tamanho = mcmbTamanho.Text;
-            produtoModels.UDM = mcmbUDM.Text.Substring(0,2).Trim();
-            produtoModels.Peso = float.Parse(mtxtPeso.Text);
-            produtoModels.Nome = mtxtNome.Text;
-            produtoModels.CustoPorUnidade = float.Parse(mtxtCustoPorUnidade.Text);
-            produtoModels.PrecoDeVendaUnidade = float.Parse(mtxtPVU.Text);
-            produtoModels.Descricao = mtxtDescricao.Text;
-
-            ProdutoDAO produtoDAO = new ProdutoDAO();
-            string retorno = produtoDAO.cadastrar(produtoModels);
-
-            if (retorno == "OK")
+            if (!verificaPreenchimentoCamposProdutos())
             {
-                metroProgressSpinner1.Hide();
-                metroLabel9.Show();
-                metroLabel9.Text = "Produto adicionado com sucesso!";
-                popularProduto();
-                clearProducts();
-                setReadOnlyGridProduto(false);
+                spiClientActions.Show();
+                Util.WaitNSeconds(0.5);
+                ProdutoModels produtoModels = new ProdutoModels();
+
+                produtoModels.Tipo = mcmbTipo.Text;
+                produtoModels.Tamanho = mcmbTamanho.Text;
+                produtoModels.UDM = mcmbUDM.Text.Substring(0, 2).Trim();
+                produtoModels.Peso = float.Parse(mtxtPeso.Text);
+                produtoModels.Nome = mtxtNome.Text;
+                produtoModels.CustoPorUnidade = float.Parse(mtxtCustoPorUnidade.Text);
+                produtoModels.PrecoDeVendaUnidade = float.Parse(mtxtPVU.Text);
+                produtoModels.Descricao = mtxtDescricao.Text;
+
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                string retorno = produtoDAO.cadastrar(produtoModels);
+
+                if (retorno == "OK")
+                {
+                    metroProgressSpinner1.Hide();
+                    metroLabel9.Show();
+                    metroLabel9.Text = "Produto adicionado com sucesso!";
+                    popularProduto();
+                    clearProductFields();
+                    setReadOnlyGridProduto(false);
+                }
+                else
+                {
+                    metroProgressSpinner1.Hide();
+                    metroLabel9.Show();
+                    MessageBox.Show("Erro ao cadastrar produto: " + retorno);
+                    popularProduto();
+                    setReadOnlyGridProduto(false);
+                }
             }
             else {
-                metroProgressSpinner1.Hide();
-                metroLabel9.Show();
-                MessageBox.Show("Erro ao cadastrar produto: " + retorno);
-                popularProduto();
-                setReadOnlyGridProduto(false);
+                MessageBox.Show("O(s) campo(s) deve(m) ser preenchido(s)!!!");
             }
+        }
+
+        private bool verificaPreenchimentoCamposProdutos() {
+            if (string.IsNullOrEmpty(mtxtID.Text) && string.IsNullOrEmpty(mcmbTipo.Text) 
+                && string.IsNullOrEmpty(mcmbTamanho.Text) && string.IsNullOrEmpty(mtxtPeso.Text)
+                && string.IsNullOrEmpty(mcmbUDM.Text) && string.IsNullOrEmpty(mtxtNome.Text)
+                && string.IsNullOrEmpty(mtxtCustoPorUnidade.Text) && string.IsNullOrEmpty(mtxtPVU.Text)
+                && string.IsNullOrEmpty(mtxtDescricao.Text)) {
+                return true;
+            }
+            return false;
         }
 
         private void mbAtualizarProdutos_Click(object sender, EventArgs e)
         {
-            metroProgressSpinner1.Show();
-            Util.WaitNSeconds(0.5);
-
-            if (string.IsNullOrEmpty(mcmbTipo.Text))
+            if (!verificaPreenchimentoCamposProdutos())
             {
-                MessageBox.Show("Selecione o Produto que deseja atualizar.");
-                return;
-            }
+                metroProgressSpinner1.Show();
+                Util.WaitNSeconds(0.5);
 
-
-            List<ProdutoModels> listProdutoModels = new List<ProdutoModels>();
-
-            ProdutoModels produtoModels = new ProdutoModels();
-
-            produtoModels.Tipo = mcmbTipo.Text;
-            produtoModels.Tamanho = mcmbTamanho.Text;
-            produtoModels.UDM = mcmbUDM.Text.Substring(0, 2).Trim();
-            produtoModels.Peso = float.Parse(mtxtPeso.Text);
-            produtoModels.Nome = mtxtNome.Text;
-            produtoModels.CustoPorUnidade = float.Parse(mtxtCustoPorUnidade.Text);
-            produtoModels.PrecoDeVendaUnidade = float.Parse(mtxtPVU.Text);
-            produtoModels.Descricao = mtxtDescricao.Text;
-
-            listProdutoModels.Add(produtoModels);
-/*
-            for (int i = 0; i < mgProduto.RowCount; i++)
-            {
-                ProdutoModels produtoModels = new ProdutoModels();
-
-                var checkbox = mgProduto.Rows[i].Cells[0].Value;
-
-                if (checkbox != null) {
-                    if (checkbox.ToString().ToLower() == "true") {
-                        produtoModels.Produto_ID = int.Parse(mgProduto.Rows[i].Cells[2].Value.ToString());
-                        produtoModels.Tipo = mgProduto.Rows[i].Cells[4].Value.ToString();
-                        produtoModels.Tamanho = mgProduto.Rows[i].Cells[5].Value.ToString();
-                        produtoModels.UDM = mgProduto.Rows[i].Cells[7].Value.ToString();
-                        produtoModels.Peso = float.Parse(mgProduto.Rows[i].Cells[6].Value.ToString());
-                        produtoModels.Nome = mgProduto.Rows[i].Cells[3].Value.ToString();
-                        produtoModels.CustoPorUnidade = float.Parse(mgProduto.Rows[i].Cells[8].Value.ToString());
-                        produtoModels.PrecoDeVendaUnidade = float.Parse(mgProduto.Rows[i].Cells[9].Value.ToString());
-                        produtoModels.Descricao = mgProduto.Rows[i].Cells[10].Value.ToString();
-
-                        listProdutoModels.Add(produtoModels);
-                    }
+                if (string.IsNullOrEmpty(mcmbTipo.Text))
+                {
+                    MessageBox.Show("Selecione o Produto que deseja atualizar.");
+                    return;
                 }
 
-            }
-*/
-            ProdutoDAO produtoDAO = new ProdutoDAO();
-            bool verifica = produtoDAO.atualizarProdutos(listProdutoModels);
-            if (verifica)
-            {
-                metroProgressSpinner1.Hide();
-                metroLabel9.Show();
-                metroLabel9.Text = "Produto atualizado com sucesso!";
-                popularProduto();
-                clearProducts();
-                setReadOnlyGridProduto(true);
+
+                List<ProdutoModels> listProdutoModels = new List<ProdutoModels>();
+
+                ProdutoModels produtoModels = new ProdutoModels();
+
+                produtoModels.Produto_ID = int.Parse(mtxtID.Text);
+                produtoModels.Tipo = mcmbTipo.Text;
+                produtoModels.Tamanho = mcmbTamanho.Text;
+                produtoModels.UDM = mcmbUDM.Text.Substring(0, 2).Trim();
+                produtoModels.Peso = float.Parse(mtxtPeso.Text);
+                produtoModels.Nome = mtxtNome.Text;
+                produtoModels.CustoPorUnidade = float.Parse(mtxtCustoPorUnidade.Text);
+                produtoModels.PrecoDeVendaUnidade = float.Parse(mtxtPVU.Text);
+                produtoModels.Descricao = mtxtDescricao.Text;
+
+                listProdutoModels.Add(produtoModels);
+                /*
+                            for (int i = 0; i < mgProduto.RowCount; i++)
+                            {
+                                ProdutoModels produtoModels = new ProdutoModels();
+
+                                var checkbox = mgProduto.Rows[i].Cells[0].Value;
+
+                                if (checkbox != null) {
+                                    if (checkbox.ToString().ToLower() == "true") {
+                                        produtoModels.Produto_ID = int.Parse(mgProduto.Rows[i].Cells[2].Value.ToString());
+                                        produtoModels.Tipo = mgProduto.Rows[i].Cells[4].Value.ToString();
+                                        produtoModels.Tamanho = mgProduto.Rows[i].Cells[5].Value.ToString();
+                                        produtoModels.UDM = mgProduto.Rows[i].Cells[7].Value.ToString();
+                                        produtoModels.Peso = float.Parse(mgProduto.Rows[i].Cells[6].Value.ToString());
+                                        produtoModels.Nome = mgProduto.Rows[i].Cells[3].Value.ToString();
+                                        produtoModels.CustoPorUnidade = float.Parse(mgProduto.Rows[i].Cells[8].Value.ToString());
+                                        produtoModels.PrecoDeVendaUnidade = float.Parse(mgProduto.Rows[i].Cells[9].Value.ToString());
+                                        produtoModels.Descricao = mgProduto.Rows[i].Cells[10].Value.ToString();
+
+                                        listProdutoModels.Add(produtoModels);
+                                    }
+                                }
+
+                            }
+                */
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                bool verifica = produtoDAO.atualizarProdutos(listProdutoModels);
+                if (verifica)
+                {
+                    metroProgressSpinner1.Hide();
+                    metroLabel9.Show();
+                    metroLabel9.Text = "Produto atualizado com sucesso!";
+                    popularProduto();
+                    clearProductFields();
+                    setReadOnlyGridProduto(true);
+                }
+                else
+                {
+                    metroProgressSpinner1.Hide();
+                    metroLabel9.Hide();
+                    MessageBox.Show("Erro ao atualizar produto!!!");
+                    popularProduto();
+                    setReadOnlyGridProduto(true);
+                }
             }
             else {
-                metroProgressSpinner1.Hide();
-                metroLabel9.Hide();
-                MessageBox.Show("Erro ao atualizar produto!!!");
-                popularProduto();
-                setReadOnlyGridProduto(true);
+                MessageBox.Show("O(s) campo(s) deve(m) ser preenchido(s)!!!");
             }
 
         }
@@ -632,71 +666,86 @@ namespace APAC_TIS4
 
         private void metroButton7_Click(object sender, EventArgs e)
         {
-            metroProgressSpinner2.Show();
-            Util.WaitNSeconds(0.5);
-
-            PedidoModels pedidoModels = new PedidoModels();
-            pedidoModels.Pedido_ID = int.Parse(metroTextBox3.Text.ToString());
-
-            pedidoModels._ItemPedido = new ItemPedido();
-            pedidoModels._ItemPedido.Cliente_ID = int.Parse(metroComboBox1.SelectedValue.ToString());
-            pedidoModels._ItemPedido.Produto_ID = int.Parse(metroComboBox2.SelectedValue.ToString());
-            pedidoModels.Data_Pedido = dateTimePicker1.Value.Date;
-            pedidoModels.Data_Entrega = dateTimePicker2.Value.Date;
-            pedidoModels.Quantidade = int.Parse(mtxtQantidade.Text);
-            pedidoModels.PrecoTotal = float.Parse(metroTextBox2.Text);
-
-            PedidoDAO pedidoDAO = new PedidoDAO();
-
-            bool verificaAtualizacao = pedidoDAO.atualizar(pedidoModels);
-            if (verificaAtualizacao)
+            if (verificaDadosPreenchidosPedidos())
             {
-                metroProgressSpinner2.Hide();
-                metroLabel16.Show();
-                metroLabel16.Text = "Pedido atualizado com sucesso!";
-                popularPedidos();
-                clearPedidos();
-                setReadOnlyGridPedidos(true);
+                metroProgressSpinner2.Show();
+                Util.WaitNSeconds(0.5);
+
+                PedidoModels pedidoModels = new PedidoModels();
+                pedidoModels.Pedido_ID = int.Parse(metroTextBox3.Text.ToString());
+
+                pedidoModels._ItemPedido = new ItemPedido();
+                pedidoModels._ItemPedido.Cliente_ID = int.Parse(metroComboBox1.SelectedValue.ToString());
+                pedidoModels._ItemPedido.Produto_ID = int.Parse(metroComboBox2.SelectedValue.ToString());
+                pedidoModels.Data_Pedido = dateTimePicker1.Value.Date;
+                pedidoModels.Data_Entrega = dateTimePicker2.Value.Date;
+                pedidoModels.Quantidade = int.Parse(mtxtQantidade.Text);
+                pedidoModels.PrecoTotal = float.Parse(metroTextBox2.Text);
+
+                PedidoDAO pedidoDAO = new PedidoDAO();
+
+                bool verificaAtualizacao = pedidoDAO.atualizar(pedidoModels);
+                if (verificaAtualizacao)
+                {
+                    metroProgressSpinner2.Hide();
+                    metroLabel16.Show();
+                    metroLabel16.Text = "Pedido atualizado com sucesso!";
+                    popularPedidos();
+                    clearPedidos();
+                    setReadOnlyGridPedidos(true);
+                }
+                else
+                {
+                    MessageBox.Show("Erro na atualização dos dados.");
+                }
             }
-            else
-            {
-                MessageBox.Show("Erro na atualização dos dados.");
+            else {
+                metroLabel16.Hide();
+                MessageBox.Show("O(s) dado(s) deve(m) ser preenchido(s)!!!");
             }
         }
 
         private void metroButton6_Click(object sender, EventArgs e)
         {
-            metroProgressSpinner2.Show();
-            Util.WaitNSeconds(0.5);
-
-            PedidoModels pedidoModels = new PedidoModels();
-
-            pedidoModels._ItemPedido = new ItemPedido();
-            pedidoModels._ItemPedido.Cliente_ID = int.Parse(metroComboBox1.SelectedValue.ToString());
-            pedidoModels._ItemPedido.Produto_ID = int.Parse(metroComboBox2.SelectedValue.ToString());
-            pedidoModels.Data_Pedido = dateTimePicker1.Value.Date;
-            pedidoModels.Data_Entrega = dateTimePicker2.Value.Date;
-            pedidoModels.Quantidade = int.Parse(mtxtQantidade.Text);
-            pedidoModels.PrecoTotal = float.Parse(metroTextBox2.Text);
-
-
-            PedidoDAO pedidoDAO = new PedidoDAO();
-
-            String retorno = pedidoDAO.cadastrar(pedidoModels);
-
-            if (retorno == "OK")
+            if (!verificaDadosPreenchidosPedidos())
             {
-                metroProgressSpinner2.Hide();
-                lblReturnLabel.Show();
-                lblReturnLabel.Text = "Pedido adicionado com sucesso!";
-                popularPedidos();
-                clearPedidos();
-                setReadOnlyGridPedidos(false);
+                metroProgressSpinner2.Show();
+                Util.WaitNSeconds(0.5);
+
+                PedidoModels pedidoModels = new PedidoModels();
+
+                pedidoModels._ItemPedido = new ItemPedido();
+                pedidoModels._ItemPedido.Cliente_ID = int.Parse(metroComboBox1.SelectedValue.ToString());
+                pedidoModels._ItemPedido.Produto_ID = int.Parse(metroComboBox2.SelectedValue.ToString());
+                pedidoModels.Data_Pedido = dateTimePicker1.Value.Date;
+                pedidoModels.Data_Entrega = dateTimePicker2.Value.Date;
+                pedidoModels.Quantidade = int.Parse(mtxtQantidade.Text);
+                pedidoModels.PrecoTotal = float.Parse(metroTextBox2.Text);
+
+
+                PedidoDAO pedidoDAO = new PedidoDAO();
+
+                String retorno = pedidoDAO.cadastrar(pedidoModels);
+
+                if (retorno == "OK")
+                {
+                    metroProgressSpinner2.Hide();
+                    metroLabel16.Show();
+                    metroLabel16.Text = "Pedido adicionado com sucesso!";
+                    popularPedidos();
+                    clearPedidos();
+                    setReadOnlyGridPedidos(false);
+                }
+                else
+                {
+                    metroProgressSpinner2.Hide();
+                    MessageBox.Show("Erro ao cadastrar Pedido: " + retorno);
+                }
             }
             else
             {
-                metroProgressSpinner2.Hide();
-                MessageBox.Show("Erro ao cadastrar Pedido: " + retorno);
+                metroLabel16.Hide();
+                MessageBox.Show("O(s) dado(s) deve(m) ser preenchido(s)!!!");
             }
         }
 
@@ -790,19 +839,19 @@ namespace APAC_TIS4
             metroProgressSpinner1.Show();
             Util.WaitNSeconds(0.5);
             List<int> listProductID = new List<int>();
-                        for (int i = 0; i < mgProduto.RowCount; i++)
-                        {
-                            ProdutoModels produtoModels = new ProdutoModels();
+            for (int i = 0; i < mgProduto.RowCount; i++)
+            {
+                ProdutoModels produtoModels = new ProdutoModels();
 
-                            var checkbox = mgProduto.Rows[i].Cells[0].Value;
+                var checkbox = mgProduto.Rows[i].Cells[0].Value;
 
-                            if (checkbox != null) {
-                                if (checkbox.ToString().ToLower() == "true") {
-                                    listProductID.Add(int.Parse(mgProduto.Rows[i].Cells[2].Value.ToString()));
-                                }
-                            }
+                if (checkbox != null) {
+                    if (checkbox.ToString().ToLower() == "true") {
+                        listProductID.Add(int.Parse(mgProduto.Rows[i].Cells[2].Value.ToString()));
+                    }
+                }
 
-                        }
+            }
 
             ProdutoDAO produtoDAO = new ProdutoDAO();
             bool verifica = produtoDAO.excluirProdutos(listProductID);
@@ -824,7 +873,7 @@ namespace APAC_TIS4
 
         }
 
-        private void clearProducts() {
+/*        private void clearProducts() {
             mcmbTipo.Text = "";
             mcmbTamanho.Text = "";
             mcmbUDM.Text = "";
@@ -833,7 +882,7 @@ namespace APAC_TIS4
             mtxtCustoPorUnidade.Text = "";
             mtxtPVU.Text = "";
             mtxtDescricao.Text = "";
-        }
+        }*/
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
@@ -878,6 +927,13 @@ namespace APAC_TIS4
             }
         }
 
+        private bool verificaDadosPreenchidosPedidos() {
+            if ((!string.IsNullOrEmpty(metroTextBox3.Text)) && (!string.IsNullOrEmpty(metroComboBox1.Text)) && (!string.IsNullOrEmpty(mtxtQantidade.Text) && !string.IsNullOrEmpty(metroTextBox2.Text))) {
+                return true;
+            }
+            return false;
+        }
+
         private void metroButton8_Click(object sender, EventArgs e)
         {
             metroProgressSpinner2.Show();
@@ -887,7 +943,7 @@ namespace APAC_TIS4
             {
                 PedidoModels pedidoModels = new PedidoModels();
 
-                var checkbox = dvgPedidos.Rows[i].Cells[0].Value.ToString();
+                var checkbox = dvgPedidos.Rows[i].Cells[0].Value;
 
                 if (checkbox != null)
                 {
@@ -910,7 +966,8 @@ namespace APAC_TIS4
                 clearPedidos();
                 setReadOnlyGridProduto(true);
             }
-            else {
+            else
+            {
                 metroProgressSpinner2.Hide();
                 metroLabel16.Hide();
                 MessageBox.Show("Erro ao deletar Pedidos(s)!!");
@@ -925,6 +982,7 @@ namespace APAC_TIS4
             metroComboBox2.SelectedIndex = -1;
             mtxtQantidade.Text = "";
             metroTextBox2.Text = "";
+            metroTextBox3.Text = "";
         }
 
         private void metroButton11_Click(object sender, EventArgs e)
@@ -980,62 +1038,70 @@ namespace APAC_TIS4
 
         private void metroButton14_Click(object sender, EventArgs e)
         {
-            metroProgressSpinner3.Show();
-            Util.WaitNSeconds(0.5);
+            if (!verificaPreenchimentoCamposReceita()) {
+                metroProgressSpinner3.Show();
+                Util.WaitNSeconds(0.5);
 
-            ReceitaModels receita = new ReceitaModels();
-            receita.Observacao = metroTextBox4.Text;
-            receita.ModoDePreparo = textBox1.Text;
-            receita.Produto = new ProdutoModels();
-            receita.Produto.Produto_ID = int.Parse(metroComboBox3.SelectedValue.ToString());
+                ReceitaModels receita = new ReceitaModels();
+                receita.Observacao = metroTextBox4.Text;
+                receita.ModoDePreparo = textBox1.Text;
+                receita.Produto = new ProdutoModels();
+                receita.Produto.Produto_ID = int.Parse(metroComboBox3.SelectedValue.ToString());
 
-            receita.Receita_Insumo = new Receita_InsumoModels();
-            receita.Receita_Insumo.Insumo = new List<InsumoModels>();
-            string[] nomeInsumo = new string[listBox2.Items.Count];
-            for (int i = 0; i < listBox2.Items.Count; i++) {
-                nomeInsumo[i] = listBox2.Items[i].ToString();
-            }
+                receita.Receita_Insumo = new Receita_InsumoModels();
+                receita.Receita_Insumo.Insumo = new List<InsumoModels>();
+                string[] nomeInsumo = new string[listBox2.Items.Count];
+                for (int i = 0; i < listBox2.Items.Count; i++)
+                {
+                    nomeInsumo[i] = listBox2.Items[i].ToString();
+                }
 
-            foreach (string nome in nomeInsumo) {
-                InsumoModels insumoModels = new InsumoModels();
-                insumoModels.Nome = nome;
-                receita.Receita_Insumo.Insumo.Add(insumoModels);
-            }
-            //receita.Receita_Insumo.Insumo
-            string[] strPeso = textBox4.Text.Split('\n');
-            receita.Receita_Insumo.Peso = new List<float>();
-            for (int i = 0; i< strPeso.Length; i++) {
-                receita.Receita_Insumo.Peso.Add(float.Parse(strPeso[i].ToString()));
-            }
+                foreach (string nome in nomeInsumo)
+                {
+                    InsumoModels insumoModels = new InsumoModels();
+                    insumoModels.Nome = nome;
+                    receita.Receita_Insumo.Insumo.Add(insumoModels);
+                }
+                //receita.Receita_Insumo.Insumo
+                string[] strPeso = textBox4.Text.Split('\n');
+                receita.Receita_Insumo.Peso = new List<float>();
+                for (int i = 0; i < strPeso.Length; i++)
+                {
+                    receita.Receita_Insumo.Peso.Add(float.Parse(strPeso[i].ToString()));
+                }
 
-            string[] strUnidadeDeMedida = textBox5.Text.Split('\n');
-            receita.Receita_Insumo.UnidadeDeMedida = new List<string>();
-            for(int i = 0; i < strUnidadeDeMedida.Length; i++)
-            {
-                receita.Receita_Insumo.UnidadeDeMedida.Add(strUnidadeDeMedida[i]);
-            }
+                string[] strUnidadeDeMedida = textBox5.Text.Split('\n');
+                receita.Receita_Insumo.UnidadeDeMedida = new List<string>();
+                for (int i = 0; i < strUnidadeDeMedida.Length; i++)
+                {
+                    receita.Receita_Insumo.UnidadeDeMedida.Add(strUnidadeDeMedida[i]);
+                }
 
-            ReceitaDAO receitaDAO = new ReceitaDAO();
+                ReceitaDAO receitaDAO = new ReceitaDAO();
 
-            String retorno = receitaDAO.cadastrar(receita);
+                String retorno = receitaDAO.cadastrar(receita);
 
-            if (retorno == "OK")
-            {
-                metroProgressSpinner3.Hide();
-                metroLabel23.Show();
-                metroLabel23.Text = "Receita adicionada com sucesso!";
-                popularReceita();
-                clearReceita();
-                //setReadOnlyGridPedidos(false);
+                if (retorno == "OK")
+                {
+                    metroProgressSpinner3.Hide();
+                    metroLabel23.Show();
+                    metroLabel23.Text = "Receita adicionada com sucesso!";
+                    popularReceita();
+                    clearReceita();
+                    //setReadOnlyGridPedidos(false);
+                }
+                else
+                {
+                    metroProgressSpinner3.Hide();
+                    metroLabel23.Hide();
+                    MessageBox.Show("Erro ao cadastrar a receita: " + retorno);
+                    clearReceita();
+                }
             }
             else
             {
-                metroProgressSpinner3.Hide();
-                metroLabel23.Hide();
-                MessageBox.Show("Erro ao cadastrar a receita: " + retorno);
-                clearReceita();
+                MessageBox.Show("O(s) campo(s) deve(m) ser preenchido(s)!!!");
             }
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -1044,7 +1110,7 @@ namespace APAC_TIS4
                 listBox2.Items.Add(strItem);
             }
             foreach (string s in listBox1.SelectedItems.OfType<string>().ToList())
-                listBox1.Items.Remove(s);            
+                listBox1.Items.Remove(s);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -1161,7 +1227,7 @@ namespace APAC_TIS4
                     listBox1.Items.RemoveAt(i);
                 }
 
-                clausulaWhere = clausulaWhere.Substring(0, clausulaWhere.Length-1);
+                clausulaWhere = clausulaWhere.Substring(0, clausulaWhere.Length - 1);
 
                 popularComboInsumoReceitaComWhere(clausulaWhere);
             }
@@ -1200,68 +1266,85 @@ namespace APAC_TIS4
             }
         }
 
+        private bool verificaPreenchimentoCamposReceita() {
+            if (string.IsNullOrEmpty(metroTextBox1.Text) && string.IsNullOrEmpty(metroComboBox3.Text)
+                 && string.IsNullOrEmpty(metroTextBox4.Text) && string.IsNullOrEmpty(textBox1.Text)
+                  && string.IsNullOrEmpty(listBox2.Text) && string.IsNullOrEmpty(textBox4.Text)
+                   && string.IsNullOrEmpty(textBox5.Text)) {
+                return true;
+            }
+            return false;
+        }
+
         private void metroButton15_Click(object sender, EventArgs e)
         {
-            metroProgressSpinner3.Show();
-            Util.WaitNSeconds(0.5);
-            ReceitaModels receitaModels = new ReceitaModels();
-
-            receitaModels.ReceitaID = int.Parse(metroTextBox1.Text.ToString());
-
-            receitaModels.Produto = new ProdutoModels();
-            receitaModels.Produto.Produto_ID = int.Parse(metroComboBox3.SelectedValue.ToString());
-            receitaModels.Observacao = metroTextBox4.Text;
-            receitaModels.ModoDePreparo = textBox1.Text;
-
-            receitaModels.Receita_Insumo = new Receita_InsumoModels();
-            receitaModels.Receita_Insumo.Insumo = new List<InsumoModels>();
-            string[] nomeInsumo = new string[listBox2.Items.Count];
-            for (int i = 0; i < listBox2.Items.Count; i++)
+            if (!verificaPreenchimentoCamposReceita())
             {
-                nomeInsumo[i] = listBox2.Items[i].ToString();
+                metroProgressSpinner3.Show();
+                Util.WaitNSeconds(0.5);
+                ReceitaModels receitaModels = new ReceitaModels();
+
+                receitaModels.ReceitaID = int.Parse(metroTextBox1.Text.ToString());
+
+                receitaModels.Produto = new ProdutoModels();
+                receitaModels.Produto.Produto_ID = int.Parse(metroComboBox3.SelectedValue.ToString());
+                receitaModels.Observacao = metroTextBox4.Text;
+                receitaModels.ModoDePreparo = textBox1.Text;
+
+                receitaModels.Receita_Insumo = new Receita_InsumoModels();
+                receitaModels.Receita_Insumo.Insumo = new List<InsumoModels>();
+                string[] nomeInsumo = new string[listBox2.Items.Count];
+                for (int i = 0; i < listBox2.Items.Count; i++)
+                {
+                    nomeInsumo[i] = listBox2.Items[i].ToString();
+                }
+
+                foreach (string nome in nomeInsumo)
+                {
+                    InsumoModels insumoModels = new InsumoModels();
+                    insumoModels.Nome = nome;
+                    receitaModels.Receita_Insumo.Insumo.Add(insumoModels);
+                }
+                //receita.Receita_Insumo.Insumo
+                string[] strPeso = textBox4.Text.Split('\n');
+                receitaModels.Receita_Insumo.Peso = new List<float>();
+                for (int i = 0; i < strPeso.Length; i++)
+                {
+                    receitaModels.Receita_Insumo.Peso.Add(float.Parse(strPeso[i].ToString()));
+                }
+
+                string[] strUnidadeDeMedida = textBox5.Text.Split('\n');
+                receitaModels.Receita_Insumo.UnidadeDeMedida = new List<string>();
+                for (int i = 0; i < strUnidadeDeMedida.Length; i++)
+                {
+                    receitaModels.Receita_Insumo.UnidadeDeMedida.Add(strUnidadeDeMedida[i]);
+                }
+
+
+
+                ReceitaDAO receitaDAO = new ReceitaDAO();
+
+                bool verificaAtualizacao = receitaDAO.atualizar(receitaModels);
+                if (verificaAtualizacao)
+                {
+                    metroProgressSpinner3.Hide();
+                    metroLabel23.Show();
+                    metroLabel23.Text = "Receita atualizada com sucesso!";
+                    popularReceita();
+                    clearReceita();
+                    //setReadOnlyGridPedidos(true);
+                }
+                else
+                {
+                    metroProgressSpinner3.Hide();
+                    metroLabel23.Hide();
+                    clearReceita();
+                    MessageBox.Show("Erro na atualização dos dados.");
+                }
             }
 
-            foreach (string nome in nomeInsumo)
-            {
-                InsumoModels insumoModels = new InsumoModels();
-                insumoModels.Nome = nome;
-                receitaModels.Receita_Insumo.Insumo.Add(insumoModels);
-            }
-            //receita.Receita_Insumo.Insumo
-            string[] strPeso = textBox4.Text.Split('\n');
-            receitaModels.Receita_Insumo.Peso = new List<float>();
-            for (int i = 0; i < strPeso.Length; i++)
-            {
-                receitaModels.Receita_Insumo.Peso.Add(float.Parse(strPeso[i].ToString()));
-            }
-
-            string[] strUnidadeDeMedida = textBox5.Text.Split('\n');
-            receitaModels.Receita_Insumo.UnidadeDeMedida = new List<string>();
-            for (int i = 0; i < strUnidadeDeMedida.Length; i++)
-            {
-                receitaModels.Receita_Insumo.UnidadeDeMedida.Add(strUnidadeDeMedida[i]);
-            }
-
-
-
-            ReceitaDAO receitaDAO = new ReceitaDAO();
-
-            bool verificaAtualizacao = receitaDAO.atualizar(receitaModels);
-            if (verificaAtualizacao)
-            {
-                metroProgressSpinner3.Hide();
-                metroLabel23.Show();
-                metroLabel23.Text = "Receita atualizada com sucesso!";
-                popularReceita();
-                clearReceita();
-                //setReadOnlyGridPedidos(true);
-            }
-            else
-            {
-                metroProgressSpinner3.Hide();
-                metroLabel23.Hide();
-                clearReceita();
-                MessageBox.Show("Erro na atualização dos dados.");
+            else {
+                MessageBox.Show("O(s) campo(s) deve(m) ser preenchido(s)!!!");
             }
         }
 
@@ -1439,7 +1522,7 @@ namespace APAC_TIS4
             InsumoModels insumoModels = new InsumoModels();
             insumoModels.Nome = metroTextBox6.Text;
             insumoModels.Peso_Por_Unidade = float.Parse(metroTextBox7.Text);
-            insumoModels.Unidade_De_Medida = metroComboBox4.Text.Substring(0,2).Trim();
+            insumoModels.Unidade_De_Medida = metroComboBox4.Text.Substring(0, 2).Trim();
             insumoModels.Peso_Total = float.Parse(metroTextBox8.Text);
             insumoModels.Quantidade_Estoque = int.Parse(metroTextBox9.Text);
             insumoModels.Custo = float.Parse(metroTextBox10.Text);
@@ -1569,41 +1652,58 @@ namespace APAC_TIS4
             }
         }
 
+        private bool verificaPreenchimentoCamposInsumos() {
+            if (string.IsNullOrEmpty(metroTextBox5.Text) && string.IsNullOrEmpty(metroTextBox6.Text)
+                && string.IsNullOrEmpty(metroTextBox7.Text) && string.IsNullOrEmpty(metroComboBox4.Text)
+                && string.IsNullOrEmpty(metroTextBox8.Text) && string.IsNullOrEmpty(metroTextBox9.Text)
+                && string.IsNullOrEmpty(metroTextBox10.Text) && string.IsNullOrEmpty(metroTextBox11.Text)
+                && string.IsNullOrEmpty(metroTextBox12.Text)) {
+                return true;
+            }
+            return false;
+        }
+
         private void metroButton23_Click(object sender, EventArgs e)
         {
-            metroProgressSpinner4.Show();
-            Util.WaitNSeconds(0.5);
-            InsumoModels insumoModels = new InsumoModels();
-
-            insumoModels.Insumo_ID = int.Parse(metroTextBox5.Text.ToString());
-            insumoModels.Nome = metroTextBox6.Text;
-            insumoModels.Peso_Por_Unidade = float.Parse(metroTextBox7.Text);
-            insumoModels.Unidade_De_Medida = metroComboBox4.Text.Substring(0, 2).Trim();
-            insumoModels.Peso_Total = float.Parse(metroTextBox8.Text);
-            insumoModels.Quantidade_Estoque = int.Parse(metroTextBox9.Text);
-            insumoModels.Custo = float.Parse(metroTextBox10.Text);
-            insumoModels.Custo_Total = float.Parse(metroTextBox11.Text);
-            insumoModels.Descricao = metroTextBox12.Text;
-
-            InsumoDAO insumoDAO = new InsumoDAO();
-
-            bool retorno = insumoDAO.atualizarInumos(insumoModels);
-
-            if (retorno)
+            if (!verificaPreenchimentoCamposInsumos())
             {
-                metroProgressSpinner4.Hide();
-                metroLabel37.Show();
-                metroLabel37.Text = "Insumo atualizado com sucesso!";
-                popularGridInsumo();
-                clearInsumo();
-                //setReadOnlyGridPedidos(false);
+                metroProgressSpinner4.Show();
+                Util.WaitNSeconds(0.5);
+                InsumoModels insumoModels = new InsumoModels();
+
+                insumoModels.Insumo_ID = int.Parse(metroTextBox5.Text.ToString());
+                insumoModels.Nome = metroTextBox6.Text;
+                insumoModels.Peso_Por_Unidade = float.Parse(metroTextBox7.Text);
+                insumoModels.Unidade_De_Medida = metroComboBox4.Text.Substring(0, 2).Trim();
+                insumoModels.Peso_Total = float.Parse(metroTextBox8.Text);
+                insumoModels.Quantidade_Estoque = int.Parse(metroTextBox9.Text);
+                insumoModels.Custo = float.Parse(metroTextBox10.Text);
+                insumoModels.Custo_Total = float.Parse(metroTextBox11.Text);
+                insumoModels.Descricao = metroTextBox12.Text;
+
+                InsumoDAO insumoDAO = new InsumoDAO();
+
+                bool retorno = insumoDAO.atualizarInumos(insumoModels);
+
+                if (retorno)
+                {
+                    metroProgressSpinner4.Hide();
+                    metroLabel37.Show();
+                    metroLabel37.Text = "Insumo atualizado com sucesso!";
+                    popularGridInsumo();
+                    clearInsumo();
+                    //setReadOnlyGridPedidos(false);
+                }
+                else
+                {
+                    metroProgressSpinner4.Hide();
+                    metroLabel37.Hide();
+                    clearInsumo();
+                    MessageBox.Show("Erro ao atualizar o insumo: " + retorno);
+                }
             }
-            else
-            {
-                metroProgressSpinner4.Hide();
-                metroLabel37.Hide();
-                clearInsumo();
-                MessageBox.Show("Erro ao atualizar o insumo: " + retorno);
+            else {
+                MessageBox.Show("O(s) campo(s) deve(m) ser preenchido(s)");
             }
         }
 
@@ -1775,7 +1875,7 @@ namespace APAC_TIS4
                 }
                 else
                 {
-                    mgProduto.Rows[e.RowIndex].Cells[0].Value = true;
+                    dvgClientes.Rows[e.RowIndex].Cells[0].Value = true;
                 }
             }
         }
@@ -1815,22 +1915,23 @@ namespace APAC_TIS4
 
         private void entityTab_TabIndexChanged(object sender, EventArgs e)
         {
-/*            popularCliente();
-            popularProduto();
-            popularPedidos();
-            popularComboPedidos();
-            inicializarCliente();
-            inicializarProdutos();
-            inicializarPedidos();
-            inicializarReceita();
-            inicializarInsumo();
-            inicializarRelatorios();
-            clearClientFields();
-            clearProductFields();
-            clearPedidosFields();
-            clearInsumoFields();
-            clearReceitaFields();
-  */      }
+            /*            popularCliente();
+                        popularProduto();
+                        popularPedidos();
+                        popularComboPedidos();
+                        inicializarCliente();
+                        inicializarProdutos();
+                        inicializarPedidos();
+                        inicializarReceita();
+                        inicializarInsumo();
+                        inicializarRelatorios();
+                        clearClientFields();
+                        clearProductFields();
+                        clearPedidosFields();
+                        clearInsumoFields();
+                        clearReceitaFields();
+              */
+        }
 
         private void entityTab_Selected(object sender, TabControlEventArgs e)
         {
@@ -1851,10 +1952,21 @@ namespace APAC_TIS4
             clearReceitaFields();
         }
 
+        private bool verificaPreenchimentoCamposClientes() {
+            if (!string.IsNullOrEmpty(txtClientId.Text) && !string.IsNullOrEmpty(txtClientName.Text) && !string.IsNullOrEmpty(cmdClientType.Text) && !string.IsNullOrEmpty(txtClientLocal.Text)) {
+                return false;
+            }
+            return true;
+        }
+
         private void bntPesquisar_Click(object sender, EventArgs e)
         {
             ClienteDAO clienteDAO = new ClienteDAO();
             string nomeCliente = txtPesquisarNome.Text;
+
+            if (string.IsNullOrEmpty(nomeCliente)) {
+                nomeCliente = "%%%";
+            }
 
             DataSet dataSet = clienteDAO.pesquisaPorNome(nomeCliente);
 
@@ -1902,7 +2014,10 @@ namespace APAC_TIS4
 
         private void btnPesquisarReceita_Click(object sender, EventArgs e)
         {
-            int produto_ID = int.Parse(txtProdutoPesquisa.SelectedValue.ToString());
+            string produto_ID = txtProdutoPesquisa.SelectedValue.ToString();
+            if (string.IsNullOrEmpty(produto_ID)) {
+                produto_ID = "%%%";
+            }
 
             ReceitaDAO receitaDAO = new ReceitaDAO();
 
@@ -1941,5 +2056,6 @@ namespace APAC_TIS4
             }
 
         }
+
     }
 }

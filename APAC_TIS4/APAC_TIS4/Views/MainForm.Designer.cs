@@ -128,6 +128,11 @@
             this.txtClientName = new MetroFramework.Controls.MetroTextBox();
             this.entityTab = new MetroFramework.Controls.MetroTabControl();
             this.PedidosPage = new MetroFramework.Controls.MetroTabPage();
+            this.cmbProdutoPedidos = new MetroFramework.Controls.MetroComboBox();
+            this.lblProdutosPesquisaPedidos = new MetroFramework.Controls.MetroLabel();
+            this.bntPesquisarPedido = new MetroFramework.Controls.MetroButton();
+            this.cmbClientesPesquisarReceitas = new MetroFramework.Controls.MetroComboBox();
+            this.lblClientePesquisarPedido = new MetroFramework.Controls.MetroLabel();
             this.dvgPedidos = new MetroFramework.Controls.MetroGrid();
             this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -231,11 +236,6 @@
             this.metroButton28 = new MetroFramework.Controls.MetroButton();
             this.metroGrid3 = new MetroFramework.Controls.MetroGrid();
             this.chartGrafico = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.lblClientePesquisarPedido = new MetroFramework.Controls.MetroLabel();
-            this.cmbClientesPesquisarReceitas = new MetroFramework.Controls.MetroComboBox();
-            this.bntPesquisarPedido = new MetroFramework.Controls.MetroButton();
-            this.cmbProdutoPedidos = new MetroFramework.Controls.MetroComboBox();
-            this.lblProdutosPesquisaPedidos = new MetroFramework.Controls.MetroLabel();
             this.contextMenuStrip3.SuspendLayout();
             this.productPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mgProduto)).BeginInit();
@@ -333,6 +333,7 @@
             this.cmbTipoPesquisar.FormattingEnabled = true;
             this.cmbTipoPesquisar.ItemHeight = 23;
             this.cmbTipoPesquisar.Items.AddRange(new object[] {
+            "",
             "Pão",
             "Bolo",
             "Doce",
@@ -980,9 +981,9 @@
             this.clientPage.HorizontalScrollbarBarColor = true;
             this.clientPage.HorizontalScrollbarHighlightOnWheel = false;
             this.clientPage.HorizontalScrollbarSize = 10;
-            this.clientPage.Location = new System.Drawing.Point(4, 38);
+            this.clientPage.Location = new System.Drawing.Point(4, 35);
             this.clientPage.Name = "clientPage";
-            this.clientPage.Size = new System.Drawing.Size(1297, 596);
+            this.clientPage.Size = new System.Drawing.Size(1297, 599);
             this.clientPage.TabIndex = 1;
             this.clientPage.Text = "Cliente";
             this.clientPage.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -1075,7 +1076,7 @@
             this.dvgClientes.EnableHeadersVisualStyles = false;
             this.dvgClientes.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dvgClientes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dvgClientes.Location = new System.Drawing.Point(0, 478);
+            this.dvgClientes.Location = new System.Drawing.Point(0, 456);
             this.dvgClientes.Name = "dvgClientes";
             this.dvgClientes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1088,7 +1089,7 @@
             this.dvgClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dvgClientes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dvgClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgClientes.Size = new System.Drawing.Size(1297, 118);
+            this.dvgClientes.Size = new System.Drawing.Size(1297, 143);
             this.dvgClientes.Style = MetroFramework.MetroColorStyle.Green;
             this.dvgClientes.TabIndex = 74;
             this.dvgClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgClientes_CellClick);
@@ -1439,7 +1440,7 @@
             this.entityTab.Location = new System.Drawing.Point(0, 60);
             this.entityTab.Margin = new System.Windows.Forms.Padding(30, 32, 32, 3);
             this.entityTab.Name = "entityTab";
-            this.entityTab.SelectedIndex = 2;
+            this.entityTab.SelectedIndex = 1;
             this.entityTab.Size = new System.Drawing.Size(1305, 638);
             this.entityTab.Style = MetroFramework.MetroColorStyle.Green;
             this.entityTab.TabIndex = 3;
@@ -1489,6 +1490,54 @@
             this.PedidosPage.VerticalScrollbarBarColor = true;
             this.PedidosPage.VerticalScrollbarHighlightOnWheel = false;
             this.PedidosPage.VerticalScrollbarSize = 10;
+            // 
+            // cmbProdutoPedidos
+            // 
+            this.cmbProdutoPedidos.FormattingEnabled = true;
+            this.cmbProdutoPedidos.ItemHeight = 23;
+            this.cmbProdutoPedidos.Location = new System.Drawing.Point(255, 423);
+            this.cmbProdutoPedidos.Name = "cmbProdutoPedidos";
+            this.cmbProdutoPedidos.Size = new System.Drawing.Size(214, 29);
+            this.cmbProdutoPedidos.TabIndex = 80;
+            this.cmbProdutoPedidos.UseSelectable = true;
+            // 
+            // lblProdutosPesquisaPedidos
+            // 
+            this.lblProdutosPesquisaPedidos.AutoSize = true;
+            this.lblProdutosPesquisaPedidos.Location = new System.Drawing.Point(193, 433);
+            this.lblProdutosPesquisaPedidos.Name = "lblProdutosPesquisaPedidos";
+            this.lblProdutosPesquisaPedidos.Size = new System.Drawing.Size(64, 19);
+            this.lblProdutosPesquisaPedidos.TabIndex = 79;
+            this.lblProdutosPesquisaPedidos.Text = "Produto: ";
+            // 
+            // bntPesquisarPedido
+            // 
+            this.bntPesquisarPedido.Location = new System.Drawing.Point(497, 384);
+            this.bntPesquisarPedido.Name = "bntPesquisarPedido";
+            this.bntPesquisarPedido.Size = new System.Drawing.Size(150, 31);
+            this.bntPesquisarPedido.TabIndex = 78;
+            this.bntPesquisarPedido.Text = "Pesquisar";
+            this.bntPesquisarPedido.UseSelectable = true;
+            this.bntPesquisarPedido.Click += new System.EventHandler(this.bntPesquisarPedido_Click);
+            // 
+            // cmbClientesPesquisarReceitas
+            // 
+            this.cmbClientesPesquisarReceitas.FormattingEnabled = true;
+            this.cmbClientesPesquisarReceitas.ItemHeight = 23;
+            this.cmbClientesPesquisarReceitas.Location = new System.Drawing.Point(255, 378);
+            this.cmbClientesPesquisarReceitas.Name = "cmbClientesPesquisarReceitas";
+            this.cmbClientesPesquisarReceitas.Size = new System.Drawing.Size(214, 29);
+            this.cmbClientesPesquisarReceitas.TabIndex = 77;
+            this.cmbClientesPesquisarReceitas.UseSelectable = true;
+            // 
+            // lblClientePesquisarPedido
+            // 
+            this.lblClientePesquisarPedido.AutoSize = true;
+            this.lblClientePesquisarPedido.Location = new System.Drawing.Point(193, 388);
+            this.lblClientePesquisarPedido.Name = "lblClientePesquisarPedido";
+            this.lblClientePesquisarPedido.Size = new System.Drawing.Size(56, 19);
+            this.lblClientePesquisarPedido.TabIndex = 76;
+            this.lblClientePesquisarPedido.Text = "Cliente: ";
             // 
             // dvgPedidos
             // 
@@ -1566,7 +1615,7 @@
             this.metroButton26.BackColor = System.Drawing.Color.Olive;
             this.metroButton26.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton26.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroButton26.Location = new System.Drawing.Point(653, 376);
+            this.metroButton26.Location = new System.Drawing.Point(738, 384);
             this.metroButton26.Name = "metroButton26";
             this.metroButton26.Size = new System.Drawing.Size(151, 31);
             this.metroButton26.TabIndex = 74;
@@ -1644,7 +1693,7 @@
             this.metroLabel16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel16.BackColor = System.Drawing.SystemColors.ControlText;
             this.metroLabel16.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel16.Location = new System.Drawing.Point(856, 423);
+            this.metroLabel16.Location = new System.Drawing.Point(859, 444);
             this.metroLabel16.Name = "metroLabel16";
             this.metroLabel16.Size = new System.Drawing.Size(366, 23);
             this.metroLabel16.TabIndex = 38;
@@ -1657,7 +1706,7 @@
             this.metroButton6.BackColor = System.Drawing.Color.LimeGreen;
             this.metroButton6.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.metroButton6.Location = new System.Drawing.Point(1072, 376);
+            this.metroButton6.Location = new System.Drawing.Point(1123, 384);
             this.metroButton6.Name = "metroButton6";
             this.metroButton6.Size = new System.Drawing.Size(150, 31);
             this.metroButton6.TabIndex = 36;
@@ -1671,7 +1720,7 @@
             // metroProgressSpinner2
             // 
             this.metroProgressSpinner2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroProgressSpinner2.Location = new System.Drawing.Point(1007, 376);
+            this.metroProgressSpinner2.Location = new System.Drawing.Point(1068, 384);
             this.metroProgressSpinner2.Maximum = 100;
             this.metroProgressSpinner2.Name = "metroProgressSpinner2";
             this.metroProgressSpinner2.Size = new System.Drawing.Size(27, 31);
@@ -1685,7 +1734,7 @@
             this.metroButton7.BackColor = System.Drawing.SystemColors.HotTrack;
             this.metroButton7.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.metroButton7.Location = new System.Drawing.Point(832, 376);
+            this.metroButton7.Location = new System.Drawing.Point(895, 384);
             this.metroButton7.Name = "metroButton7";
             this.metroButton7.Size = new System.Drawing.Size(150, 31);
             this.metroButton7.TabIndex = 34;
@@ -1972,9 +2021,9 @@
             this.InsumoPage.HorizontalScrollbarBarColor = true;
             this.InsumoPage.HorizontalScrollbarHighlightOnWheel = false;
             this.InsumoPage.HorizontalScrollbarSize = 10;
-            this.InsumoPage.Location = new System.Drawing.Point(4, 38);
+            this.InsumoPage.Location = new System.Drawing.Point(4, 35);
             this.InsumoPage.Name = "InsumoPage";
-            this.InsumoPage.Size = new System.Drawing.Size(1297, 596);
+            this.InsumoPage.Size = new System.Drawing.Size(1297, 599);
             this.InsumoPage.TabIndex = 7;
             this.InsumoPage.Text = "Insumo";
             this.InsumoPage.VerticalScrollbarBarColor = true;
@@ -2066,7 +2115,7 @@
             this.gridInsumo.EnableHeadersVisualStyles = false;
             this.gridInsumo.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.gridInsumo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.gridInsumo.Location = new System.Drawing.Point(0, 437);
+            this.gridInsumo.Location = new System.Drawing.Point(0, 440);
             this.gridInsumo.Name = "gridInsumo";
             this.gridInsumo.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -3167,9 +3216,9 @@
             this.RelatorioLucroPage.HorizontalScrollbarBarColor = true;
             this.RelatorioLucroPage.HorizontalScrollbarHighlightOnWheel = false;
             this.RelatorioLucroPage.HorizontalScrollbarSize = 10;
-            this.RelatorioLucroPage.Location = new System.Drawing.Point(4, 38);
+            this.RelatorioLucroPage.Location = new System.Drawing.Point(4, 35);
             this.RelatorioLucroPage.Name = "RelatorioLucroPage";
-            this.RelatorioLucroPage.Size = new System.Drawing.Size(1297, 596);
+            this.RelatorioLucroPage.Size = new System.Drawing.Size(1297, 599);
             this.RelatorioLucroPage.TabIndex = 9;
             this.RelatorioLucroPage.Text = "Relatorio Lucro";
             this.RelatorioLucroPage.VerticalScrollbarBarColor = true;
@@ -3225,7 +3274,7 @@
             this.metroGrid3.EnableHeadersVisualStyles = false;
             this.metroGrid3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid3.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid3.Location = new System.Drawing.Point(0, 385);
+            this.metroGrid3.Location = new System.Drawing.Point(0, 388);
             this.metroGrid3.Name = "metroGrid3";
             this.metroGrid3.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -3260,54 +3309,6 @@
             title1.Name = "RelatóriodeLucros";
             title1.Text = "Relatório de Lucros";
             this.chartGrafico.Titles.Add(title1);
-            // 
-            // lblClientePesquisarPedido
-            // 
-            this.lblClientePesquisarPedido.AutoSize = true;
-            this.lblClientePesquisarPedido.Location = new System.Drawing.Point(193, 388);
-            this.lblClientePesquisarPedido.Name = "lblClientePesquisarPedido";
-            this.lblClientePesquisarPedido.Size = new System.Drawing.Size(56, 19);
-            this.lblClientePesquisarPedido.TabIndex = 76;
-            this.lblClientePesquisarPedido.Text = "Cliente: ";
-            // 
-            // cmbClientesPesquisarReceitas
-            // 
-            this.cmbClientesPesquisarReceitas.FormattingEnabled = true;
-            this.cmbClientesPesquisarReceitas.ItemHeight = 23;
-            this.cmbClientesPesquisarReceitas.Location = new System.Drawing.Point(255, 378);
-            this.cmbClientesPesquisarReceitas.Name = "cmbClientesPesquisarReceitas";
-            this.cmbClientesPesquisarReceitas.Size = new System.Drawing.Size(214, 29);
-            this.cmbClientesPesquisarReceitas.TabIndex = 77;
-            this.cmbClientesPesquisarReceitas.UseSelectable = true;
-            // 
-            // bntPesquisarPedido
-            // 
-            this.bntPesquisarPedido.Location = new System.Drawing.Point(497, 384);
-            this.bntPesquisarPedido.Name = "bntPesquisarPedido";
-            this.bntPesquisarPedido.Size = new System.Drawing.Size(116, 23);
-            this.bntPesquisarPedido.TabIndex = 78;
-            this.bntPesquisarPedido.Text = "Pesquisar";
-            this.bntPesquisarPedido.UseSelectable = true;
-            this.bntPesquisarPedido.Click += new System.EventHandler(this.bntPesquisarPedido_Click);
-            // 
-            // cmbProdutoPedidos
-            // 
-            this.cmbProdutoPedidos.FormattingEnabled = true;
-            this.cmbProdutoPedidos.ItemHeight = 23;
-            this.cmbProdutoPedidos.Location = new System.Drawing.Point(255, 423);
-            this.cmbProdutoPedidos.Name = "cmbProdutoPedidos";
-            this.cmbProdutoPedidos.Size = new System.Drawing.Size(214, 29);
-            this.cmbProdutoPedidos.TabIndex = 80;
-            this.cmbProdutoPedidos.UseSelectable = true;
-            // 
-            // lblProdutosPesquisaPedidos
-            // 
-            this.lblProdutosPesquisaPedidos.AutoSize = true;
-            this.lblProdutosPesquisaPedidos.Location = new System.Drawing.Point(193, 433);
-            this.lblProdutosPesquisaPedidos.Name = "lblProdutosPesquisaPedidos";
-            this.lblProdutosPesquisaPedidos.Size = new System.Drawing.Size(64, 19);
-            this.lblProdutosPesquisaPedidos.TabIndex = 79;
-            this.lblProdutosPesquisaPedidos.Text = "Produto: ";
             // 
             // frmPrincipal
             // 
