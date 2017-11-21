@@ -1219,17 +1219,11 @@ namespace APAC_TIS4
                 textBox4.Text = metroGrid1.Rows[e.RowIndex].Cells[10].Value.ToString();
                 textBox5.Text = metroGrid1.Rows[e.RowIndex].Cells[11].Value.ToString();
 
-                string clausulaWhere = "";
-                foreach (string insumo in listBox1.Items) {
-                    clausulaWhere = clausulaWhere + "\'" + insumo + "\',";
-                }
                 for (int i = 0; i < listBox1.Items.Count; i++) {
-                    listBox1.Items.RemoveAt(i);
+                    if (listBox1.Items[i].ToString().Equals(metroGrid1.Rows[e.RowIndex].Cells[9].Value.ToString())) {
+                        listBox1.Items.RemoveAt(i);
+                    }
                 }
-
-                clausulaWhere = clausulaWhere.Substring(0, clausulaWhere.Length - 1);
-
-                popularComboInsumoReceitaComWhere(clausulaWhere);
             }
             else if (e.ColumnIndex == 0)
             {
@@ -1319,8 +1313,6 @@ namespace APAC_TIS4
                 {
                     receitaModels.Receita_Insumo.UnidadeDeMedida.Add(strUnidadeDeMedida[i]);
                 }
-
-
 
                 ReceitaDAO receitaDAO = new ReceitaDAO();
 

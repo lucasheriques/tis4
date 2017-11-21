@@ -1440,7 +1440,7 @@
             this.entityTab.Location = new System.Drawing.Point(0, 60);
             this.entityTab.Margin = new System.Windows.Forms.Padding(30, 32, 32, 3);
             this.entityTab.Name = "entityTab";
-            this.entityTab.SelectedIndex = 1;
+            this.entityTab.SelectedIndex = 4;
             this.entityTab.Size = new System.Drawing.Size(1305, 638);
             this.entityTab.Style = MetroFramework.MetroColorStyle.Green;
             this.entityTab.TabIndex = 3;
@@ -1482,9 +1482,9 @@
             this.PedidosPage.HorizontalScrollbarBarColor = true;
             this.PedidosPage.HorizontalScrollbarHighlightOnWheel = false;
             this.PedidosPage.HorizontalScrollbarSize = 10;
-            this.PedidosPage.Location = new System.Drawing.Point(4, 38);
+            this.PedidosPage.Location = new System.Drawing.Point(4, 35);
             this.PedidosPage.Name = "PedidosPage";
-            this.PedidosPage.Size = new System.Drawing.Size(1297, 596);
+            this.PedidosPage.Size = new System.Drawing.Size(1297, 599);
             this.PedidosPage.TabIndex = 6;
             this.PedidosPage.Text = "Pedidos";
             this.PedidosPage.VerticalScrollbarBarColor = true;
@@ -1574,7 +1574,7 @@
             this.dvgPedidos.EnableHeadersVisualStyles = false;
             this.dvgPedidos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dvgPedidos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dvgPedidos.Location = new System.Drawing.Point(0, 470);
+            this.dvgPedidos.Location = new System.Drawing.Point(0, 473);
             this.dvgPedidos.Name = "dvgPedidos";
             this.dvgPedidos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
