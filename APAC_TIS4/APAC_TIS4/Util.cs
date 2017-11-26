@@ -17,7 +17,7 @@ namespace APAC_TIS4
         }
         public static void WaitNSeconds(double seconds)
         {
-            if (seconds < 1) return;
+            if (seconds < 0) return;
             DateTime _desired = DateTime.Now.AddSeconds(seconds);
             while (DateTime.Now < _desired)
             {

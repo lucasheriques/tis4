@@ -68,7 +68,7 @@ namespace APAC_TIS4
             btnUpdateClient.Hide();
             spiClientActions.Hide();
             btnAddClient.Hide();
-            metroButton27.Hide();
+            btnRemoveClients.Hide();
             lblReturnLabel.Hide();
         }
 
@@ -222,7 +222,7 @@ namespace APAC_TIS4
             metroTextBox3.Hide();
             metroButton7.Hide();
             metroButton6.Hide();
-            metroButton8.Hide();
+            btnExcluirPedidos.Hide();
             popularProdutoPesquisar();
             popularComboClientePesquisar();
             setReadOnlyGridPedidos(true);
@@ -320,7 +320,7 @@ namespace APAC_TIS4
             btnAddClient.Hide();
             btnUpdateClient.Show();
             lblReturnLabel.Hide();
-            metroButton27.Hide();
+            btnRemoveClients.Hide();
         }
 
         private void btnClientAddMenu_Click(object sender, EventArgs e)
@@ -330,7 +330,7 @@ namespace APAC_TIS4
             btnAddClient.Show();
             btnUpdateClient.Hide();
             lblReturnLabel.Hide();
-            metroButton27.Hide();
+            btnRemoveClients.Hide();
         }
 
         private void dvgClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -755,7 +755,7 @@ namespace APAC_TIS4
             metroTextBox3.Hide();
             metroButton7.Hide();
             metroButton6.Show();
-            metroButton8.Hide();
+            btnExcluirPedidos.Hide();
             setReadOnlyGridPedidos(false);
         }
 
@@ -765,7 +765,7 @@ namespace APAC_TIS4
             metroTextBox3.Show();
             metroButton7.Show();
             metroButton6.Hide();
-            metroButton8.Hide();
+            btnExcluirPedidos.Hide();
             setReadOnlyGridPedidos(true);
         }
 
@@ -890,7 +890,7 @@ namespace APAC_TIS4
             metroTextBox3.Hide();
             metroButton7.Hide();
             metroButton6.Hide();
-            metroButton8.Show();
+            btnExcluirPedidos.Show();
             setReadOnlyGridPedidos(true);
         }
 
@@ -1805,7 +1805,7 @@ namespace APAC_TIS4
             btnAddClient.Hide();
             btnUpdateClient.Hide();
             lblReturnLabel.Hide();
-            metroButton27.Show();
+            btnRemoveClients.Show();
         }
 
         private void metroButton27_Click(object sender, EventArgs e)
