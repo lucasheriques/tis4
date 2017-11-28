@@ -679,7 +679,7 @@ namespace APAC_TIS4
                 pedidoModels._ItemPedido.Produto_ID = int.Parse(metroComboBox2.SelectedValue.ToString());
                 pedidoModels.Data_Pedido = dateTimePicker1.Value.Date;
                 pedidoModels.Data_Entrega = dateTimePicker2.Value.Date;
-                pedidoModels.Quantidade = int.Parse(mtxtQantidade.Text);
+                pedidoModels._ItemPedido.Quantidade = int.Parse(mtxtQantidade.Text);
                 pedidoModels.PrecoTotal = float.Parse(metroTextBox2.Text);
 
                 PedidoDAO pedidoDAO = new PedidoDAO();
@@ -719,7 +719,7 @@ namespace APAC_TIS4
                 pedidoModels._ItemPedido.Produto_ID = int.Parse(metroComboBox2.SelectedValue.ToString());
                 pedidoModels.Data_Pedido = dateTimePicker1.Value.Date;
                 pedidoModels.Data_Entrega = dateTimePicker2.Value.Date;
-                pedidoModels.Quantidade = int.Parse(mtxtQantidade.Text);
+                pedidoModels._ItemPedido.Quantidade = int.Parse(mtxtQantidade.Text);
                 pedidoModels.PrecoTotal = float.Parse(metroTextBox2.Text);
 
 

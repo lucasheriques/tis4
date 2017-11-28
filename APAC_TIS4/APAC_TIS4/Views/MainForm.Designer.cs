@@ -519,7 +519,6 @@
             // 
             // metroButton25
             // 
-            this.metroButton25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton25.BackColor = System.Drawing.Color.Olive;
             this.metroButton25.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton25.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -545,7 +544,6 @@
             // 
             // mbExcluirProdutos
             // 
-            this.mbExcluirProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mbExcluirProdutos.BackColor = System.Drawing.Color.Red;
             this.mbExcluirProdutos.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.mbExcluirProdutos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -610,7 +608,7 @@
             this.mgProduto.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.mgProduto.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.mgProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.mgProduto.Size = new System.Drawing.Size(1297, 109);
+            this.mgProduto.Size = new System.Drawing.Size(1297, 106);
             this.mgProduto.Style = MetroFramework.MetroColorStyle.Green;
             this.mgProduto.TabIndex = 35;
             this.mgProduto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.mgProduto_CellClick);
@@ -648,7 +646,6 @@
             // 
             // mbAdicionarProdutos
             // 
-            this.mbAdicionarProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mbAdicionarProdutos.BackColor = System.Drawing.Color.LimeGreen;
             this.mbAdicionarProdutos.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.mbAdicionarProdutos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -677,7 +674,6 @@
             // 
             // mbAtualizarProdutos
             // 
-            this.mbAtualizarProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mbAtualizarProdutos.BackColor = System.Drawing.SystemColors.HotTrack;
             this.mbAtualizarProdutos.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.mbAtualizarProdutos.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -1108,7 +1104,7 @@
             this.dvgClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dvgClientes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dvgClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgClientes.Size = new System.Drawing.Size(1297, 140);
+            this.dvgClientes.Size = new System.Drawing.Size(1297, 137);
             this.dvgClientes.Style = MetroFramework.MetroColorStyle.Green;
             this.dvgClientes.TabIndex = 74;
             this.dvgClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgClientes_CellClick);
@@ -1133,7 +1129,6 @@
             // 
             // btnRemoveClients
             // 
-            this.btnRemoveClients.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemoveClients.BackColor = System.Drawing.Color.Red;
             this.btnRemoveClients.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnRemoveClients.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -1150,7 +1145,6 @@
             // 
             // metroButton24
             // 
-            this.metroButton24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton24.BackColor = System.Drawing.Color.Olive;
             this.metroButton24.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton24.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -1183,7 +1177,6 @@
             // 
             // btnUpdateClient
             // 
-            this.btnUpdateClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdateClient.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnUpdateClient.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnUpdateClient.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -1328,7 +1321,6 @@
             // 
             // btnAddClient
             // 
-            this.btnAddClient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddClient.BackColor = System.Drawing.Color.LimeGreen;
             this.btnAddClient.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnAddClient.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -1471,7 +1463,7 @@
             this.entityTab.Location = new System.Drawing.Point(0, 60);
             this.entityTab.Margin = new System.Windows.Forms.Padding(30, 32, 32, 3);
             this.entityTab.Name = "entityTab";
-            this.entityTab.SelectedIndex = 4;
+            this.entityTab.SelectedIndex = 0;
             this.entityTab.Size = new System.Drawing.Size(1305, 638);
             this.entityTab.Style = MetroFramework.MetroColorStyle.Green;
             this.entityTab.TabIndex = 3;
@@ -1620,7 +1612,7 @@
             this.dvgPedidos.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dvgPedidos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dvgPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgPedidos.Size = new System.Drawing.Size(1297, 123);
+            this.dvgPedidos.Size = new System.Drawing.Size(1297, 120);
             this.dvgPedidos.Style = MetroFramework.MetroColorStyle.Green;
             this.dvgPedidos.TabIndex = 75;
             this.dvgPedidos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dvgPedidos_CellContentClick);
@@ -1645,7 +1637,6 @@
             // 
             // metroButton26
             // 
-            this.metroButton26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton26.BackColor = System.Drawing.Color.Olive;
             this.metroButton26.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton26.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -1662,7 +1653,6 @@
             // 
             // btnExcluirPedidos
             // 
-            this.btnExcluirPedidos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExcluirPedidos.BackColor = System.Drawing.Color.Red;
             this.btnExcluirPedidos.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.btnExcluirPedidos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -1738,7 +1728,6 @@
             // 
             // metroButton6
             // 
-            this.metroButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton6.BackColor = System.Drawing.Color.LimeGreen;
             this.metroButton6.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -1767,7 +1756,6 @@
             // 
             // metroButton7
             // 
-            this.metroButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton7.BackColor = System.Drawing.SystemColors.HotTrack;
             this.metroButton7.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -2162,7 +2150,7 @@
             this.gridInsumo.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.gridInsumo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gridInsumo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridInsumo.Size = new System.Drawing.Size(1297, 159);
+            this.gridInsumo.Size = new System.Drawing.Size(1297, 156);
             this.gridInsumo.Style = MetroFramework.MetroColorStyle.Green;
             this.gridInsumo.TabIndex = 75;
             this.gridInsumo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellClick);
@@ -2200,7 +2188,6 @@
             // 
             // metroButton22
             // 
-            this.metroButton22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton22.BackColor = System.Drawing.Color.LimeGreen;
             this.metroButton22.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton22.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -2229,7 +2216,6 @@
             // 
             // metroButton23
             // 
-            this.metroButton23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton23.BackColor = System.Drawing.SystemColors.HotTrack;
             this.metroButton23.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton23.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -2246,7 +2232,6 @@
             // 
             // metroButton20
             // 
-            this.metroButton20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton20.BackColor = System.Drawing.Color.Red;
             this.metroButton20.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton20.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -2793,7 +2778,7 @@
             this.metroButton16.BackColor = System.Drawing.Color.Olive;
             this.metroButton16.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.metroButton16.Location = new System.Drawing.Point(1143, 413);
+            this.metroButton16.Location = new System.Drawing.Point(1111, 404);
             this.metroButton16.Name = "metroButton16";
             this.metroButton16.Size = new System.Drawing.Size(151, 31);
             this.metroButton16.TabIndex = 71;
@@ -2854,7 +2839,7 @@
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(1297, 144);
+            this.metroGrid1.Size = new System.Drawing.Size(1297, 141);
             this.metroGrid1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroGrid1.TabIndex = 70;
             this.metroGrid1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellClick);
@@ -2986,7 +2971,6 @@
             // 
             // metroButton14
             // 
-            this.metroButton14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton14.BackColor = System.Drawing.Color.LimeGreen;
             this.metroButton14.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton14.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -3015,7 +2999,6 @@
             // 
             // metroButton15
             // 
-            this.metroButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton15.BackColor = System.Drawing.SystemColors.HotTrack;
             this.metroButton15.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton15.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -3033,7 +3016,6 @@
             // 
             // metroButton12
             // 
-            this.metroButton12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton12.BackColor = System.Drawing.Color.Red;
             this.metroButton12.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -3252,9 +3234,9 @@
             this.RelatorioLucroPage.HorizontalScrollbarBarColor = true;
             this.RelatorioLucroPage.HorizontalScrollbarHighlightOnWheel = false;
             this.RelatorioLucroPage.HorizontalScrollbarSize = 10;
-            this.RelatorioLucroPage.Location = new System.Drawing.Point(4, 38);
+            this.RelatorioLucroPage.Location = new System.Drawing.Point(4, 35);
             this.RelatorioLucroPage.Name = "RelatorioLucroPage";
-            this.RelatorioLucroPage.Size = new System.Drawing.Size(1297, 596);
+            this.RelatorioLucroPage.Size = new System.Drawing.Size(1297, 599);
             this.RelatorioLucroPage.TabIndex = 9;
             this.RelatorioLucroPage.Text = "Relatorio Lucro";
             this.RelatorioLucroPage.VerticalScrollbarBarColor = true;
@@ -3310,7 +3292,7 @@
             this.metroGrid3.EnableHeadersVisualStyles = false;
             this.metroGrid3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid3.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid3.Location = new System.Drawing.Point(0, 385);
+            this.metroGrid3.Location = new System.Drawing.Point(0, 388);
             this.metroGrid3.Name = "metroGrid3";
             this.metroGrid3.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;

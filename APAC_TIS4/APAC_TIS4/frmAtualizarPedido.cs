@@ -164,7 +164,7 @@ namespace APAC_TIS4
                 PedidoModels pedido = new PedidoModels();
                 pedido.Pedido_ID = int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString());
                 pedido.Data_Entrega = DateTime.Parse(dataGridView1.Rows[i].Cells[4].Value.ToString());
-                pedido.Quantidade = int.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
+                pedido._ItemPedido.Quantidade = int.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
                 pedido.StrData_Entrega = pedido.Data_Entrega.ToString("yyyy-MM-dd HH:mm:ss");
                 listPedidos.Add(pedido);
             }

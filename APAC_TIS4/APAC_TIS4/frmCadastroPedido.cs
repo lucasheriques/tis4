@@ -61,7 +61,7 @@ namespace APAC_TIS4
             pedido._ItemPedido.Produto_ID = int.Parse(cmbProduto.SelectedValue.ToString());
             pedido.Data_Pedido = dateTimePicker1.Value.Date;
             pedido.Data_Entrega =  dateTimePicker2.Value.Date;
-            pedido.Quantidade = int.Parse(textBox1.Text);
+            pedido._ItemPedido.Quantidade = int.Parse(textBox1.Text);
             pedido.PrecoTotal = float.Parse(textBox3.Text);
 
             PedidoDAO pedidoDAO = new PedidoDAO();

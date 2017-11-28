@@ -26,7 +26,7 @@ namespace APAC_TIS4
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
 
-                    string query = "SELECT cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN itemPedido ON itemPedido.Pedido_ID = pedido.Pedido_ID INNER JOIN produto ON produto.Produto_ID = itemPedido.Produto_ID;";
+                    string query = "SELECT cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, itemPedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN itemPedido ON itemPedido.Pedido_ID = pedido.Pedido_ID INNER JOIN produto ON produto.Produto_ID = itemPedido.Produto_ID;";
 
                     MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
 
@@ -58,7 +58,7 @@ namespace APAC_TIS4
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
 
-                    string query = "SELECT pedido.Pedido_ID, cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo, produto.Produto_ID FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN itemPedido ON itemPedido.Pedido_ID = pedido.Pedido_ID INNER JOIN produto ON produto.Produto_ID = itemPedido.Produto_ID WHERE cliente.Cliente_ID LIKE @Cliente_ID AND produto.Produto_ID LIKE @Produto_ID;";
+                    string query = "SELECT pedido.Pedido_ID, cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, itemPedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo, produto.Produto_ID FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN itemPedido ON itemPedido.Pedido_ID = pedido.Pedido_ID INNER JOIN produto ON produto.Produto_ID = itemPedido.Produto_ID WHERE cliente.Cliente_ID LIKE @Cliente_ID AND produto.Produto_ID LIKE @Produto_ID;";
 
                     MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
 
@@ -106,7 +106,7 @@ namespace APAC_TIS4
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
 
-                    string query = "SELECT pedido.Pedido_ID, cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo, produto.Produto_ID FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN itemPedido ON itemPedido.Pedido_ID = pedido.Pedido_ID INNER JOIN produto ON produto.Produto_ID = itemPedido.Produto_ID;";
+                    string query = "SELECT pedido.Pedido_ID, cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, itemPedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo, produto.Produto_ID FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN itemPedido ON itemPedido.Pedido_ID = pedido.Pedido_ID INNER JOIN produto ON produto.Produto_ID = itemPedido.Produto_ID;";
 
                     MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
 
@@ -146,7 +146,7 @@ namespace APAC_TIS4
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("_Pedido_ID", pedido.Pedido_ID);
                         cmd.Parameters.AddWithValue("_Data_Entrega", pedido.Data_Entrega);
-                        cmd.Parameters.AddWithValue("_Quantidade", pedido.Quantidade);
+                        cmd.Parameters.AddWithValue("_Quantidade", pedido._ItemPedido.Quantidade);
 
                         cmd.ExecuteNonQuery();
                     }
@@ -174,7 +174,7 @@ namespace APAC_TIS4
 
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
-                    string query = "SELECT cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN itemPedido ON itemPedido.Pedido_ID = pedido.Pedido_ID INNER JOIN produto ON produto.Produto_ID = itemPedido.Produto_ID WHERE cliente.Nome LIKE @NomeCliente AND produto.nome LIKE @NomeProduto AND (pedido.Data_Pedido = @Data_Pedido OR year(pedido.Data_Pedido) between Year('1900-01-01') and YEAR(NOW())) OR (pedido.Data_Entrega = @Data_Entrega OR year(pedido.Data_Entrega) between Year('1900-01-01') and YEAR(NOW()));";
+                    string query = "SELECT cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, itemPedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN itemPedido ON itemPedido.Pedido_ID = pedido.Pedido_ID INNER JOIN produto ON produto.Produto_ID = itemPedido.Produto_ID WHERE cliente.Nome LIKE @NomeCliente AND produto.nome LIKE @NomeProduto AND (pedido.Data_Pedido = @Data_Pedido OR year(pedido.Data_Pedido) between Year('1900-01-01') and YEAR(NOW())) OR (pedido.Data_Entrega = @Data_Entrega OR year(pedido.Data_Entrega) between Year('1900-01-01') and YEAR(NOW()));";
 
                     MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
 
@@ -228,7 +228,7 @@ namespace APAC_TIS4
 
                     /* criando o comando sql indicando a nossa conexão e a nossa
                     procedure */
-                    string query = "SELECT pedido.Pedido_ID, cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, pedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN itemPedido ON itemPedido.Pedido_ID = pedido.Pedido_ID INNER JOIN produto ON produto.Produto_ID = itemPedido.Produto_ID WHERE cliente.Nome LIKE @NomeCliente AND produto.nome LIKE @NomeProduto AND (pedido.Data_Pedido = @Data_Pedido OR year(pedido.Data_Pedido) between Year('1900-01-01') and YEAR(NOW())) OR (pedido.Data_Entrega = @Data_Entrega OR year(pedido.Data_Entrega) between Year('1900-01-01') and YEAR(NOW()));";
+                    string query = "SELECT pedido.Pedido_ID, cliente.Nome AS Nome_Cliente, cliente.Localidade, cliente.Tipo AS Tipo_Cliente, pedido.Data_Entrega, pedido.PrecoTotal, itemPedido.Quantidade, produto.nome as Nome_Produto, produto.Peso, produto.UDM AS Unidade_De_Medida, produto.Tamanho, produto.Tipo FROM pedido INNER JOIN cliente ON cliente.Cliente_ID = pedido.Cliente_ID INNER JOIN itemPedido ON itemPedido.Pedido_ID = pedido.Pedido_ID INNER JOIN produto ON produto.Produto_ID = itemPedido.Produto_ID WHERE cliente.Nome LIKE @NomeCliente AND produto.nome LIKE @NomeProduto AND (pedido.Data_Pedido = @Data_Pedido OR year(pedido.Data_Pedido) between Year('1900-01-01') and YEAR(NOW())) OR (pedido.Data_Entrega = @Data_Entrega OR year(pedido.Data_Entrega) between Year('1900-01-01') and YEAR(NOW()));";
 
                     MySqlCommand cmd = new MySqlCommand(query, conexaoMySQL);
 
@@ -292,7 +292,7 @@ namespace APAC_TIS4
                     cmd.Parameters.AddWithValue("_Cliente_ID", pedidoModels._ItemPedido.Cliente_ID);
                     cmd.Parameters.AddWithValue("_Data_Entrega", pedidoModels.Data_Entrega);
                     cmd.Parameters.AddWithValue("_Data_Pedido", pedidoModels.Data_Pedido);
-                    cmd.Parameters.AddWithValue("_Quantidade", pedidoModels.Quantidade);
+                    cmd.Parameters.AddWithValue("_Quantidade", pedidoModels._ItemPedido.Quantidade);
                     cmd.Parameters.AddWithValue("_PrecoTotal", pedidoModels.PrecoTotal);
 
                     cmd.ExecuteNonQuery();
@@ -331,7 +331,7 @@ namespace APAC_TIS4
                     cmd.Parameters.AddWithValue("_Cliente_ID", pedido._ItemPedido.Cliente_ID);
                     cmd.Parameters.AddWithValue("_Data_Entrega", pedido.Data_Entrega);
                     cmd.Parameters.AddWithValue("_Data_Pedido", pedido.Data_Pedido);
-                    cmd.Parameters.AddWithValue("_Quantidade", pedido.Quantidade);
+                    cmd.Parameters.AddWithValue("_Quantidade", pedido._ItemPedido.Quantidade);
                     cmd.Parameters.AddWithValue("_PrecoTotal", pedido.PrecoTotal);
 
                     cmd.ExecuteNonQuery();
