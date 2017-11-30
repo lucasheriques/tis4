@@ -43,7 +43,8 @@ namespace APAC_TIS4
 
         public MySqlConnection getConexao()
         {
-            string conn = "Data Source=" + Server + ";Initial Catalog=" + Database + ";User ID=" + Usuario + ";Password=" + Senha + "";
+            //string conn = "Data Source=" + Server + ";Initial Catalog=" + Database + ";User ID=" + Usuario + ";Password=" + Senha + "";
+            string conn = "Data Source=127.0.0.1;Initial Catalog=padaria;User ID=root;Password=123456";
             return new MySqlConnection(conn);
         }
     }

@@ -14,7 +14,7 @@ namespace APAC_TIS4
 {
     public partial class frmPrincipal : MetroForm
     {
-        Microsoft.Office.Interop.Excel.Application XcelApp = new Microsoft.Office.Interop.Excel.Application();
+        //Microsoft.Office.Interop.Excel.Application XcelApp = new Microsoft.Office.Interop.Excel.Application();
         private static string verificaAtualizar = "0";
         public frmPrincipal()
         {
@@ -1342,7 +1342,7 @@ namespace APAC_TIS4
 
         private void metroButton16_Click(object sender, EventArgs e)
         {
-            if (metroGrid1.Rows.Count > 0)
+            /*if (metroGrid1.Rows.Count > 0)
             {
                 try
                 {
@@ -1373,7 +1373,7 @@ namespace APAC_TIS4
             }
             else {
                 MessageBox.Show("Não existem dados para serem exportados!!!");
-            }
+            }*/
         }
 
         private void metroButton19_Click(object sender, EventArgs e)
@@ -1701,7 +1701,7 @@ namespace APAC_TIS4
 
         private void metroButton24_Click(object sender, EventArgs e)
         {
-            if (dvgClientes.Rows.Count > 0)
+            /*if (dvgClientes.Rows.Count > 0)
             {
                 try
                 {
@@ -1729,12 +1729,12 @@ namespace APAC_TIS4
                     MessageBox.Show("Erro : " + ex.Message);
                     XcelApp.Quit();
                 }
-            }
+            }*/
         }
 
         private void metroButton25_Click(object sender, EventArgs e)
         {
-            if (mgProduto.Rows.Count > 0)
+            /*if (mgProduto.Rows.Count > 0)
             {
                 try
                 {
@@ -1762,12 +1762,12 @@ namespace APAC_TIS4
                     MessageBox.Show("Erro : " + ex.Message);
                     XcelApp.Quit();
                 }
-            }
+            }*/
         }
 
         private void metroButton26_Click(object sender, EventArgs e)
         {
-            if (dvgPedidos.Rows.Count > 0)
+            /*if (dvgPedidos.Rows.Count > 0)
             {
                 try
                 {
@@ -1795,7 +1795,7 @@ namespace APAC_TIS4
                     MessageBox.Show("Erro : " + ex.Message);
                     XcelApp.Quit();
                 }
-            }
+            }*/
         }
 
         private void btnClientDelMenu_Click(object sender, EventArgs e)
@@ -1874,7 +1874,7 @@ namespace APAC_TIS4
 
         private void metroButton28_Click(object sender, EventArgs e)
         {
-            if (metroGrid3.Rows.Count > 0)
+            /*if (metroGrid3.Rows.Count > 0)
             {
                 try
                 {
@@ -1902,7 +1902,7 @@ namespace APAC_TIS4
                     MessageBox.Show("Erro : " + ex.Message);
                     XcelApp.Quit();
                 }
-            }
+            }*/
         }
 
         private void entityTab_TabIndexChanged(object sender, EventArgs e)
@@ -2049,5 +2049,29 @@ namespace APAC_TIS4
 
         }
 
+        private void clientPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ReceitaPage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chartGrafico_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mcmbTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mtxtNome_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
